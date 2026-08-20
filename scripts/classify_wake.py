@@ -8,15 +8,14 @@ PR validation, ordinary pushes, and state-maintenance commits may not.
 from __future__ import annotations
 
 import argparse
-from dataclasses import dataclass
+from typing import NamedTuple
 
 WAKE_MARKER = "[steward-wake]"
 STATE_MARKER = "[steward-state]"
 ALLOWED_EVENTS = frozenset({"push", "pull_request", "workflow_dispatch"})
 
 
-@dataclass(frozen=True)
-class WakeDecision:
+class WakeDecision(NamedTuple):
     evaluate: bool
     reason: str
 
