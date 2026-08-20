@@ -64,6 +64,8 @@ steward_explain(
 ) :-
     handoff_ready(Handoff),
     handoff(Handoff, Source, Target).
+steward_explain(receipt(Id), Explanation) :-
+    decision_receipt_explanation(Id, Explanation).
 steward_explain(idle(no_schedulable_work), explanation(no_schedulable_work)).
 
 steward_lease_candidate(Task, Owner, Generation) :-
