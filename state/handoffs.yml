@@ -1,0 +1,22 @@
+version: 1
+
+handoffs:
+  - id: infra-to-server
+    from: starintel-infra
+    to: starintel-server
+    status: armed
+    completion_gate: automated-deployment-ready
+    require:
+      all:
+        - reproducible-builds
+        - automated-apply-verified
+        - rollback-recovery-verified
+        - secrets-externalized
+        - required-ci-green
+        - no-p0-p1-deployment-blockers
+    rules:
+      prolog: |
+        handoff_ready(infra_to_server) :-
+            completion_gate(starintel_infra, automated_deployment_ready, satisfied),
+            \+ blocking_failure(starintel_infra),
+            project_status(starintel_server, waiting_handoff).
