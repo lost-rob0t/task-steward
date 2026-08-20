@@ -1,16 +1,18 @@
 #!/usr/bin/env python3
 """Compile Task Steward authored YAML into deterministic Prolog modules.
 
-This compiler is intentionally narrow: it only reads this repository's state/
-files and only writes generated files inside this repository.  It does not
-contact GitHub or any managed project repository.
+This compiler only reads this repository's state and writes generated files
+inside this repository. Inline Prolog is parsed by SWI-Prolog and restricted to
+an explicit logical predicate allow-list before it can become generated code.
 """
 from __future__ import annotations
 
 import argparse
 import re
+import subprocess
+import tempfile
 from pathlib import Path
-from typing import Any
+from typing import Any, Iterable
 
 import yaml
 
@@ -18,38 +20,26 @@ ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_PROJECTS = ROOT / "state" / "projects.yml"
 DEFAULT_KB = ROOT / "kb" / "generated" / "projects.pl"
 DEFAULT_RULES = ROOT / "experts" / "generated" / "project_rules.pl"
+DEFAULT_EXPERT_REGISTRY = ROOT / "experts" / "generated" / "registry.pl"
+INLINE_VALIDATOR = ROOT / "scripts" / "validate_inline_prolog.pl"
 
 ATOM_RE = re.compile(r"^[a-z][a-z0-9_]*$")
+PREDICATE_INDICATOR_RE = re.compile(r"^[a-z][a-z0-9_]*/(?:0|[1-9][0-9]*)$")
 DIRECTIVE_RE = re.compile(r"(?m)^\s*:-")
 QUERY_RE = re.compile(r"(?m)^\s*\?-")
 
-# Inline rules are logic-only.  This is deliberately conservative and will be
-# tightened into an AST/predicate allow-list in a later Issue #1 slice.
-FORBIDDEN_CALLS = {
-    "shell",
-    "process_create",
-    "process_wait",
-    "open",
-    "close",
-    "delete_file",
-    "rename_file",
-    "make_directory",
-    "delete_directory",
-    "consult",
-    "ensure_loaded",
-    "load_files",
-    "use_module",
-    "use_foreign_library",
-    "load_foreign_library",
-    "http_open",
-    "http_get",
-    "http_post",
-    "tcp_connect",
-    "tcp_socket",
-    "udp_socket",
-    "set_prolog_flag",
-    "halt",
+STAGE_BASE = {
+    "eligibility": 10,
+    "dependencies": 20,
+    "failure": 30,
+    "regression": 40,
+    "priority": 50,
+    "skip_policy": 60,
+    "scheduling": 70,
+    "handoff": 80,
+    "completion": 90,
 }
+BUILTIN_EXPERTS = frozenset(STAGE_BASE)
 
 
 def prolog_atom(value: str) -> str:
@@ -63,8 +53,22 @@ def quote_atom(value: str) -> str:
     return "'" + value.replace("'", "''") + "'"
 
 
-def validate_inline_prolog(text: str, *, source: str) -> str:
-    """Reject side-effect authority while preserving ordinary pure rules."""
+def normalize_predicate_indicators(values: Iterable[str], *, source: str) -> tuple[str, ...]:
+    normalized: list[str] = []
+    for value in values:
+        if not isinstance(value, str) or not PREDICATE_INDICATOR_RE.fullmatch(value):
+            raise ValueError(f"{source}: invalid predicate indicator {value!r}")
+        normalized.append(value)
+    return tuple(sorted(set(normalized)))
+
+
+def validate_inline_prolog(
+    text: str,
+    *,
+    source: str,
+    allowed_predicates: Iterable[str] = (),
+) -> str:
+    """Parse rules and reject every body call outside the logical allow-list."""
     if not isinstance(text, str):
         raise ValueError(f"{source}: inline Prolog must be a string")
     normalized = text.strip()
@@ -75,13 +79,29 @@ def validate_inline_prolog(text: str, *, source: str) -> str:
     if QUERY_RE.search(normalized):
         raise ValueError(f"{source}: Prolog queries are forbidden")
 
-    for name in sorted(FORBIDDEN_CALLS):
-        if re.search(rf"(?<![A-Za-z0-9_]){re.escape(name)}\s*\(", normalized):
-            raise ValueError(f"{source}: forbidden predicate {name}/...")
+    allowed = normalize_predicate_indicators(allowed_predicates, source=source)
+    with tempfile.NamedTemporaryFile("w", suffix=".pl", encoding="utf-8", delete=False) as fh:
+        fh.write(normalized)
+        fh.write("\n")
+        temp_path = Path(fh.name)
 
-    # Module qualification can escape the steward predicate surface.
-    if re.search(r"\b[a-z][a-z0-9_]*\s*:\s*[a-z][a-z0-9_]*\s*\(", normalized):
-        raise ValueError(f"{source}: module-qualified calls are forbidden")
+    try:
+        try:
+            proc = subprocess.run(
+                ["swipl", "-q", "-s", str(INLINE_VALIDATOR), "--", str(temp_path), *allowed],
+                cwd=ROOT,
+                text=True,
+                capture_output=True,
+                check=False,
+            )
+        except FileNotFoundError as exc:
+            raise ValueError(f"{source}: SWI-Prolog is required for inline rule validation") from exc
+        if proc.returncode != 0:
+            detail = (proc.stderr or proc.stdout).strip().splitlines()
+            reason = detail[-1] if detail else "validator rejected inline Prolog"
+            raise ValueError(f"{source}: {reason}")
+    finally:
+        temp_path.unlink(missing_ok=True)
 
     return normalized + "\n"
 
@@ -97,14 +117,33 @@ def load_projects(path: Path) -> list[dict[str, Any]]:
     return projects
 
 
-def compile_projects(projects: list[dict[str, Any]]) -> tuple[str, str]:
-    facts: list[str] = []
-    custom_rules: list[str] = []
-    seen: set[str] = set()
-
+def _collect_custom_expert_names(projects: list[dict[str, Any]]) -> set[str]:
+    names: set[str] = set()
     for index, project in enumerate(projects):
         if not isinstance(project, dict):
             raise ValueError(f"project #{index + 1}: expected mapping")
+        raw_id = project.get("id", f"project-{index + 1}")
+        experts = project.get("experts") or []
+        if not isinstance(experts, list):
+            raise ValueError(f"{raw_id}: experts must be a list")
+        for expert in experts:
+            if not isinstance(expert, dict) or not isinstance(expert.get("name"), str):
+                raise ValueError(f"{raw_id}: every custom expert needs a name")
+            name = prolog_atom(expert["name"])
+            if name in BUILTIN_EXPERTS or name in names:
+                raise ValueError(f"{raw_id}: duplicate/reserved expert name {expert['name']!r}")
+            names.add(name)
+    return names
+
+
+def compile_projects(projects: list[dict[str, Any]]) -> tuple[str, str, str]:
+    facts: list[str] = []
+    custom_rules: list[str] = []
+    custom_registry: list[tuple[int, str, str, tuple[str, ...]]] = []
+    seen: set[str] = set()
+    custom_names = _collect_custom_expert_names(projects)
+
+    for index, project in enumerate(projects):
         raw_id = project.get("id")
         repo = project.get("repo")
         status = project.get("status")
@@ -126,7 +165,7 @@ def compile_projects(projects: list[dict[str, Any]]) -> tuple[str, str]:
         if not isinstance(priority, dict):
             raise ValueError(f"{raw_id}: priority must be a mapping")
         base = priority.get("base", 0)
-        if not isinstance(base, int):
+        if not isinstance(base, int) or isinstance(base, bool):
             raise ValueError(f"{raw_id}: priority.base must be an integer")
         facts.append(f"base_priority({pid}, {base}).")
         if priority.get("protected") is True:
@@ -144,21 +183,84 @@ def compile_projects(projects: list[dict[str, Any]]) -> tuple[str, str]:
         rules = project.get("rules") or {}
         if not isinstance(rules, dict):
             raise ValueError(f"{raw_id}: rules must be a mapping")
+        allowed = rules.get("allowed_predicates") or []
+        if not isinstance(allowed, list):
+            raise ValueError(f"{raw_id}: rules.allowed_predicates must be a list")
         inline = rules.get("prolog")
         if inline is not None:
-            checked = validate_inline_prolog(inline, source=f"{raw_id}.rules.prolog")
+            checked = validate_inline_prolog(
+                inline,
+                source=f"{raw_id}.rules.prolog",
+                allowed_predicates=allowed,
+            )
             if checked:
                 custom_rules.append(f"% project: {raw_id}\n{checked.rstrip()}")
 
+        experts = project.get("experts") or []
+        for expert in experts:
+            name = prolog_atom(expert["name"])
+            raw_stage = expert.get("stage")
+            if not isinstance(raw_stage, str):
+                raise ValueError(f"{raw_id}.{name}: stage is required")
+            stage = prolog_atom(raw_stage)
+            if stage not in STAGE_BASE:
+                raise ValueError(f"{raw_id}.{name}: unknown stage {raw_stage!r}")
+            offset = expert.get("order", 1)
+            if not isinstance(offset, int) or isinstance(offset, bool) or not 1 <= offset <= 9:
+                raise ValueError(f"{raw_id}.{name}: order must be an integer from 1 through 9")
+            deps_raw = expert.get("depends_on") or []
+            if not isinstance(deps_raw, list) or not all(isinstance(dep, str) for dep in deps_raw):
+                raise ValueError(f"{raw_id}.{name}: depends_on must be a list of expert names")
+            deps = tuple(prolog_atom(dep) for dep in deps_raw)
+            known = BUILTIN_EXPERTS | custom_names
+            unknown = sorted(dep for dep in deps if dep not in known)
+            if unknown:
+                raise ValueError(f"{raw_id}.{name}: unknown expert dependencies {unknown}")
+            effective_order = STAGE_BASE[stage] + offset
+            custom_registry.append((effective_order, name, stage, deps))
+
         facts.append("")
+
+    custom_registry.sort(key=lambda item: (item[0], item[1]))
+    seen_orders: dict[int, str] = {}
+    for effective_order, name, _, _ in custom_registry:
+        other = seen_orders.get(effective_order)
+        if other is not None:
+            raise ValueError(
+                f"custom experts {other!r} and {name!r} have the same effective order {effective_order}"
+            )
+        seen_orders[effective_order] = name
 
     kb = """% GENERATED FILE. DO NOT EDIT.\n% Source: state/projects.yml\n:- module(kb_generated_projects, [\n    project/1,\n    project_repo/2,\n    project_status/2,\n    project_mode/2,\n    base_priority/2,\n    protected_project/1,\n    completion_policy/2\n]).\n\n""" + "\n".join(facts).rstrip() + "\n"
 
-    rules = """% GENERATED FILE. DO NOT EDIT.\n% Source: state/projects.yml inline Prolog blocks\n:- module(generated_project_rules, []).\n\n"""
+    rules_text = """% GENERATED FILE. DO NOT EDIT.\n% Source: state/projects.yml inline Prolog blocks\n:- module(generated_project_rules, []).\n\n"""
     if custom_rules:
-        rules += "\n\n".join(custom_rules).rstrip() + "\n"
+        rules_text += "\n\n".join(custom_rules).rstrip() + "\n"
 
-    return kb, rules
+    registry_lines = [
+        "% GENERATED FILE. DO NOT EDIT.",
+        "% Source: state/projects.yml custom experts",
+        ":- module(generated_expert_registry, [",
+        "    custom_expert/1,",
+        "    custom_expert_stage/2,",
+        "    custom_expert_order/2,",
+        "    custom_expert_dependency/2",
+        "]).",
+        "",
+    ]
+    for effective_order, name, stage, deps in custom_registry:
+        registry_lines.extend(
+            [
+                f"custom_expert({name}).",
+                f"custom_expert_stage({name}, {stage}).",
+                f"custom_expert_order({name}, {effective_order}).",
+            ]
+        )
+        registry_lines.extend(f"custom_expert_dependency({name}, {dep})." for dep in deps)
+        registry_lines.append("")
+    registry = "\n".join(registry_lines).rstrip() + "\n"
+
+    return kb, rules_text, registry
 
 
 def write_or_check(path: Path, content: str, *, check: bool) -> None:
@@ -178,12 +280,14 @@ def main() -> int:
     parser.add_argument("--projects", type=Path, default=DEFAULT_PROJECTS)
     parser.add_argument("--kb-output", type=Path, default=DEFAULT_KB)
     parser.add_argument("--rules-output", type=Path, default=DEFAULT_RULES)
+    parser.add_argument("--expert-registry-output", type=Path, default=DEFAULT_EXPERT_REGISTRY)
     args = parser.parse_args()
 
     projects = load_projects(args.projects)
-    kb, rules = compile_projects(projects)
+    kb, rules, registry = compile_projects(projects)
     write_or_check(args.kb_output, kb, check=args.check)
     write_or_check(args.rules_output, rules, check=args.check)
+    write_or_check(args.expert_registry_output, registry, check=args.check)
     return 0
 
 
