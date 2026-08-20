@@ -9,10 +9,17 @@
 :- use_module('kb/handoffs.pl').
 :- use_module('kb/tasks.pl').
 :- use_module('kb/evidence.pl').
+
 :- use_module('experts/registry.pl').
+:- use_module('experts/eligibility.pl').
+:- use_module('experts/dependencies.pl').
+:- use_module('experts/failure.pl').
+:- use_module('experts/regression.pl').
+:- use_module('experts/priority.pl').
+:- use_module('experts/skip_policy.pl').
 :- use_module('experts/scheduling.pl').
 :- use_module('experts/handoff.pl').
-:- use_module('experts/priority.pl').
+:- use_module('experts/completion.pl').
 
 steward_validate :-
     findall(Order-Expert, expert_order(Expert, Order), Ordered),
