@@ -1,10 +1,42 @@
-version: 2
+version: 3
 
 scope:
   exclusive_consumer: task-steward
   external_repo_mutation: forbidden
   managed_project_code_in_this_repo: forbidden
   issue_source_of_truth: owning-repository
+
+context:
+  personal_context_required_before_action: true
+  resolve_ambiguity_from_memory_and_repository_state: true
+  current_prompt_is_not_complete_context: true
+
+backlog:
+  complete_enumeration_required_before_no_work_claim: true
+  include_open_prs: true
+  include_open_issues: true
+  include_unfinished_transactions: true
+  include_failed_or_pending_ci: true
+  prefer_valid_existing_backlog: true
+  blocked_work_fallback: backlog_hygiene
+  partial_sweep_must_not_be_reported_as_complete: true
+
+reporting_house_style:
+  applies_to:
+    - auto-dig
+    - research-reporting
+    - discord-reporting
+  tone:
+    - clipped
+    - cynical
+    - punchy
+    - minimal-ai-slop
+  evidence_discipline_required: true
+  never_invent:
+    - crimes
+    - motives
+    - quotes
+    - certainty
 
 scheduling:
   authority: prolog
