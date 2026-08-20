@@ -67,7 +67,17 @@ steward_status(Status).
 
 * Wake model
 
-The Task Steward may create an empty commit in this repository to wake GitHub Actions after state changes. A wake means only "re-evaluate current state". It does not itself choose the next task. Prolog remains authoritative for that decision.
+Workflow validation and logical steward evaluation are separate operations.
+
+- Pull requests and ordinary pushes run validation only.
+- A Task Steward empty commit whose message contains =[steward-wake]= may run one logical steward evaluation after validation.
+- A workflow/manual dispatch may also request one logical evaluation.
+- A state-maintenance commit whose message contains =[steward-state]= is validation-only and may not recursively wake another evaluation.
+- A commit containing both markers is invalid and fails closed.
+
+A wake means only "re-evaluate current state". It does not choose the next task. The evaluation calls the unified Prolog interface, and Prolog remains authoritative for the result.
+
+The workflow itself has read-only repository contents permission. It cannot mutate managed repositories, and the scope validator rejects workflow authority that would introduce repository/network writes.
 
 * RAGE loop
 
@@ -77,4 +87,4 @@ The Task Steward may create an empty commit in this repository to wake GitHub Ac
 4. *Evaluate*: record result, CI/test evidence, failures, regressions, and handoffs.
 5. *Recurse*: wake the steward and reason again from the new state.
 
-When external work is exhausted, the steward may RAGE on this repository itself, but self-improvement must be represented by GitHub Issues and pass the same regression/validation gates as any other change.
+Before the expert-system deployment gate is complete, platform task reconciliation is followed by mandatory self-RAGE on this repository even when external work exists. After deployment, external scheduling becomes primary and self-RAGE becomes the fallback when nothing external is schedulable.
