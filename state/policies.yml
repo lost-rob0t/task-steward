@@ -1,4 +1,4 @@
-version: 1
+version: 2
 
 scope:
   exclusive_consumer: task-steward
@@ -31,6 +31,34 @@ skip_policy:
 
 self_rage:
   enabled: true
-  only_when_no_higher_priority_work: true
+  pre_deployment_mode: mandatory_after_task_reconciliation
+  pre_deployment_wait_for_empty_queue: false
+  deployment_gate: expert_system_fully_deployed
+  post_deployment_mode: fallback_when_no_schedulable_work
   changes_require_issue: true
   changes_require_regression_validation: true
+
+expert_system_deployment:
+  state: building
+  requires:
+    - yaml_state
+    - yaml_to_prolog_compiler
+    - validated_inline_prolog
+    - durable_kb
+    - serial_prolog_moe
+    - unified_steward_interface
+    - priority_scoring
+    - dependency_and_eligibility_reasoning
+    - failure_detection_and_retry_classification
+    - regression_detection
+    - job_and_test_skip_reasoning
+    - non_skippable_required_gates
+    - fenced_leases
+    - structured_handoffs
+    - decision_receipts
+    - actions_wake_and_reconcile
+    - recursive_wake_protection
+    - scenario_regression_tests
+    - external_repo_write_isolation
+    - green_required_ci
+    - no_p0_p1_deployment_blockers
