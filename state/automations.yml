@@ -20,6 +20,9 @@ active:
     role: permanent-worker
     project: starintel-discord-reports
     protected: true
+    operational_state: delivery-recovery
+    completion_condition: verified-discord-receipts-for-findings-and-shitpost-channels
+    evidence_policy: discord-message-id-and-channel-id-required
 
   - id: 6a8649dc3f708191b51269995b51700a
     title: Prolog-RLM RAGE Loop
@@ -34,6 +37,8 @@ active:
     role: handoff-slot
     project: starintel-infra
     handoff: infra-to-server
+    handoff_status: armed
+    handoff_requires_marker: INFRA_AUTODEPLOY_READY
 
 paused:
   - id: 6a7dce766d448191bca41ef6e0c9390e
@@ -42,3 +47,4 @@ paused:
     reason: slot-reallocated-to-prolog-rlm-rage
 
 observed_by: task-steward
+observed_at: 2026-08-20T16:47:52Z
