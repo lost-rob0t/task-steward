@@ -33,6 +33,19 @@ jobs:
               print(f"validated {path}")
           PY
 
+      - name: Verify deterministic YAML to Prolog compilation
+        run: |
+          python3 -m py_compile scripts/compile_state.py
+          python3 scripts/compile_state.py --check
+
+      - name: Run compiler regression tests
+        run: |
+          python3 -m unittest discover -s tests -p 'test_*.py' -v
+
+      - name: Validate generated custom Prolog syntax
+        run: |
+          swipl -q -s experts/generated/project_rules.pl -g halt
+
       - name: Validate Prolog KB and experts
         run: |
           swipl -q -s steward.pl -g "steward_validate,steward_status(S),writeln(S),halt"
