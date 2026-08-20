@@ -7,6 +7,7 @@
 
 :- use_module('generated/registry.pl').
 
+builtin_expert(leases, eligibility, 5).
 builtin_expert(eligibility, eligibility, 10).
 builtin_expert(dependencies, dependencies, 20).
 builtin_expert(failure, failure, 30).
@@ -16,6 +17,10 @@ builtin_expert(skip_policy, skip_policy, 60).
 builtin_expert(scheduling, scheduling, 70).
 builtin_expert(handoff, handoff, 80).
 builtin_expert(completion, completion, 90).
+builtin_expert(receipts, completion, 95).
+
+builtin_dependency(eligibility, leases).
+builtin_dependency(receipts, completion).
 
 expert(Name) :-
     builtin_expert(Name, _, _).
@@ -32,5 +37,7 @@ expert_order(Name, Order) :-
 expert_order(Name, Order) :-
     custom_expert_order(Name, Order).
 
+expert_dependency(Name, Dependency) :-
+    builtin_dependency(Name, Dependency).
 expert_dependency(Name, Dependency) :-
     custom_expert_dependency(Name, Dependency).
