@@ -1,0 +1,6 @@
+*.qlf
+.cache/
+.tmp/
+state/generated/
+kb/generated/
+*.log
