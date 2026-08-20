@@ -21,13 +21,18 @@ class CompileStateTests(unittest.TestCase):
         second = compile_state.compile_projects(projects)
         self.assertEqual(first, second)
 
-        kb, rules = first
+        kb, rules, registry = first
         self.assertIn("project(prolog_rlm).", kb)
         self.assertIn("project_mode(task_stward_rage, self_rage_building_experts).", kb)
         self.assertIn("completion_policy(starintel_infra, automated_deployment_ready).", kb)
         self.assertIn("production_ready(prolog_rlm) :-", rules)
+        self.assertIn("custom_expert(prolog_rlm_readiness).", registry)
+        self.assertIn("custom_expert_stage(prolog_rlm_readiness, completion).", registry)
+        self.assertIn("custom_expert_order(prolog_rlm_readiness, 91).", registry)
+        self.assertIn("custom_expert_dependency(prolog_rlm_readiness, completion).", registry)
         self.assertTrue(kb.startswith("% GENERATED FILE. DO NOT EDIT."))
         self.assertTrue(rules.startswith("% GENERATED FILE. DO NOT EDIT."))
+        self.assertTrue(registry.startswith("% GENERATED FILE. DO NOT EDIT."))
 
     def test_identifier_normalization_is_stable(self) -> None:
         self.assertEqual(compile_state.prolog_atom("starintel-infra"), "starintel_infra")
@@ -35,21 +40,80 @@ class CompileStateTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             compile_state.prolog_atom("../escape")
 
-    def test_inline_directive_is_rejected(self) -> None:
+    def test_inline_directive_is_rejected_before_parse(self) -> None:
         with self.assertRaisesRegex(ValueError, "directives are forbidden"):
             compile_state.validate_inline_prolog(
                 ":- initialization(main).", source="test.rules.prolog"
             )
 
-    def test_inline_shell_and_module_escape_are_rejected(self) -> None:
-        with self.assertRaisesRegex(ValueError, "forbidden predicate shell"):
+    def test_non_allowlisted_predicate_is_rejected_after_parse(self) -> None:
+        with self.assertRaisesRegex(ValueError, "non_allowlisted_predicate"):
             compile_state.validate_inline_prolog(
                 "unsafe :- shell('id').", source="test.rules.prolog"
             )
-        with self.assertRaisesRegex(ValueError, "module-qualified calls are forbidden"):
+
+    def test_module_qualified_goal_is_rejected_after_parse(self) -> None:
+        with self.assertRaisesRegex(ValueError, "module_qualified_goal"):
             compile_state.validate_inline_prolog(
                 "unsafe :- system:foo(bar).", source="test.rules.prolog"
             )
+
+    def test_allowlisted_predicate_and_local_rule_are_accepted(self) -> None:
+        text = """
+        complete(X) :- observed(X), locally_ok(X).
+        locally_ok(X) :- X == ready.
+        """
+        checked = compile_state.validate_inline_prolog(
+            text,
+            source="test.rules.prolog",
+            allowed_predicates=["observed/1"],
+        )
+        self.assertIn("complete(X)", checked)
+        self.assertIn("locally_ok(X)", checked)
+
+    def test_invalid_predicate_indicator_is_rejected(self) -> None:
+        with self.assertRaisesRegex(ValueError, "invalid predicate indicator"):
+            compile_state.validate_inline_prolog(
+                "ok.",
+                source="test.rules.prolog",
+                allowed_predicates=["../../shell/1"],
+            )
+
+    def test_custom_expert_unknown_dependency_is_rejected(self) -> None:
+        projects = [
+            {
+                "id": "demo",
+                "repo": "lost-rob0t/demo",
+                "status": "active",
+                "mode": "rage",
+                "experts": [
+                    {
+                        "name": "demo-check",
+                        "stage": "completion",
+                        "order": 1,
+                        "depends_on": ["ghost"],
+                    }
+                ],
+            }
+        ]
+        with self.assertRaisesRegex(ValueError, "unknown expert dependencies"):
+            compile_state.compile_projects(projects)
+
+    def test_custom_expert_order_collision_is_rejected(self) -> None:
+        projects = [
+            {
+                "id": "demo",
+                "repo": "lost-rob0t/demo",
+                "status": "active",
+                "mode": "rage",
+                "experts": [
+                    {"name": "first", "stage": "completion", "order": 1},
+                    {"name": "second", "stage": "completion", "order": 1},
+                ],
+            }
+        ]
+        with self.assertRaisesRegex(ValueError, "same effective order"):
+            compile_state.compile_projects(projects)
 
     def test_check_mode_detects_stale_generated_output(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:

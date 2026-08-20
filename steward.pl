@@ -26,6 +26,14 @@ steward_validate :-
     sort(Ordered, Sorted),
     length(Ordered, Count),
     length(Sorted, Count),
+    forall(expert(Expert), (expert_stage(Expert, _), expert_order(Expert, _))),
+    forall(expert_dependency(Expert, Dependency), (
+        expert(Expert),
+        expert(Dependency),
+        expert_order(Dependency, DependencyOrder),
+        expert_order(Expert, ExpertOrder),
+        DependencyOrder < ExpertOrder
+    )),
     forall(project(Project), project_repo(Project, _)).
 
 steward_next(handoff(Handoff, Source, Target)) :-
