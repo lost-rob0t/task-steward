@@ -1,0 +1,44 @@
+version: 1
+
+active:
+  - id: 6a54903dc26081918683fbdbc2c6c7cd
+    title: Task Steward
+    cadence: hourly
+    role: manager
+    project: task-stward-rage
+
+  - id: 6a83847376348191b456e115c117d166
+    title: Hourly Auto-Dig
+    cadence: hourly
+    role: permanent-worker
+    project: hourly-auto-dig
+    protected: true
+
+  - id: 6a860d314d40819194128b7c7961fb99
+    title: StarIntel Discord Reports
+    cadence: hourly
+    role: permanent-worker
+    project: starintel-discord-reports
+    protected: true
+
+  - id: 6a8649dc3f708191b51269995b51700a
+    title: Prolog-RLM RAGE Loop
+    cadence: hourly
+    role: rage-worker
+    project: prolog-rlm
+    protected_until: production-ready
+
+  - id: 6a864c35bce48191883144c38781b20e
+    title: StarIntel Infra Deployment Gate
+    cadence: hourly
+    role: handoff-slot
+    project: starintel-infra
+    handoff: infra-to-server
+
+paused:
+  - id: 6a7dce766d448191bca41ef6e0c9390e
+    title: Book 1 Research Loop
+    project: chatgpt-books-book1
+    reason: slot-reallocated-to-prolog-rlm-rage
+
+observed_by: task-steward
