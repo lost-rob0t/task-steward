@@ -2,15 +2,20 @@
     steward_validate/0,
     steward_next/1,
     steward_explain/2,
-    steward_status/1
+    steward_status/1,
+    steward_lease_candidate/3,
+    steward_lease_valid/3,
+    steward_receipt_status/2
 ]).
 
 :- use_module('kb/generated/projects.pl').
 :- use_module('kb/handoffs.pl').
 :- use_module('kb/tasks.pl').
 :- use_module('kb/evidence.pl').
+:- use_module('kb/decisions.pl').
 
 :- use_module('experts/registry.pl').
+:- use_module('experts/leases.pl').
 :- use_module('experts/eligibility.pl').
 :- use_module('experts/dependencies.pl').
 :- use_module('experts/failure.pl').
@@ -20,6 +25,7 @@
 :- use_module('experts/scheduling.pl').
 :- use_module('experts/handoff.pl').
 :- use_module('experts/completion.pl').
+:- use_module('experts/receipts.pl').
 
 steward_validate :-
     findall(Order-Expert, expert_order(Expert, Order), Ordered),
@@ -59,6 +65,21 @@ steward_explain(
     handoff_ready(Handoff),
     handoff(Handoff, Source, Target).
 steward_explain(idle(no_schedulable_work), explanation(no_schedulable_work)).
+
+steward_lease_candidate(Task, Owner, Generation) :-
+    lease_candidate(Task, Owner, Generation).
+
+steward_lease_valid(Task, Generation, Owner) :-
+    valid_lease(Task, Generation, Owner).
+
+steward_receipt_status(Id, valid) :-
+    valid_decision_receipt(Id),
+    !.
+steward_receipt_status(Id, stale) :-
+    stale_decision_receipt(Id),
+    !.
+steward_receipt_status(Id, invalid) :-
+    decision_receipt(Id, _, _, _, _, _, _).
 
 steward_status(status(Projects, Experts)) :-
     findall(project(Project, State, Mode), (
