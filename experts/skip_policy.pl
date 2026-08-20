@@ -5,6 +5,11 @@
 :- multifile job_irrelevant/2.
 :- multifile test_irrelevant/2.
 
+:- dynamic mandatory_job/1.
+:- dynamic mandatory_test/1.
+:- dynamic job_irrelevant/2.
+:- dynamic test_irrelevant/2.
+
 may_skip_job(Task, Job) :-
     job_irrelevant(Task, Job),
     \+ mandatory_job(Job).

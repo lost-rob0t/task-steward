@@ -47,4 +47,8 @@ paused:
     reason: slot-reallocated-to-prolog-rlm-rage
 
 observed_by: task-steward
-observed_at: 2026-08-20T16:47:52Z
+observed_at: 2026-08-20T21:51:18Z
+reconciliation:
+  active_task_count: 5
+  protected_tasks_present: true
+  infra_to_server_handoff: not_observed

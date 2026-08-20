@@ -49,6 +49,7 @@ jobs:
       - name: Run lease and receipt scenarios
         run: |
           swipl -q -s tests/leases.pl -g run_tests -t halt
+          swipl -q -s tests/decision_receipts.pl -g run_tests -t halt
 
       - name: Validate generated custom Prolog syntax
         run: |
