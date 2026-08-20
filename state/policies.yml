@@ -54,7 +54,13 @@ protected_projects:
 wake:
   empty_commit_allowed: true
   meaning: reevaluate-only
+  wake_commit_marker: "[steward-wake]"
+  state_commit_marker: "[steward-state]"
+  ordinary_pushes_are_validation_only: true
+  pull_requests_are_validation_only: true
+  manual_dispatch_may_evaluate: true
   self_generated_state_commits_must_not_recurse: true
+  dual_wake_and_state_markers: forbidden
 
 skip_policy:
   required_merge_gates_skippable: false
