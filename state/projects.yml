@@ -27,6 +27,14 @@ projects:
     completion:
       gate: production-ready
     rules:
+      allowed_predicates:
+        - install_verified/1
+        - full_suite_green/1
+        - e2e_verified/1
+        - persistence_recovery_verified/1
+        - bounded_failure_verified/1
+        - p0_blocker/1
+        - p1_blocker/1
       prolog: |
         production_ready(prolog_rlm) :-
             install_verified(prolog_rlm),
@@ -36,6 +44,12 @@ projects:
             bounded_failure_verified(prolog_rlm),
             \+ p0_blocker(prolog_rlm),
             \+ p1_blocker(prolog_rlm).
+    experts:
+      - name: prolog-rlm-readiness
+        stage: completion
+        order: 1
+        depends_on:
+          - completion
 
   - id: starintel-infra
     repo: starintel-labs/starintel-infra
