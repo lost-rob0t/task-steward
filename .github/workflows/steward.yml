@@ -54,10 +54,11 @@ jobs:
         run: |
           python3 -m unittest discover -s tests -p 'test_*.py' -v
 
-      - name: Run lease and receipt scenarios
+      - name: Run Prolog scenarios
         run: |
           swipl -q -s tests/leases.pl -g run_tests -t halt
           swipl -q -s tests/decision_receipts.pl -g run_tests -t halt
+          swipl -q -s tests/failure_signatures.pl -g run_tests -t halt
 
       - name: Validate generated custom Prolog syntax
         run: |
