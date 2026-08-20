@@ -1,0 +1,70 @@
+version: 1
+
+projects:
+  - id: hourly-auto-dig
+    repo: lost-rob0t/starintel-gpt-auto-dig
+    status: active
+    mode: permanent
+    priority:
+      base: 100
+      protected: true
+
+  - id: starintel-discord-reports
+    repo: lost-rob0t/starintel-discord-reporting
+    status: active
+    mode: permanent
+    priority:
+      base: 100
+      protected: true
+
+  - id: prolog-rlm
+    repo: lost-rob0t/prolog-rlm
+    status: active
+    mode: rage
+    priority:
+      base: 95
+      protected: true
+    completion:
+      gate: production-ready
+    rules:
+      prolog: |
+        production_ready(prolog_rlm) :-
+            install_verified(prolog_rlm),
+            full_suite_green(prolog_rlm),
+            e2e_verified(prolog_rlm),
+            persistence_recovery_verified(prolog_rlm),
+            bounded_failure_verified(prolog_rlm),
+            \+ p0_blocker(prolog_rlm),
+            \+ p1_blocker(prolog_rlm).
+
+  - id: starintel-infra
+    repo: starintel-labs/starintel-infra
+    status: active
+    mode: rage
+    priority:
+      base: 90
+    completion:
+      gate: automated-deployment-ready
+
+  - id: starintel-server
+    repo: lost-rob0t/starintel-server
+    status: waiting-handoff
+    mode: rage
+    priority:
+      base: 90
+    completion:
+      gate: production-ready
+
+  - id: chatgpt-books-book1
+    repo: lost-rob0t/chatgpt-books
+    status: paused
+    mode: research
+    priority:
+      base: 60
+
+  - id: task-stward-rage
+    repo: lost-rob0t/task-stward-rage
+    status: active
+    mode: self-rage-when-idle
+    priority:
+      base: 10
