@@ -1,0 +1,36 @@
+version: 1
+
+scope:
+  exclusive_consumer: task-steward
+  external_repo_mutation: forbidden
+  managed_project_code_in_this_repo: forbidden
+  issue_source_of_truth: owning-repository
+
+scheduling:
+  authority: prolog
+  expert_mode: serial
+  llm_may_directly_schedule: false
+  llm_may_directly_score_priority: false
+  llm_may_directly_approve_handoff: false
+  llm_may_directly_skip_required_gate: false
+
+protected_projects:
+  - hourly-auto-dig
+  - starintel-discord-reports
+  - prolog-rlm
+
+wake:
+  empty_commit_allowed: true
+  meaning: reevaluate-only
+  self_generated_state_commits_must_not_recurse: true
+
+skip_policy:
+  required_merge_gates_skippable: false
+  skipped_jobs_require_reason: true
+  skipped_tests_require_reason: true
+
+self_rage:
+  enabled: true
+  only_when_no_higher_priority_work: true
+  changes_require_issue: true
+  changes_require_regression_validation: true
