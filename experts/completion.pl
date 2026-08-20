@@ -1,6 +1,6 @@
 :- module(expert_completion, [project_complete/1]).
 
-:- use_module('../kb/projects.pl').
+:- use_module('../kb/generated/projects.pl').
 :- use_module('../kb/evidence.pl').
 
 project_complete(Project) :-

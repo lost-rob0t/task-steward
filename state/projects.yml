@@ -65,6 +65,6 @@ projects:
   - id: task-stward-rage
     repo: lost-rob0t/task-stward-rage
     status: active
-    mode: self-rage-when-idle
+    mode: self-rage-building-experts
     priority:
       base: 10
