@@ -1,0 +1,80 @@
+#+title: Task Steward RAGE
+#+description: Private state and serial Prolog expert control plane for the Task Steward.
+
+* Task Steward RAGE
+
+This repository is the durable control plane for the Task Steward.
+
+It is derived from the StarIntel Labs RAGE template and keeps the RAGE method: *Recursive Analysis with Gated Execution*. Unlike the general template, this repository is intentionally narrow. It stores steward state, knowledge-base facts, expert rules, handoffs, decision history, and the unified Prolog interface used to reason over them.
+
+* Hard boundary
+
+- Only the Task Steward uses this repository.
+- External project repositories never import, clone, write, dispatch into, or depend on this repository.
+- This repository never stores or vendors code from managed projects.
+- Managed repositories are referenced only as external evidence or task targets.
+- The Task Steward may mirror observed GitHub state here as facts.
+- GitHub Issues in the owning project remain the canonical implementation tasks. This repository stores orchestration state about those tasks, not duplicate task bodies.
+
+* Repository shape
+
+#+begin_src text
+state/                 steward-authored YAML state and policy
+kb/                    Prolog knowledge-base facts
+experts/               serial Prolog Mixture-of-Experts rule modules
+steward.pl             unified Prolog query/interface surface
+.github/workflows/     validation and steward wake/run entry points
+#+end_src
+
+There is deliberately no =src/= tree for managed projects, no copied implementation code, and no cross-repository runtime dependency.
+
+* State and YAML
+
+YAML is the ergonomic authoring layer for project metadata, handoffs, priorities, policies, and other steward state. YAML may contain validated inline Prolog extension blocks for project-specific facts or rules when the normal schema is not expressive enough.
+
+Inline Prolog is logic-only. It must not gain filesystem, network, process, shell, foreign-library, or arbitrary load/consult authority.
+
+The knowledge base under =kb/= is the Prolog representation consumed by the expert system. Generated facts must remain distinguishable from authored policy.
+
+* Serial Prolog MoE
+
+The Mixture of Experts is deterministic Prolog, not an LLM committee. Specialized rule modules execute serially over the same KB and derived facts. Initial expert domains are:
+
+- eligibility
+- dependencies
+- failure detection
+- regression detection
+- priority scoring
+- job/test skipping policy
+- scheduling
+- handoffs
+- completion gates
+
+LLMs may perform bounded work chosen by the steward, but LLM output never directly determines scheduling, priority, handoff, regression, or skip decisions.
+
+* Unified interface
+
+=steward.pl= is the only supported logical interface. GitHub Actions and the Task Steward should query the interface rather than reaching into individual expert modules.
+
+The interface is expected to expose operations such as:
+
+#+begin_src prolog
+steward_validate.
+steward_next(Action).
+steward_explain(Action, Explanation).
+steward_status(Status).
+#+end_src
+
+* Wake model
+
+The Task Steward may create an empty commit in this repository to wake GitHub Actions after state changes. A wake means only "re-evaluate current state". It does not itself choose the next task. Prolog remains authoritative for that decision.
+
+* RAGE loop
+
+1. *Analyze*: ingest current steward state and observed evidence.
+2. *Gate*: run serial Prolog experts and derive admissible actions.
+3. *Execute*: the Task Steward performs only the selected bounded action.
+4. *Evaluate*: record result, CI/test evidence, failures, regressions, and handoffs.
+5. *Recurse*: wake the steward and reason again from the new state.
+
+When external work is exhausted, the steward may RAGE on this repository itself, but self-improvement must be represented by GitHub Issues and pass the same regression/validation gates as any other change.
