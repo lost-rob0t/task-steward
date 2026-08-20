@@ -165,7 +165,8 @@ def write_or_check(path: Path, content: str, *, check: bool) -> None:
     if check:
         current = path.read_text(encoding="utf-8") if path.exists() else None
         if current != content:
-            raise SystemExit(f"generated file is stale: {path.relative_to(ROOT)}")
+            label = path.relative_to(ROOT) if path.is_relative_to(ROOT) else path
+            raise SystemExit(f"generated file is stale: {label}")
         return
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(content, encoding="utf-8")
