@@ -5,7 +5,7 @@
     steward_status/1
 ]).
 
-:- use_module('kb/projects.pl').
+:- use_module('kb/generated/projects.pl').
 :- use_module('kb/handoffs.pl').
 :- use_module('kb/tasks.pl').
 :- use_module('kb/evidence.pl').
