@@ -25,6 +25,14 @@ jobs:
         run: |
           python3 scripts/validate_workflow_scope.py
 
+      - name: Classify steward evaluation trigger
+        id: wake
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+        run: |
+          message="$(git log -1 --pretty=%B)"
+          python3 scripts/classify_wake.py --event "$EVENT_NAME" --message "$message" >> "$GITHUB_OUTPUT"
+
       - name: Validate YAML state
         run: |
           python3 - <<'PY'
@@ -39,7 +47,7 @@ jobs:
 
       - name: Verify deterministic YAML to Prolog compilation
         run: |
-          python3 -m py_compile scripts/compile_state.py
+          python3 -m py_compile scripts/compile_state.py scripts/classify_wake.py
           python3 scripts/compile_state.py --check
 
       - name: Run compiler regression tests
@@ -59,6 +67,7 @@ jobs:
         run: |
           swipl -q -s steward.pl -g "steward_validate,steward_status(S),writeln(S),halt"
 
-      - name: Show deterministic next action
+      - name: Evaluate deterministic next action
+        if: steps.wake.outputs.evaluate == 'true'
         run: |
           swipl -q -s steward.pl -g "steward_next(A),writeln(A),halt"
