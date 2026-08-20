@@ -1,0 +1,21 @@
+[project]
+name = "Task Steward RAGE"
+slug = "task-stward-rage"
+public_url = ""
+
+[rage]
+method = "Recursive Analysis with Gated Execution"
+require_evidence = true
+require_idempotent_handoffs = true
+serial_experts = true
+
+[scope]
+exclusive_consumer = "task-steward"
+allow_external_repo_mutation = false
+allow_managed_project_code = false
+issues_are_canonical_tasks = true
+
+[state]
+authoring_format = "yaml"
+knowledge_base = "prolog"
+allow_validated_inline_prolog = true
