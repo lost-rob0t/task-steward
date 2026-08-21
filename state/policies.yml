@@ -21,6 +21,14 @@ backlog:
   blocked_work_fallback: backlog_hygiene
   partial_sweep_must_not_be_reported_as_complete: true
 
+project_work_order:
+  hourly-auto-dig:
+    primary_queue: investigation-target
+    open_requests_before_unrelated_backlog: true
+    request_associated_pr_repair_counts_as_request_work: true
+    unrelated_backlog_only_when_primary_queue_empty: true
+    free_range_only_when_primary_queue_and_unrelated_backlog_empty: true
+
 reporting_house_style:
   applies_to:
     - auto-dig
