@@ -3,6 +3,7 @@
 :- use_module('../experts/priority.pl').
 :- use_module('../experts/skip_policy.pl').
 :- use_module('../experts/handoff.pl').
+:- use_module('../experts/completion.pl').
 :- use_module('../kb/tasks.pl').
 :- use_module('../kb/evidence.pl').
 
@@ -20,6 +21,10 @@ clear_skip_facts :-
 clear_handoff_evidence :-
     retractall(kb_evidence:completion_gate(starintel_infra, automated_deployment_ready, _)),
     retractall(kb_evidence:blocking_failure(starintel_infra)).
+
+clear_completion_evidence(Project, Gate) :-
+    retractall(kb_evidence:completion_gate(Project, Gate, _)),
+    retractall(kb_evidence:blocking_failure(Project)).
 
 test(priority_combines_project_base_and_explicit_score,
      [setup(clear_task(priority_case)), cleanup(clear_task(priority_case))]) :-
@@ -58,5 +63,29 @@ test(blocking_failure_suppresses_satisfied_handoff,
     assertz(kb_evidence:completion_gate(starintel_infra, automated_deployment_ready, satisfied)),
     assertz(kb_evidence:blocking_failure(starintel_infra)),
     expert_handoff:handoff_ready(infra_to_server).
+
+test(project_completion_requires_satisfied_declared_gate,
+     [setup(clear_completion_evidence(prolog_rlm, production_ready)),
+      cleanup(clear_completion_evidence(prolog_rlm, production_ready)),
+      fail]) :-
+    expert_completion:project_complete(prolog_rlm).
+
+test(project_completion_accepts_satisfied_declared_gate,
+     [setup(clear_completion_evidence(prolog_rlm, production_ready)),
+      cleanup(clear_completion_evidence(prolog_rlm, production_ready))]) :-
+    assertz(kb_evidence:completion_gate(prolog_rlm, production_ready, satisfied)),
+    expert_completion:project_complete(prolog_rlm).
+
+test(blocking_failure_suppresses_satisfied_project_completion,
+     [setup(clear_completion_evidence(prolog_rlm, production_ready)),
+      cleanup(clear_completion_evidence(prolog_rlm, production_ready)),
+      fail]) :-
+    assertz(kb_evidence:completion_gate(prolog_rlm, production_ready, satisfied)),
+    assertz(kb_evidence:blocking_failure(prolog_rlm)),
+    expert_completion:project_complete(prolog_rlm).
+
+test(project_without_completion_policy_cannot_complete,
+     [fail]) :-
+    expert_completion:project_complete(hourly_auto_dig).
 
 :- end_tests(core_decisions).
