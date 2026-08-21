@@ -62,6 +62,7 @@ jobs:
           swipl -q -s tests/regressions.pl -g run_tests -t halt
           swipl -q -s tests/expert_pipeline.pl -g run_tests -t halt
           swipl -q -s tests/scheduling_modes.pl -g run_tests -t halt
+          swipl -q -s tests/core_decisions.pl -g run_tests -t halt
 
       - name: Validate generated custom Prolog syntax
         run: |
