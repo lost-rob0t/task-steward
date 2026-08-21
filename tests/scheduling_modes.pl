@@ -14,7 +14,7 @@ reset_tasks :-
 seed_ready(Task, Project, Priority) :-
     assertz(kb_tasks:task(Task)),
     assertz(kb_tasks:task_project(Task, Project)),
-    assertz(kb_tasks:task_state(Task, active)),
+    assertz(kb_tasks:task_state(Task, open)),
     assertz(kb_tasks:task_priority(Task, Priority)).
 
 test(predeployment_self_rage_even_with_external_work,
