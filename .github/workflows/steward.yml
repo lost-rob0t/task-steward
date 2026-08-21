@@ -60,6 +60,7 @@ jobs:
           swipl -q -s tests/decision_receipts.pl -g run_tests -t halt
           swipl -q -s tests/failure_signatures.pl -g run_tests -t halt
           swipl -q -s tests/regressions.pl -g run_tests -t halt
+          swipl -q -s tests/expert_pipeline.pl -g run_tests -t halt
 
       - name: Validate generated custom Prolog syntax
         run: |
@@ -68,6 +69,10 @@ jobs:
       - name: Validate Prolog KB and experts
         run: |
           swipl -q -s steward.pl -g "steward_validate,steward_status(S),writeln(S),halt"
+
+      - name: Evaluate deterministic expert pipeline
+        run: |
+          swipl -q -s steward.pl -g "steward_evaluate(E),writeln(E),halt"
 
       - name: Evaluate deterministic next action
         if: steps.wake.outputs.evaluate == 'true'
