@@ -1,5 +1,7 @@
 :- module(steward, [
     steward_validate/0,
+    steward_evaluate/1,
+    steward_evaluate_stage/2,
     steward_next/1,
     steward_explain/2,
     steward_status/1,
@@ -15,6 +17,7 @@
 :- use_module('kb/decisions.pl').
 
 :- use_module('experts/registry.pl').
+:- use_module('experts/pipeline.pl').
 :- use_module('experts/leases.pl').
 :- use_module('experts/eligibility.pl').
 :- use_module('experts/dependencies.pl').
@@ -26,6 +29,7 @@
 :- use_module('experts/handoff.pl').
 :- use_module('experts/completion.pl').
 :- use_module('experts/receipts.pl').
+:- use_module('experts/generated/project_rules.pl').
 
 steward_validate :-
     findall(Order-Expert, expert_order(Expert, Order), Ordered),
@@ -41,6 +45,12 @@ steward_validate :-
         DependencyOrder < ExpertOrder
     )),
     forall(project(Project), project_repo(Project, _)).
+
+steward_evaluate(Executions) :-
+    run_expert_pipeline(Executions).
+
+steward_evaluate_stage(Stage, Executions) :-
+    run_expert_pipeline(Stage, Executions).
 
 steward_next(handoff(Handoff, Source, Target)) :-
     handoff_ready(Handoff),
