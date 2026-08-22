@@ -24,8 +24,9 @@ class CompileTasksTests(unittest.TestCase):
             "task_source(task_stward_rage_issue_1, 'github-issue:lost-rob0t/task-stward-rage#1').",
             first,
         )
-        self.assertIn("task_state(task_stward_rage_issue_1, open).", first)
-        self.assertIn("task_generation(task_stward_rage_issue_1, 1).", first)
+        self.assertIn("task_state(task_stward_rage_issue_1, closed).", first)
+        self.assertNotIn("task_state(task_stward_rage_issue_1, open).", first)
+        self.assertIn("task_generation(task_stward_rage_issue_1, 2).", first)
         self.assertTrue(first.startswith("% GENERATED FILE. DO NOT EDIT."))
 
     def test_duplicate_task_ids_are_rejected(self) -> None:
