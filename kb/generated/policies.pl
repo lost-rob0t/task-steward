@@ -6,7 +6,7 @@
     policy_member/2
 ]).
 
-policy_version(3).
+policy_version(4).
 policy_value([backlog, blocked_work_fallback], backlog_hygiene).
 policy_value([backlog, complete_enumeration_required_before_no_work_claim], true).
 policy_value([backlog, include_failed_or_pending_ci], true).
@@ -63,9 +63,9 @@ policy_member([reporting_house_style, tone], cynical).
 policy_member([reporting_house_style, tone], punchy).
 policy_member([reporting_house_style, tone], minimal_ai_slop).
 policy_value([scheduling, authority], prolog).
-policy_value([scheduling, coding_freeze_overrides_scheduler], true).
+policy_value([scheduling, coding_freeze_overrides_scheduler], false).
 policy_value([scheduling, expert_mode], serial).
-policy_value([scheduling, explicit_freeze_exceptions_override_general_freeze], true).
+policy_value([scheduling, explicit_hard_stops_override_scheduler], true).
 policy_value([scheduling, llm_may_directly_approve_handoff], false).
 policy_value([scheduling, llm_may_directly_schedule], false).
 policy_value([scheduling, llm_may_directly_score_priority], false).
@@ -84,38 +84,16 @@ policy_value([self_rage, pre_deployment_wait_for_empty_queue], false).
 policy_value([skip_policy, required_merge_gates_skippable], false).
 policy_value([skip_policy, skipped_jobs_require_reason], true).
 policy_value([skip_policy, skipped_tests_require_reason], true).
-policy_value([user_freeze, active], true).
-policy_member([user_freeze, allowed_non_coding_modes], task_reconciliation).
-policy_member([user_freeze, allowed_non_coding_modes], reminders).
-policy_member([user_freeze, allowed_non_coding_modes], research_when_separately_authorized).
-policy_member([user_freeze, allowed_non_coding_modes], reporting).
-policy_member([user_freeze, allowed_non_coding_modes], non_coding_observation).
+policy_value([user_freeze, active], false).
 policy_value([user_freeze, autonomous_resume_allowed], false).
-policy_value([user_freeze, coding_implementation_loops_allowed], exceptions_only).
-policy_value([user_freeze, explicit_coding_exceptions, local_recall, automation_id], '6a8934a82ef881919ab153b6aec87c15').
-policy_value([user_freeze, explicit_coding_exceptions, local_recall, may_pause_without_new_user_instruction], false).
-policy_value([user_freeze, explicit_coding_exceptions, local_recall, protected_during_freeze], true).
-policy_value([user_freeze, explicit_coding_exceptions, local_recall, repo], 'lost-rob0t/local-recall').
-policy_value([user_freeze, explicit_coding_exceptions, task_stward_rage, automation_id], '6a54903dc26081918683fbdbc2c6c7cd').
-policy_value([user_freeze, explicit_coding_exceptions, task_stward_rage, may_pause_without_new_user_instruction], false).
-policy_value([user_freeze, explicit_coding_exceptions, task_stward_rage, protected_during_freeze], true).
-policy_value([user_freeze, explicit_coding_exceptions, task_stward_rage, repo], 'lost-rob0t/task-stward-rage').
-policy_value([user_freeze, explicit_coding_exceptions, zara, automation_id], '6a892ef4c180819189cba1afee1a4504').
-policy_value([user_freeze, explicit_coding_exceptions, zara, may_pause_without_new_user_instruction], false).
-policy_value([user_freeze, explicit_coding_exceptions, zara, protected_during_freeze], true).
-policy_value([user_freeze, explicit_coding_exceptions, zara, repo], 'lost-rob0t/zara').
-policy_value([user_freeze, hard_stops, agentprolog_deepseek_integration, audit_allowed], false).
-policy_value([user_freeze, hard_stops, agentprolog_deepseek_integration, automation_allowed], false).
-policy_value([user_freeze, hard_stops, agentprolog_deepseek_integration, implementation_allowed], false).
-policy_value([user_freeze, hard_stops, agentprolog_deepseek_integration, research_allowed], false).
-policy_value([user_freeze, hard_stops, agentprolog_deepseek_integration, resume_requires], explicit_user_authorization).
+policy_value([user_freeze, coding_implementation_loops_allowed], normal_except_explicit_hard_stops).
 policy_value([user_freeze, hard_stops, prolog_rlm, audit_allowed], false).
 policy_value([user_freeze, hard_stops, prolog_rlm, automation_allowed], false).
 policy_value([user_freeze, hard_stops, prolog_rlm, implementation_allowed], false).
 policy_value([user_freeze, hard_stops, prolog_rlm, research_allowed], false).
 policy_value([user_freeze, hard_stops, prolog_rlm, resume_requires], explicit_user_authorization).
-policy_value([user_freeze, infra_to_server_handoff_allowed], false).
-policy_value([user_freeze, resume_requires], explicit_user_authorization).
+policy_value([user_freeze, infra_to_server_handoff_allowed], true).
+policy_value([user_freeze, lifted_at], '2026-08-22').
 policy_value([user_freeze, set_at], '2026-08-21').
 policy_value([user_freeze, steward_self_coding_allowed], true).
 policy_value([wake, dual_wake_and_state_markers], forbidden).

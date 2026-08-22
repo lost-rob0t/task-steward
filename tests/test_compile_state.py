@@ -69,19 +69,28 @@ class CompileStateTests(unittest.TestCase):
         second = compile_policies.compile_policies(policies)
         self.assertEqual(first, second)
 
-        self.assertIn("policy_version(3).", first)
-        self.assertIn("policy_value([user_freeze, active], true).", first)
+        self.assertIn("policy_version(4).", first)
+        self.assertIn("policy_value([user_freeze, active], false).", first)
+        self.assertIn(
+            "policy_value([user_freeze, coding_implementation_loops_allowed], normal_except_explicit_hard_stops).",
+            first,
+        )
         self.assertIn(
             "policy_value([user_freeze, steward_self_coding_allowed], true).", first
         )
         self.assertIn(
-            "policy_value([user_freeze, explicit_coding_exceptions, task_stward_rage, protected_during_freeze], true).",
+            "policy_value([scheduling, explicit_hard_stops_override_scheduler], true).",
             first,
         )
         self.assertIn(
             "policy_value([user_freeze, hard_stops, prolog_rlm, automation_allowed], false).",
             first,
         )
+        self.assertIn(
+            "policy_value([user_freeze, hard_stops, prolog_rlm, resume_requires], explicit_user_authorization).",
+            first,
+        )
+        self.assertNotIn("explicit_coding_exceptions", first)
         self.assertIn(
             "policy_value([project_work_order, hourly_auto_dig, primary_queue], investigation_target).",
             first,

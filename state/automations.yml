@@ -7,8 +7,6 @@ active:
     role: manager
     project: task-stward-rage
     mode: reconciliation-plus-self-rage
-    coding_freeze_exception: explicit-user-authorization
-    protected_during_freeze: true
 
   - id: 6a83847376348191b456e115c117d166
     title: Hourly Auto-Dig
@@ -17,7 +15,7 @@ active:
     project: hourly-auto-dig
     protected: true
     work_order: requests-first
-    mode: non-coding-research-only
+    mode: normal-scope
 
   - id: 6a860d314d40819194128b7c7961fb99
     title: StarIntel Discord Reports
@@ -25,7 +23,7 @@ active:
     role: permanent-worker
     project: starintel-discord-reports
     protected: true
-    mode: non-coding-reporting-only
+    mode: normal-scope
     operational_state: delivery-recovery
     completion_condition: verified-discord-receipts-for-findings-and-shitpost-channels
     evidence_policy: discord-message-id-and-channel-id-required
@@ -35,35 +33,31 @@ active:
     cadence: hourly
     role: rage-worker
     project: zara
-    coding_freeze_exception: explicit-user-authorization
-    protected_during_freeze: true
 
   - id: 6a8934a82ef881919ab153b6aec87c15
     title: Local Recall RAGE Worker
     cadence: hourly
     role: rage-worker
     project: local-recall
-    coding_freeze_exception: explicit-user-authorization
-    protected_during_freeze: true
 
 paused:
   - id: 6a8649dc3f708191b51269995b51700a
     title: Prolog-RLM Subagent Loop
     project: prolog-rlm
-    reason: explicit-user-stop-2026-08-21
+    reason: explicit-user-hard-stop
     resume_requires: explicit-user-authorization
 
   - id: 6a864c35bce48191883144c38781b20e
     title: StarIntel Infra Deployment Gate
     project: starintel-infra
-    reason: user-coding-freeze
+    reason: previously-paused-by-user
     handoff: infra-to-server
-    handoff_status: frozen
+    handoff_status: paused
     resume_requires: explicit-user-authorization
 
   - id: 6a87e25f61748191a30427f6020d14a3
     title: Prolog-RLM Integration Loop
-    reason: explicit-user-stop-2026-08-21
+    reason: explicit-user-hard-stop
 
   - id: 6a87e26cb2208191a7f1c1ab222feae4
     title: AgentProlog Harness Loop A
@@ -79,17 +73,14 @@ paused:
     reason: previously-paused
 
 observed_by: task-steward
-observed_at: 2026-08-22T07:58:00Z
+observed_at: 2026-08-22T09:50:45Z
 reconciliation:
   active_task_count: 5
   coding_workers_active: 3
-  coding_freeze_exception_workers:
-    - task-stward-rage
-    - zara
-    - local-recall
+  coding_freeze_exception_workers: []
   unauthorized_coding_workers_active: 0
   prolog_rlm_workers_enabled: false
   agentprolog_workers_enabled: false
   infra_coding_worker_enabled: false
-  infra_to_server_handoff: frozen-by-user
-  coding_freeze: active-with-explicit-exceptions
+  infra_to_server_handoff: paused
+  coding_freeze: lifted

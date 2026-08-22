@@ -4,7 +4,7 @@ projects:
   - id: hourly-auto-dig
     repo: lost-rob0t/starintel-gpt-auto-dig
     status: active
-    mode: permanent-non-coding
+    mode: permanent-worker
     priority:
       base: 100
       protected: true
@@ -12,36 +12,32 @@ projects:
   - id: starintel-discord-reports
     repo: lost-rob0t/starintel-discord-reporting
     status: active
-    mode: permanent-non-coding
+    mode: permanent-worker
     priority:
       base: 100
       protected: true
 
   - id: zara
     repo: lost-rob0t/zara
-    status: active-freeze-exception
+    status: active
     mode: rage
     automation_id: 6a892ef4c180819189cba1afee1a4504
-    freeze_exception: explicit-user-authorization
-    protected_during_freeze: true
     priority:
       base: 95
       protected: true
 
   - id: local-recall
     repo: lost-rob0t/local-recall
-    status: active-freeze-exception
+    status: active
     mode: rage
     automation_id: 6a8934a82ef881919ab153b6aec87c15
-    freeze_exception: explicit-user-authorization
-    protected_during_freeze: true
     priority:
       base: 95
       protected: true
 
   - id: prolog-rlm
     repo: lost-rob0t/prolog-rlm
-    status: frozen-user-stop
+    status: hard-stopped-user
     mode: paused
     resume_requires: explicit-user-authorization
     priority:
@@ -76,7 +72,7 @@ projects:
 
   - id: starintel-infra
     repo: starintel-labs/starintel-infra
-    status: frozen-user
+    status: paused-user
     mode: paused
     resume_requires: explicit-user-authorization
     priority:
@@ -86,9 +82,8 @@ projects:
 
   - id: starintel-server
     repo: lost-rob0t/starintel-server
-    status: frozen-waiting-handoff
+    status: paused-waiting-handoff
     mode: paused
-    resume_requires: explicit-user-authorization
     priority:
       base: 90
     completion:
@@ -103,11 +98,9 @@ projects:
 
   - id: task-stward-rage
     repo: lost-rob0t/task-stward-rage
-    status: active-freeze-exception
+    status: active
     mode: self-rage-building-experts
     automation_id: 6a54903dc26081918683fbdbc2c6c7cd
-    freeze_exception: explicit-user-authorization
     self_coding_allowed: true
-    protected_during_freeze: true
     priority:
       base: 10
