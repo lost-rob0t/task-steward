@@ -46,8 +46,8 @@ test(skip_test_requires_derived_irrelevance,
                              derived_irrelevant, evidence(no_ui_change))),
     valid_decision_receipt(r_skip_test).
 
-test(handoff_receipt_requires_satisfied_gate,
-     [setup(reset_receipt_facts), cleanup(reset_receipt_facts)]) :-
+test(handoff_receipt_is_invalid_while_target_is_frozen,
+     [setup(reset_receipt_facts), cleanup(reset_receipt_facts), fail]) :-
     assertz(completion_gate(starintel_infra, automated_deployment_ready, satisfied)),
     assertz(decision_receipt(r_handoff, handoff,
                              handoff(infra_to_server, starintel_infra, starintel_server),
