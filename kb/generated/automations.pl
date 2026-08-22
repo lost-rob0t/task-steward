@@ -55,15 +55,12 @@ automation_title('6a8934a82ef881919ab153b6aec87c15', 'Local Recall RAGE Worker')
 automation_project('6a8934a82ef881919ab153b6aec87c15', local_recall).
 
 observed_by(task_steward).
-observed_at('2026-08-22T07:58:00+00:00').
+observed_at('2026-08-22T09:50:45+00:00').
 reconciliation_value([active_task_count], 5).
 reconciliation_value([agentprolog_workers_enabled], false).
-reconciliation_value([coding_freeze], active_with_explicit_exceptions).
-reconciliation_member([coding_freeze_exception_workers], task_stward_rage).
-reconciliation_member([coding_freeze_exception_workers], zara).
-reconciliation_member([coding_freeze_exception_workers], local_recall).
+reconciliation_value([coding_freeze], lifted).
 reconciliation_value([coding_workers_active], 3).
 reconciliation_value([infra_coding_worker_enabled], false).
-reconciliation_value([infra_to_server_handoff], frozen_by_user).
+reconciliation_value([infra_to_server_handoff], paused).
 reconciliation_value([prolog_rlm_workers_enabled], false).
 reconciliation_value([unauthorized_coding_workers_active], 0).
