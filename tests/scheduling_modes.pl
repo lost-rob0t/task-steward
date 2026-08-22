@@ -17,6 +17,11 @@ seed_ready(Task, Project, Priority) :-
     assertz(kb_tasks:task_state(Task, open)),
     assertz(kb_tasks:task_priority(Task, Priority)).
 
+test(postdeployment_repository_mirror_exposes_open_self_rage_issue) :-
+    schedulable(task_stward_rage_issue_28),
+    \+ schedulable(task_stward_rage_issue_26),
+    steward_mode_next(deployed, none, task_stward_rage_issue_28).
+
 test(predeployment_self_rage_even_with_external_work,
      [setup(reset_tasks), cleanup(reset_tasks)]) :-
     seed_ready(external_issue, zara, 100),
