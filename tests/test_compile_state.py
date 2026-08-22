@@ -34,6 +34,45 @@ class CompileStateTests(unittest.TestCase):
         self.assertTrue(rules.startswith("% GENERATED FILE. DO NOT EDIT."))
         self.assertTrue(registry.startswith("% GENERATED FILE. DO NOT EDIT."))
 
+    def test_repository_handoffs_compile_deterministically(self) -> None:
+        handoffs = compile_state.load_handoffs(ROOT / "state" / "handoffs.yml")
+        first = compile_state.compile_handoffs(handoffs)
+        second = compile_state.compile_handoffs(handoffs)
+        self.assertEqual(first, second)
+
+        kb, rules = first
+        self.assertIn(
+            "handoff(infra_to_server, starintel_infra, starintel_server).", kb
+        )
+        self.assertIn("handoff_status(infra_to_server, armed).", kb)
+        self.assertIn(
+            "handoff_gate(infra_to_server, automated_deployment_ready).", kb
+        )
+        self.assertIn(
+            "handoff_requirement(infra_to_server, reproducible_builds).", kb
+        )
+        self.assertIn("handoff_ready(infra_to_server) :-", rules)
+        self.assertIn("completion_gate(starintel_infra, automated_deployment_ready, satisfied)", rules)
+        self.assertTrue(kb.startswith("% GENERATED FILE. DO NOT EDIT."))
+        self.assertTrue(rules.startswith("% GENERATED FILE. DO NOT EDIT."))
+
+    def test_handoff_inline_rule_is_fail_closed(self) -> None:
+        handoffs = [
+            {
+                "id": "demo-handoff",
+                "from": "source",
+                "to": "target",
+                "status": "armed",
+                "completion_gate": "ready",
+                "rules": {
+                    "allowed_predicates": ["completion_gate/3"],
+                    "prolog": "handoff_ready(demo_handoff) :- shell('id').",
+                },
+            }
+        ]
+        with self.assertRaisesRegex(ValueError, "non_allowlisted_predicate"):
+            compile_state.compile_handoffs(handoffs)
+
     def test_identifier_normalization_is_stable(self) -> None:
         self.assertEqual(compile_state.prolog_atom("starintel-infra"), "starintel_infra")
         self.assertEqual(compile_state.prolog_atom("Book1"), "book1")
