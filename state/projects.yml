@@ -99,7 +99,7 @@ projects:
   - id: task-stward-rage
     repo: lost-rob0t/task-stward-rage
     status: active
-    mode: self-rage-building-experts
+    mode: deployed-scheduling-self-rage-fallback
     automation_id: 6a54903dc26081918683fbdbc2c6c7cd
     self_coding_allowed: true
     priority:

@@ -69,5 +69,5 @@ base_priority(chatgpt_books_book1, 60).
 project(task_stward_rage).
 project_repo(task_stward_rage, 'lost-rob0t/task-stward-rage').
 project_status(task_stward_rage, active).
-project_mode(task_stward_rage, self_rage_building_experts).
+project_mode(task_stward_rage, deployed_scheduling_self_rage_fallback).
 base_priority(task_stward_rage, 10).
