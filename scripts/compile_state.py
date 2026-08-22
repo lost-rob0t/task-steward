@@ -18,9 +18,12 @@ import yaml
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_PROJECTS = ROOT / "state" / "projects.yml"
+DEFAULT_HANDOFFS = ROOT / "state" / "handoffs.yml"
 DEFAULT_KB = ROOT / "kb" / "generated" / "projects.pl"
 DEFAULT_RULES = ROOT / "experts" / "generated" / "project_rules.pl"
 DEFAULT_EXPERT_REGISTRY = ROOT / "experts" / "generated" / "registry.pl"
+DEFAULT_HANDOFF_KB = ROOT / "kb" / "generated" / "handoffs.pl"
+DEFAULT_HANDOFF_RULES = ROOT / "experts" / "generated" / "handoff_rules.pl"
 INLINE_VALIDATOR = ROOT / "scripts" / "validate_inline_prolog.pl"
 
 ATOM_RE = re.compile(r"^[a-z][a-z0-9_]*$")
@@ -115,6 +118,17 @@ def load_projects(path: Path) -> list[dict[str, Any]]:
     if not isinstance(projects, list) or not projects:
         raise ValueError(f"{path}: projects must be a non-empty list")
     return projects
+
+
+def load_handoffs(path: Path) -> list[dict[str, Any]]:
+    with path.open("r", encoding="utf-8") as fh:
+        doc = yaml.safe_load(fh)
+    if not isinstance(doc, dict) or doc.get("version") != 1:
+        raise ValueError(f"{path}: expected version: 1")
+    handoffs = doc.get("handoffs")
+    if not isinstance(handoffs, list) or not handoffs:
+        raise ValueError(f"{path}: handoffs must be a non-empty list")
+    return handoffs
 
 
 def _collect_custom_expert_names(projects: list[dict[str, Any]]) -> set[str]:
@@ -263,6 +277,71 @@ def compile_projects(projects: list[dict[str, Any]]) -> tuple[str, str, str]:
     return kb, rules_text, registry
 
 
+def compile_handoffs(handoffs: list[dict[str, Any]]) -> tuple[str, str]:
+    facts: list[str] = []
+    custom_rules: list[str] = []
+    seen: set[str] = set()
+
+    for index, handoff in enumerate(handoffs):
+        if not isinstance(handoff, dict):
+            raise ValueError(f"handoff #{index + 1}: expected mapping")
+        raw_id = handoff.get("id")
+        source = handoff.get("from")
+        target = handoff.get("to")
+        status = handoff.get("status")
+        gate = handoff.get("completion_gate")
+        if not all(isinstance(v, str) and v for v in (raw_id, source, target, status, gate)):
+            raise ValueError(
+                f"handoff #{index + 1}: id/from/to/status/completion_gate are required strings"
+            )
+
+        hid = prolog_atom(raw_id)
+        if hid in seen:
+            raise ValueError(f"duplicate handoff id: {raw_id}")
+        seen.add(hid)
+        source_atom = prolog_atom(source)
+        target_atom = prolog_atom(target)
+
+        facts.append(f"handoff({hid}, {source_atom}, {target_atom}).")
+        facts.append(f"handoff_status({hid}, {prolog_atom(status)}).")
+        facts.append(f"handoff_gate({hid}, {prolog_atom(gate)}).")
+
+        require = handoff.get("require") or {}
+        if not isinstance(require, dict):
+            raise ValueError(f"{raw_id}: require must be a mapping")
+        required = require.get("all") or []
+        if not isinstance(required, list) or not all(isinstance(item, str) and item for item in required):
+            raise ValueError(f"{raw_id}: require.all must be a list of identifiers")
+        for requirement in required:
+            facts.append(f"handoff_requirement({hid}, {prolog_atom(requirement)}).")
+
+        rules = handoff.get("rules") or {}
+        if not isinstance(rules, dict):
+            raise ValueError(f"{raw_id}: rules must be a mapping")
+        allowed = rules.get("allowed_predicates") or []
+        if not isinstance(allowed, list):
+            raise ValueError(f"{raw_id}: rules.allowed_predicates must be a list")
+        inline = rules.get("prolog")
+        if inline is not None:
+            checked = validate_inline_prolog(
+                inline,
+                source=f"{raw_id}.rules.prolog",
+                allowed_predicates=allowed,
+            )
+            if checked:
+                custom_rules.append(f"% handoff: {raw_id}\n{checked.rstrip()}")
+
+        facts.append("")
+
+    kb = """% GENERATED FILE. DO NOT EDIT.\n% Source: state/handoffs.yml\n:- module(kb_generated_handoffs, [\n    handoff/3,\n    handoff_status/2,\n    handoff_gate/2,\n    handoff_requirement/2\n]).\n\n""" + "\n".join(facts).rstrip() + "\n"
+
+    rules_text = """% GENERATED FILE. DO NOT EDIT.\n% Source: state/handoffs.yml inline Prolog blocks\n:- module(generated_handoff_rules, [handoff_ready/1]).\n\n:- use_module('../../kb/generated/projects.pl').\n:- use_module('../../kb/evidence.pl').\n:- multifile handoff_ready/1.\n\n"""
+    if custom_rules:
+        rules_text += "\n\n".join(custom_rules).rstrip() + "\n"
+
+    return kb, rules_text
+
+
 def write_or_check(path: Path, content: str, *, check: bool) -> None:
     if check:
         current = path.read_text(encoding="utf-8") if path.exists() else None
@@ -278,16 +357,23 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--check", action="store_true", help="fail if generated output is stale")
     parser.add_argument("--projects", type=Path, default=DEFAULT_PROJECTS)
+    parser.add_argument("--handoffs", type=Path, default=DEFAULT_HANDOFFS)
     parser.add_argument("--kb-output", type=Path, default=DEFAULT_KB)
     parser.add_argument("--rules-output", type=Path, default=DEFAULT_RULES)
     parser.add_argument("--expert-registry-output", type=Path, default=DEFAULT_EXPERT_REGISTRY)
+    parser.add_argument("--handoff-kb-output", type=Path, default=DEFAULT_HANDOFF_KB)
+    parser.add_argument("--handoff-rules-output", type=Path, default=DEFAULT_HANDOFF_RULES)
     args = parser.parse_args()
 
     projects = load_projects(args.projects)
     kb, rules, registry = compile_projects(projects)
+    handoffs = load_handoffs(args.handoffs)
+    handoff_kb, handoff_rules = compile_handoffs(handoffs)
     write_or_check(args.kb_output, kb, check=args.check)
     write_or_check(args.rules_output, rules, check=args.check)
     write_or_check(args.expert_registry_output, registry, check=args.check)
+    write_or_check(args.handoff_kb_output, handoff_kb, check=args.check)
+    write_or_check(args.handoff_rules_output, handoff_rules, check=args.check)
     return 0
 
 
