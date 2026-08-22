@@ -2,7 +2,8 @@
     coding_freeze_active/0,
     coding_freeze_exception/1,
     hard_stop/1,
-    project_execution_allowed/1
+    project_execution_allowed/1,
+    project_execution_block_reason/2
 ]).
 
 :- use_module('../kb/generated/policies.pl').
@@ -27,6 +28,23 @@ project_execution_allowed(Project) :-
     project_status_allows_execution(Project),
     \+ hard_stop(Project),
     freeze_allows_execution(Project).
+
+project_execution_block_reason(Project, unknown_project) :-
+    \+ project(Project).
+project_execution_block_reason(Project, hard_stop) :-
+    project(Project),
+    hard_stop(Project).
+project_execution_block_reason(Project, project_status(Status)) :-
+    project(Project),
+    project_status(Project, Status),
+    \+ memberchk(Status, [active, active_freeze_exception]).
+project_execution_block_reason(Project, coding_freeze) :-
+    project(Project),
+    project_status_allows_execution(Project),
+    \+ hard_stop(Project),
+    coding_freeze_active,
+    \+ coding_freeze_exception(Project),
+    \+ project_mode(Project, permanent_non_coding).
 
 project_status_allows_execution(Project) :-
     project_status(Project, active).
