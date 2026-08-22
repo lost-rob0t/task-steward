@@ -103,9 +103,11 @@ projects:
 
   - id: task-stward-rage
     repo: lost-rob0t/task-stward-rage
-    status: active
-    mode: reconciliation-only
-    self_coding_allowed: false
-    resume_self_rage_requires: explicit-user-authorization
+    status: active-freeze-exception
+    mode: self-rage-building-experts
+    automation_id: 6a54903dc26081918683fbdbc2c6c7cd
+    freeze_exception: explicit-user-authorization
+    self_coding_allowed: true
+    protected_during_freeze: true
     priority:
       base: 10
