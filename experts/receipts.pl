@@ -5,7 +5,7 @@
 ]).
 
 :- use_module('../kb/decisions.pl').
-:- use_module('../kb/handoffs.pl').
+:- use_module('../kb/generated/handoffs.pl').
 :- use_module('leases.pl').
 :- use_module('skip_policy.pl').
 :- use_module('handoff.pl').
