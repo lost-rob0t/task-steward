@@ -6,6 +6,7 @@ active:
     cadence: hourly
     role: manager
     project: task-stward-rage
+    mode: reconciliation-only
 
   - id: 6a83847376348191b456e115c117d166
     title: Hourly Auto-Dig
@@ -25,45 +26,45 @@ active:
     completion_condition: verified-discord-receipts-for-findings-and-shitpost-channels
     evidence_policy: discord-message-id-and-channel-id-required
 
+paused:
   - id: 6a8649dc3f708191b51269995b51700a
     title: Prolog-RLM Subagent Loop
-    cadence: hourly
-    role: rage-worker
     project: prolog-rlm
-    protected_until: production-ready
-    current_mission: first-class-subagent-acceptance
+    reason: explicit-user-stop-2026-08-21
+    resume_requires: explicit-user-authorization
 
   - id: 6a864c35bce48191883144c38781b20e
     title: StarIntel Infra Deployment Gate
-    cadence: hourly
-    role: handoff-slot
     project: starintel-infra
+    reason: user-coding-freeze
     handoff: infra-to-server
-    handoff_status: armed
-    handoff_requires_marker: INFRA_AUTODEPLOY_READY
+    handoff_status: frozen
+    resume_requires: explicit-user-authorization
 
-paused:
   - id: 6a87e25f61748191a30427f6020d14a3
     title: Prolog-RLM Integration Loop
-    reason: temporary-august-21-surge-ended-by-user
+    reason: explicit-user-stop-2026-08-21
 
   - id: 6a87e26cb2208191a7f1c1ab222feae4
     title: AgentProlog Harness Loop A
-    reason: temporary-august-21-surge-ended-by-user
+    reason: explicit-user-stop-2026-08-21
 
   - id: 6a87e2784aac8191b2ae9fc6d0bdf487
     title: AgentProlog Harness Loop B
-    reason: temporary-august-21-surge-ended-by-user
+    reason: explicit-user-stop-2026-08-21
 
   - id: 6a7dce766d448191bca41ef6e0c9390e
     title: Book 1 Research Loop
     project: chatgpt-books-book1
-    reason: slot-reallocated-to-prolog-rlm-rage
+    reason: previously-paused
 
 observed_by: task-steward
-observed_at: 2026-08-21T21:02:00Z
+observed_at: 2026-08-22T00:49:27Z
 reconciliation:
-  active_task_count: 5
-  protected_tasks_present: true
-  temporary_surge_workers_paused: true
-  infra_to_server_handoff: not_observed
+  active_task_count: 3
+  coding_workers_active: 0
+  prolog_rlm_workers_enabled: false
+  agentprolog_workers_enabled: false
+  infra_coding_worker_enabled: false
+  infra_to_server_handoff: frozen-by-user
+  coding_freeze: active
