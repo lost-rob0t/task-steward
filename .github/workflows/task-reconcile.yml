@@ -1,0 +1,47 @@
+name: Task Mirror Reconcile
+
+on:
+  issues:
+    types: [opened, closed, reopened]
+
+permissions:
+  contents: write
+  issues: read
+
+concurrency:
+  group: task-mirror-reconcile
+  cancel-in-progress: false
+
+jobs:
+  reconcile:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Install YAML parser
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y python3-yaml
+
+      - name: Fast-forward canonical branch
+        run: |
+          git pull --ff-only origin main
+
+      - name: Reconcile local issue task state
+        run: |
+          python3 scripts/reconcile_issue_task.py --event-json "$GITHUB_EVENT_PATH"
+          python3 scripts/compile_tasks.py
+
+      - name: Commit changed task mirror
+        run: |
+          if git diff --quiet -- state/tasks.yml kb/generated/tasks.pl; then
+            exit 0
+          fi
+          git config user.name "task-steward"
+          git config user.email "task-steward@users.noreply.github.com"
+          git add -- state/tasks.yml kb/generated/tasks.pl
+          git commit -m "[steward-state] reconcile issue #${{ github.event.issue.number }}"
+          git push origin HEAD:main
