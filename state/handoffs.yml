@@ -15,6 +15,10 @@ handoffs:
         - required-ci-green
         - no-p0-p1-deployment-blockers
     rules:
+      allowed_predicates:
+        - completion_gate/3
+        - blocking_failure/1
+        - project_status/2
       prolog: |
         handoff_ready(infra_to_server) :-
             completion_gate(starintel_infra, automated_deployment_ready, satisfied),

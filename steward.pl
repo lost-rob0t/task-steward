@@ -11,7 +11,7 @@
 ]).
 
 :- use_module('kb/generated/projects.pl').
-:- use_module('kb/handoffs.pl').
+:- use_module('kb/generated/handoffs.pl').
 :- use_module('kb/tasks.pl').
 :- use_module('kb/evidence.pl').
 :- use_module('kb/decisions.pl').
@@ -44,7 +44,13 @@ steward_validate :-
         expert_order(Expert, ExpertOrder),
         DependencyOrder < ExpertOrder
     )),
-    forall(project(Project), project_repo(Project, _)).
+    forall(project(Project), project_repo(Project, _)),
+    forall(handoff(Handoff, Source, Target), (
+        handoff_status(Handoff, _),
+        handoff_gate(Handoff, _),
+        project(Source),
+        project(Target)
+    )).
 
 steward_evaluate(Executions) :-
     run_expert_pipeline(Executions).
