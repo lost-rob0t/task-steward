@@ -6,7 +6,7 @@ active:
     cadence: hourly
     role: manager
     project: task-stward-rage
-    mode: reconciliation-plus-self-rage
+    mode: deployed-scheduling-self-rage-fallback
 
   - id: 6a83847376348191b456e115c117d166
     title: Hourly Auto-Dig
@@ -73,7 +73,7 @@ paused:
     reason: previously-paused
 
 observed_by: task-steward
-observed_at: 2026-08-22T09:50:45Z
+observed_at: 2026-08-22T19:47:30Z
 reconciliation:
   active_task_count: 5
   coding_workers_active: 3
