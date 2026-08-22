@@ -1,0 +1,74 @@
+from __future__ import annotations
+
+import importlib.util
+import unittest
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+SPEC = importlib.util.spec_from_file_location(
+    "compile_automations", ROOT / "scripts" / "compile_automations.py"
+)
+assert SPEC and SPEC.loader
+compile_automations = importlib.util.module_from_spec(SPEC)
+SPEC.loader.exec_module(compile_automations)
+
+
+class CompileAutomationsTests(unittest.TestCase):
+    def test_repository_automations_compile_deterministically(self) -> None:
+        doc = compile_automations.load_automations(ROOT / "state" / "automations.yml")
+        first = compile_automations.compile_automations(doc)
+        second = compile_automations.compile_automations(doc)
+        self.assertEqual(first, second)
+
+        self.assertIn("automation('6a54903dc26081918683fbdbc2c6c7cd').", first)
+        self.assertIn(
+            "automation_state('6a54903dc26081918683fbdbc2c6c7cd', active).", first
+        )
+        self.assertIn(
+            "automation_project('6a54903dc26081918683fbdbc2c6c7cd', task_stward_rage).",
+            first,
+        )
+        self.assertIn(
+            "automation_state('6a8649dc3f708191b51269995b51700a', paused).", first
+        )
+        self.assertIn(
+            "reconciliation_value([active_task_count], 5).", first
+        )
+        self.assertIn(
+            "reconciliation_member([coding_freeze_exception_workers], task_stward_rage).",
+            first,
+        )
+        self.assertIn("observed_by(task_steward).", first)
+        self.assertIn("observed_at('2026-08-22T07:58:00+00:00').", first)
+        self.assertTrue(first.startswith("% GENERATED FILE. DO NOT EDIT."))
+
+    def test_declared_active_count_must_match_active_entries(self) -> None:
+        doc = {
+            "version": 1,
+            "active": [
+                {"id": "worker-a", "title": "A", "project": "zara"},
+                {"id": "worker-b", "title": "B", "project": "local-recall"},
+            ],
+            "paused": [],
+            "observed_by": "task-steward",
+            "observed_at": "2026-08-22T00:00:00Z",
+            "reconciliation": {"active_task_count": 1},
+        }
+        with self.assertRaisesRegex(ValueError, "active_task_count"):
+            compile_automations.compile_automations(doc)
+
+    def test_duplicate_id_across_active_and_paused_is_rejected(self) -> None:
+        doc = {
+            "version": 1,
+            "active": [{"id": "same-id", "title": "A", "project": "zara"}],
+            "paused": [{"id": "same-id", "title": "B", "project": "zara"}],
+            "observed_by": "task-steward",
+            "observed_at": "2026-08-22T00:00:00Z",
+            "reconciliation": {"active_task_count": 1},
+        }
+        with self.assertRaisesRegex(ValueError, "duplicate automation id"):
+            compile_automations.compile_automations(doc)
+
+
+if __name__ == "__main__":
+    unittest.main()
