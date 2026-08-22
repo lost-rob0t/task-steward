@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+from datetime import datetime
 from pathlib import Path
 from typing import Any
 
@@ -77,10 +78,15 @@ def compile_automations(doc: dict[str, Any]) -> str:
 
     observed_by = doc.get("observed_by")
     observed_at = doc.get("observed_at")
-    if not isinstance(observed_by, str) or not isinstance(observed_at, str):
-        raise ValueError("observed_by and observed_at are required strings")
+    if not isinstance(observed_by, str):
+        raise ValueError("observed_by is required")
+    if isinstance(observed_at, datetime):
+        normalized_at = observed_at.isoformat()
+    elif isinstance(observed_at, str):
+        normalized_at = observed_at.replace("Z", "+00:00")
+    else:
+        raise ValueError("observed_at is required")
     lines.append(f"observed_by({atom(observed_by)}).")
-    normalized_at = observed_at.replace("Z", "+00:00")
     lines.append(f"observed_at({quoted(normalized_at)}).")
 
     for key in sorted(reconciliation):
