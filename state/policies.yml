@@ -14,11 +14,22 @@ context:
 user_freeze:
   active: true
   set_at: 2026-08-21
-  coding_implementation_loops_allowed: false
+  coding_implementation_loops_allowed: exceptions-only
   steward_self_coding_allowed: false
   autonomous_resume_allowed: false
   resume_requires: explicit-user-authorization
   infra_to_server_handoff_allowed: false
+  explicit_coding_exceptions:
+    zara:
+      repo: lost-rob0t/zara
+      automation_id: 6a892ef4c180819189cba1afee1a4504
+      protected_during_freeze: true
+      may_pause_without_new_user_instruction: false
+    local-recall:
+      repo: lost-rob0t/local-recall
+      automation_id: 6a8934a82ef881919ab153b6aec87c15
+      protected_during_freeze: true
+      may_pause_without_new_user_instruction: false
   allowed_non_coding_modes:
     - task-reconciliation
     - reminders
@@ -82,11 +93,13 @@ scheduling:
   llm_may_directly_approve_handoff: false
   llm_may_directly_skip_required_gate: false
   coding_freeze_overrides_scheduler: true
+  explicit_freeze_exceptions_override_general_freeze: true
 
 protected_projects:
   - hourly-auto-dig
   - starintel-discord-reports
-  - prolog-rlm
+  - zara
+  - local-recall
 
 wake:
   empty_commit_allowed: true
