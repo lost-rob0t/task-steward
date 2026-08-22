@@ -47,9 +47,10 @@ jobs:
 
       - name: Verify deterministic YAML to Prolog compilation
         run: |
-          python3 -m py_compile scripts/compile_state.py scripts/compile_policies.py scripts/classify_wake.py
+          python3 -m py_compile scripts/compile_state.py scripts/compile_policies.py scripts/compile_automations.py scripts/classify_wake.py
           python3 scripts/compile_state.py --check
           python3 scripts/compile_policies.py --check
+          python3 scripts/compile_automations.py --check
 
       - name: Run compiler regression tests
         run: |
