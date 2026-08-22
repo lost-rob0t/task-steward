@@ -1,0 +1,67 @@
+version: 1
+state: building
+
+requirements:
+  - id: yaml_state
+    status: satisfied
+    evidence: ["pr:#2", "pr:#22"]
+  - id: yaml_to_prolog_compiler
+    status: satisfied
+    evidence: ["pr:#2", "pr:#18", "pr:#19", "pr:#20", "pr:#22"]
+  - id: validated_inline_prolog
+    status: satisfied
+    evidence: ["pr:#3"]
+  - id: durable_kb
+    status: satisfied
+    evidence: ["pr:#22"]
+  - id: serial_prolog_moe
+    status: satisfied
+    evidence: ["pr:#10"]
+  - id: unified_steward_interface
+    status: satisfied
+    evidence: ["pr:#10", "pr:#17"]
+  - id: priority_scoring
+    status: satisfied
+    evidence: ["pr:#14"]
+  - id: dependency_and_eligibility_reasoning
+    status: satisfied
+    evidence: ["pr:#19"]
+  - id: failure_detection_and_retry_classification
+    status: satisfied
+    evidence: ["pr:#8"]
+  - id: regression_detection
+    status: satisfied
+    evidence: ["pr:#9"]
+  - id: job_and_test_skip_reasoning
+    status: satisfied
+    evidence: ["pr:#14", "pr:#17"]
+  - id: non_skippable_required_gates
+    status: satisfied
+    evidence: ["pr:#14"]
+  - id: fenced_leases
+    status: satisfied
+    evidence: ["pr:#4"]
+  - id: structured_handoffs
+    status: satisfied
+    evidence: ["pr:#18"]
+  - id: decision_receipts
+    status: satisfied
+    evidence: ["pr:#6", "pr:#17"]
+  - id: actions_wake_and_reconcile
+    status: satisfied
+    evidence: ["pr:#7"]
+  - id: recursive_wake_protection
+    status: satisfied
+    evidence: ["pr:#5", "pr:#7"]
+  - id: scenario_regression_tests
+    status: satisfied
+    evidence: ["pr:#12", "pr:#14", "pr:#15"]
+  - id: external_repo_write_isolation
+    status: satisfied
+    evidence: ["pr:#5"]
+  - id: green_required_ci
+    status: pending
+    evidence: ["requires:exact-head-ci-after-deployment-gate-change"]
+  - id: no_p0_p1_deployment_blockers
+    status: pending
+    evidence: ["requires:post-change-backlog-reconciliation"]
