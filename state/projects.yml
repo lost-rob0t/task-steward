@@ -4,7 +4,7 @@ projects:
   - id: hourly-auto-dig
     repo: lost-rob0t/starintel-gpt-auto-dig
     status: active
-    mode: permanent
+    mode: permanent-non-coding
     priority:
       base: 100
       protected: true
@@ -12,9 +12,31 @@ projects:
   - id: starintel-discord-reports
     repo: lost-rob0t/starintel-discord-reporting
     status: active
-    mode: permanent
+    mode: permanent-non-coding
     priority:
       base: 100
+      protected: true
+
+  - id: zara
+    repo: lost-rob0t/zara
+    status: active-freeze-exception
+    mode: rage
+    automation_id: 6a892ef4c180819189cba1afee1a4504
+    freeze_exception: explicit-user-authorization
+    protected_during_freeze: true
+    priority:
+      base: 95
+      protected: true
+
+  - id: local-recall
+    repo: lost-rob0t/local-recall
+    status: active-freeze-exception
+    mode: rage
+    automation_id: 6a8934a82ef881919ab153b6aec87c15
+    freeze_exception: explicit-user-authorization
+    protected_during_freeze: true
+    priority:
+      base: 95
       protected: true
 
   - id: prolog-rlm
