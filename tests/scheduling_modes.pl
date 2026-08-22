@@ -19,13 +19,13 @@ seed_ready(Task, Project, Priority) :-
 
 test(predeployment_self_rage_even_with_external_work,
      [setup(reset_tasks), cleanup(reset_tasks)]) :-
-    seed_ready(external_issue, external_project, 100),
+    seed_ready(external_issue, zara, 100),
     seed_ready(steward_issue, task_stward_rage, 1),
     steward_mode_next(building, external_issue, steward_issue).
 
 test(postdeployment_external_work_wins,
      [setup(reset_tasks), cleanup(reset_tasks)]) :-
-    seed_ready(external_issue, external_project, 100),
+    seed_ready(external_issue, zara, 100),
     seed_ready(steward_issue, task_stward_rage, 1),
     steward_mode_next(deployed, external_issue, external_issue).
 
@@ -36,7 +36,7 @@ test(postdeployment_self_rage_only_when_idle,
 
 test(quiet_period_does_not_abandon_active_project,
      [setup(reset_tasks), cleanup(reset_tasks)]) :-
-    seed_ready(quiet_issue, quiet_project, 10),
+    seed_ready(quiet_issue, zara, 10),
     assertz(kb_tasks:task_source(quiet_issue, quiet_period)),
     schedulable(quiet_issue).
 

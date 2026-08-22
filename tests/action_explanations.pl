@@ -70,6 +70,24 @@ test(blocked_action_explains_blocking_regression,
     ),
     assertion(member(blocking_regression(high, weakened_required_gate), Reasons)).
 
+test(blocked_action_explains_frozen_project_policy,
+     [setup(reset_explanation_facts), cleanup(reset_explanation_facts)]) :-
+    seed_open_task(explain_frozen, starintel_infra),
+    steward:steward_explain(
+        blocked(explain_frozen),
+        explanation(explain_frozen, blocked, Reasons)
+    ),
+    assertion(member(project_policy(starintel_infra, project_status(frozen_user)), Reasons)).
+
+test(blocked_action_explains_hard_stop_policy,
+     [setup(reset_explanation_facts), cleanup(reset_explanation_facts)]) :-
+    seed_open_task(explain_hard_stop, prolog_rlm),
+    steward:steward_explain(
+        blocked(explain_hard_stop),
+        explanation(explain_hard_stop, blocked, Reasons)
+    ),
+    assertion(member(project_policy(prolog_rlm, hard_stop), Reasons)).
+
 test(skip_job_explains_derived_policy_basis,
      [setup(reset_explanation_facts), cleanup(reset_explanation_facts)]) :-
     assertz(expert_skip_policy:job_irrelevant(explain_skip, docs_job)),

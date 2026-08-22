@@ -12,6 +12,7 @@
 
 :- use_module('kb/generated/projects.pl').
 :- use_module('kb/generated/handoffs.pl').
+:- use_module('kb/generated/policies.pl').
 :- use_module('kb/tasks.pl').
 :- use_module('kb/evidence.pl').
 :- use_module('kb/decisions.pl').
@@ -19,6 +20,7 @@
 :- use_module('experts/registry.pl').
 :- use_module('experts/pipeline.pl').
 :- use_module('experts/leases.pl').
+:- use_module('experts/policy.pl').
 :- use_module('experts/eligibility.pl').
 :- use_module('experts/dependencies.pl').
 :- use_module('experts/failure.pl').
@@ -32,6 +34,8 @@
 :- use_module('experts/generated/project_rules.pl').
 
 steward_validate :-
+    policy_version(_),
+    policy_value([scheduling, authority], prolog),
     findall(Order-Expert, expert_order(Expert, Order), Ordered),
     sort(Ordered, Sorted),
     length(Ordered, Count),
@@ -102,6 +106,9 @@ steward_explain(idle(no_schedulable_work), explanation(no_schedulable_work)).
 steward_block_reason(Task, task_state(State)) :-
     task_state(Task, State),
     State \= open.
+steward_block_reason(Task, project_policy(Project, Reason)) :-
+    task_project(Task, Project),
+    project_execution_block_reason(Project, Reason).
 steward_block_reason(Task, active_lease(Generation, Owner)) :-
     active_lease(Task, Generation, Owner).
 steward_block_reason(Task, dependency_not_completed(Dependency, State)) :-

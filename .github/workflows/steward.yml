@@ -47,8 +47,9 @@ jobs:
 
       - name: Verify deterministic YAML to Prolog compilation
         run: |
-          python3 -m py_compile scripts/compile_state.py scripts/classify_wake.py
+          python3 -m py_compile scripts/compile_state.py scripts/compile_policies.py scripts/classify_wake.py
           python3 scripts/compile_state.py --check
+          python3 scripts/compile_policies.py --check
 
       - name: Run compiler regression tests
         run: |
@@ -64,6 +65,7 @@ jobs:
           swipl -q -s tests/scheduling_modes.pl -g run_tests -t halt
           swipl -q -s tests/core_decisions.pl -g run_tests -t halt
           swipl -q -s tests/action_explanations.pl -g run_tests -t halt
+          swipl -q -s tests/freeze_eligibility.pl -g run_tests -t halt
 
       - name: Validate generated custom Prolog syntax
         run: |
