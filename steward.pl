@@ -68,6 +68,21 @@ steward_explain(execute(Task), explanation(Task, Score, Components)) :-
         priority_component(Task, Name, Value, Reason),
         Components
     ).
+steward_explain(blocked(Task), explanation(Task, blocked, Reasons)) :-
+    task(Task),
+    findall(Reason, steward_block_reason(Task, Reason), RawReasons),
+    sort(RawReasons, Reasons),
+    Reasons \= [].
+steward_explain(
+    skip_job(Task, Job),
+    explanation(skip_job, job(Task, Job), Basis)
+) :-
+    skip_job_explanation(Task, Job, Basis).
+steward_explain(
+    skip_test(Task, Test),
+    explanation(skip_test, test(Task, Test), Basis)
+) :-
+    skip_test_explanation(Task, Test, Basis).
 steward_explain(
     handoff(Handoff, Source, Target),
     explanation(Handoff, handoff_ready(Source, Target))
@@ -77,6 +92,22 @@ steward_explain(
 steward_explain(receipt(Id), Explanation) :-
     decision_receipt_explanation(Id, Explanation).
 steward_explain(idle(no_schedulable_work), explanation(no_schedulable_work)).
+
+steward_block_reason(Task, task_state(State)) :-
+    task_state(Task, State),
+    State \= open.
+steward_block_reason(Task, active_lease(Generation, Owner)) :-
+    active_lease(Task, Generation, Owner).
+steward_block_reason(Task, dependency_not_completed(Dependency, State)) :-
+    task_dependency(Task, Dependency),
+    task_state(Dependency, State),
+    State \= completed.
+steward_block_reason(Task, dependency_not_completed(Dependency, missing_state)) :-
+    task_dependency(Task, Dependency),
+    \+ task_state(Dependency, _).
+steward_block_reason(Task, blocking_regression(Severity, Reason)) :-
+    derived_regression(Task, Severity, Reason),
+    memberchk(Severity, [high, critical]).
 
 steward_lease_candidate(Task, Owner, Generation) :-
     lease_candidate(Task, Owner, Generation).
