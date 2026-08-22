@@ -1,4 +1,4 @@
-version: 3
+version: 4
 
 scope:
   exclusive_consumer: task-steward
@@ -12,43 +12,15 @@ context:
   current_prompt_is_not_complete_context: true
 
 user_freeze:
-  active: true
+  active: false
   set_at: 2026-08-21
-  coding_implementation_loops_allowed: exceptions-only
+  lifted_at: 2026-08-22
+  coding_implementation_loops_allowed: normal-except-explicit-hard-stops
   steward_self_coding_allowed: true
   autonomous_resume_allowed: false
-  resume_requires: explicit-user-authorization
-  infra_to_server_handoff_allowed: false
-  explicit_coding_exceptions:
-    task-stward-rage:
-      repo: lost-rob0t/task-stward-rage
-      automation_id: 6a54903dc26081918683fbdbc2c6c7cd
-      protected_during_freeze: true
-      may_pause_without_new_user_instruction: false
-    zara:
-      repo: lost-rob0t/zara
-      automation_id: 6a892ef4c180819189cba1afee1a4504
-      protected_during_freeze: true
-      may_pause_without_new_user_instruction: false
-    local-recall:
-      repo: lost-rob0t/local-recall
-      automation_id: 6a8934a82ef881919ab153b6aec87c15
-      protected_during_freeze: true
-      may_pause_without_new_user_instruction: false
-  allowed_non_coding_modes:
-    - task-reconciliation
-    - reminders
-    - research-when-separately-authorized
-    - reporting
-    - non-coding-observation
+  infra_to_server_handoff_allowed: true
   hard_stops:
     prolog-rlm:
-      research_allowed: false
-      audit_allowed: false
-      implementation_allowed: false
-      automation_allowed: false
-      resume_requires: explicit-user-authorization
-    agentprolog-deepseek-integration:
       research_allowed: false
       audit_allowed: false
       implementation_allowed: false
@@ -62,7 +34,7 @@ backlog:
   include_unfinished_transactions: true
   include_failed_or_pending_ci: true
   prefer_valid_existing_backlog: true
-  blocked_work_fallback: backlog_hygiene
+  blocked_work_fallback: backlog-hygiene
   partial_sweep_must_not_be_reported_as_complete: true
 
 project_work_order:
@@ -97,8 +69,8 @@ scheduling:
   llm_may_directly_score_priority: false
   llm_may_directly_approve_handoff: false
   llm_may_directly_skip_required_gate: false
-  coding_freeze_overrides_scheduler: true
-  explicit_freeze_exceptions_override_general_freeze: true
+  coding_freeze_overrides_scheduler: false
+  explicit_hard_stops_override_scheduler: true
 
 protected_projects:
   - hourly-auto-dig
@@ -125,10 +97,10 @@ skip_policy:
 
 self_rage:
   enabled: true
-  pre_deployment_mode: mandatory_after_task_reconciliation
+  pre_deployment_mode: mandatory-after-task-reconciliation
   pre_deployment_wait_for_empty_queue: false
-  deployment_gate: expert_system_fully_deployed
-  post_deployment_mode: fallback_when_no_schedulable_work
+  deployment_gate: expert-system-fully-deployed
+  post_deployment_mode: fallback-when-no-schedulable-work
   changes_require_issue: true
   changes_require_regression_validation: true
 
