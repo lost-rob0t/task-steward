@@ -19,7 +19,9 @@ class CompileDeploymentTests(unittest.TestCase):
         first = compile_deployment.compile_deployment(doc)
         second = compile_deployment.compile_deployment(doc)
         self.assertEqual(first, second)
-        self.assertIn("deployment_requirement(green_required_ci, pending).", first)
+        self.assertIn("deployment_declared_state(deployed).", first)
+        self.assertIn("deployment_requirement(green_required_ci, satisfied).", first)
+        self.assertIn("deployment_requirement(no_p0_p1_deployment_blockers, satisfied).", first)
         self.assertIn("deployment_requirement(yaml_state, satisfied).", first)
 
     def test_duplicate_requirement_is_rejected(self) -> None:

@@ -2,7 +2,7 @@
 % Source: state/deployment.yml
 :- module(kb_generated_deployment, [deployment_declared_state/1, deployment_requirement/2, deployment_requirement_evidence/2]).
 
-deployment_declared_state(building).
+deployment_declared_state(deployed).
 
 deployment_requirement(actions_wake_and_reconcile, satisfied).
 deployment_requirement_evidence(actions_wake_and_reconcile, 'pr:#7').
@@ -26,15 +26,20 @@ deployment_requirement_evidence(failure_detection_and_retry_classification, 'pr:
 deployment_requirement(fenced_leases, satisfied).
 deployment_requirement_evidence(fenced_leases, 'pr:#4').
 
-deployment_requirement(green_required_ci, pending).
-deployment_requirement_evidence(green_required_ci, 'requires:exact-head-ci-after-deployment-gate-change').
+deployment_requirement(green_required_ci, satisfied).
+deployment_requirement_evidence(green_required_ci, 'actions:Task-Steward-RAGE#92').
+deployment_requirement_evidence(green_required_ci, 'head:4642bc3f5781ad26513e1e2081561109c63da100').
+deployment_requirement_evidence(green_required_ci, 'pr:#23').
 
 deployment_requirement(job_and_test_skip_reasoning, satisfied).
 deployment_requirement_evidence(job_and_test_skip_reasoning, 'pr:#14').
 deployment_requirement_evidence(job_and_test_skip_reasoning, 'pr:#17').
 
-deployment_requirement(no_p0_p1_deployment_blockers, pending).
-deployment_requirement_evidence(no_p0_p1_deployment_blockers, 'requires:post-change-backlog-reconciliation').
+deployment_requirement(no_p0_p1_deployment_blockers, satisfied).
+deployment_requirement_evidence(no_p0_p1_deployment_blockers, 'open-issues:1-deployment-epic-only').
+deployment_requirement_evidence(no_p0_p1_deployment_blockers, 'open-prs:0').
+deployment_requirement_evidence(no_p0_p1_deployment_blockers, 'reconcile:2026-08-22T13:49:50Z').
+deployment_requirement_evidence(no_p0_p1_deployment_blockers, 'reviews:clean').
 
 deployment_requirement(non_skippable_required_gates, satisfied).
 deployment_requirement_evidence(non_skippable_required_gates, 'pr:#14').

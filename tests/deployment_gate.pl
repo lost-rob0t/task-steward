@@ -3,12 +3,11 @@
 :- use_module('../experts/deployment.pl').
 
 
-test(current_state_is_not_deployed) :-
-    \+ expert_system_deployed.
+test(current_state_is_deployed) :-
+    expert_system_deployed.
 
-test(current_pending_requirements_are_explained) :-
-    expert_system_deployment_status(building(Missing)),
-    assertion(Missing == [green_required_ci, no_p0_p1_deployment_blockers]).
+test(current_deployment_status_is_deployed) :-
+    expert_system_deployment_status(deployed).
 
 test(policy_requirements_have_exactly_one_status) :-
     forall(
@@ -18,6 +17,9 @@ test(policy_requirements_have_exactly_one_status) :-
 
 test(no_unknown_deployment_requirement) :-
     \+ deployment_requirement_unknown(_).
+
+test(no_missing_deployment_requirement) :-
+    \+ deployment_requirement_missing(_).
 
 test(satisfied_requirements_have_evidence) :-
     forall(
