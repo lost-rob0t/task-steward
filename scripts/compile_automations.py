@@ -64,7 +64,7 @@ def compile_automations(doc: dict[str, Any]) -> str:
     lines = [
         "% GENERATED FILE. DO NOT EDIT.",
         "% Source: state/automations.yml",
-        ":- module(kb_generated_automations, [automation/1, automation_state/2, automation_title/2, automation_project/2, observed_by/1, observed_at/1, reconciliation_value/2, reconciliation_member/2]).",
+        ":- module(kb_generated_automations, [automation/1, automation_state/2, automation_title/2, automation_project/2, automation_mode/2, observed_by/1, observed_at/1, reconciliation_value/2, reconciliation_member/2]).",
         "",
     ]
     for ident, state, row in sorted(entries):
@@ -74,6 +74,9 @@ def compile_automations(doc: dict[str, Any]) -> str:
         project = row.get("project")
         if isinstance(project, str) and project:
             lines.append(f"automation_project({quoted(ident)}, {atom(project)}).")
+        mode = row.get("mode")
+        if isinstance(mode, str) and mode:
+            lines.append(f"automation_mode({quoted(ident)}, {atom(mode)}).")
         lines.append("")
 
     observed_by = doc.get("observed_by")

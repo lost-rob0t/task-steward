@@ -1,11 +1,12 @@
 % GENERATED FILE. DO NOT EDIT.
 % Source: state/automations.yml
-:- module(kb_generated_automations, [automation/1, automation_state/2, automation_title/2, automation_project/2, observed_by/1, observed_at/1, reconciliation_value/2, reconciliation_member/2]).
+:- module(kb_generated_automations, [automation/1, automation_state/2, automation_title/2, automation_project/2, automation_mode/2, observed_by/1, observed_at/1, reconciliation_value/2, reconciliation_member/2]).
 
 automation('6a54903dc26081918683fbdbc2c6c7cd').
 automation_state('6a54903dc26081918683fbdbc2c6c7cd', active).
 automation_title('6a54903dc26081918683fbdbc2c6c7cd', 'Task Steward').
 automation_project('6a54903dc26081918683fbdbc2c6c7cd', task_stward_rage).
+automation_mode('6a54903dc26081918683fbdbc2c6c7cd', deployed_scheduling_self_rage_fallback).
 
 automation('6a7dce766d448191bca41ef6e0c9390e').
 automation_state('6a7dce766d448191bca41ef6e0c9390e', paused).
@@ -16,11 +17,13 @@ automation('6a83847376348191b456e115c117d166').
 automation_state('6a83847376348191b456e115c117d166', active).
 automation_title('6a83847376348191b456e115c117d166', 'Hourly Auto-Dig').
 automation_project('6a83847376348191b456e115c117d166', hourly_auto_dig).
+automation_mode('6a83847376348191b456e115c117d166', normal_scope).
 
 automation('6a860d314d40819194128b7c7961fb99').
 automation_state('6a860d314d40819194128b7c7961fb99', active).
 automation_title('6a860d314d40819194128b7c7961fb99', 'StarIntel Discord Reports').
 automation_project('6a860d314d40819194128b7c7961fb99', starintel_discord_reports).
+automation_mode('6a860d314d40819194128b7c7961fb99', normal_scope).
 
 automation('6a8649dc3f708191b51269995b51700a').
 automation_state('6a8649dc3f708191b51269995b51700a', paused).
@@ -55,7 +58,7 @@ automation_title('6a8934a82ef881919ab153b6aec87c15', 'Local Recall RAGE Worker')
 automation_project('6a8934a82ef881919ab153b6aec87c15', local_recall).
 
 observed_by(task_steward).
-observed_at('2026-08-22T09:50:45+00:00').
+observed_at('2026-08-22T19:47:30+00:00').
 reconciliation_value([active_task_count], 5).
 reconciliation_value([agentprolog_workers_enabled], false).
 reconciliation_value([coding_freeze], lifted).
