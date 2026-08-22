@@ -53,8 +53,8 @@ test(infra_handoff_requires_satisfied_gate,
      [setup(clear_handoff_evidence), cleanup(clear_handoff_evidence), fail]) :-
     expert_handoff:handoff_ready(infra_to_server).
 
-test(infra_handoff_fires_when_gate_is_satisfied,
-     [setup(clear_handoff_evidence), cleanup(clear_handoff_evidence)]) :-
+test(infra_handoff_stays_frozen_even_when_gate_is_satisfied,
+     [setup(clear_handoff_evidence), cleanup(clear_handoff_evidence), fail]) :-
     assertz(kb_evidence:completion_gate(starintel_infra, automated_deployment_ready, satisfied)),
     expert_handoff:handoff_ready(infra_to_server).
 
