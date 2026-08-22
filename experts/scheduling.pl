@@ -1,11 +1,13 @@
 :- module(expert_scheduling, [schedulable/1, next_task/1, steward_mode_next/3]).
 
+:- use_module('eligibility.pl').
 :- use_module('dependencies.pl').
 :- use_module('regression.pl').
 :- use_module('priority.pl').
 :- use_module('../kb/tasks.pl').
 
 schedulable(Task) :-
+    eligible_task(Task),
     dependency_ready(Task),
     \+ blocking_regression(Task).
 
