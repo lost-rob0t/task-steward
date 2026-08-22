@@ -30,7 +30,11 @@ class CompileStateTests(unittest.TestCase):
 
         kb, rules, registry = first
         self.assertIn("project(prolog_rlm).", kb)
-        self.assertIn("project_mode(task_stward_rage, self_rage_building_experts).", kb)
+        self.assertIn(
+            "project_mode(task_stward_rage, deployed_scheduling_self_rage_fallback).",
+            kb,
+        )
+        self.assertNotIn("project_mode(task_stward_rage, self_rage_building_experts).", kb)
         self.assertIn("completion_policy(starintel_infra, automated_deployment_ready).", kb)
         self.assertIn("production_ready(prolog_rlm) :-", rules)
         self.assertIn("custom_expert(prolog_rlm_readiness).", registry)
