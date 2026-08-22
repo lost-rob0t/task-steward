@@ -31,15 +31,12 @@ class CompileAutomationsTests(unittest.TestCase):
         self.assertIn(
             "automation_state('6a8649dc3f708191b51269995b51700a', paused).", first
         )
-        self.assertIn(
-            "reconciliation_value([active_task_count], 5).", first
-        )
-        self.assertIn(
-            "reconciliation_member([coding_freeze_exception_workers], task_stward_rage).",
-            first,
-        )
+        self.assertIn("reconciliation_value([active_task_count], 5).", first)
+        self.assertIn("reconciliation_value([coding_freeze], lifted).", first)
+        self.assertIn("reconciliation_value([prolog_rlm_workers_enabled], false).", first)
+        self.assertNotIn("coding_freeze_exception_workers", first)
         self.assertIn("observed_by(task_steward).", first)
-        self.assertIn("observed_at('2026-08-22T07:58:00+00:00').", first)
+        self.assertIn("observed_at('2026-08-22T09:50:45+00:00').", first)
         self.assertTrue(first.startswith("% GENERATED FILE. DO NOT EDIT."))
 
     def test_declared_active_count_must_match_active_entries(self) -> None:
