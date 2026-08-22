@@ -19,8 +19,9 @@ projects:
 
   - id: prolog-rlm
     repo: lost-rob0t/prolog-rlm
-    status: active
-    mode: rage
+    status: frozen-user-stop
+    mode: paused
+    resume_requires: explicit-user-authorization
     priority:
       base: 95
       protected: true
@@ -53,8 +54,9 @@ projects:
 
   - id: starintel-infra
     repo: starintel-labs/starintel-infra
-    status: active
-    mode: rage
+    status: frozen-user
+    mode: paused
+    resume_requires: explicit-user-authorization
     priority:
       base: 90
     completion:
@@ -62,8 +64,9 @@ projects:
 
   - id: starintel-server
     repo: lost-rob0t/starintel-server
-    status: waiting-handoff
-    mode: rage
+    status: frozen-waiting-handoff
+    mode: paused
+    resume_requires: explicit-user-authorization
     priority:
       base: 90
     completion:
@@ -79,6 +82,8 @@ projects:
   - id: task-stward-rage
     repo: lost-rob0t/task-stward-rage
     status: active
-    mode: self-rage-building-experts
+    mode: reconciliation-only
+    self_coding_allowed: false
+    resume_self_rage_requires: explicit-user-authorization
     priority:
       base: 10
