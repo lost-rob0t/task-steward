@@ -11,6 +11,34 @@ context:
   resolve_ambiguity_from_memory_and_repository_state: true
   current_prompt_is_not_complete_context: true
 
+user_freeze:
+  active: true
+  set_at: 2026-08-21
+  coding_implementation_loops_allowed: false
+  steward_self_coding_allowed: false
+  autonomous_resume_allowed: false
+  resume_requires: explicit-user-authorization
+  infra_to_server_handoff_allowed: false
+  allowed_non_coding_modes:
+    - task-reconciliation
+    - reminders
+    - research-when-separately-authorized
+    - reporting
+    - non-coding-observation
+  hard_stops:
+    prolog-rlm:
+      research_allowed: false
+      audit_allowed: false
+      implementation_allowed: false
+      automation_allowed: false
+      resume_requires: explicit-user-authorization
+    agentprolog-deepseek-integration:
+      research_allowed: false
+      audit_allowed: false
+      implementation_allowed: false
+      automation_allowed: false
+      resume_requires: explicit-user-authorization
+
 backlog:
   complete_enumeration_required_before_no_work_claim: true
   include_open_prs: true
@@ -53,6 +81,7 @@ scheduling:
   llm_may_directly_score_priority: false
   llm_may_directly_approve_handoff: false
   llm_may_directly_skip_required_gate: false
+  coding_freeze_overrides_scheduler: true
 
 protected_projects:
   - hourly-auto-dig
@@ -76,16 +105,15 @@ skip_policy:
   skipped_tests_require_reason: true
 
 self_rage:
-  enabled: true
-  pre_deployment_mode: mandatory_after_task_reconciliation
-  pre_deployment_wait_for_empty_queue: false
+  enabled: false
+  suspended_by: explicit-user-coding-freeze
+  resume_requires: explicit-user-authorization
   deployment_gate: expert_system_fully_deployed
-  post_deployment_mode: fallback_when_no_schedulable_work
   changes_require_issue: true
   changes_require_regression_validation: true
 
 expert_system_deployment:
-  state: building
+  state: building-frozen
   requires:
     - yaml_state
     - yaml_to_prolog_compiler
