@@ -13,6 +13,13 @@ assert SPEC and SPEC.loader
 compile_state = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(compile_state)
 
+POLICY_SPEC = importlib.util.spec_from_file_location(
+    "compile_policies", ROOT / "scripts" / "compile_policies.py"
+)
+assert POLICY_SPEC and POLICY_SPEC.loader
+compile_policies = importlib.util.module_from_spec(POLICY_SPEC)
+POLICY_SPEC.loader.exec_module(compile_policies)
+
 
 class CompileStateTests(unittest.TestCase):
     def test_repository_projects_compile_deterministically(self) -> None:
@@ -57,9 +64,9 @@ class CompileStateTests(unittest.TestCase):
         self.assertTrue(rules.startswith("% GENERATED FILE. DO NOT EDIT."))
 
     def test_repository_policies_compile_deterministically(self) -> None:
-        policies = compile_state.load_policies(ROOT / "state" / "policies.yml")
-        first = compile_state.compile_policies(policies)
-        second = compile_state.compile_policies(policies)
+        policies = compile_policies.load_policies(ROOT / "state" / "policies.yml")
+        first = compile_policies.compile_policies(policies)
+        second = compile_policies.compile_policies(policies)
         self.assertEqual(first, second)
 
         self.assertIn("policy_version(3).", first)
