@@ -56,6 +56,38 @@ class CompileStateTests(unittest.TestCase):
         self.assertTrue(kb.startswith("% GENERATED FILE. DO NOT EDIT."))
         self.assertTrue(rules.startswith("% GENERATED FILE. DO NOT EDIT."))
 
+    def test_repository_policies_compile_deterministically(self) -> None:
+        policies = compile_state.load_policies(ROOT / "state" / "policies.yml")
+        first = compile_state.compile_policies(policies)
+        second = compile_state.compile_policies(policies)
+        self.assertEqual(first, second)
+
+        self.assertIn("policy_version(3).", first)
+        self.assertIn("policy_value([user_freeze, active], true).", first)
+        self.assertIn(
+            "policy_value([user_freeze, steward_self_coding_allowed], true).", first
+        )
+        self.assertIn(
+            "policy_value([user_freeze, explicit_coding_exceptions, task_stward_rage, protected_during_freeze], true).",
+            first,
+        )
+        self.assertIn(
+            "policy_value([user_freeze, hard_stops, prolog_rlm, automation_allowed], false).",
+            first,
+        )
+        self.assertIn(
+            "policy_value([project_work_order, hourly_auto_dig, primary_queue], investigation_target).",
+            first,
+        )
+        self.assertIn(
+            "policy_member([protected_projects], task_stward_rage).", first
+        )
+        self.assertIn(
+            "policy_member([expert_system_deployment, requires], yaml_to_prolog_compiler).",
+            first,
+        )
+        self.assertTrue(first.startswith("% GENERATED FILE. DO NOT EDIT."))
+
     def test_handoff_inline_rule_is_fail_closed(self) -> None:
         handoffs = [
             {
