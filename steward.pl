@@ -5,6 +5,7 @@
     steward_next/1,
     steward_explain/2,
     steward_status/1,
+    steward_deployment_status/1,
     steward_lease_candidate/3,
     steward_lease_valid/3,
     steward_receipt_status/2
@@ -31,6 +32,7 @@
 :- use_module('experts/handoff.pl').
 :- use_module('experts/completion.pl').
 :- use_module('experts/receipts.pl').
+:- use_module('experts/deployment.pl').
 :- use_module('experts/generated/project_rules.pl').
 
 steward_validate :-
@@ -54,7 +56,16 @@ steward_validate :-
         handoff_gate(Handoff, _),
         project(Source),
         project(Target)
-    )).
+    )),
+    \+ deployment_requirement_unknown(_),
+    forall(
+        policy_member([expert_system_deployment, requires], Requirement),
+        deployment_requirement_status(Requirement, _)
+    ),
+    forall(
+        deployment_requirement_status(Requirement, satisfied),
+        kb_generated_deployment:deployment_requirement_evidence(Requirement, _)
+    ).
 
 steward_evaluate(Executions) :-
     run_expert_pipeline(Executions).
@@ -121,6 +132,9 @@ steward_block_reason(Task, dependency_not_completed(Dependency, missing_state)) 
 steward_block_reason(Task, blocking_regression(Severity, Reason)) :-
     derived_regression(Task, Severity, Reason),
     memberchk(Severity, [high, critical]).
+
+steward_deployment_status(Status) :-
+    expert_system_deployment_status(Status).
 
 steward_lease_candidate(Task, Owner, Generation) :-
     lease_candidate(Task, Owner, Generation).
