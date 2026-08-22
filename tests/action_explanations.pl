@@ -70,14 +70,14 @@ test(blocked_action_explains_blocking_regression,
     ),
     assertion(member(blocking_regression(high, weakened_required_gate), Reasons)).
 
-test(blocked_action_explains_frozen_project_policy,
+test(blocked_action_explains_paused_project_policy,
      [setup(reset_explanation_facts), cleanup(reset_explanation_facts)]) :-
-    seed_open_task(explain_frozen, starintel_infra),
+    seed_open_task(explain_paused, starintel_infra),
     steward:steward_explain(
-        blocked(explain_frozen),
-        explanation(explain_frozen, blocked, Reasons)
+        blocked(explain_paused),
+        explanation(explain_paused, blocked, Reasons)
     ),
-    assertion(member(project_policy(starintel_infra, project_status(frozen_user)), Reasons)).
+    assertion(member(project_policy(starintel_infra, project_status(paused_user)), Reasons)).
 
 test(blocked_action_explains_hard_stop_policy,
      [setup(reset_explanation_facts), cleanup(reset_explanation_facts)]) :-
