@@ -36,12 +36,29 @@ class CompileAutomationsTests(unittest.TestCase):
         self.assertIn(
             "automation_state('6a8649dc3f708191b51269995b51700a', paused).", first
         )
+        self.assertIn(
+            "automation_state('6a864c35bce48191883144c38781b20e', active).", first
+        )
+        self.assertIn(
+            "automation_project('6a864c35bce48191883144c38781b20e', starintel_server).", first
+        )
+        self.assertIn(
+            "automation_state('6a8934a82ef881919ab153b6aec87c15', paused).", first
+        )
+        self.assertNotIn(
+            "automation_state('6a8934a82ef881919ab153b6aec87c15', active).", first
+        )
         self.assertIn("reconciliation_value([active_task_count], 5).", first)
         self.assertIn("reconciliation_value([coding_freeze], lifted).", first)
         self.assertIn("reconciliation_value([prolog_rlm_workers_enabled], false).", first)
+        self.assertIn("reconciliation_value([local_recall_worker_enabled], false).", first)
+        self.assertIn("reconciliation_value([starintel_server_worker_enabled], true).", first)
+        self.assertIn(
+            "reconciliation_value([starintel_server_primary_coding_priority], true).", first
+        )
         self.assertNotIn("coding_freeze_exception_workers", first)
         self.assertIn("observed_by(task_steward).", first)
-        self.assertIn("observed_at('2026-08-22T19:47:30+00:00').", first)
+        self.assertIn("observed_at('2026-08-23T03:52:16+00:00').", first)
         self.assertTrue(first.startswith("% GENERATED FILE. DO NOT EDIT."))
 
     def test_declared_active_count_must_match_active_entries(self) -> None:
