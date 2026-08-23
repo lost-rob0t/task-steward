@@ -7,7 +7,6 @@ import os
 import re
 import sys
 import urllib.error
-import urllib.parse
 import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
@@ -149,14 +148,17 @@ def pull_ci(repo: str, sha: str, auth: str | None) -> str:
     check_payload = rest_get(f"/repos/{repo}/commits/{sha}/check-runs?per_page=100", auth)
     status_payload = rest_get(f"/repos/{repo}/commits/{sha}/status", auth)
     check_runs = check_payload.get("check_runs") if isinstance(check_payload, dict) else None
-    if not isinstance(check_runs, list) or not isinstance(status_payload, dict):
+    total_count = check_payload.get("total_count") if isinstance(check_payload, dict) else None
+    if not isinstance(check_runs, list) or not isinstance(total_count, int) or not isinstance(status_payload, dict):
         raise GithubReadError(f"invalid exact-head status response for {repo}@{sha}")
+    if total_count > len(check_runs):
+        raise GithubReadError(f"truncated exact-head check runs for {repo}@{sha}: {len(check_runs)}/{total_count}")
     return classify_ci([item for item in check_runs if isinstance(item, dict)], status_payload)
 
 
 def graphql_review(repo: str, number: int, auth: str | None) -> tuple[str, int]:
     if not auth:
-        return "unknown", 0
+        raise GithubReadError("review-thread evidence requires authenticated GitHub read")
     owner, name = repo.split("/", 1)
     body = json.dumps({
         "query": GRAPHQL_REVIEW_QUERY,
@@ -243,18 +245,25 @@ def snapshot_project(project: str, repo: str, auth: str | None, observed_at: str
         return {"project": project, "repo": repo, "snapshot": "unavailable", "observed_at": observed_at, "work": []}
 
     partial = not (issues_complete and pulls_complete)
-    work: list[dict[str, Any]] = []
-    for row in issue_rows:
-        if "pull_request" not in row:
-            work.append(issue_work(repo, row))
+    pull_items: list[dict[str, Any]] = []
+    issue_items: list[dict[str, Any]] = []
+
+    # Unfinished PR transactions are retained before issue backlog when the
+    # bounded snapshot must truncate. This preserves recover-existing-work-first.
     for row in pull_rows:
         try:
             item, item_partial = pull_work(repo, row, auth)
-            work.append(item)
+            pull_items.append(item)
             partial = partial or item_partial
         except (GithubReadError, KeyError, TypeError, ValueError) as exc:
             partial = True
             print(f"managed GitHub partial PR evidence for {repo}: {exc}", file=sys.stderr)
+
+    for row in issue_rows:
+        if "pull_request" not in row:
+            issue_items.append(issue_work(repo, row))
+
+    work = pull_items + issue_items
     if len(work) > MAX_WORK_PER_PROJECT:
         work = work[:MAX_WORK_PER_PROJECT]
         partial = True
