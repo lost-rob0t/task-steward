@@ -15,7 +15,15 @@ TASK_RECONCILE_GH_API = 'gh api --paginate --slurp "repos/${github_repository}/i
 TASK_RECONCILE_GIT_ADD = "git add -f -- state/tasks.yml kb/generated/tasks.pl"
 MANAGED_RECONCILE_WORKFLOW = "managed-reconcile.yml"
 MANAGED_RECONCILE_CRON = "37 * * * *"
-MANAGED_RECONCILE_GIT_ADD = "git add -f -- state/managed_github.yml kb/generated/managed_github.pl"
+MANAGED_RECONCILE_PATHS = [
+    ".github/workflows/managed-reconcile.yml",
+    "state/projects.yml",
+    "scripts/reconcile_managed_github.py",
+    "scripts/compile_managed_github.py",
+    "scripts/export_managed_decisions.pl",
+]
+MANAGED_RECONCILE_GIT_ADD = "git add -f -- state/managed_github.yml state/managed_decisions.json kb/generated/managed_github.pl"
+STATE_WRITER_CONCURRENCY = {"group": "task-steward-state-writers", "cancel-in-progress": "false"}
 
 FORBIDDEN_ACTION_FRAGMENTS = (
     "gh repo clone",
@@ -60,15 +68,19 @@ def validate_permissions(path: Path, workflow: dict) -> None:
         expected = {"contents": "write"}
     else:
         expected = {"contents": "read"}
-    if permissions := workflow.get("permissions"):
-        if permissions != expected:
-            raise ValueError(f"{path}: permissions must be exactly {expected}")
-    elif expected:
+    permissions = workflow.get("permissions")
+    if permissions != expected:
         raise ValueError(f"{path}: permissions must be exactly {expected}")
 
     for job_name, job in (workflow.get("jobs") or {}).items():
         if isinstance(job, dict) and "permissions" in job:
             raise ValueError(f"{path}: job {job_name} must not override permissions")
+
+
+def validate_concurrency(path: Path, workflow: dict) -> None:
+    if is_repo_writer(path):
+        if workflow.get("concurrency") != STATE_WRITER_CONCURRENCY:
+            raise ValueError(f"{path}: state writers must use the shared serialized concurrency group")
 
 
 def validate_triggers(path: Path, workflow: dict) -> None:
@@ -92,9 +104,12 @@ def validate_triggers(path: Path, workflow: dict) -> None:
         return
 
     if is_managed_reconcile(path):
-        expected = {"schedule", "workflow_dispatch"}
+        expected = {"push", "schedule", "workflow_dispatch"}
         if set(triggers) != expected:
             raise ValueError(f"{path}: managed reconcile triggers must be exactly {sorted(expected)}")
+        push = triggers.get("push") or {}
+        if push.get("branches") != ["main"] or push.get("paths") != MANAGED_RECONCILE_PATHS:
+            raise ValueError(f"{path}: managed reconcile push trigger must be exactly bounded to main and approved paths")
         schedule = triggers.get("schedule") or []
         if schedule != [{"cron": MANAGED_RECONCILE_CRON}]:
             raise ValueError(f"{path}: managed reconcile schedule must be exactly {MANAGED_RECONCILE_CRON!r}")
@@ -151,6 +166,7 @@ def validate_steps(path: Path, workflow: dict) -> None:
 def validate(path: Path) -> None:
     workflow = load_workflow(path)
     validate_permissions(path, workflow)
+    validate_concurrency(path, workflow)
     validate_triggers(path, workflow)
     validate_steps(path, workflow)
 
