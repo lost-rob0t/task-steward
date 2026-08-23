@@ -39,9 +39,16 @@ tasks:
   - id: task-stward-rage-issue-34
     project: task-stward-rage
     source: github-issue:lost-rob0t/task-stward-rage#34
+    state: closed
+    priority: 10
+    generation: 2
+
+  - id: task-stward-rage-issue-36
+    project: task-stward-rage
+    source: github-issue:lost-rob0t/task-stward-rage#36
     state: open
     priority: 10
     generation: 1
 
 observed_by: task-steward
-observed_at: 2026-08-23T01:51:03Z
+observed_at: 2026-08-23T01:54:33Z
