@@ -25,8 +25,18 @@ Every loop starts from observed state, derives admissible actions through explic
 - `experts/` contains serial Prolog Mixture-of-Experts rule modules.
 - `steward.pl` is the unified Prolog interface. Consumers must not bypass it to invent alternate scheduling authority.
 - `.github/workflows/` may validate, reconcile evidence, and wake the steward, but must remain scoped to this repository.
+- `skills/` is the canonical repository-local worker/bootstrap skill source. Client-specific project views are adapters only.
 
 There is intentionally no managed-project source tree here.
+
+## Client skill adapters
+
+When acting as an external worker or bootstrapping one, read the canonical `skills/task-steward-worker/SKILL.md` or `skills/task-steward-bootstrap/SKILL.md` contract before execution.
+
+- `.a0proj/skills/` is the Agent Zero project-scope adapter.
+- `.agents/skills/` is the generic/OpenCode project-scope adapter.
+- `.a0/skills/` is a local compatibility adapter only; Agent Zero's documented project discovery path is `.a0proj/skills/`.
+- Adapter entries must point back to the canonical `skills/` packages. Never hand-maintain divergent copies.
 
 ## Managed GitHub scheduling authority
 
