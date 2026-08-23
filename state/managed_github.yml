@@ -1,16 +1,16 @@
 version: 1
 observed_by: task-steward-github
-observed_at: '2026-08-23T22:53:02+00:00'
+observed_at: '2026-08-23T23:51:48+00:00'
 projects:
 - project: chatgpt-books-book1
   repo: lost-rob0t/chatgpt-books
   snapshot: unavailable
-  observed_at: '2026-08-23T22:53:02+00:00'
+  observed_at: '2026-08-23T23:51:48+00:00'
   work: []
 - project: hourly-auto-dig
   repo: lost-rob0t/starintel-gpt-auto-dig
   snapshot: partial
-  observed_at: '2026-08-23T22:53:02+00:00'
+  observed_at: '2026-08-23T23:51:48+00:00'
   work:
   - ref: issue-946
     kind: issue
@@ -1000,7 +1000,7 @@ projects:
     readiness: ready
     ci: not_applicable
     review: not_applicable
-    updated_at: '2026-08-23T17:55:20Z'
+    updated_at: '2026-08-23T22:57:27Z'
     source: github-issue:lost-rob0t/starintel-gpt-auto-dig#1894
   - ref: issue-1895
     kind: issue
@@ -1070,7 +1070,7 @@ projects:
     readiness: ready
     ci: not_applicable
     review: not_applicable
-    updated_at: '2026-08-23T17:55:12Z'
+    updated_at: '2026-08-23T22:56:40Z'
     source: github-issue:lost-rob0t/starintel-gpt-auto-dig#1901
   - ref: issue-1902
     kind: issue
@@ -1400,7 +1400,7 @@ projects:
     readiness: ready
     ci: not_applicable
     review: not_applicable
-    updated_at: '2026-08-23T21:54:47Z'
+    updated_at: '2026-08-23T23:51:44Z'
     source: github-issue:lost-rob0t/starintel-gpt-auto-dig#2095
   - ref: issue-2100
     kind: issue
@@ -1440,7 +1440,7 @@ projects:
     readiness: ready
     ci: not_applicable
     review: not_applicable
-    updated_at: '2026-08-23T21:54:55Z'
+    updated_at: '2026-08-23T22:56:17Z'
     source: github-issue:lost-rob0t/starintel-gpt-auto-dig#2106
   - ref: issue-2109
     kind: issue
@@ -1470,7 +1470,7 @@ projects:
     readiness: ready
     ci: not_applicable
     review: not_applicable
-    updated_at: '2026-08-23T16:57:24Z'
+    updated_at: '2026-08-23T23:51:30Z'
     source: github-issue:lost-rob0t/starintel-gpt-auto-dig#2112
   - ref: issue-2113
     kind: issue
@@ -2578,12 +2578,12 @@ projects:
 - project: local-recall
   repo: lost-rob0t/local-recall
   snapshot: unavailable
-  observed_at: '2026-08-23T22:53:02+00:00'
+  observed_at: '2026-08-23T23:51:48+00:00'
   work: []
 - project: prolog-rlm
   repo: lost-rob0t/prolog-rlm
   snapshot: fresh
-  observed_at: '2026-08-23T22:53:02+00:00'
+  observed_at: '2026-08-23T23:51:48+00:00'
   work:
   - ref: issue-3
     kind: issue
@@ -3230,17 +3230,17 @@ projects:
 - project: starintel-discord-reports
   repo: lost-rob0t/starintel-discord-reporting
   snapshot: unavailable
-  observed_at: '2026-08-23T22:53:02+00:00'
+  observed_at: '2026-08-23T23:51:48+00:00'
   work: []
 - project: starintel-infra
   repo: starintel-labs/starintel-infra
   snapshot: unavailable
-  observed_at: '2026-08-23T22:53:02+00:00'
+  observed_at: '2026-08-23T23:51:48+00:00'
   work: []
 - project: starintel-server
   repo: lost-rob0t/starintel-server
   snapshot: fresh
-  observed_at: '2026-08-23T22:53:02+00:00'
+  observed_at: '2026-08-23T23:51:48+00:00'
   work:
   - ref: issue-1
     kind: issue
@@ -3554,17 +3554,6 @@ projects:
     head_sha: 9dd127ca71bc1be6cc52a95cd8223011221c4e90
     updated_at: '2026-08-23T20:28:51Z'
     source: github-pr:lost-rob0t/starintel-server#101
-  - ref: pr-102
-    kind: pr
-    number: 102
-    state: open
-    severity: normal
-    readiness: ready
-    ci: failure
-    review: unknown
-    head_sha: 5a8db680b2e1d5c8f82b40a1d93f1b43b2ff2072
-    updated_at: '2026-08-17T04:15:29Z'
-    source: github-pr:lost-rob0t/starintel-server#102
   - ref: pr-104
     kind: pr
     number: 104
@@ -3590,7 +3579,7 @@ projects:
 - project: zara
   repo: lost-rob0t/zara
   snapshot: fresh
-  observed_at: '2026-08-23T22:53:02+00:00'
+  observed_at: '2026-08-23T23:51:48+00:00'
   work:
   - ref: issue-1
     kind: issue
@@ -4279,6 +4268,6 @@ projects:
     readiness: ready
     ci: pending
     review: unknown
-    head_sha: 3a34e642d9fd87ea51ce29d149da6553fca417b2
-    updated_at: '2026-08-23T22:43:41Z'
+    head_sha: 517e4993a67cbfbc788e4d8cee10818b4e4766e9
+    updated_at: '2026-08-23T23:11:16Z'
     source: github-pr:lost-rob0t/zara#188
