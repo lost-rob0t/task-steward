@@ -5,6 +5,9 @@
     steward_next/1,
     steward_next_external/2,
     steward_worker_decision/3,
+    steward_worker_dispatchable/3,
+    steward_worker_backend/2,
+    steward_runtime_generation_valid/2,
     steward_explain/2,
     steward_status/1,
     steward_deployment_status/1,
@@ -17,6 +20,7 @@
 :- use_module('kb/generated/handoffs.pl').
 :- use_module('kb/generated/policies.pl').
 :- use_module('kb/generated/managed_github.pl').
+:- use_module('kb/generated/workers.pl').
 :- use_module('kb/tasks.pl').
 :- use_module('kb/evidence.pl').
 :- use_module('kb/decisions.pl').
@@ -33,6 +37,7 @@
 :- use_module('experts/skip_policy.pl').
 :- use_module('experts/scheduling.pl').
 :- use_module('experts/managed_github.pl').
+:- use_module('experts/workers.pl').
 :- use_module('experts/handoff.pl').
 :- use_module('experts/completion.pl').
 :- use_module('experts/receipts.pl').
@@ -59,6 +64,15 @@ steward_validate :-
         project_repo(Project, Repo),
         github_snapshot(Project, Repo, _, _),
         managed_worker_decision(Project, _, _)
+    )),
+    forall(worker(Worker), (
+        worker_project(Worker, WorkerProject),
+        project(WorkerProject),
+        worker_backend(Worker, _),
+        (
+            (worker_enabled(Worker), \+ worker_disabled(Worker))
+        ;   (worker_disabled(Worker), \+ worker_enabled(Worker))
+        )
     )),
     forall(handoff(Handoff, Source, Target), (
         handoff_status(Handoff, _),
@@ -100,6 +114,15 @@ steward_next_external(Project, Ref) :-
 
 steward_worker_decision(Project, Decision, Reason) :-
     managed_worker_decision(Project, Decision, Reason).
+
+steward_worker_dispatchable(Worker, Project, Reason) :-
+    worker_dispatchable(Worker, Project, Reason).
+
+steward_worker_backend(Worker, Backend) :-
+    worker_backend(Worker, Backend).
+
+steward_runtime_generation_valid(Current, Presented) :-
+    runtime_generation_valid(Current, Presented).
 
 steward_explain(external(Project, Ref), explanation(external, Project, Ref, Score, Source, Snapshot)) :-
     managed_external_score(Project, Ref, Score),
