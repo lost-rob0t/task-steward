@@ -47,7 +47,7 @@ jobs:
 
       - name: Verify deterministic YAML to Prolog compilation
         run: |
-          python3 -m py_compile scripts/compile_state.py scripts/compile_policies.py scripts/compile_automations.py scripts/compile_tasks.py scripts/compile_deployment.py scripts/classify_wake.py scripts/reconcile_issue_task.py
+          python3 -m py_compile scripts/compile_state.py scripts/compile_policies.py scripts/compile_automations.py scripts/compile_tasks.py scripts/compile_deployment.py scripts/classify_wake.py scripts/reconcile_issue_task.py scripts/reconcile_issue_snapshot.py
           python3 scripts/compile_state.py --check
           python3 scripts/compile_policies.py --check
           python3 scripts/compile_automations.py --check
