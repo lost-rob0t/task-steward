@@ -2,6 +2,7 @@
 :- use_module('../kb/generated/projects.pl').
 :- use_module('../kb/generated/managed_github.pl').
 :- use_module(library(http/json)).
+:- use_module(library(pairs)).
 
 worker_entry(Project-_{project:Project, decision:Decision, reason:ReasonText}) :-
     kb_generated_projects:project(Project),
