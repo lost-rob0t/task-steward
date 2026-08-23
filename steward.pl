@@ -57,7 +57,8 @@ steward_validate :-
     forall(project(Project), project_repo(Project, _)),
     forall((project(Project), Project \= task_stward_rage), (
         project_repo(Project, Repo),
-        github_snapshot(Project, Repo, _, _)
+        github_snapshot(Project, Repo, _, _),
+        managed_worker_decision(Project, _, _)
     )),
     forall(handoff(Handoff, Source, Target), (
         handoff_status(Handoff, _),
