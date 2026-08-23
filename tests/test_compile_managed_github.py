@@ -47,15 +47,16 @@ def valid_doc() -> dict:
 
 
 class CompileManagedGithubTests(unittest.TestCase):
-    def test_repository_snapshot_compiles_deterministically_with_provenance(self) -> None:
-        doc = compile_managed_github.load_yaml(ROOT / "state" / "managed_github.yml")
+    def test_fixture_snapshot_compiles_deterministically_with_provenance(self) -> None:
+        doc = valid_doc()
         first = compile_managed_github.compile_managed(doc, PROJECTS)
         second = compile_managed_github.compile_managed(doc, PROJECTS)
         self.assertEqual(first, second)
         self.assertIn("managed_observed_by(task_steward_github).", first)
-        self.assertIn("github_snapshot(starintel_server, 'lost-rob0t/starintel-server', partial", first)
+        self.assertIn("managed_observed_at('2026-08-23T20:34:00+00:00').", first)
+        self.assertIn("github_snapshot(starintel_server, 'lost-rob0t/starintel-server', fresh", first)
         self.assertIn("github_work(starintel_server, pr_105).", first)
-        self.assertIn("github_work_head_sha(starintel_server, pr_105, '055c8bfdb5f291c764decd676c2163911e851021').", first)
+        self.assertIn(f"github_work_head_sha(starintel_server, pr_105, '{'a' * 40}').", first)
         self.assertIn("github_work_source(starintel_server, pr_105, 'github-pr:lost-rob0t/starintel-server#105').", first)
 
     def test_unknown_project_is_rejected(self) -> None:
