@@ -10,6 +10,8 @@ import yaml
 ROOT = Path(__file__).resolve().parents[1]
 WORKFLOWS = ROOT / ".github" / "workflows"
 TASK_RECONCILE_WORKFLOW = "task-reconcile.yml"
+TASK_RECONCILE_CRON = "17 * * * *"
+TASK_RECONCILE_GH_API = 'gh api --paginate --slurp "repos/${github_repository}/issues?state=all&per_page=100" > "$runner_temp/issues.json"'
 
 FORBIDDEN_ACTION_FRAGMENTS = (
     "gh repo clone",
@@ -56,11 +58,15 @@ def validate_triggers(path: Path, workflow: dict) -> None:
         raise ValueError(f"{path}: triggers must be a mapping")
 
     if is_task_reconcile(path):
-        if set(triggers) != {"issues"}:
-            raise ValueError(f"{path}: task reconcile must trigger only on issues")
+        expected = {"issues", "schedule", "workflow_dispatch"}
+        if set(triggers) != expected:
+            raise ValueError(f"{path}: task reconcile triggers must be exactly {sorted(expected)}")
         issues = triggers.get("issues") or {}
         if issues.get("types") != ["opened", "closed", "reopened"]:
             raise ValueError(f"{path}: task reconcile issue types must be opened, closed, reopened")
+        schedule = triggers.get("schedule") or []
+        if schedule != [{"cron": TASK_RECONCILE_CRON}]:
+            raise ValueError(f"{path}: task reconcile schedule must be exactly {TASK_RECONCILE_CRON!r}")
         return
 
     allowed = {"push", "pull_request", "workflow_dispatch"}
@@ -89,6 +95,10 @@ def validate_steps(path: Path, workflow: dict) -> None:
             if push_lines:
                 if not is_task_reconcile(path) or push_lines != ["git push origin head:main"]:
                     raise ValueError(f"{path}: job {job_name} contains forbidden write primitive 'git push'")
+            api_lines = [line.strip().lower() for line in script.splitlines() if "gh api" in line.lower()]
+            if api_lines:
+                if not is_task_reconcile(path) or api_lines != [TASK_RECONCILE_GH_API]:
+                    raise ValueError(f"{path}: job {job_name} contains non-allow-listed GitHub API access")
             for fragment in FORBIDDEN_ACTION_FRAGMENTS:
                 if fragment in lowered:
                     raise ValueError(f"{path}: job {job_name} contains forbidden write primitive {fragment!r}")
