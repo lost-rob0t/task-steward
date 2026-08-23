@@ -19,11 +19,11 @@ It is derived from the StarIntel Labs RAGE template and keeps the RAGE method: *
 * Repository shape
 
 #+begin_src text
-state/                 steward-authored YAML state and policy
+state/                 authored policy plus bounded observed/derived steward state
 kb/                    Prolog knowledge-base facts
 experts/               serial Prolog Mixture-of-Experts rule modules
 steward.pl             unified Prolog query/interface surface
-.github/workflows/     validation and steward wake/run entry points
+.github/workflows/     validation and bounded reconciliation/wake entry points
 #+end_src
 
 There is deliberately no =src/= tree for managed projects, no copied implementation code, and no cross-repository runtime dependency.
@@ -44,6 +44,20 @@ Only =main= is scheduling-authoritative. A PR branch may therefore encode the st
 
 Issue-event, PR-close, scheduled, and manual snapshot reconciliation remain enabled for human or external mutations and drift repair, but steward correctness must not depend on those events firing after a steward-originated mutation.
 
+** Managed GitHub evidence and decisions
+
+Managed-project GitHub state is an observed input, not an LLM scheduling decision. =.github/workflows/managed-reconcile.yml= reads the repositories declared in =state/projects.yml=, normalizes a bounded snapshot into =state/managed_github.yml=, and deterministically compiles that snapshot into =kb/generated/managed_github.pl=.
+
+The reconciler records open issues and pull requests, dependency/readiness labels, severity labels, exact PR head SHAs, exact-head CI state, review decision/thread state when available, timestamps, and exact GitHub source references. API denial, truncation, or incomplete per-PR evidence yields =partial= or =unavailable= evidence. Missing or incomplete evidence is never interpreted as proof that a worker has no work.
+
+=experts/managed_github.pl= combines those observed facts with authored project policy. Explicit user hard stops and paused states win over backlog pressure. Permanent/protected active workers remain retained by policy. An unprotected non-permanent worker may yield only when a fresh complete snapshot proves that no schedulable work remains. Quiet activity by itself is never an abandonment signal.
+
+The same Prolog rules score actionable external work from authored project priority plus observed severity, work kind, CI state, and review state. Existing pull-request repair is preferred over an otherwise equal new issue. Partial snapshots may contribute positive known work, but cannot authorize a destructive yield.
+
+After every managed reconciliation, Prolog exports the authoritative result to =state/managed_decisions.json=. That artifact contains =keep=/=pause=/=yield= for every managed project and the current =next_external= candidate with provenance. It is derived output: CI regenerates it from =steward.pl= and fails if the tracked artifact disagrees.
+
+Managed repositories remain read-only evidence sources. The reconciliation workflow has write authority only for this control repository, and its exact trigger, staging paths, push destination, and shared state-writer concurrency group are fail-closed by =scripts/validate_workflow_scope.py=.
+
 * Serial Prolog MoE
 
 The Mixture of Experts is deterministic Prolog, not an LLM committee. Specialized rule modules execute serially over the same KB and derived facts. Initial expert domains are:
@@ -54,21 +68,24 @@ The Mixture of Experts is deterministic Prolog, not an LLM committee. Specialize
 - regression detection
 - priority scoring
 - job/test skipping policy
+- managed GitHub worker retention and external scheduling
 - scheduling
 - handoffs
 - completion gates
 
-LLMs may perform bounded work chosen by the steward, but LLM output never directly determines scheduling, priority, handoff, regression, or skip decisions.
+LLMs may perform bounded work chosen by the steward, but LLM output never directly determines scheduling, priority, handoff, regression, worker retention, or skip decisions.
 
 * Unified interface
 
 =steward.pl= is the only supported logical interface. GitHub Actions and the Task Steward should query the interface rather than reaching into individual expert modules.
 
-The interface is expected to expose operations such as:
+The interface exposes operations such as:
 
 #+begin_src prolog
 steward_validate.
 steward_next(Action).
+steward_next_external(Project, TaskRef).
+steward_worker_decision(Project, Decision, Reason).
 steward_explain(Action, Explanation).
 steward_status(Status).
 #+end_src
@@ -85,7 +102,7 @@ Workflow validation and logical steward evaluation are separate operations.
 
 A wake means only "re-evaluate current state". It does not choose the next task. The evaluation calls the unified Prolog interface, and Prolog remains authoritative for the result.
 
-The workflow itself has read-only repository contents permission. It cannot mutate managed repositories, and the scope validator rejects workflow authority that would introduce repository/network writes.
+The validation/evaluation workflow has read-only contents permission. State-reconciliation workflows have narrowly bounded write permission only to this repository. They cannot mutate managed repositories, and the scope validator rejects drift in their triggers, staging paths, push destination, or write authority.
 
 * RAGE loop
 
