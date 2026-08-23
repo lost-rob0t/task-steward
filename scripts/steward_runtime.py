@@ -197,38 +197,46 @@ class PrologScheduler:
 class LeaseStore:
     def __init__(self, path: Path) -> None:
         path.parent.mkdir(parents=True, exist_ok=True)
-        self.conn = sqlite3.connect(path, isolation_level=None)
-        self.conn.row_factory = sqlite3.Row
-        self.conn.execute("PRAGMA journal_mode=WAL")
-        self.conn.execute("PRAGMA synchronous=FULL")
-        self.conn.executescript(
-            """
-            CREATE TABLE IF NOT EXISTS leases (
-                project TEXT NOT NULL,
-                task_ref TEXT NOT NULL,
-                generation INTEGER NOT NULL,
-                worker TEXT NOT NULL,
-                lease_token TEXT NOT NULL,
-                expires_at REAL NOT NULL,
-                status TEXT NOT NULL,
-                updated_at REAL NOT NULL,
-                PRIMARY KEY (project, task_ref)
-            );
-            CREATE TABLE IF NOT EXISTS receipts (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                project TEXT NOT NULL,
-                task_ref TEXT NOT NULL,
-                generation INTEGER NOT NULL,
-                worker TEXT NOT NULL,
-                kind TEXT NOT NULL,
-                detail TEXT,
-                observed_at REAL NOT NULL
-            );
-            """
-        )
+        self.path = path
+        conn = self._connect()
+        try:
+            conn.executescript(
+                """
+                CREATE TABLE IF NOT EXISTS leases (
+                    project TEXT NOT NULL,
+                    task_ref TEXT NOT NULL,
+                    generation INTEGER NOT NULL,
+                    worker TEXT NOT NULL,
+                    lease_token TEXT NOT NULL,
+                    expires_at REAL NOT NULL,
+                    status TEXT NOT NULL,
+                    updated_at REAL NOT NULL,
+                    PRIMARY KEY (project, task_ref)
+                );
+                CREATE TABLE IF NOT EXISTS receipts (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    project TEXT NOT NULL,
+                    task_ref TEXT NOT NULL,
+                    generation INTEGER NOT NULL,
+                    worker TEXT NOT NULL,
+                    kind TEXT NOT NULL,
+                    detail TEXT,
+                    observed_at REAL NOT NULL
+                );
+                """
+            )
+        finally:
+            conn.close()
+
+    def _connect(self) -> sqlite3.Connection:
+        conn = sqlite3.connect(self.path, isolation_level=None)
+        conn.row_factory = sqlite3.Row
+        conn.execute("PRAGMA journal_mode=WAL")
+        conn.execute("PRAGMA synchronous=FULL")
+        return conn
 
     def close(self) -> None:
-        self.conn.close()
+        """Per-operation connections need no persistent close action."""
 
     def acquire(
         self,
@@ -240,9 +248,10 @@ class LeaseStore:
         now: float | None = None,
     ) -> Lease:
         observed = time.time() if now is None else now
-        self.conn.execute("BEGIN IMMEDIATE")
+        conn = self._connect()
         try:
-            row = self.conn.execute(
+            conn.execute("BEGIN IMMEDIATE")
+            row = conn.execute(
                 "SELECT generation, worker, lease_token, expires_at, status "
                 "FROM leases WHERE project = ? AND task_ref = ?",
                 (project, task_ref),
@@ -260,13 +269,13 @@ class LeaseStore:
                     lease_token=str(row["lease_token"]),
                     expires_at=float(row["expires_at"]),
                 )
-                self.conn.execute("COMMIT")
+                conn.commit()
                 return lease
 
             generation = 1 if row is None else int(row["generation"]) + 1
             token = secrets.token_urlsafe(24)
             expires_at = observed + ttl_seconds
-            self.conn.execute(
+            conn.execute(
                 "INSERT INTO leases(project, task_ref, generation, worker, lease_token, "
                 "expires_at, status, updated_at) VALUES (?, ?, ?, ?, ?, ?, 'active', ?) "
                 "ON CONFLICT(project, task_ref) DO UPDATE SET "
@@ -275,12 +284,14 @@ class LeaseStore:
                 "status='active', updated_at=excluded.updated_at",
                 (project, task_ref, generation, worker, token, expires_at, observed),
             )
-            self.conn.execute("COMMIT")
+            conn.commit()
             return Lease(worker, project, task_ref, generation, token, expires_at)
         except Exception:
-            if self.conn.in_transaction:
-                self.conn.execute("ROLLBACK")
+            if conn.in_transaction:
+                conn.rollback()
             raise
+        finally:
+            conn.close()
 
     def record_receipt(
         self,
@@ -298,9 +309,10 @@ class LeaseStore:
         if kind not in RECEIPT_KINDS:
             raise ValueError(f"unsupported receipt kind: {kind}")
         observed = time.time() if now is None else now
-        self.conn.execute("BEGIN IMMEDIATE")
+        conn = self._connect()
         try:
-            row = self.conn.execute(
+            conn.execute("BEGIN IMMEDIATE")
+            row = conn.execute(
                 "SELECT generation, worker, lease_token, expires_at, status "
                 "FROM leases WHERE project = ? AND task_ref = ?",
                 (project, task_ref),
@@ -311,45 +323,51 @@ class LeaseStore:
                 raise InvalidLeaseToken("lease token does not match current generation")
             if row["status"] != "active":
                 if row["status"] == kind:
-                    self.conn.execute("COMMIT")
+                    conn.commit()
                     return {"status": kind, "generation": generation, "idempotent": True}
                 raise StaleLease(f"lease is already terminal: {row['status']}")
             if float(row["expires_at"]) <= observed:
-                self.conn.execute(
+                conn.execute(
                     "UPDATE leases SET status='expired', updated_at=? "
                     "WHERE project=? AND task_ref=?",
                     (observed, project, task_ref),
                 )
-                self.conn.execute("COMMIT")
+                conn.commit()
                 raise StaleLease(f"lease expired for {project}/{task_ref}")
 
             status = "active" if kind in LIVE_RECEIPTS else kind
             expires_at = observed + ttl_seconds if kind in LIVE_RECEIPTS else float(row["expires_at"])
-            self.conn.execute(
+            conn.execute(
                 "UPDATE leases SET status=?, expires_at=?, updated_at=? "
                 "WHERE project=? AND task_ref=?",
                 (status, expires_at, observed, project, task_ref),
             )
-            self.conn.execute(
+            conn.execute(
                 "INSERT INTO receipts(project, task_ref, generation, worker, kind, detail, observed_at) "
                 "VALUES (?, ?, ?, ?, ?, ?, ?)",
                 (project, task_ref, generation, worker, kind, detail, observed),
             )
-            self.conn.execute("COMMIT")
+            conn.commit()
             return {"status": status, "generation": generation, "expires_at": expires_at}
         except Exception:
-            if self.conn.in_transaction:
-                self.conn.execute("ROLLBACK")
+            if conn.in_transaction:
+                conn.rollback()
             raise
+        finally:
+            conn.close()
 
     def active(self, *, now: float | None = None) -> list[dict[str, Any]]:
         observed = time.time() if now is None else now
-        rows = self.conn.execute(
-            "SELECT project, task_ref, generation, worker, expires_at, status "
-            "FROM leases WHERE status='active' AND expires_at > ? ORDER BY project, task_ref",
-            (observed,),
-        ).fetchall()
-        return [dict(row) for row in rows]
+        conn = self._connect()
+        try:
+            rows = conn.execute(
+                "SELECT project, task_ref, generation, worker, expires_at, status "
+                "FROM leases WHERE status='active' AND expires_at > ? ORDER BY project, task_ref",
+                (observed,),
+            ).fetchall()
+            return [dict(row) for row in rows]
+        finally:
+            conn.close()
 
 
 def assignment_prompt(assignment: Assignment, callback_url: str | None) -> str:
