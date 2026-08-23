@@ -3,6 +3,8 @@ name: Task Mirror Reconcile
 on:
   issues:
     types: [opened, closed, reopened]
+  pull_request:
+    types: [closed]
   schedule:
     - cron: '17 * * * *'
   workflow_dispatch:
