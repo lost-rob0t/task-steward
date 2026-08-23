@@ -10,19 +10,32 @@
 :- use_module('../kb/generated/managed_github.pl').
 :- use_module('policy.pl').
 
+active_status(active).
+active_status(active_freeze_exception).
+
 % Pure decision seam used by regressions. Incomplete evidence is never authority
 % for a destructive yield; explicit user/project stops always win.
 worker_decision_from(Status, _Mode, _Protected, _Snapshot, _HasWork, pause, project_status(Status)) :-
     memberchk(Status, [hard_paused_user, hard_stopped_user, paused_user, paused]),
     !.
-worker_decision_from(active, permanent_worker, _Protected, _Snapshot, _HasWork, keep, permanent_worker) :- !.
-worker_decision_from(active, _Mode, true, _Snapshot, _HasWork, keep, protected_project) :- !.
-worker_decision_from(active, _Mode, false, missing, _HasWork, keep, evidence_missing) :- !.
-worker_decision_from(active, _Mode, false, Snapshot, _HasWork, keep, evidence_incomplete(Snapshot)) :-
+worker_decision_from(Status, permanent_worker, _Protected, _Snapshot, _HasWork, keep, permanent_worker) :-
+    active_status(Status),
+    !.
+worker_decision_from(Status, _Mode, true, _Snapshot, _HasWork, keep, protected_project) :-
+    active_status(Status),
+    !.
+worker_decision_from(Status, _Mode, false, missing, _HasWork, keep, evidence_missing) :-
+    active_status(Status),
+    !.
+worker_decision_from(Status, _Mode, false, Snapshot, _HasWork, keep, evidence_incomplete(Snapshot)) :-
+    active_status(Status),
     memberchk(Snapshot, [partial, stale, unavailable]),
     !.
-worker_decision_from(active, _Mode, false, fresh, true, keep, schedulable_github_work) :- !.
-worker_decision_from(active, _Mode, false, fresh, false, yield, no_schedulable_github_work).
+worker_decision_from(Status, _Mode, false, fresh, true, keep, schedulable_github_work) :-
+    active_status(Status),
+    !.
+worker_decision_from(Status, _Mode, false, fresh, false, yield, no_schedulable_github_work) :-
+    active_status(Status).
 
 managed_worker_decision(Project, Decision, Reason) :-
     project(Project),
