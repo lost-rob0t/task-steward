@@ -47,12 +47,13 @@ jobs:
 
       - name: Verify deterministic YAML to Prolog compilation
         run: |
-          python3 -m py_compile scripts/compile_state.py scripts/compile_policies.py scripts/compile_automations.py scripts/compile_tasks.py scripts/compile_deployment.py scripts/classify_wake.py scripts/reconcile_issue_task.py scripts/reconcile_issue_snapshot.py
+          python3 -m py_compile scripts/compile_state.py scripts/compile_policies.py scripts/compile_automations.py scripts/compile_tasks.py scripts/compile_deployment.py scripts/compile_managed_github.py scripts/classify_wake.py scripts/reconcile_issue_task.py scripts/reconcile_issue_snapshot.py scripts/reconcile_managed_github.py
           python3 scripts/compile_state.py --check
           python3 scripts/compile_policies.py --check
           python3 scripts/compile_automations.py --check
           python3 scripts/compile_tasks.py --check
           python3 scripts/compile_deployment.py --check
+          python3 scripts/compile_managed_github.py --check
 
       - name: Run compiler regression tests
         run: |
@@ -70,10 +71,27 @@ jobs:
           swipl -q -s tests/action_explanations.pl -g run_tests -t halt
           swipl -q -s tests/freeze_eligibility.pl -g run_tests -t halt
           swipl -q -s tests/deployment_gate.pl -g run_tests -t halt
+          swipl -q -s tests/managed_github_scheduling.pl -g run_tests -t halt
+
+      - name: Verify authoritative managed decision artifact
+        run: |
+          swipl -q -s scripts/export_managed_decisions.pl -g main -t halt > "$RUNNER_TEMP/managed-decisions.json"
+          python3 - "$RUNNER_TEMP/managed-decisions.json" <<'PY'
+          import json
+          import pathlib
+          import sys
+
+          expected = json.loads(pathlib.Path("state/managed_decisions.json").read_text(encoding="utf-8"))
+          actual = json.loads(pathlib.Path(sys.argv[1]).read_text(encoding="utf-8"))
+          if actual != expected:
+              raise SystemExit("managed Prolog decision artifact is stale")
+          print("managed Prolog decision artifact verified")
+          PY
 
       - name: Validate generated custom Prolog syntax
         run: |
           swipl -q -s experts/generated/project_rules.pl -g halt
+          swipl -q -s kb/generated/managed_github.pl -g halt
 
       - name: Validate Prolog KB and experts
         run: |

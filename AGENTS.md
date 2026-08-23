@@ -20,13 +20,23 @@ Every loop starts from observed state, derives admissible actions through explic
 
 ## Repository model
 
-- `state/` contains steward-authored YAML configuration and durable orchestration state.
+- `state/` contains steward-authored policy plus bounded observed/derived orchestration state.
 - `kb/` contains Prolog knowledge-base facts and derived/mirrored state.
 - `experts/` contains serial Prolog Mixture-of-Experts rule modules.
 - `steward.pl` is the unified Prolog interface. Consumers must not bypass it to invent alternate scheduling authority.
-- `.github/workflows/` may validate and wake the steward, but must remain scoped to this repository.
+- `.github/workflows/` may validate, reconcile evidence, and wake the steward, but must remain scoped to this repository.
 
 There is intentionally no managed-project source tree here.
+
+## Managed GitHub scheduling authority
+
+- `state/managed_github.yml` is the bounded, provenance-bearing observation of managed repository backlog/PR/CI/review state.
+- `kb/generated/managed_github.pl` is its deterministic Prolog representation.
+- `state/managed_decisions.json` is generated from `steward.pl`; it is not hand-authored policy. It records Prolog's current `keep`/`pause`/`yield` worker decisions and `next_external` candidate.
+- The Task Steward must consume the current `state/managed_decisions.json` from canonical `main` when deciding which managed workers stay active and what external work is next. Do not substitute an LLM-selected worker/task when a current Prolog decision exists.
+- A newer explicit user instruction may change policy, but reconcile that instruction into durable policy/project state and regenerate/re-evaluate Prolog before treating the changed schedule as canonical.
+- Missing, stale, partial, inaccessible, or truncated GitHub evidence must fail closed. It may retain a worker or permit already-observed positive work, but it must never be treated as proof that a worker should be yielded.
+- Explicit user hard stops and resume-required states are absolute and cannot be overridden by backlog pressure.
 
 ## YAML and inline Prolog
 
@@ -36,7 +46,7 @@ Inline Prolog is logic-only. It must be parsed/validated before loading. Reject 
 
 ## Serial Prolog MoE
 
-The experts are Prolog rule modules, not LLM personas. Run them serially over the same KB and derived facts. The Prolog system owns scheduling, priority scoring, failure classification, regression detection, job/test skipping, handoffs, and completion decisions.
+The experts are Prolog rule modules, not LLM personas. Run them serially over the same KB and derived facts. The Prolog system owns scheduling, worker retention, priority scoring, failure classification, regression detection, job/test skipping, handoffs, and completion decisions.
 
 An LLM may perform bounded work selected by the steward, but LLM output is evidence/input, never direct scheduling authority.
 

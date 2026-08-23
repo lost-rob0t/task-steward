@@ -1,0 +1,64 @@
+name: Managed GitHub Reconcile
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/managed-reconcile.yml'
+      - 'state/projects.yml'
+      - 'scripts/reconcile_managed_github.py'
+      - 'scripts/compile_managed_github.py'
+      - 'scripts/export_managed_decisions.pl'
+  schedule:
+    - cron: '37 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: task-steward-state-writers
+  cancel-in-progress: false
+
+jobs:
+  reconcile:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Install validators
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y swi-prolog-nox python3-yaml
+
+      - name: Fast-forward canonical branch
+        run: |
+          git pull --ff-only origin main
+
+      - name: Reconcile managed GitHub evidence
+        env:
+          TASK_STEWARD_GITHUB_TOKEN: ${{ secrets.TASK_STEWARD_GITHUB_TOKEN || github.token }}
+        run: |
+          python3 scripts/reconcile_managed_github.py
+          python3 scripts/compile_managed_github.py
+          swipl -q -s scripts/export_managed_decisions.pl -g main -t halt > state/managed_decisions.json
+
+      - name: Validate generated evidence and Prolog decision surface
+        run: |
+          python3 scripts/compile_managed_github.py --check
+          python3 -m json.tool state/managed_decisions.json >/dev/null
+          swipl -q -s steward.pl -g "steward_validate,steward_next(A),writeln(A),halt"
+
+      - name: Commit managed evidence only
+        run: |
+          if git diff --quiet -- state/managed_github.yml state/managed_decisions.json kb/generated/managed_github.pl; then
+            exit 0
+          fi
+          git config user.name "task-steward"
+          git config user.email "task-steward@users.noreply.github.com"
+          git add -f -- state/managed_github.yml state/managed_decisions.json kb/generated/managed_github.pl
+          git commit -m "[steward-state] reconcile managed GitHub evidence"
+          git push origin HEAD:main
