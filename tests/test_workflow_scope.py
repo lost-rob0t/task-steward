@@ -23,6 +23,7 @@ class WorkflowScopeTests(unittest.TestCase):
         return {
             "on": {
                 "issues": {"types": ["opened", "closed", "reopened"]},
+                "pull_request": {"types": ["closed"]},
                 "schedule": [{"cron": validator.TASK_RECONCILE_CRON}],
                 "workflow_dispatch": {},
             },
@@ -33,10 +34,6 @@ class WorkflowScopeTests(unittest.TestCase):
     def test_current_workflow_passes(self):
         validator.validate(ROOT / ".github" / "workflows" / "steward.yml")
         validator.validate(ROOT / ".github" / "workflows" / "task-reconcile.yml")
-
-    def test_write_permission_is_rejected(self):
-        with self.assertRaisesRegex(ValueError, "permissions"):
-            validator.validate_permissions(Path("bad.yml"), self.workflow(permissions={"contents": "write"}))
 
     def test_task_reconcile_write_scope_is_allowed(self):
         path = Path(".github/workflows/task-reconcile.yml")
@@ -63,6 +60,17 @@ class WorkflowScopeTests(unittest.TestCase):
         workflow["on"]["schedule"] = [{"cron": "* * * * *"}]
         with self.assertRaisesRegex(ValueError, "schedule"):
             validator.validate_triggers(path, workflow)
+
+    def test_task_reconcile_pr_close_trigger_drift_is_rejected(self):
+        path = Path(".github/workflows/task-reconcile.yml")
+        workflow = self.task_reconcile_workflow()
+        workflow["on"]["pull_request"] = {"types": ["opened", "closed"]}
+        with self.assertRaisesRegex(ValueError, "pull request types"):
+            validator.validate_triggers(path, workflow)
+
+    def test_write_permission_is_rejected(self):
+        with self.assertRaisesRegex(ValueError, "permissions"):
+            validator.validate_permissions(Path("bad.yml"), self.workflow(permissions={"contents": "write"}))
 
     def test_external_git_push_is_rejected(self):
         with self.assertRaisesRegex(ValueError, "git push"):
