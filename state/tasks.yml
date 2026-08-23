@@ -1,75 +1,70 @@
 version: 1
-
 tasks:
-  - id: task-stward-rage-issue-1
-    project: task-stward-rage
-    source: github-issue:lost-rob0t/task-stward-rage#1
-    state: closed
-    priority: 10
-    generation: 2
-
-  - id: task-stward-rage-issue-26
-    project: task-stward-rage
-    source: github-issue:lost-rob0t/task-stward-rage#26
-    state: closed
-    priority: 10
-    generation: 1
-
-  - id: task-stward-rage-issue-28
-    project: task-stward-rage
-    source: github-issue:lost-rob0t/task-stward-rage#28
-    state: closed
-    priority: 10
-    generation: 2
-
-  - id: task-stward-rage-issue-30
-    project: task-stward-rage
-    source: github-issue:lost-rob0t/task-stward-rage#30
-    state: closed
-    priority: 10
-    generation: 2
-
-  - id: task-stward-rage-issue-32
-    project: task-stward-rage
-    source: github-issue:lost-rob0t/task-stward-rage#32
-    state: closed
-    priority: 10
-    generation: 2
-
-  - id: task-stward-rage-issue-34
-    project: task-stward-rage
-    source: github-issue:lost-rob0t/task-stward-rage#34
-    state: closed
-    priority: 10
-    generation: 2
-
-  - id: task-stward-rage-issue-36
-    project: task-stward-rage
-    source: github-issue:lost-rob0t/task-stward-rage#36
-    state: closed
-    priority: 10
-    generation: 2
-
-  - id: task-stward-rage-issue-38
-    project: task-stward-rage
-    source: github-issue:lost-rob0t/task-stward-rage#38
-    state: closed
-    priority: 10
-    generation: 2
-
-  - id: task-stward-rage-issue-40
-    project: task-stward-rage
-    source: github-issue:lost-rob0t/task-stward-rage#40
-    state: closed
-    priority: 10
-    generation: 2
-
-  - id: task-stward-rage-issue-42
-    project: task-stward-rage
-    source: github-issue:lost-rob0t/task-stward-rage#42
-    state: closed
-    priority: 10
-    generation: 2
-
+- id: task-stward-rage-issue-1
+  project: task-stward-rage
+  source: github-issue:lost-rob0t/task-stward-rage#1
+  state: closed
+  priority: 10
+  generation: 2
+- id: task-stward-rage-issue-26
+  project: task-stward-rage
+  source: github-issue:lost-rob0t/task-stward-rage#26
+  state: closed
+  priority: 10
+  generation: 1
+- id: task-stward-rage-issue-28
+  project: task-stward-rage
+  source: github-issue:lost-rob0t/task-stward-rage#28
+  state: closed
+  priority: 10
+  generation: 2
+- id: task-stward-rage-issue-30
+  project: task-stward-rage
+  source: github-issue:lost-rob0t/task-stward-rage#30
+  state: closed
+  priority: 10
+  generation: 2
+- id: task-stward-rage-issue-32
+  project: task-stward-rage
+  source: github-issue:lost-rob0t/task-stward-rage#32
+  state: closed
+  priority: 10
+  generation: 2
+- id: task-stward-rage-issue-34
+  project: task-stward-rage
+  source: github-issue:lost-rob0t/task-stward-rage#34
+  state: closed
+  priority: 10
+  generation: 2
+- id: task-stward-rage-issue-36
+  project: task-stward-rage
+  source: github-issue:lost-rob0t/task-stward-rage#36
+  state: closed
+  priority: 10
+  generation: 2
+- id: task-stward-rage-issue-38
+  project: task-stward-rage
+  source: github-issue:lost-rob0t/task-stward-rage#38
+  state: closed
+  priority: 10
+  generation: 2
+- id: task-stward-rage-issue-40
+  project: task-stward-rage
+  source: github-issue:lost-rob0t/task-stward-rage#40
+  state: closed
+  priority: 10
+  generation: 2
+- id: task-stward-rage-issue-42
+  project: task-stward-rage
+  source: github-issue:lost-rob0t/task-stward-rage#42
+  state: closed
+  priority: 10
+  generation: 2
+- id: task-stward-rage-issue-44
+  project: task-stward-rage
+  source: github-issue:lost-rob0t/task-stward-rage#44
+  state: closed
+  priority: 10
+  generation: 1
 observed_by: task-steward
-observed_at: 2026-08-23T05:46:57Z
+observed_at: '2026-08-23T10:48:34Z'
