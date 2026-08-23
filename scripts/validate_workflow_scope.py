@@ -9,11 +9,11 @@ import yaml
 
 ROOT = Path(__file__).resolve().parents[1]
 WORKFLOWS = ROOT / ".github" / "workflows"
+TASK_RECONCILE_WORKFLOW = "task-reconcile.yml"
 
 FORBIDDEN_ACTION_FRAGMENTS = (
     "gh repo clone",
     "git clone",
-    "git push",
     "gh pr merge",
     "gh issue",
     "curl -x post",
@@ -24,6 +24,10 @@ FORBIDDEN_ACTION_FRAGMENTS = (
     "curl --request patch",
     "api.github.com/repos/",
 )
+
+
+def is_task_reconcile(path: Path) -> bool:
+    return path.name == TASK_RECONCILE_WORKFLOW
 
 
 def load_workflow(path: Path) -> dict:
@@ -37,8 +41,9 @@ def load_workflow(path: Path) -> dict:
 
 def validate_permissions(path: Path, workflow: dict) -> None:
     permissions = workflow.get("permissions")
-    if permissions != {"contents": "read"}:
-        raise ValueError(f"{path}: top-level permissions must be exactly contents: read")
+    expected = {"contents": "write", "issues": "read"} if is_task_reconcile(path) else {"contents": "read"}
+    if permissions != expected:
+        raise ValueError(f"{path}: permissions must be exactly {expected}")
 
     for job_name, job in (workflow.get("jobs") or {}).items():
         if isinstance(job, dict) and "permissions" in job:
@@ -49,6 +54,15 @@ def validate_triggers(path: Path, workflow: dict) -> None:
     triggers = workflow.get("on") or {}
     if not isinstance(triggers, dict):
         raise ValueError(f"{path}: triggers must be a mapping")
+
+    if is_task_reconcile(path):
+        if set(triggers) != {"issues"}:
+            raise ValueError(f"{path}: task reconcile must trigger only on issues")
+        issues = triggers.get("issues") or {}
+        if issues.get("types") != ["opened", "closed", "reopened"]:
+            raise ValueError(f"{path}: task reconcile issue types must be opened, closed, reopened")
+        return
+
     allowed = {"push", "pull_request", "workflow_dispatch"}
     unknown = set(triggers) - allowed
     if unknown:
@@ -69,9 +83,14 @@ def validate_steps(path: Path, workflow: dict) -> None:
             action = (step.get("uses") or "").lower()
             if action and not re.fullmatch(r"actions/checkout@v\d+", action):
                 raise ValueError(f"{path}: job {job_name} uses non-allow-listed action {action}")
-            script = (step.get("run") or "").lower()
+            script = step.get("run") or ""
+            lowered = script.lower()
+            push_lines = [line.strip().lower() for line in script.splitlines() if "git push" in line.lower()]
+            if push_lines:
+                if not is_task_reconcile(path) or push_lines != ["git push origin head:main"]:
+                    raise ValueError(f"{path}: job {job_name} contains forbidden write primitive 'git push'")
             for fragment in FORBIDDEN_ACTION_FRAGMENTS:
-                if fragment in script:
+                if fragment in lowered:
                     raise ValueError(f"{path}: job {job_name} contains forbidden write primitive {fragment!r}")
 
 

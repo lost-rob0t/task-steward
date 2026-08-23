@@ -19,9 +19,18 @@ task_generation(task_stward_rage_issue_26, 1).
 task(task_stward_rage_issue_28).
 task_project(task_stward_rage_issue_28, task_stward_rage).
 task_source(task_stward_rage_issue_28, 'github-issue:lost-rob0t/task-stward-rage#28').
-task_state(task_stward_rage_issue_28, open).
+task_state(task_stward_rage_issue_28, closed).
 task_priority(task_stward_rage_issue_28, 10).
-task_generation(task_stward_rage_issue_28, 1).
+task_generation(task_stward_rage_issue_28, 2).
+
+task(task_stward_rage_issue_30).
+task_project(task_stward_rage_issue_30, task_stward_rage).
+task_source(task_stward_rage_issue_30, 'github-issue:lost-rob0t/task-stward-rage#30').
+task_state(task_stward_rage_issue_30, open).
+task_priority(task_stward_rage_issue_30, 10).
+task_generation(task_stward_rage_issue_30, 1).
+
+task_dependency(_, _) :- fail.
 
 observed_by(task_steward).
-observed_at('2026-08-22T22:47:15+00:00').
+observed_at('2026-08-22T23:50:57+00:00').

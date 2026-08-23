@@ -79,6 +79,7 @@ def compile_tasks(doc: dict[str, Any]) -> str:
         ":- module(kb_generated_tasks, [task/1, task_project/2, task_source/2, task_state/2, task_priority/2, task_dependency/2, task_generation/2, observed_by/1, observed_at/1]).",
         "",
     ]
+    has_dependencies = False
     for row in sorted(normalized, key=lambda item: item["id"]):
         ident = atom(row["id"])
         lines.append(f"task({ident}).")
@@ -88,7 +89,12 @@ def compile_tasks(doc: dict[str, Any]) -> str:
         lines.append(f"task_priority({ident}, {row.get('priority', 0)}).")
         lines.append(f"task_generation({ident}, {row.get('generation', 0)}).")
         for dependency in sorted(row.get("dependencies") or []):
+            has_dependencies = True
             lines.append(f"task_dependency({ident}, {atom(dependency)}).")
+        lines.append("")
+
+    if not has_dependencies:
+        lines.append("task_dependency(_, _) :- fail.")
         lines.append("")
 
     observed_by = doc.get("observed_by")

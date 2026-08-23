@@ -30,8 +30,31 @@ class CompileTasksTests(unittest.TestCase):
         self.assertIn("task(task_stward_rage_issue_26).", first)
         self.assertIn("task_state(task_stward_rage_issue_26, closed).", first)
         self.assertIn("task(task_stward_rage_issue_28).", first)
-        self.assertIn("task_state(task_stward_rage_issue_28, open).", first)
+        self.assertIn("task_state(task_stward_rage_issue_28, closed).", first)
+        self.assertNotIn("task_state(task_stward_rage_issue_28, open).", first)
+        self.assertIn("task_generation(task_stward_rage_issue_28, 2).", first)
+        self.assertIn("task(task_stward_rage_issue_30).", first)
+        self.assertIn("task_state(task_stward_rage_issue_30, open).", first)
+        self.assertIn("task_generation(task_stward_rage_issue_30, 1).", first)
+        self.assertIn("task_dependency(_, _) :- fail.", first)
         self.assertTrue(first.startswith("% GENERATED FILE. DO NOT EDIT."))
+
+    def test_empty_dependency_relation_is_defined(self) -> None:
+        doc = {
+            "version": 1,
+            "tasks": [
+                {
+                    "id": "one",
+                    "project": "a",
+                    "source": "issue:a#1",
+                    "state": "open",
+                }
+            ],
+            "observed_by": "task-steward",
+            "observed_at": "2026-08-22T00:00:00Z",
+        }
+        compiled = compile_tasks.compile_tasks(doc)
+        self.assertIn("task_dependency(_, _) :- fail.", compiled)
 
     def test_duplicate_task_ids_are_rejected(self) -> None:
         doc = {
