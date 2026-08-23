@@ -12,6 +12,7 @@ WORKFLOWS = ROOT / ".github" / "workflows"
 TASK_RECONCILE_WORKFLOW = "task-reconcile.yml"
 TASK_RECONCILE_CRON = "17 * * * *"
 TASK_RECONCILE_GH_API = 'gh api --paginate --slurp "repos/${github_repository}/issues?state=all&per_page=100" > "$runner_temp/issues.json"'
+TASK_RECONCILE_GIT_ADD = "git add -f -- state/tasks.yml kb/generated/tasks.pl"
 
 FORBIDDEN_ACTION_FRAGMENTS = (
     "gh repo clone",
@@ -102,6 +103,14 @@ def validate_steps(path: Path, workflow: dict) -> None:
             if api_lines:
                 if not is_task_reconcile(path) or api_lines != [TASK_RECONCILE_GH_API]:
                     raise ValueError(f"{path}: job {job_name} contains non-allow-listed GitHub API access")
+            generated_add_lines = [
+                line.strip().lower()
+                for line in script.splitlines()
+                if "git add" in line.lower() and "kb/generated/tasks.pl" in line.lower()
+            ]
+            if generated_add_lines:
+                if not is_task_reconcile(path) or generated_add_lines != [TASK_RECONCILE_GIT_ADD]:
+                    raise ValueError(f"{path}: job {job_name} generated task staging must use the exact forced allow-listed command")
             for fragment in FORBIDDEN_ACTION_FRAGMENTS:
                 if fragment in lowered:
                     raise ValueError(f"{path}: job {job_name} contains forbidden write primitive {fragment!r}")
