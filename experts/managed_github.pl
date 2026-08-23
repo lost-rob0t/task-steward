@@ -2,7 +2,8 @@
     managed_worker_decision/3,
     managed_next_external/2,
     managed_external_score/3,
-    worker_decision_from/7
+    worker_decision_from/7,
+    external_score_from/6
 ]).
 
 :- use_module('../kb/generated/projects.pl').
@@ -86,18 +87,21 @@ review_weight(unknown, 5).
 review_weight(not_applicable, 0).
 review_weight(pending, -10).
 
+external_score_from(Base, Kind, Severity, Ci, Review, Score) :-
+    severity_weight(Severity, SeverityWeight),
+    kind_weight(Kind, KindWeight),
+    ci_weight(Ci, CiWeight),
+    review_weight(Review, ReviewWeight),
+    Score is Base + SeverityWeight + KindWeight + CiWeight + ReviewWeight.
+
 managed_external_score(Project, Ref, Score) :-
     managed_external_candidate(Project, Ref),
     base_priority(Project, Base),
     github_work_severity(Project, Ref, Severity),
-    severity_weight(Severity, SeverityWeight),
     github_work_kind(Project, Ref, Kind),
-    kind_weight(Kind, KindWeight),
     github_work_ci(Project, Ref, Ci),
-    ci_weight(Ci, CiWeight),
     github_work_review(Project, Ref, Review),
-    review_weight(Review, ReviewWeight),
-    Score is Base + SeverityWeight + KindWeight + CiWeight + ReviewWeight.
+    external_score_from(Base, Kind, Severity, Ci, Review, Score).
 
 managed_next_external(Project, Ref) :-
     managed_external_score(Project, Ref, Score),
