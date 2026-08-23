@@ -3,6 +3,8 @@
     steward_evaluate/1,
     steward_evaluate_stage/2,
     steward_next/1,
+    steward_next_external/2,
+    steward_worker_decision/3,
     steward_explain/2,
     steward_status/1,
     steward_deployment_status/1,
@@ -14,6 +16,7 @@
 :- use_module('kb/generated/projects.pl').
 :- use_module('kb/generated/handoffs.pl').
 :- use_module('kb/generated/policies.pl').
+:- use_module('kb/generated/managed_github.pl').
 :- use_module('kb/tasks.pl').
 :- use_module('kb/evidence.pl').
 :- use_module('kb/decisions.pl').
@@ -29,6 +32,7 @@
 :- use_module('experts/priority.pl').
 :- use_module('experts/skip_policy.pl').
 :- use_module('experts/scheduling.pl').
+:- use_module('experts/managed_github.pl').
 :- use_module('experts/handoff.pl').
 :- use_module('experts/completion.pl').
 :- use_module('experts/receipts.pl').
@@ -51,6 +55,10 @@ steward_validate :-
         DependencyOrder < ExpertOrder
     )),
     forall(project(Project), project_repo(Project, _)),
+    forall((project(Project), Project \= task_stward_rage), (
+        project_repo(Project, Repo),
+        github_snapshot(Project, Repo, _, _)
+    )),
     forall(handoff(Handoff, Source, Target), (
         handoff_status(Handoff, _),
         handoff_gate(Handoff, _),
@@ -77,11 +85,27 @@ steward_next(handoff(Handoff, Source, Target)) :-
     handoff_ready(Handoff),
     handoff(Handoff, Source, Target),
     !.
+steward_next(external(Project, Ref)) :-
+    steward_deployment_status(deployed),
+    steward_next_external(Project, Ref),
+    !.
 steward_next(execute(Task)) :-
     next_task(Task),
     !.
 steward_next(idle(no_schedulable_work)).
 
+steward_next_external(Project, Ref) :-
+    managed_next_external(Project, Ref).
+
+steward_worker_decision(Project, Decision, Reason) :-
+    managed_worker_decision(Project, Decision, Reason).
+
+steward_explain(external(Project, Ref), explanation(external, Project, Ref, Score, Source, Snapshot)) :-
+    managed_external_score(Project, Ref, Score),
+    github_work_source(Project, Ref, Source),
+    github_snapshot(Project, _, Snapshot, _).
+steward_explain(worker(Project), explanation(worker, Project, Decision, Reason)) :-
+    steward_worker_decision(Project, Decision, Reason).
 steward_explain(execute(Task), explanation(Task, Score, Components)) :-
     priority_score(Task, Score),
     findall(
