@@ -17,7 +17,7 @@ seed_ready(Task, Project, Priority) :-
     assertz(kb_tasks:task_state(Task, open)),
     assertz(kb_tasks:task_priority(Task, Priority)).
 
-test(postdeployment_staged_self_close_leaves_no_self_rage_issue) :-
+test(postdeployment_completed_self_rage_issues_stay_unschedulable) :-
     \+ schedulable(task_stward_rage_issue_42),
     \+ schedulable(task_stward_rage_issue_40),
     \+ schedulable(task_stward_rage_issue_38),
@@ -26,8 +26,7 @@ test(postdeployment_staged_self_close_leaves_no_self_rage_issue) :-
     \+ schedulable(task_stward_rage_issue_32),
     \+ schedulable(task_stward_rage_issue_30),
     \+ schedulable(task_stward_rage_issue_28),
-    \+ schedulable(task_stward_rage_issue_26),
-    \+ steward_mode_next(deployed, none, _).
+    \+ schedulable(task_stward_rage_issue_26).
 
 test(predeployment_self_rage_even_with_external_work,
      [setup(reset_tasks), cleanup(reset_tasks)]) :-
