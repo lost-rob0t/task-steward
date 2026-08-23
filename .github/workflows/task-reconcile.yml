@@ -14,7 +14,7 @@ permissions:
   issues: read
 
 concurrency:
-  group: task-mirror-reconcile
+  group: task-steward-state-writers
   cancel-in-progress: false
 
 jobs:
