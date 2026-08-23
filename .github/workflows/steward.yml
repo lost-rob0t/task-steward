@@ -70,6 +70,7 @@ jobs:
           swipl -q -s tests/action_explanations.pl -g run_tests -t halt
           swipl -q -s tests/freeze_eligibility.pl -g run_tests -t halt
           swipl -q -s tests/deployment_gate.pl -g run_tests -t halt
+          swipl -q -s tests/managed_github_scheduling.pl -g run_tests -t halt
 
       - name: Validate generated custom Prolog syntax
         run: |
