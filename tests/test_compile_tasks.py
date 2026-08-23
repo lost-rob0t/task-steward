@@ -19,14 +19,14 @@ class CompileTasksTests(unittest.TestCase):
         first = compile_tasks.compile_tasks(doc)
         second = compile_tasks.compile_tasks(doc)
         self.assertEqual(first, second)
-        for issue, generation in ((1, 2), (26, 1), (28, 2), (30, 2), (32, 2), (34, 2), (36, 2), (38, 2), (40, 2)):
+        for issue, generation in ((1, 2), (26, 1), (28, 2), (30, 2), (32, 2), (34, 2), (36, 2), (38, 2), (40, 2), (42, 2)):
             task = f"task_stward_rage_issue_{issue}"
             self.assertIn(f"task({task}).", first)
             self.assertIn(f"task_state({task}, closed).", first)
             self.assertNotIn(f"task_state({task}, open).", first)
             self.assertIn(f"task_generation({task}, {generation}).", first)
         self.assertIn(
-            "task_source(task_stward_rage_issue_40, 'github-issue:lost-rob0t/task-stward-rage#40').",
+            "task_source(task_stward_rage_issue_42, 'github-issue:lost-rob0t/task-stward-rage#42').",
             first,
         )
         self.assertIn("task_dependency(_, _) :- fail.", first)

@@ -28,9 +28,10 @@ projects:
 
   - id: local-recall
     repo: lost-rob0t/local-recall
-    status: active
-    mode: rage
+    status: hard-paused-user
+    mode: paused
     automation_id: 6a8934a82ef881919ab153b6aec87c15
+    resume_requires: explicit-user-authorization
     priority:
       base: 95
       protected: true
@@ -82,10 +83,12 @@ projects:
 
   - id: starintel-server
     repo: lost-rob0t/starintel-server
-    status: paused-waiting-handoff
-    mode: paused
+    status: active
+    mode: rage
+    automation_id: 6a864c35bce48191883144c38781b20e
     priority:
-      base: 90
+      base: 100
+      protected: true
     completion:
       gate: production-ready
 

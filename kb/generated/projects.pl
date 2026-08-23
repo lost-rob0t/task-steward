@@ -33,8 +33,8 @@ protected_project(zara).
 
 project(local_recall).
 project_repo(local_recall, 'lost-rob0t/local-recall').
-project_status(local_recall, active).
-project_mode(local_recall, rage).
+project_status(local_recall, hard_paused_user).
+project_mode(local_recall, paused).
 base_priority(local_recall, 95).
 protected_project(local_recall).
 
@@ -55,9 +55,10 @@ completion_policy(starintel_infra, automated_deployment_ready).
 
 project(starintel_server).
 project_repo(starintel_server, 'lost-rob0t/starintel-server').
-project_status(starintel_server, paused_waiting_handoff).
-project_mode(starintel_server, paused).
-base_priority(starintel_server, 90).
+project_status(starintel_server, active).
+project_mode(starintel_server, rage).
+base_priority(starintel_server, 100).
+protected_project(starintel_server).
 completion_policy(starintel_server, production_ready).
 
 project(chatgpt_books_book1).
