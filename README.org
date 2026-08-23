@@ -36,6 +36,14 @@ Inline Prolog is logic-only. It must not gain filesystem, network, process, shel
 
 The knowledge base under =kb/= is the Prolog representation consumed by the expert system. Generated facts must remain distinguishable from authored policy.
 
+** Deterministic self-closure
+
+Event delivery is defense-in-depth, not the correctness boundary for Task Steward self-RAGE completion. A steward PR that closes its owning GitHub Issue must stage the post-merge durable state for that issue in the same PR: the task is =closed=, its generation fences any stale owner, and =kb/generated/tasks.pl= is regenerated before exact-head CI.
+
+Only =main= is scheduling-authoritative. A PR branch may therefore encode the state that becomes canonical if and only if that PR merges. When a merge uses =Closes #N=, GitHub closes the canonical Issue as the staged task state lands on =main=, eliminating the one-merge reconciliation lag.
+
+Issue-event, PR-close, scheduled, and manual snapshot reconciliation remain enabled for human or external mutations and drift repair, but steward correctness must not depend on those events firing after a steward-originated mutation.
+
 * Serial Prolog MoE
 
 The Mixture of Experts is deterministic Prolog, not an LLM committee. Specialized rule modules execute serially over the same KB and derived facts. Initial expert domains are:

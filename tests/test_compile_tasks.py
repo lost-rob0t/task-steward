@@ -19,35 +19,16 @@ class CompileTasksTests(unittest.TestCase):
         first = compile_tasks.compile_tasks(doc)
         second = compile_tasks.compile_tasks(doc)
         self.assertEqual(first, second)
-        self.assertIn("task(task_stward_rage_issue_1).", first)
+        for issue, generation in ((1, 2), (26, 1), (28, 2), (30, 2), (32, 2), (34, 2), (36, 2), (38, 2)):
+            task = f"task_stward_rage_issue_{issue}"
+            self.assertIn(f"task({task}).", first)
+            self.assertIn(f"task_state({task}, closed).", first)
+            self.assertNotIn(f"task_state({task}, open).", first)
+            self.assertIn(f"task_generation({task}, {generation}).", first)
         self.assertIn(
-            "task_source(task_stward_rage_issue_1, 'github-issue:lost-rob0t/task-stward-rage#1').",
+            "task_source(task_stward_rage_issue_38, 'github-issue:lost-rob0t/task-stward-rage#38').",
             first,
         )
-        self.assertIn("task_state(task_stward_rage_issue_1, closed).", first)
-        self.assertNotIn("task_state(task_stward_rage_issue_1, open).", first)
-        self.assertIn("task_generation(task_stward_rage_issue_1, 2).", first)
-        self.assertIn("task(task_stward_rage_issue_26).", first)
-        self.assertIn("task_state(task_stward_rage_issue_26, closed).", first)
-        self.assertIn("task(task_stward_rage_issue_28).", first)
-        self.assertIn("task_state(task_stward_rage_issue_28, closed).", first)
-        self.assertNotIn("task_state(task_stward_rage_issue_28, open).", first)
-        self.assertIn("task_generation(task_stward_rage_issue_28, 2).", first)
-        self.assertIn("task(task_stward_rage_issue_30).", first)
-        self.assertIn("task_state(task_stward_rage_issue_30, closed).", first)
-        self.assertNotIn("task_state(task_stward_rage_issue_30, open).", first)
-        self.assertIn("task_generation(task_stward_rage_issue_30, 2).", first)
-        self.assertIn("task(task_stward_rage_issue_32).", first)
-        self.assertIn("task_state(task_stward_rage_issue_32, closed).", first)
-        self.assertNotIn("task_state(task_stward_rage_issue_32, open).", first)
-        self.assertIn("task_generation(task_stward_rage_issue_32, 2).", first)
-        self.assertIn("task(task_stward_rage_issue_34).", first)
-        self.assertIn("task_state(task_stward_rage_issue_34, closed).", first)
-        self.assertNotIn("task_state(task_stward_rage_issue_34, open).", first)
-        self.assertIn("task_generation(task_stward_rage_issue_34, 2).", first)
-        self.assertIn("task(task_stward_rage_issue_36).", first)
-        self.assertIn("task_state(task_stward_rage_issue_36, open).", first)
-        self.assertIn("task_generation(task_stward_rage_issue_36, 1).", first)
         self.assertIn("task_dependency(_, _) :- fail.", first)
         self.assertTrue(first.startswith("% GENERATED FILE. DO NOT EDIT."))
 
