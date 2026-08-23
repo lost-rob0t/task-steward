@@ -30,7 +30,12 @@ class CompileTasksTests(unittest.TestCase):
         self.assertIn("task(task_stward_rage_issue_26).", first)
         self.assertIn("task_state(task_stward_rage_issue_26, closed).", first)
         self.assertIn("task(task_stward_rage_issue_28).", first)
-        self.assertIn("task_state(task_stward_rage_issue_28, open).", first)
+        self.assertIn("task_state(task_stward_rage_issue_28, closed).", first)
+        self.assertNotIn("task_state(task_stward_rage_issue_28, open).", first)
+        self.assertIn("task_generation(task_stward_rage_issue_28, 2).", first)
+        self.assertIn("task(task_stward_rage_issue_30).", first)
+        self.assertIn("task_state(task_stward_rage_issue_30, open).", first)
+        self.assertIn("task_generation(task_stward_rage_issue_30, 1).", first)
         self.assertTrue(first.startswith("% GENERATED FILE. DO NOT EDIT."))
 
     def test_duplicate_task_ids_are_rejected(self) -> None:
