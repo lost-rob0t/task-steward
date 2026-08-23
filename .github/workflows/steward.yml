@@ -73,6 +73,21 @@ jobs:
           swipl -q -s tests/deployment_gate.pl -g run_tests -t halt
           swipl -q -s tests/managed_github_scheduling.pl -g run_tests -t halt
 
+      - name: Verify authoritative managed decision artifact
+        run: |
+          swipl -q -s scripts/export_managed_decisions.pl -g main -t halt > "$RUNNER_TEMP/managed-decisions.json"
+          python3 - "$RUNNER_TEMP/managed-decisions.json" <<'PY'
+          import json
+          import pathlib
+          import sys
+
+          expected = json.loads(pathlib.Path("state/managed_decisions.json").read_text(encoding="utf-8"))
+          actual = json.loads(pathlib.Path(sys.argv[1]).read_text(encoding="utf-8"))
+          if actual != expected:
+              raise SystemExit("managed Prolog decision artifact is stale")
+          print("managed Prolog decision artifact verified")
+          PY
+
       - name: Validate generated custom Prolog syntax
         run: |
           swipl -q -s experts/generated/project_rules.pl -g halt
