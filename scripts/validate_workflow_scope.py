@@ -58,12 +58,15 @@ def validate_triggers(path: Path, workflow: dict) -> None:
         raise ValueError(f"{path}: triggers must be a mapping")
 
     if is_task_reconcile(path):
-        expected = {"issues", "schedule", "workflow_dispatch"}
+        expected = {"issues", "pull_request", "schedule", "workflow_dispatch"}
         if set(triggers) != expected:
             raise ValueError(f"{path}: task reconcile triggers must be exactly {sorted(expected)}")
         issues = triggers.get("issues") or {}
         if issues.get("types") != ["opened", "closed", "reopened"]:
             raise ValueError(f"{path}: task reconcile issue types must be opened, closed, reopened")
+        pull_request = triggers.get("pull_request") or {}
+        if pull_request.get("types") != ["closed"]:
+            raise ValueError(f"{path}: task reconcile pull request types must be exactly closed")
         schedule = triggers.get("schedule") or []
         if schedule != [{"cron": TASK_RECONCILE_CRON}]:
             raise ValueError(f"{path}: task reconcile schedule must be exactly {TASK_RECONCILE_CRON!r}")
