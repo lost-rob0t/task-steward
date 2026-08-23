@@ -31,13 +31,14 @@ automation_title('6a8649dc3f708191b51269995b51700a', 'Prolog-RLM Subagent Loop')
 automation_project('6a8649dc3f708191b51269995b51700a', prolog_rlm).
 
 automation('6a864c35bce48191883144c38781b20e').
-automation_state('6a864c35bce48191883144c38781b20e', paused).
-automation_title('6a864c35bce48191883144c38781b20e', 'StarIntel Infra Deployment Gate').
-automation_project('6a864c35bce48191883144c38781b20e', starintel_infra).
+automation_state('6a864c35bce48191883144c38781b20e', active).
+automation_title('6a864c35bce48191883144c38781b20e', 'StarIntel Server RAGE Worker').
+automation_project('6a864c35bce48191883144c38781b20e', starintel_server).
 
 automation('6a87e25f61748191a30427f6020d14a3').
 automation_state('6a87e25f61748191a30427f6020d14a3', paused).
 automation_title('6a87e25f61748191a30427f6020d14a3', 'Prolog-RLM Integration Loop').
+automation_project('6a87e25f61748191a30427f6020d14a3', prolog_rlm).
 
 automation('6a87e26cb2208191a7f1c1ab222feae4').
 automation_state('6a87e26cb2208191a7f1c1ab222feae4', paused).
@@ -53,17 +54,20 @@ automation_title('6a892ef4c180819189cba1afee1a4504', 'Zara RAGE Worker').
 automation_project('6a892ef4c180819189cba1afee1a4504', zara).
 
 automation('6a8934a82ef881919ab153b6aec87c15').
-automation_state('6a8934a82ef881919ab153b6aec87c15', active).
+automation_state('6a8934a82ef881919ab153b6aec87c15', paused).
 automation_title('6a8934a82ef881919ab153b6aec87c15', 'Local Recall RAGE Worker').
 automation_project('6a8934a82ef881919ab153b6aec87c15', local_recall).
 
 observed_by(task_steward).
-observed_at('2026-08-22T19:47:30+00:00').
+observed_at('2026-08-23T03:52:16+00:00').
 reconciliation_value([active_task_count], 5).
 reconciliation_value([agentprolog_workers_enabled], false).
 reconciliation_value([coding_freeze], lifted).
 reconciliation_value([coding_workers_active], 3).
 reconciliation_value([infra_coding_worker_enabled], false).
-reconciliation_value([infra_to_server_handoff], paused).
+reconciliation_value([infra_to_server_handoff], satisfied).
+reconciliation_value([local_recall_worker_enabled], false).
 reconciliation_value([prolog_rlm_workers_enabled], false).
+reconciliation_value([starintel_server_primary_coding_priority], true).
+reconciliation_value([starintel_server_worker_enabled], true).
 reconciliation_value([unauthorized_coding_workers_active], 0).

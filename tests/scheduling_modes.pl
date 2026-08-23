@@ -18,6 +18,7 @@ seed_ready(Task, Project, Priority) :-
     assertz(kb_tasks:task_priority(Task, Priority)).
 
 test(postdeployment_staged_self_close_leaves_no_self_rage_issue) :-
+    \+ schedulable(task_stward_rage_issue_40),
     \+ schedulable(task_stward_rage_issue_38),
     \+ schedulable(task_stward_rage_issue_36),
     \+ schedulable(task_stward_rage_issue_34),
