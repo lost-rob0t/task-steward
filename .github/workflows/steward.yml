@@ -47,13 +47,14 @@ jobs:
 
       - name: Verify deterministic YAML to Prolog compilation
         run: |
-          python3 -m py_compile scripts/compile_state.py scripts/compile_policies.py scripts/compile_automations.py scripts/compile_tasks.py scripts/compile_deployment.py scripts/compile_managed_github.py scripts/classify_wake.py scripts/reconcile_issue_task.py scripts/reconcile_issue_snapshot.py scripts/reconcile_managed_github.py
+          python3 -m py_compile scripts/compile_state.py scripts/compile_policies.py scripts/compile_automations.py scripts/compile_tasks.py scripts/compile_deployment.py scripts/compile_managed_github.py scripts/compile_workers.py scripts/steward_runtime.py scripts/classify_wake.py scripts/reconcile_issue_task.py scripts/reconcile_issue_snapshot.py scripts/reconcile_managed_github.py
           python3 scripts/compile_state.py --check
           python3 scripts/compile_policies.py --check
           python3 scripts/compile_automations.py --check
           python3 scripts/compile_tasks.py --check
           python3 scripts/compile_deployment.py --check
           python3 scripts/compile_managed_github.py --check
+          python3 scripts/compile_workers.py --check
 
       - name: Run compiler regression tests
         run: |
@@ -72,6 +73,7 @@ jobs:
           swipl -q -s tests/freeze_eligibility.pl -g run_tests -t halt
           swipl -q -s tests/deployment_gate.pl -g run_tests -t halt
           swipl -q -s tests/managed_github_scheduling.pl -g run_tests -t halt
+          swipl -q -s tests/workers.pl -g run_tests -t halt
 
       - name: Verify authoritative managed decision artifact
         run: |
@@ -92,6 +94,7 @@ jobs:
         run: |
           swipl -q -s experts/generated/project_rules.pl -g halt
           swipl -q -s kb/generated/managed_github.pl -g halt
+          swipl -q -s kb/generated/workers.pl -g halt
 
       - name: Validate Prolog KB and experts
         run: |
