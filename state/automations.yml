@@ -28,17 +28,18 @@ active:
     completion_condition: verified-discord-receipts-for-findings-and-shitpost-channels
     evidence_policy: discord-message-id-and-channel-id-required
 
+  - id: 6a864c35bce48191883144c38781b20e
+    title: StarIntel Server RAGE Worker
+    cadence: hourly
+    role: rage-worker
+    project: starintel-server
+    priority: primary-coding
+
   - id: 6a892ef4c180819189cba1afee1a4504
     title: Zara RAGE Worker
     cadence: hourly
     role: rage-worker
     project: zara
-
-  - id: 6a8934a82ef881919ab153b6aec87c15
-    title: Local Recall RAGE Worker
-    cadence: hourly
-    role: rage-worker
-    project: local-recall
 
 paused:
   - id: 6a8649dc3f708191b51269995b51700a
@@ -47,17 +48,11 @@ paused:
     reason: explicit-user-hard-stop
     resume_requires: explicit-user-authorization
 
-  - id: 6a864c35bce48191883144c38781b20e
-    title: StarIntel Infra Deployment Gate
-    project: starintel-infra
-    reason: previously-paused-by-user
-    handoff: infra-to-server
-    handoff_status: paused
-    resume_requires: explicit-user-authorization
-
   - id: 6a87e25f61748191a30427f6020d14a3
     title: Prolog-RLM Integration Loop
+    project: prolog-rlm
     reason: explicit-user-hard-stop
+    resume_requires: explicit-user-authorization
 
   - id: 6a87e26cb2208191a7f1c1ab222feae4
     title: AgentProlog Harness Loop A
@@ -67,20 +62,29 @@ paused:
     title: AgentProlog Harness Loop B
     reason: explicit-user-stop-2026-08-21
 
+  - id: 6a8934a82ef881919ab153b6aec87c15
+    title: Local Recall RAGE Worker
+    project: local-recall
+    reason: explicit-user-hard-pause
+    resume_requires: explicit-user-authorization
+
   - id: 6a7dce766d448191bca41ef6e0c9390e
     title: Book 1 Research Loop
     project: chatgpt-books-book1
     reason: previously-paused
 
 observed_by: task-steward
-observed_at: 2026-08-22T19:47:30Z
+observed_at: 2026-08-23T03:52:16Z
 reconciliation:
   active_task_count: 5
   coding_workers_active: 3
   coding_freeze_exception_workers: []
   unauthorized_coding_workers_active: 0
   prolog_rlm_workers_enabled: false
+  local_recall_worker_enabled: false
+  starintel_server_worker_enabled: true
+  starintel_server_primary_coding_priority: true
   agentprolog_workers_enabled: false
   infra_coding_worker_enabled: false
-  infra_to_server_handoff: paused
+  infra_to_server_handoff: satisfied
   coding_freeze: lifted
