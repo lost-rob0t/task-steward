@@ -54,6 +54,12 @@ class WorkflowScopeTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "GitHub API"):
             validator.validate_steps(path, workflow)
 
+    def test_task_reconcile_ignored_generated_staging_requires_force(self):
+        path = Path(".github/workflows/task-reconcile.yml")
+        workflow = self.task_reconcile_workflow(run="git add -- state/tasks.yml kb/generated/tasks.pl")
+        with self.assertRaisesRegex(ValueError, "generated task staging"):
+            validator.validate_steps(path, workflow)
+
     def test_task_reconcile_schedule_drift_is_rejected(self):
         path = Path(".github/workflows/task-reconcile.yml")
         workflow = self.task_reconcile_workflow()
