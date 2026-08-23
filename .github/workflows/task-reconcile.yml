@@ -3,6 +3,9 @@ name: Task Mirror Reconcile
 on:
   issues:
     types: [opened, closed, reopened]
+  schedule:
+    - cron: '17 * * * *'
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -30,9 +33,21 @@ jobs:
         run: |
           git pull --ff-only origin main
 
-      - name: Reconcile local issue task state
+      - name: Reconcile issue event
+        if: github.event_name == 'issues'
         run: |
           python3 scripts/reconcile_issue_task.py --event-json "$GITHUB_EVENT_PATH"
+
+      - name: Fetch canonical issue snapshot
+        if: github.event_name != 'issues'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh api --paginate --slurp "repos/${GITHUB_REPOSITORY}/issues?state=all&per_page=100" > "$RUNNER_TEMP/issues.json"
+          python3 scripts/reconcile_issue_snapshot.py --snapshot-json "$RUNNER_TEMP/issues.json"
+
+      - name: Regenerate deterministic task facts
+        run: |
           python3 scripts/compile_tasks.py
 
       - name: Commit changed task mirror
@@ -43,5 +58,9 @@ jobs:
           git config user.name "task-steward"
           git config user.email "task-steward@users.noreply.github.com"
           git add -- state/tasks.yml kb/generated/tasks.pl
-          git commit -m "[steward-state] reconcile issue #${{ github.event.issue.number }}"
+          if [ "${{ github.event_name }}" = "issues" ]; then
+            git commit -m "[steward-state] reconcile issue #${{ github.event.issue.number }}"
+          else
+            git commit -m "[steward-state] reconcile canonical issue snapshot"
+          fi
           git push origin HEAD:main
