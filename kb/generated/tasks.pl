@@ -30,5 +30,7 @@ task_state(task_stward_rage_issue_30, open).
 task_priority(task_stward_rage_issue_30, 10).
 task_generation(task_stward_rage_issue_30, 1).
 
+task_dependency(_, _) :- fail.
+
 observed_by(task_steward).
 observed_at('2026-08-22T23:50:57+00:00').
