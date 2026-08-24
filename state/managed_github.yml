@@ -1,16 +1,16 @@
 version: 1
 observed_by: task-steward-github
-observed_at: '2026-08-24T10:19:49+00:00'
+observed_at: '2026-08-24T11:04:33+00:00'
 projects:
 - project: chatgpt-books-book1
   repo: lost-rob0t/chatgpt-books
   snapshot: unavailable
-  observed_at: '2026-08-24T10:19:49+00:00'
+  observed_at: '2026-08-24T11:04:33+00:00'
   work: []
 - project: hourly-auto-dig
   repo: lost-rob0t/starintel-gpt-auto-dig
   snapshot: partial
-  observed_at: '2026-08-24T10:19:49+00:00'
+  observed_at: '2026-08-24T11:04:33+00:00'
   work:
   - ref: issue-1838
     kind: issue
@@ -780,7 +780,7 @@ projects:
     readiness: ready
     ci: not_applicable
     review: not_applicable
-    updated_at: '2026-08-24T09:56:36Z'
+    updated_at: '2026-08-24T10:53:32Z'
     source: github-issue:lost-rob0t/starintel-gpt-auto-dig#2095
   - ref: issue-2100
     kind: issue
@@ -2578,12 +2578,12 @@ projects:
 - project: local-recall
   repo: lost-rob0t/local-recall
   snapshot: unavailable
-  observed_at: '2026-08-24T10:19:49+00:00'
+  observed_at: '2026-08-24T11:04:33+00:00'
   work: []
 - project: prolog-rlm
   repo: lost-rob0t/prolog-rlm
   snapshot: fresh
-  observed_at: '2026-08-24T10:19:49+00:00'
+  observed_at: '2026-08-24T11:04:33+00:00'
   work:
   - ref: issue-3
     kind: issue
@@ -3083,17 +3083,17 @@ projects:
 - project: starintel-discord-reports
   repo: lost-rob0t/starintel-discord-reporting
   snapshot: unavailable
-  observed_at: '2026-08-24T10:19:49+00:00'
+  observed_at: '2026-08-24T11:04:33+00:00'
   work: []
 - project: starintel-infra
   repo: starintel-labs/starintel-infra
   snapshot: unavailable
-  observed_at: '2026-08-24T10:19:49+00:00'
+  observed_at: '2026-08-24T11:04:33+00:00'
   work: []
 - project: starintel-server
   repo: lost-rob0t/starintel-server
   snapshot: fresh
-  observed_at: '2026-08-24T10:19:49+00:00'
+  observed_at: '2026-08-24T11:04:33+00:00'
   work:
   - ref: issue-1
     kind: issue
@@ -3465,7 +3465,7 @@ projects:
     state: open
     severity: normal
     readiness: ready
-    ci: pending
+    ci: failure
     review: unknown
     head_sha: 4d4e5cd48c4e6b7a39f53d22e60eb4590b8eb821
     updated_at: '2026-08-24T10:19:52Z'
@@ -3484,7 +3484,7 @@ projects:
 - project: zara
   repo: lost-rob0t/zara
   snapshot: fresh
-  observed_at: '2026-08-24T10:19:49+00:00'
+  observed_at: '2026-08-24T11:04:33+00:00'
   work:
   - ref: issue-1
     kind: issue
