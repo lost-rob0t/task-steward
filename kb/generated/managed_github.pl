@@ -3,50 +3,10 @@
 :- module(kb_generated_managed_github, [managed_observed_by/1, managed_observed_at/1, github_snapshot/4, github_work/2, github_work_kind/3, github_work_state/3, github_work_severity/3, github_work_readiness/3, github_work_ci/3, github_work_review/3, github_work_head_sha/3, github_work_updated_at/3, github_work_source/3]).
 
 managed_observed_by(task_steward_github).
-managed_observed_at('2026-08-25T02:05:50+00:00').
+managed_observed_at('2026-08-25T03:27:58+00:00').
 
-github_snapshot(chatgpt_books_book1, 'lost-rob0t/chatgpt-books', unavailable, '2026-08-25T02:05:50+00:00').
-github_snapshot(hourly_auto_dig, 'lost-rob0t/starintel-gpt-auto-dig', partial, '2026-08-25T02:05:50+00:00').
-github_work(hourly_auto_dig, issue_1839).
-github_work_kind(hourly_auto_dig, issue_1839, issue).
-github_work_state(hourly_auto_dig, issue_1839, open).
-github_work_severity(hourly_auto_dig, issue_1839, normal).
-github_work_readiness(hourly_auto_dig, issue_1839, ready).
-github_work_ci(hourly_auto_dig, issue_1839, not_applicable).
-github_work_review(hourly_auto_dig, issue_1839, not_applicable).
-github_work_updated_at(hourly_auto_dig, issue_1839, '2026-07-31T10:18:14+00:00').
-github_work_source(hourly_auto_dig, issue_1839, 'github-issue:lost-rob0t/starintel-gpt-auto-dig#1839').
-
-github_work(hourly_auto_dig, issue_1840).
-github_work_kind(hourly_auto_dig, issue_1840, issue).
-github_work_state(hourly_auto_dig, issue_1840, open).
-github_work_severity(hourly_auto_dig, issue_1840, normal).
-github_work_readiness(hourly_auto_dig, issue_1840, ready).
-github_work_ci(hourly_auto_dig, issue_1840, not_applicable).
-github_work_review(hourly_auto_dig, issue_1840, not_applicable).
-github_work_updated_at(hourly_auto_dig, issue_1840, '2026-07-31T10:18:15+00:00').
-github_work_source(hourly_auto_dig, issue_1840, 'github-issue:lost-rob0t/starintel-gpt-auto-dig#1840').
-
-github_work(hourly_auto_dig, issue_1841).
-github_work_kind(hourly_auto_dig, issue_1841, issue).
-github_work_state(hourly_auto_dig, issue_1841, open).
-github_work_severity(hourly_auto_dig, issue_1841, normal).
-github_work_readiness(hourly_auto_dig, issue_1841, ready).
-github_work_ci(hourly_auto_dig, issue_1841, not_applicable).
-github_work_review(hourly_auto_dig, issue_1841, not_applicable).
-github_work_updated_at(hourly_auto_dig, issue_1841, '2026-07-31T10:18:16+00:00').
-github_work_source(hourly_auto_dig, issue_1841, 'github-issue:lost-rob0t/starintel-gpt-auto-dig#1841').
-
-github_work(hourly_auto_dig, issue_1842).
-github_work_kind(hourly_auto_dig, issue_1842, issue).
-github_work_state(hourly_auto_dig, issue_1842, open).
-github_work_severity(hourly_auto_dig, issue_1842, normal).
-github_work_readiness(hourly_auto_dig, issue_1842, ready).
-github_work_ci(hourly_auto_dig, issue_1842, not_applicable).
-github_work_review(hourly_auto_dig, issue_1842, not_applicable).
-github_work_updated_at(hourly_auto_dig, issue_1842, '2026-07-31T10:18:17+00:00').
-github_work_source(hourly_auto_dig, issue_1842, 'github-issue:lost-rob0t/starintel-gpt-auto-dig#1842').
-
+github_snapshot(chatgpt_books_book1, 'lost-rob0t/chatgpt-books', unavailable, '2026-08-25T03:27:58+00:00').
+github_snapshot(hourly_auto_dig, 'lost-rob0t/starintel-gpt-auto-dig', partial, '2026-08-25T03:27:58+00:00').
 github_work(hourly_auto_dig, issue_1843).
 github_work_kind(hourly_auto_dig, issue_1843, issue).
 github_work_state(hourly_auto_dig, issue_1843, open).
@@ -764,7 +724,7 @@ github_work_severity(hourly_auto_dig, issue_2095, normal).
 github_work_readiness(hourly_auto_dig, issue_2095, ready).
 github_work_ci(hourly_auto_dig, issue_2095, not_applicable).
 github_work_review(hourly_auto_dig, issue_2095, not_applicable).
-github_work_updated_at(hourly_auto_dig, issue_2095, '2026-08-25T01:59:15+00:00').
+github_work_updated_at(hourly_auto_dig, issue_2095, '2026-08-25T03:10:23+00:00').
 github_work_source(hourly_auto_dig, issue_2095, 'github-issue:lost-rob0t/starintel-gpt-auto-dig#2095').
 
 github_work(hourly_auto_dig, issue_2100).
@@ -804,7 +764,7 @@ github_work_severity(hourly_auto_dig, issue_2106, normal).
 github_work_readiness(hourly_auto_dig, issue_2106, ready).
 github_work_ci(hourly_auto_dig, issue_2106, not_applicable).
 github_work_review(hourly_auto_dig, issue_2106, not_applicable).
-github_work_updated_at(hourly_auto_dig, issue_2106, '2026-08-24T14:29:58+00:00').
+github_work_updated_at(hourly_auto_dig, issue_2106, '2026-08-25T03:26:34+00:00').
 github_work_source(hourly_auto_dig, issue_2106, 'github-issue:lost-rob0t/starintel-gpt-auto-dig#2106').
 
 github_work(hourly_auto_dig, issue_2109).
@@ -2537,6 +2497,16 @@ github_work_review(hourly_auto_dig, issue_2284, not_applicable).
 github_work_updated_at(hourly_auto_dig, issue_2284, '2026-08-24T23:25:31+00:00').
 github_work_source(hourly_auto_dig, issue_2284, 'github-issue:lost-rob0t/starintel-gpt-auto-dig#2284').
 
+github_work(hourly_auto_dig, issue_2286).
+github_work_kind(hourly_auto_dig, issue_2286, issue).
+github_work_state(hourly_auto_dig, issue_2286, open).
+github_work_severity(hourly_auto_dig, issue_2286, normal).
+github_work_readiness(hourly_auto_dig, issue_2286, ready).
+github_work_ci(hourly_auto_dig, issue_2286, not_applicable).
+github_work_review(hourly_auto_dig, issue_2286, not_applicable).
+github_work_updated_at(hourly_auto_dig, issue_2286, '2026-08-25T03:15:05+00:00').
+github_work_source(hourly_auto_dig, issue_2286, 'github-issue:lost-rob0t/starintel-gpt-auto-dig#2286').
+
 github_work(hourly_auto_dig, pr_140).
 github_work_kind(hourly_auto_dig, pr_140, pr).
 github_work_state(hourly_auto_dig, pr_140, open).
@@ -2570,8 +2540,41 @@ github_work_head_sha(hourly_auto_dig, pr_2219, 'dbec0aa6eb61e3670a499e25fe6356af
 github_work_updated_at(hourly_auto_dig, pr_2219, '2026-08-22T03:08:07+00:00').
 github_work_source(hourly_auto_dig, pr_2219, 'github-pr:lost-rob0t/starintel-gpt-auto-dig#2219').
 
-github_snapshot(local_recall, 'lost-rob0t/local-recall', unavailable, '2026-08-25T02:05:50+00:00').
-github_snapshot(prolog_rlm, 'lost-rob0t/prolog-rlm', fresh, '2026-08-25T02:05:50+00:00').
+github_work(hourly_auto_dig, pr_2287).
+github_work_kind(hourly_auto_dig, pr_2287, pr).
+github_work_state(hourly_auto_dig, pr_2287, open).
+github_work_severity(hourly_auto_dig, pr_2287, normal).
+github_work_readiness(hourly_auto_dig, pr_2287, ready).
+github_work_ci(hourly_auto_dig, pr_2287, failure).
+github_work_review(hourly_auto_dig, pr_2287, unknown).
+github_work_head_sha(hourly_auto_dig, pr_2287, '01512391157c6a1f63d150cf87525dbee986d82c').
+github_work_updated_at(hourly_auto_dig, pr_2287, '2026-08-25T02:54:32+00:00').
+github_work_source(hourly_auto_dig, pr_2287, 'github-pr:lost-rob0t/starintel-gpt-auto-dig#2287').
+
+github_work(hourly_auto_dig, pr_2289).
+github_work_kind(hourly_auto_dig, pr_2289, pr).
+github_work_state(hourly_auto_dig, pr_2289, open).
+github_work_severity(hourly_auto_dig, pr_2289, normal).
+github_work_readiness(hourly_auto_dig, pr_2289, ready).
+github_work_ci(hourly_auto_dig, pr_2289, pending).
+github_work_review(hourly_auto_dig, pr_2289, unknown).
+github_work_head_sha(hourly_auto_dig, pr_2289, '53fb0a9abc832bc971a23a098e29e4f637bf7a51').
+github_work_updated_at(hourly_auto_dig, pr_2289, '2026-08-25T03:13:26+00:00').
+github_work_source(hourly_auto_dig, pr_2289, 'github-pr:lost-rob0t/starintel-gpt-auto-dig#2289').
+
+github_work(hourly_auto_dig, pr_2290).
+github_work_kind(hourly_auto_dig, pr_2290, pr).
+github_work_state(hourly_auto_dig, pr_2290, open).
+github_work_severity(hourly_auto_dig, pr_2290, normal).
+github_work_readiness(hourly_auto_dig, pr_2290, ready).
+github_work_ci(hourly_auto_dig, pr_2290, pending).
+github_work_review(hourly_auto_dig, pr_2290, unknown).
+github_work_head_sha(hourly_auto_dig, pr_2290, 'ee379c8dfc1c0dbc223488e0552bfb4594c2aec8').
+github_work_updated_at(hourly_auto_dig, pr_2290, '2026-08-25T03:26:10+00:00').
+github_work_source(hourly_auto_dig, pr_2290, 'github-pr:lost-rob0t/starintel-gpt-auto-dig#2290').
+
+github_snapshot(local_recall, 'lost-rob0t/local-recall', unavailable, '2026-08-25T03:27:58+00:00').
+github_snapshot(prolog_rlm, 'lost-rob0t/prolog-rlm', fresh, '2026-08-25T03:27:58+00:00').
 github_work(prolog_rlm, issue_3).
 github_work_kind(prolog_rlm, issue_3, issue).
 github_work_state(prolog_rlm, issue_3, open).
@@ -2802,16 +2805,6 @@ github_work_review(prolog_rlm, issue_117, not_applicable).
 github_work_updated_at(prolog_rlm, issue_117, '2026-08-25T00:14:56+00:00').
 github_work_source(prolog_rlm, issue_117, 'github-issue:lost-rob0t/prolog-rlm#117').
 
-github_work(prolog_rlm, issue_124).
-github_work_kind(prolog_rlm, issue_124, issue).
-github_work_state(prolog_rlm, issue_124, open).
-github_work_severity(prolog_rlm, issue_124, normal).
-github_work_readiness(prolog_rlm, issue_124, ready).
-github_work_ci(prolog_rlm, issue_124, not_applicable).
-github_work_review(prolog_rlm, issue_124, not_applicable).
-github_work_updated_at(prolog_rlm, issue_124, '2026-08-19T14:37:18+00:00').
-github_work_source(prolog_rlm, issue_124, 'github-issue:lost-rob0t/prolog-rlm#124').
-
 github_work(prolog_rlm, issue_126).
 github_work_kind(prolog_rlm, issue_126, issue).
 github_work_state(prolog_rlm, issue_126, open).
@@ -2879,7 +2872,7 @@ github_work_severity(prolog_rlm, issue_141, normal).
 github_work_readiness(prolog_rlm, issue_141, ready).
 github_work_ci(prolog_rlm, issue_141, not_applicable).
 github_work_review(prolog_rlm, issue_141, not_applicable).
-github_work_updated_at(prolog_rlm, issue_141, '2026-08-21T05:50:05+00:00').
+github_work_updated_at(prolog_rlm, issue_141, '2026-08-25T03:10:27+00:00').
 github_work_source(prolog_rlm, issue_141, 'github-issue:lost-rob0t/prolog-rlm#141').
 
 github_work(prolog_rlm, issue_142).
@@ -3002,6 +2995,36 @@ github_work_review(prolog_rlm, issue_183, not_applicable).
 github_work_updated_at(prolog_rlm, issue_183, '2026-08-25T00:18:41+00:00').
 github_work_source(prolog_rlm, issue_183, 'github-issue:lost-rob0t/prolog-rlm#183').
 
+github_work(prolog_rlm, issue_184).
+github_work_kind(prolog_rlm, issue_184, issue).
+github_work_state(prolog_rlm, issue_184, open).
+github_work_severity(prolog_rlm, issue_184, normal).
+github_work_readiness(prolog_rlm, issue_184, ready).
+github_work_ci(prolog_rlm, issue_184, not_applicable).
+github_work_review(prolog_rlm, issue_184, not_applicable).
+github_work_updated_at(prolog_rlm, issue_184, '2026-08-25T03:10:34+00:00').
+github_work_source(prolog_rlm, issue_184, 'github-issue:lost-rob0t/prolog-rlm#184').
+
+github_work(prolog_rlm, issue_185).
+github_work_kind(prolog_rlm, issue_185, issue).
+github_work_state(prolog_rlm, issue_185, open).
+github_work_severity(prolog_rlm, issue_185, normal).
+github_work_readiness(prolog_rlm, issue_185, ready).
+github_work_ci(prolog_rlm, issue_185, not_applicable).
+github_work_review(prolog_rlm, issue_185, not_applicable).
+github_work_updated_at(prolog_rlm, issue_185, '2026-08-25T02:55:25+00:00').
+github_work_source(prolog_rlm, issue_185, 'github-issue:lost-rob0t/prolog-rlm#185').
+
+github_work(prolog_rlm, issue_186).
+github_work_kind(prolog_rlm, issue_186, issue).
+github_work_state(prolog_rlm, issue_186, open).
+github_work_severity(prolog_rlm, issue_186, normal).
+github_work_readiness(prolog_rlm, issue_186, ready).
+github_work_ci(prolog_rlm, issue_186, not_applicable).
+github_work_review(prolog_rlm, issue_186, not_applicable).
+github_work_updated_at(prolog_rlm, issue_186, '2026-08-25T03:10:13+00:00').
+github_work_source(prolog_rlm, issue_186, 'github-issue:lost-rob0t/prolog-rlm#186').
+
 github_work(prolog_rlm, pr_122).
 github_work_kind(prolog_rlm, pr_122, pr).
 github_work_state(prolog_rlm, pr_122, open).
@@ -3012,17 +3035,6 @@ github_work_review(prolog_rlm, pr_122, unknown).
 github_work_head_sha(prolog_rlm, pr_122, '1a34d01dad9020a72a17b9bbae2a698451f575aa').
 github_work_updated_at(prolog_rlm, pr_122, '2026-08-25T00:18:10+00:00').
 github_work_source(prolog_rlm, pr_122, 'github-pr:lost-rob0t/prolog-rlm#122').
-
-github_work(prolog_rlm, pr_125).
-github_work_kind(prolog_rlm, pr_125, pr).
-github_work_state(prolog_rlm, pr_125, open).
-github_work_severity(prolog_rlm, pr_125, normal).
-github_work_readiness(prolog_rlm, pr_125, ready).
-github_work_ci(prolog_rlm, pr_125, failure).
-github_work_review(prolog_rlm, pr_125, unknown).
-github_work_head_sha(prolog_rlm, pr_125, '93442f29c34078a64d37f1149368f1ad64e9c806').
-github_work_updated_at(prolog_rlm, pr_125, '2026-08-25T00:18:27+00:00').
-github_work_source(prolog_rlm, pr_125, 'github-pr:lost-rob0t/prolog-rlm#125').
 
 github_work(prolog_rlm, pr_132).
 github_work_kind(prolog_rlm, pr_132, pr).
@@ -3035,9 +3047,9 @@ github_work_head_sha(prolog_rlm, pr_132, 'd21cd90995b8db5b39ba1a210e213ca79dd3c0
 github_work_updated_at(prolog_rlm, pr_132, '2026-08-25T00:18:35+00:00').
 github_work_source(prolog_rlm, pr_132, 'github-pr:lost-rob0t/prolog-rlm#132').
 
-github_snapshot(starintel_discord_reports, 'lost-rob0t/starintel-discord-reporting', unavailable, '2026-08-25T02:05:50+00:00').
-github_snapshot(starintel_infra, 'starintel-labs/starintel-infra', unavailable, '2026-08-25T02:05:50+00:00').
-github_snapshot(starintel_server, 'lost-rob0t/starintel-server', fresh, '2026-08-25T02:05:50+00:00').
+github_snapshot(starintel_discord_reports, 'lost-rob0t/starintel-discord-reporting', unavailable, '2026-08-25T03:27:58+00:00').
+github_snapshot(starintel_infra, 'starintel-labs/starintel-infra', unavailable, '2026-08-25T03:27:58+00:00').
+github_snapshot(starintel_server, 'lost-rob0t/starintel-server', fresh, '2026-08-25T03:27:58+00:00').
 github_work(starintel_server, issue_1).
 github_work_kind(starintel_server, issue_1, issue).
 github_work_state(starintel_server, issue_1, open).
@@ -3382,7 +3394,7 @@ github_work_head_sha(starintel_server, pr_116, 'c65871fbbf55a3f5db7dd1d2fb6d6a5d
 github_work_updated_at(starintel_server, pr_116, '2026-08-25T01:15:15+00:00').
 github_work_source(starintel_server, pr_116, 'github-pr:lost-rob0t/starintel-server#116').
 
-github_snapshot(zara, 'lost-rob0t/zara', fresh, '2026-08-25T02:05:50+00:00').
+github_snapshot(zara, 'lost-rob0t/zara', fresh, '2026-08-25T03:27:58+00:00').
 github_work(zara, issue_1).
 github_work_kind(zara, issue_1, issue).
 github_work_state(zara, issue_1, open).
