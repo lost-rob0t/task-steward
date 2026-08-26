@@ -3,10 +3,10 @@
 :- module(kb_generated_managed_github, [managed_observed_by/1, managed_observed_at/1, github_snapshot/4, github_work/2, github_work_kind/3, github_work_state/3, github_work_severity/3, github_work_readiness/3, github_work_ci/3, github_work_review/3, github_work_head_sha/3, github_work_updated_at/3, github_work_source/3]).
 
 managed_observed_by(task_steward_github).
-managed_observed_at('2026-08-26T14:24:03+00:00').
+managed_observed_at('2026-08-26T16:03:33+00:00').
 
-github_snapshot(chatgpt_books_book1, 'lost-rob0t/chatgpt-books', unavailable, '2026-08-26T14:24:03+00:00').
-github_snapshot(hourly_auto_dig, 'lost-rob0t/starintel-gpt-auto-dig', partial, '2026-08-26T14:24:03+00:00').
+github_snapshot(chatgpt_books_book1, 'lost-rob0t/chatgpt-books', unavailable, '2026-08-26T16:03:33+00:00').
+github_snapshot(hourly_auto_dig, 'lost-rob0t/starintel-gpt-auto-dig', partial, '2026-08-26T16:03:33+00:00').
 github_work(hourly_auto_dig, issue_1844).
 github_work_kind(hourly_auto_dig, issue_1844, issue).
 github_work_state(hourly_auto_dig, issue_1844, open).
@@ -2572,8 +2572,8 @@ github_work_head_sha(hourly_auto_dig, pr_2294, '0e97ac468766f768e6ed1121cde6e7dc
 github_work_updated_at(hourly_auto_dig, pr_2294, '2026-08-26T06:57:14+00:00').
 github_work_source(hourly_auto_dig, pr_2294, 'github-pr:lost-rob0t/starintel-gpt-auto-dig#2294').
 
-github_snapshot(local_recall, 'lost-rob0t/local-recall', unavailable, '2026-08-26T14:24:03+00:00').
-github_snapshot(prolog_rlm, 'lost-rob0t/prolog-rlm', fresh, '2026-08-26T14:24:03+00:00').
+github_snapshot(local_recall, 'lost-rob0t/local-recall', unavailable, '2026-08-26T16:03:33+00:00').
+github_snapshot(prolog_rlm, 'lost-rob0t/prolog-rlm', fresh, '2026-08-26T16:03:33+00:00').
 github_work(prolog_rlm, issue_3).
 github_work_kind(prolog_rlm, issue_3, issue).
 github_work_state(prolog_rlm, issue_3, open).
@@ -3001,7 +3001,7 @@ github_work_severity(prolog_rlm, issue_211, normal).
 github_work_readiness(prolog_rlm, issue_211, ready).
 github_work_ci(prolog_rlm, issue_211, not_applicable).
 github_work_review(prolog_rlm, issue_211, not_applicable).
-github_work_updated_at(prolog_rlm, issue_211, '2026-08-25T11:27:11+00:00').
+github_work_updated_at(prolog_rlm, issue_211, '2026-08-26T15:41:59+00:00').
 github_work_source(prolog_rlm, issue_211, 'github-issue:lost-rob0t/prolog-rlm#211').
 
 github_work(prolog_rlm, issue_214).
@@ -3131,8 +3131,18 @@ github_work_severity(prolog_rlm, issue_245, normal).
 github_work_readiness(prolog_rlm, issue_245, ready).
 github_work_ci(prolog_rlm, issue_245, not_applicable).
 github_work_review(prolog_rlm, issue_245, not_applicable).
-github_work_updated_at(prolog_rlm, issue_245, '2026-08-26T14:14:18+00:00').
+github_work_updated_at(prolog_rlm, issue_245, '2026-08-26T15:34:52+00:00').
 github_work_source(prolog_rlm, issue_245, 'github-issue:lost-rob0t/prolog-rlm#245').
+
+github_work(prolog_rlm, issue_248).
+github_work_kind(prolog_rlm, issue_248, issue).
+github_work_state(prolog_rlm, issue_248, open).
+github_work_severity(prolog_rlm, issue_248, normal).
+github_work_readiness(prolog_rlm, issue_248, ready).
+github_work_ci(prolog_rlm, issue_248, not_applicable).
+github_work_review(prolog_rlm, issue_248, not_applicable).
+github_work_updated_at(prolog_rlm, issue_248, '2026-08-26T15:30:17+00:00').
+github_work_source(prolog_rlm, issue_248, 'github-issue:lost-rob0t/prolog-rlm#248').
 
 github_work(prolog_rlm, pr_132).
 github_work_kind(prolog_rlm, pr_132, pr).
@@ -3152,8 +3162,8 @@ github_work_severity(prolog_rlm, pr_213, normal).
 github_work_readiness(prolog_rlm, pr_213, ready).
 github_work_ci(prolog_rlm, pr_213, failure).
 github_work_review(prolog_rlm, pr_213, unknown).
-github_work_head_sha(prolog_rlm, pr_213, 'fced85495700a0746ce49d7f697db3aab39f408d').
-github_work_updated_at(prolog_rlm, pr_213, '2026-08-25T11:26:53+00:00').
+github_work_head_sha(prolog_rlm, pr_213, '99dfc12e6651f69f2e2cac5bf23d1ac224df3e7c').
+github_work_updated_at(prolog_rlm, pr_213, '2026-08-26T15:43:37+00:00').
 github_work_source(prolog_rlm, pr_213, 'github-pr:lost-rob0t/prolog-rlm#213').
 
 github_work(prolog_rlm, pr_221).
@@ -3240,13 +3250,13 @@ github_work_severity(prolog_rlm, pr_246, normal).
 github_work_readiness(prolog_rlm, pr_246, ready).
 github_work_ci(prolog_rlm, pr_246, pending).
 github_work_review(prolog_rlm, pr_246, unknown).
-github_work_head_sha(prolog_rlm, pr_246, '37637cab5b2be4f04cf4458744e9037fe915d9a7').
-github_work_updated_at(prolog_rlm, pr_246, '2026-08-26T14:10:06+00:00').
+github_work_head_sha(prolog_rlm, pr_246, '39d8e1ff030e011e8e0c37619c0c2ba053d83c47').
+github_work_updated_at(prolog_rlm, pr_246, '2026-08-26T15:25:27+00:00').
 github_work_source(prolog_rlm, pr_246, 'github-pr:lost-rob0t/prolog-rlm#246').
 
-github_snapshot(starintel_discord_reports, 'lost-rob0t/starintel-discord-reporting', unavailable, '2026-08-26T14:24:03+00:00').
-github_snapshot(starintel_infra, 'starintel-labs/starintel-infra', unavailable, '2026-08-26T14:24:03+00:00').
-github_snapshot(starintel_server, 'lost-rob0t/starintel-server', fresh, '2026-08-26T14:24:03+00:00').
+github_snapshot(starintel_discord_reports, 'lost-rob0t/starintel-discord-reporting', unavailable, '2026-08-26T16:03:33+00:00').
+github_snapshot(starintel_infra, 'starintel-labs/starintel-infra', unavailable, '2026-08-26T16:03:33+00:00').
+github_snapshot(starintel_server, 'lost-rob0t/starintel-server', fresh, '2026-08-26T16:03:33+00:00').
 github_work(starintel_server, issue_1).
 github_work_kind(starintel_server, issue_1, issue).
 github_work_state(starintel_server, issue_1, open).
@@ -3682,7 +3692,7 @@ github_work_head_sha(starintel_server, pr_127, '38666dab3610bd7771fa1c8ab3bbe67e
 github_work_updated_at(starintel_server, pr_127, '2026-08-26T12:08:08+00:00').
 github_work_source(starintel_server, pr_127, 'github-pr:lost-rob0t/starintel-server#127').
 
-github_snapshot(zara, 'lost-rob0t/zara', fresh, '2026-08-26T14:24:03+00:00').
+github_snapshot(zara, 'lost-rob0t/zara', fresh, '2026-08-26T16:03:33+00:00').
 github_work(zara, issue_1).
 github_work_kind(zara, issue_1, issue).
 github_work_state(zara, issue_1, open).
