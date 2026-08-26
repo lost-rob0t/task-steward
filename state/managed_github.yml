@@ -1,16 +1,16 @@
 version: 1
 observed_by: task-steward-github
-observed_at: '2026-08-26T10:09:01+00:00'
+observed_at: '2026-08-26T11:04:42+00:00'
 projects:
 - project: chatgpt-books-book1
   repo: lost-rob0t/chatgpt-books
   snapshot: unavailable
-  observed_at: '2026-08-26T10:09:01+00:00'
+  observed_at: '2026-08-26T11:04:42+00:00'
   work: []
 - project: hourly-auto-dig
   repo: lost-rob0t/starintel-gpt-auto-dig
   snapshot: partial
-  observed_at: '2026-08-26T10:09:01+00:00'
+  observed_at: '2026-08-26T11:04:42+00:00'
   work:
   - ref: issue-1844
     kind: issue
@@ -2561,10 +2561,10 @@ projects:
     state: open
     severity: normal
     readiness: ready
-    ci: failure
+    ci: pending
     review: unknown
-    head_sha: ad90cdcfb38fee5a7ad730b234b7d5cada14bcce
-    updated_at: '2026-08-25T06:08:55Z'
+    head_sha: b79a0ec9e8b289c4e6eaa7eaa7e0158eb43c7d5e
+    updated_at: '2026-08-26T10:13:54Z'
     source: github-pr:lost-rob0t/starintel-gpt-auto-dig#2287
   - ref: pr-2294
     kind: pr
@@ -2580,12 +2580,12 @@ projects:
 - project: local-recall
   repo: lost-rob0t/local-recall
   snapshot: unavailable
-  observed_at: '2026-08-26T10:09:01+00:00'
+  observed_at: '2026-08-26T11:04:42+00:00'
   work: []
 - project: prolog-rlm
   repo: lost-rob0t/prolog-rlm
   snapshot: fresh
-  observed_at: '2026-08-26T10:09:01+00:00'
+  observed_at: '2026-08-26T11:04:42+00:00'
   work:
   - ref: issue-3
     kind: issue
@@ -3239,17 +3239,17 @@ projects:
 - project: starintel-discord-reports
   repo: lost-rob0t/starintel-discord-reporting
   snapshot: unavailable
-  observed_at: '2026-08-26T10:09:01+00:00'
+  observed_at: '2026-08-26T11:04:42+00:00'
   work: []
 - project: starintel-infra
   repo: starintel-labs/starintel-infra
   snapshot: unavailable
-  observed_at: '2026-08-26T10:09:01+00:00'
+  observed_at: '2026-08-26T11:04:42+00:00'
   work: []
 - project: starintel-server
   repo: lost-rob0t/starintel-server
   snapshot: fresh
-  observed_at: '2026-08-26T10:09:01+00:00'
+  observed_at: '2026-08-26T11:04:42+00:00'
   work:
   - ref: issue-1
     kind: issue
@@ -3689,7 +3689,7 @@ projects:
 - project: zara
   repo: lost-rob0t/zara
   snapshot: fresh
-  observed_at: '2026-08-26T10:09:01+00:00'
+  observed_at: '2026-08-26T11:04:42+00:00'
   work:
   - ref: issue-1
     kind: issue
