@@ -1,16 +1,16 @@
 version: 1
 observed_by: task-steward-github
-observed_at: '2026-08-26T11:04:42+00:00'
+observed_at: '2026-08-26T11:59:46+00:00'
 projects:
 - project: chatgpt-books-book1
   repo: lost-rob0t/chatgpt-books
   snapshot: unavailable
-  observed_at: '2026-08-26T11:04:42+00:00'
+  observed_at: '2026-08-26T11:59:46+00:00'
   work: []
 - project: hourly-auto-dig
   repo: lost-rob0t/starintel-gpt-auto-dig
   snapshot: partial
-  observed_at: '2026-08-26T11:04:42+00:00'
+  observed_at: '2026-08-26T11:59:46+00:00'
   work:
   - ref: issue-1844
     kind: issue
@@ -2580,12 +2580,12 @@ projects:
 - project: local-recall
   repo: lost-rob0t/local-recall
   snapshot: unavailable
-  observed_at: '2026-08-26T11:04:42+00:00'
+  observed_at: '2026-08-26T11:59:46+00:00'
   work: []
 - project: prolog-rlm
   repo: lost-rob0t/prolog-rlm
   snapshot: fresh
-  observed_at: '2026-08-26T11:04:42+00:00'
+  observed_at: '2026-08-26T11:59:46+00:00'
   work:
   - ref: issue-3
     kind: issue
@@ -2995,7 +2995,7 @@ projects:
     readiness: ready
     ci: not_applicable
     review: not_applicable
-    updated_at: '2026-08-25T00:18:41Z'
+    updated_at: '2026-08-26T11:11:18Z'
     source: github-issue:lost-rob0t/prolog-rlm#183
   - ref: issue-184
     kind: issue
@@ -3027,16 +3027,6 @@ projects:
     review: not_applicable
     updated_at: '2026-08-25T11:28:27Z'
     source: github-issue:lost-rob0t/prolog-rlm#214
-  - ref: issue-215
-    kind: issue
-    number: 215
-    state: open
-    severity: normal
-    readiness: ready
-    ci: not_applicable
-    review: not_applicable
-    updated_at: '2026-08-25T11:30:52Z'
-    source: github-issue:lost-rob0t/prolog-rlm#215
   - ref: issue-219
     kind: issue
     number: 219
@@ -3137,6 +3127,26 @@ projects:
     review: not_applicable
     updated_at: '2026-08-26T09:04:49Z'
     source: github-issue:lost-rob0t/prolog-rlm#234
+  - ref: issue-240
+    kind: issue
+    number: 240
+    state: open
+    severity: normal
+    readiness: ready
+    ci: not_applicable
+    review: not_applicable
+    updated_at: '2026-08-26T11:05:56Z'
+    source: github-issue:lost-rob0t/prolog-rlm#240
+  - ref: issue-241
+    kind: issue
+    number: 241
+    state: open
+    severity: normal
+    readiness: ready
+    ci: not_applicable
+    review: not_applicable
+    updated_at: '2026-08-26T11:06:02Z'
+    source: github-issue:lost-rob0t/prolog-rlm#241
   - ref: pr-132
     kind: pr
     number: 132
@@ -3148,17 +3158,6 @@ projects:
     head_sha: 8d0d3282cbfbc691f306fa444cb165631f9166be
     updated_at: '2026-08-25T07:45:38Z'
     source: github-pr:lost-rob0t/prolog-rlm#132
-  - ref: pr-212
-    kind: pr
-    number: 212
-    state: open
-    severity: normal
-    readiness: ready
-    ci: failure
-    review: unknown
-    head_sha: 0109d25e2b22190d6d3339528f76c04748462c45
-    updated_at: '2026-08-26T02:07:01Z'
-    source: github-pr:lost-rob0t/prolog-rlm#212
   - ref: pr-213
     kind: pr
     number: 213
@@ -3222,8 +3221,8 @@ projects:
     readiness: ready
     ci: pending
     review: unknown
-    head_sha: 07b552e2c0eb47faf9c9c48635cc1879f99b5a8d
-    updated_at: '2026-08-26T10:06:11Z'
+    head_sha: 33a76a820aa86187b86a88fefbde604a847a3605
+    updated_at: '2026-08-26T11:08:29Z'
     source: github-pr:lost-rob0t/prolog-rlm#237
   - ref: pr-238
     kind: pr
@@ -3239,17 +3238,17 @@ projects:
 - project: starintel-discord-reports
   repo: lost-rob0t/starintel-discord-reporting
   snapshot: unavailable
-  observed_at: '2026-08-26T11:04:42+00:00'
+  observed_at: '2026-08-26T11:59:46+00:00'
   work: []
 - project: starintel-infra
   repo: starintel-labs/starintel-infra
   snapshot: unavailable
-  observed_at: '2026-08-26T11:04:42+00:00'
+  observed_at: '2026-08-26T11:59:46+00:00'
   work: []
 - project: starintel-server
   repo: lost-rob0t/starintel-server
   snapshot: fresh
-  observed_at: '2026-08-26T11:04:42+00:00'
+  observed_at: '2026-08-26T11:59:46+00:00'
   work:
   - ref: issue-1
     kind: issue
@@ -3689,7 +3688,7 @@ projects:
 - project: zara
   repo: lost-rob0t/zara
   snapshot: fresh
-  observed_at: '2026-08-26T11:04:42+00:00'
+  observed_at: '2026-08-26T11:59:46+00:00'
   work:
   - ref: issue-1
     kind: issue
