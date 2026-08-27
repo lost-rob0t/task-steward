@@ -1,0 +1,26 @@
+version: 1
+
+workers:
+  - id: a0-starintel-server-1
+    project: starintel-server
+    backend: agent-zero-a2a
+    enabled: true
+    capabilities:
+      - rage
+      - coding
+    config:
+      base_url_env: STEWARD_A0_STARINTEL_URL
+      token_env: STEWARD_A0_STARINTEL_TOKEN
+      project: StarIntelServer
+
+  - id: opencode-starintel-server-1
+    project: starintel-server
+    backend: opencode-run
+    enabled: false
+    capabilities:
+      - rage
+      - coding
+    config:
+      binary_env: STEWARD_OPENCODE_BIN
+      workdir_env: STEWARD_STARINTEL_WORKDIR
+      agent: build

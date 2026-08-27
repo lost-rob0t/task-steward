@@ -81,8 +81,8 @@ tasks:
 - id: task-stward-rage-issue-49
   project: task-stward-rage
   source: github-issue:lost-rob0t/task-stward-rage#49
-  state: open
+  state: closed
   priority: 10
-  generation: 1
+  generation: 2
 observed_by: task-steward
 observed_at: '2026-08-23T22:32:01Z'

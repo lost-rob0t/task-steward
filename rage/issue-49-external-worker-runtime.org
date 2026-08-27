@@ -1,0 +1,38 @@
+#+title: RAGE #49 — External worker runtime
+
+* Run identity
+- Consumed issue :: #49
+- Branch :: =agent/issue-49-external-worker-runtime=
+- RAGE start commit :: =4e3937224adc1bcf71adeed5b411a3a998ef6d9f=
+
+* Research
+- Existing =steward.pl= already owns managed GitHub selection and exposes generation-fenced internal task leases.
+- Current Agent Zero documentation defines user skills under =usr/skills/= and project overrides under =.a0proj/skills/=; A2A accepts project-scoped POST messages at =/a2a/t-TOKEN/p-PROJECT=.
+- Current OpenCode documentation discovers project skills from =.agents/skills/= and =.opencode/skills/= and supports non-interactive =opencode run= with =--dir= and =--agent=.
+
+* Design
+- Preserve Prolog as global scheduling/eligibility authority.
+- Keep external runtime lease persistence separate from managed-project source using an ignored SQLite database under =state/generated/=.
+- Serialize runtime mutations through one actor mailbox; HTTP workers cannot race lease transitions directly.
+- A lease contains project/task ref, owner worker, monotonic generation, random receipt token, expiry, and terminal state.
+- Backends may dispatch only the exact =next_external= result exported by Prolog.
+- Agent Zero credentials are read only from named environment variables. No credential value enters YAML, generated Prolog, status output, or exceptions.
+- OpenCode uses argv execution without a shell.
+- The HTTP service binds loopback by default. Non-loopback bind requires =STEWARD_API_TOKEN= and an explicit public callback URL.
+- Worker receipts are accepted only for the current owner/generation/token. A Prolog pause/hard-stop revokes live heartbeat/status into a yield.
+
+* Rejected alternatives
+- LLM-selected fallback task: violates scheduler authority.
+- One scheduler per backend: duplicates policy and creates drift.
+- Persisting A0 connection URLs with embedded tokens: leaks credentials into durable state.
+- Direct cross-repository writes from stewardd: violates the repository isolation boundary.
+
+* Acceptance mapping
+- Worker compiler/secret rejection :: =tests/test_compile_workers.py=
+- Generation fencing and A0 URL/redaction :: =tests/test_steward_runtime.py=
+- Prolog worker eligibility/generation rule :: =tests/workers.pl=
+- Exact generated facts :: =scripts/compile_workers.py --check=
+- Full repository gate :: =.github/workflows/steward.yml=
+
+* Iteration 1
+RED tests were committed before the implementation files. Implementation keeps the runtime backend-neutral with Agent Zero and OpenCode adapters and a generic HTTP pull/receipt contract for other operators.

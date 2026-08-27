@@ -96,9 +96,9 @@ task_generation(task_stward_rage_issue_47, 2).
 task(task_stward_rage_issue_49).
 task_project(task_stward_rage_issue_49, task_stward_rage).
 task_source(task_stward_rage_issue_49, 'github-issue:lost-rob0t/task-stward-rage#49').
-task_state(task_stward_rage_issue_49, open).
+task_state(task_stward_rage_issue_49, closed).
 task_priority(task_stward_rage_issue_49, 10).
-task_generation(task_stward_rage_issue_49, 1).
+task_generation(task_stward_rage_issue_49, 2).
 
 task_dependency(_, _) :- fail.
 

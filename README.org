@@ -22,6 +22,7 @@ It is derived from the StarIntel Labs RAGE template and keeps the RAGE method: *
 state/                 authored policy plus bounded observed/derived steward state
 kb/                    Prolog knowledge-base facts
 experts/               serial Prolog Mixture-of-Experts rule modules
+skills/                canonical local worker/bootstrap skill contracts
 steward.pl             unified Prolog query/interface surface
 .github/workflows/     validation and bounded reconciliation/wake entry points
 #+end_src
@@ -86,9 +87,71 @@ steward_validate.
 steward_next(Action).
 steward_next_external(Project, TaskRef).
 steward_worker_decision(Project, Decision, Reason).
+steward_worker_dispatchable(Worker, Project, Reason).
+steward_worker_backend(Worker, Backend).
+steward_runtime_generation_valid(Current, Presented).
 steward_explain(Action, Explanation).
 steward_status(Status).
 #+end_src
+
+* Standalone worker runtime
+
+=scripts/steward_runtime.py= externalizes execution without externalizing scheduling. It calls the Prolog decision exporter, asks =steward_worker_dispatchable/3= for the selected worker/project pair, then acquires a generation-fenced SQLite lease before dispatch. The ignored runtime database lives under =state/generated/= and is operational state, not scheduling policy.
+
+Worker metadata is authored in =state/workers.yml= and deterministically compiled to =kb/generated/workers.pl=. Credential values are forbidden there; only environment-variable names may be tracked.
+
+The runtime supports:
+
+- Agent Zero project-scoped A2A dispatch;
+- OpenCode non-interactive =opencode run= dispatch;
+- generic HTTP assignment/receipt operation for any agent that can call HTTP.
+
+The HTTP service binds to loopback by default. Binding a non-loopback address requires =STEWARD_API_TOKEN= and =--public-url=.
+
+** Agent Zero example
+
+Enable A2A in Agent Zero, create the configured project, then set the environment variables named by the worker entry. The token itself must stay outside git.
+
+#+begin_src sh
+export STEWARD_A0_STARINTEL_URL='http://127.0.0.1:50001'
+export STEWARD_A0_STARINTEL_TOKEN='...secret from Agent Zero...'
+python3 scripts/steward_runtime.py serve
+#+end_src
+
+Dispatch the configured worker:
+
+#+begin_src sh
+python3 scripts/steward_runtime.py dispatch --worker a0-starintel-server-1 \
+  --callback-url http://127.0.0.1:9777/v1/receipt
+#+end_src
+
+The A2A adapter posts only the exact Prolog-selected task to =/a2a/t-TOKEN/p-PROJECT=. The token is used only to construct the outbound request and is not included in runtime status output or durable state.
+
+** OpenCode example
+
+The shipped OpenCode worker is disabled until explicitly enabled in =state/workers.yml=. Configure its binary/worktree outside git, recompile worker facts, then enable it:
+
+#+begin_src sh
+export STEWARD_OPENCODE_BIN="$(command -v opencode)"
+export STEWARD_STARINTEL_WORKDIR="$HOME/src/starintel-server"
+python3 scripts/compile_workers.py
+python3 scripts/compile_workers.py --check
+#+end_src
+
+OpenCode dispatch uses argv execution without a shell and passes the same fenced assignment contract to =opencode run=.
+
+** Generic worker API
+
+#+begin_src text
+GET  /v1/status
+GET  /v1/assignment?worker=WORKER
+POST /v1/dispatch
+POST /v1/receipt
+#+end_src
+
+Every state-changing receipt carries the exact worker, project, task ref, generation, and lease token from its assignment. Once generation N+1 owns a task, generation N receipts fail closed. Live heartbeat/status receipts are also revoked if current Prolog policy no longer permits that worker/project pair.
+
+Canonical local skill bodies live under =skills/=. The project adapter views are =.a0proj/skills/= for Agent Zero and =.agents/skills/= for OpenCode/generic Agent Skills clients. =.a0/skills/= exists only as a compatibility view; it is not treated as Agent Zero's canonical discovery path.
 
 * Wake model
 
@@ -102,7 +165,7 @@ Workflow validation and logical steward evaluation are separate operations.
 
 A wake means only "re-evaluate current state". It does not choose the next task. The evaluation calls the unified Prolog interface, and Prolog remains authoritative for the result.
 
-The validation/evaluation workflow has read-only contents permission. State-reconciliation workflows have narrowly bounded write permission only to this repository. They cannot mutate managed repositories, and the scope validator rejects drift in their triggers, staging paths, push destination, or write authority.
+The validation/evaluation workflow has read-only repository contents permission. State-reconciliation workflows have narrowly bounded write permission only to this repository. They cannot mutate managed repositories, and the scope validator rejects drift in their triggers, staging paths, push destination, or write authority.
 
 * RAGE loop
 
