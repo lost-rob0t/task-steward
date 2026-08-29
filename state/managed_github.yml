@@ -1,16 +1,16 @@
 version: 1
 observed_by: task-steward-github
-observed_at: '2026-08-28T18:58:58+00:00'
+observed_at: '2026-08-29T02:25:35+00:00'
 projects:
 - project: chatgpt-books-book1
   repo: lost-rob0t/chatgpt-books
   snapshot: unavailable
-  observed_at: '2026-08-28T18:58:58+00:00'
+  observed_at: '2026-08-29T02:25:35+00:00'
   work: []
 - project: hourly-auto-dig
   repo: lost-rob0t/starintel-gpt-auto-dig
   snapshot: partial
-  observed_at: '2026-08-28T18:58:58+00:00'
+  observed_at: '2026-08-29T02:25:35+00:00'
   work:
   - ref: issue-1847
     kind: issue
@@ -690,7 +690,7 @@ projects:
     readiness: ready
     ci: not_applicable
     review: not_applicable
-    updated_at: '2026-08-28T06:58:44Z'
+    updated_at: '2026-08-28T19:30:16Z'
     source: github-issue:lost-rob0t/starintel-gpt-auto-dig#2095
   - ref: issue-2100
     kind: issue
@@ -2580,12 +2580,12 @@ projects:
 - project: local-recall
   repo: lost-rob0t/local-recall
   snapshot: unavailable
-  observed_at: '2026-08-28T18:58:58+00:00'
+  observed_at: '2026-08-29T02:25:35+00:00'
   work: []
 - project: prolog-rlm
   repo: lost-rob0t/prolog-rlm
   snapshot: fresh
-  observed_at: '2026-08-28T18:58:58+00:00'
+  observed_at: '2026-08-29T02:25:35+00:00'
   work:
   - ref: issue-3
     kind: issue
@@ -3147,6 +3147,26 @@ projects:
     review: not_applicable
     updated_at: '2026-08-28T07:23:41Z'
     source: github-issue:lost-rob0t/prolog-rlm#291
+  - ref: issue-292
+    kind: issue
+    number: 292
+    state: open
+    severity: normal
+    readiness: ready
+    ci: not_applicable
+    review: not_applicable
+    updated_at: '2026-08-28T19:30:17Z'
+    source: github-issue:lost-rob0t/prolog-rlm#292
+  - ref: issue-293
+    kind: issue
+    number: 293
+    state: open
+    severity: normal
+    readiness: ready
+    ci: not_applicable
+    review: not_applicable
+    updated_at: '2026-08-28T23:16:16Z'
+    source: github-issue:lost-rob0t/prolog-rlm#293
   - ref: pr-132
     kind: pr
     number: 132
@@ -3175,25 +3195,25 @@ projects:
     state: open
     severity: normal
     readiness: ready
-    ci: pending
+    ci: failure
     review: unknown
-    head_sha: 1857fac9f227327c2086af1081955bfa28bc9f4d
-    updated_at: '2026-08-28T07:04:20Z'
+    head_sha: 88bca2ec5d357a29f45bcb74ce3b03a470ec05a7
+    updated_at: '2026-08-28T23:15:18Z'
     source: github-pr:lost-rob0t/prolog-rlm#290
 - project: starintel-discord-reports
   repo: lost-rob0t/starintel-discord-reporting
   snapshot: unavailable
-  observed_at: '2026-08-28T18:58:58+00:00'
+  observed_at: '2026-08-29T02:25:35+00:00'
   work: []
 - project: starintel-infra
   repo: starintel-labs/starintel-infra
   snapshot: unavailable
-  observed_at: '2026-08-28T18:58:58+00:00'
+  observed_at: '2026-08-29T02:25:35+00:00'
   work: []
 - project: starintel-server
   repo: lost-rob0t/starintel-server
   snapshot: fresh
-  observed_at: '2026-08-28T18:58:58+00:00'
+  observed_at: '2026-08-29T02:25:35+00:00'
   work:
   - ref: issue-1
     kind: issue
@@ -3632,7 +3652,7 @@ projects:
 - project: zara
   repo: lost-rob0t/zara
   snapshot: fresh
-  observed_at: '2026-08-28T18:58:58+00:00'
+  observed_at: '2026-08-29T02:25:35+00:00'
   work:
   - ref: issue-1
     kind: issue
