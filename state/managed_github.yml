@@ -1,16 +1,16 @@
 version: 1
 observed_by: task-steward-github
-observed_at: '2026-09-03T00:34:47+00:00'
+observed_at: '2026-09-03T04:59:37+00:00'
 projects:
 - project: chatgpt-books-book1
   repo: lost-rob0t/chatgpt-books
   snapshot: unavailable
-  observed_at: '2026-09-03T00:34:47+00:00'
+  observed_at: '2026-09-03T04:59:37+00:00'
   work: []
 - project: hourly-auto-dig
   repo: lost-rob0t/starintel-gpt-auto-dig
   snapshot: partial
-  observed_at: '2026-09-03T00:34:47+00:00'
+  observed_at: '2026-09-03T04:59:37+00:00'
   work:
   - ref: issue-1850
     kind: issue
@@ -2582,7 +2582,7 @@ projects:
 - project: local-recall
   repo: lost-rob0t/local-recall
   snapshot: fresh
-  observed_at: '2026-09-03T00:34:47+00:00'
+  observed_at: '2026-09-03T04:59:37+00:00'
   work:
   - ref: issue-35
     kind: issue
@@ -2617,7 +2617,7 @@ projects:
 - project: prolog-rlm
   repo: lost-rob0t/prolog-rlm
   snapshot: fresh
-  observed_at: '2026-09-03T00:34:47+00:00'
+  observed_at: '2026-09-03T04:59:37+00:00'
   work:
   - ref: issue-3
     kind: issue
@@ -2997,7 +2997,7 @@ projects:
     readiness: ready
     ci: not_applicable
     review: not_applicable
-    updated_at: '2026-08-28T09:57:23Z'
+    updated_at: '2026-09-03T01:08:23Z'
     source: github-issue:lost-rob0t/prolog-rlm#288
   - ref: issue-296
     kind: issue
@@ -3219,6 +3219,66 @@ projects:
     review: not_applicable
     updated_at: '2026-09-03T00:13:25Z'
     source: github-issue:lost-rob0t/prolog-rlm#355
+  - ref: issue-357
+    kind: issue
+    number: 357
+    state: open
+    severity: normal
+    readiness: ready
+    ci: not_applicable
+    review: not_applicable
+    updated_at: '2026-09-03T03:01:38Z'
+    source: github-issue:lost-rob0t/prolog-rlm#357
+  - ref: issue-358
+    kind: issue
+    number: 358
+    state: open
+    severity: normal
+    readiness: ready
+    ci: not_applicable
+    review: not_applicable
+    updated_at: '2026-09-03T01:20:12Z'
+    source: github-issue:lost-rob0t/prolog-rlm#358
+  - ref: issue-359
+    kind: issue
+    number: 359
+    state: open
+    severity: normal
+    readiness: ready
+    ci: not_applicable
+    review: not_applicable
+    updated_at: '2026-09-03T03:06:42Z'
+    source: github-issue:lost-rob0t/prolog-rlm#359
+  - ref: issue-361
+    kind: issue
+    number: 361
+    state: open
+    severity: normal
+    readiness: ready
+    ci: not_applicable
+    review: not_applicable
+    updated_at: '2026-09-03T03:53:08Z'
+    source: github-issue:lost-rob0t/prolog-rlm#361
+  - ref: issue-362
+    kind: issue
+    number: 362
+    state: open
+    severity: normal
+    readiness: ready
+    ci: not_applicable
+    review: not_applicable
+    updated_at: '2026-09-03T04:06:23Z'
+    source: github-issue:lost-rob0t/prolog-rlm#362
+  - ref: issue-363
+    kind: issue
+    number: 363
+    state: open
+    severity: normal
+    readiness: ready
+    ci: not_applicable
+    review: not_applicable
+    updated_at: '2026-09-03T04:15:53Z'
+    source: github-issue:lost-rob0t/prolog-rlm#363
   - ref: pr-340
     kind: pr
     number: 340
@@ -3230,20 +3290,42 @@ projects:
     head_sha: b12561cf888f62c5bfe692cc6669eae50eb1b634
     updated_at: '2026-09-01T17:21:05Z'
     source: github-pr:lost-rob0t/prolog-rlm#340
+  - ref: pr-356
+    kind: pr
+    number: 356
+    state: open
+    severity: normal
+    readiness: ready
+    ci: failure
+    review: unknown
+    head_sha: 6d82a20281da680b8cc49d7905c1a67544b264c7
+    updated_at: '2026-09-03T03:01:07Z'
+    source: github-pr:lost-rob0t/prolog-rlm#356
+  - ref: pr-360
+    kind: pr
+    number: 360
+    state: open
+    severity: normal
+    readiness: ready
+    ci: failure
+    review: unknown
+    head_sha: 653fed13ad35b4f8880221c0cff0e60a02cd3dc3
+    updated_at: '2026-09-03T03:51:53Z'
+    source: github-pr:lost-rob0t/prolog-rlm#360
 - project: starintel-discord-reports
   repo: lost-rob0t/starintel-discord-reporting
   snapshot: unavailable
-  observed_at: '2026-09-03T00:34:47+00:00'
+  observed_at: '2026-09-03T04:59:37+00:00'
   work: []
 - project: starintel-infra
   repo: starintel-labs/starintel-infra
   snapshot: unavailable
-  observed_at: '2026-09-03T00:34:47+00:00'
+  observed_at: '2026-09-03T04:59:37+00:00'
   work: []
 - project: starintel-server
   repo: lost-rob0t/starintel-server
   snapshot: fresh
-  observed_at: '2026-09-03T00:34:47+00:00'
+  observed_at: '2026-09-03T04:59:37+00:00'
   work:
   - ref: issue-1
     kind: issue
@@ -3804,7 +3886,7 @@ projects:
 - project: zara
   repo: lost-rob0t/zara
   snapshot: fresh
-  observed_at: '2026-09-03T00:34:47+00:00'
+  observed_at: '2026-09-03T04:59:37+00:00'
   work:
   - ref: issue-1
     kind: issue
@@ -4044,7 +4126,7 @@ projects:
     readiness: ready
     ci: not_applicable
     review: not_applicable
-    updated_at: '2026-08-22T21:53:07Z'
+    updated_at: '2026-09-03T02:33:43Z'
     source: github-issue:lost-rob0t/zara#159
   - ref: issue-160
     kind: issue
@@ -4146,16 +4228,6 @@ projects:
     review: not_applicable
     updated_at: '2026-08-22T21:54:53Z'
     source: github-issue:lost-rob0t/zara#169
-  - ref: issue-172
-    kind: issue
-    number: 172
-    state: open
-    severity: normal
-    readiness: ready
-    ci: not_applicable
-    review: not_applicable
-    updated_at: '2026-08-22T21:55:24Z'
-    source: github-issue:lost-rob0t/zara#172
   - ref: issue-173
     kind: issue
     number: 173
@@ -4541,14 +4613,14 @@ projects:
     head_sha: b9d3d5d308bbed1e73fc21bc99cba11dd7bb6a47
     updated_at: '2026-09-01T05:12:48Z'
     source: github-pr:lost-rob0t/zara#262
-  - ref: pr-299
+  - ref: pr-305
     kind: pr
-    number: 299
+    number: 305
     state: open
     severity: normal
     readiness: ready
     ci: pending
     review: unknown
-    head_sha: b8ec2eae62ffef834be03cd6e8c84f88b519306a
-    updated_at: '2026-09-02T23:36:38Z'
-    source: github-pr:lost-rob0t/zara#299
+    head_sha: fc573aa8898478187fe9500c69ae81eedae44c76
+    updated_at: '2026-09-03T04:07:48Z'
+    source: github-pr:lost-rob0t/zara#305
