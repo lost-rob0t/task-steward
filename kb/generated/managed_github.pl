@@ -3,11 +3,11 @@
 :- module(kb_generated_managed_github, [managed_observed_by/1, managed_observed_at/1, github_snapshot/4, github_work/2, github_work_kind/3, github_work_state/3, github_work_severity/3, github_work_readiness/3, github_work_ci/3, github_work_review/3, github_work_head_sha/3, github_work_updated_at/3, github_work_source/3]).
 
 managed_observed_by(task_steward_github).
-managed_observed_at('2026-09-05T10:53:39+00:00').
+managed_observed_at('2026-09-05T13:59:15+00:00').
 
-github_snapshot(chatgpt_books_book1, 'lost-rob0t/chatgpt-books', unavailable, '2026-09-05T10:53:39+00:00').
-github_snapshot(hackmode, 'nsaspy/hackmode', unavailable, '2026-09-05T10:53:39+00:00').
-github_snapshot(hourly_auto_dig, 'lost-rob0t/starintel-gpt-auto-dig', partial, '2026-09-05T10:53:39+00:00').
+github_snapshot(chatgpt_books_book1, 'lost-rob0t/chatgpt-books', unavailable, '2026-09-05T13:59:15+00:00').
+github_snapshot(hackmode, 'nsaspy/hackmode', unavailable, '2026-09-05T13:59:15+00:00').
+github_snapshot(hourly_auto_dig, 'lost-rob0t/starintel-gpt-auto-dig', partial, '2026-09-05T13:59:15+00:00').
 github_work(hourly_auto_dig, issue_1864).
 github_work_kind(hourly_auto_dig, issue_1864, issue).
 github_work_state(hourly_auto_dig, issue_1864, open).
@@ -2589,7 +2589,7 @@ github_work_head_sha(hourly_auto_dig, pr_2322, 'c1c6dc7dfea0fdb0776a6c4a9eee4e06
 github_work_updated_at(hourly_auto_dig, pr_2322, '2026-09-01T13:04:03+00:00').
 github_work_source(hourly_auto_dig, pr_2322, 'github-pr:lost-rob0t/starintel-gpt-auto-dig#2322').
 
-github_snapshot(local_recall, 'lost-rob0t/local-recall', fresh, '2026-09-05T10:53:39+00:00').
+github_snapshot(local_recall, 'lost-rob0t/local-recall', fresh, '2026-09-05T13:59:15+00:00').
 github_work(local_recall, issue_35).
 github_work_kind(local_recall, issue_35, issue).
 github_work_state(local_recall, issue_35, open).
@@ -2620,7 +2620,7 @@ github_work_review(local_recall, issue_41, not_applicable).
 github_work_updated_at(local_recall, issue_41, '2026-07-18T00:06:50+00:00').
 github_work_source(local_recall, issue_41, 'github-issue:lost-rob0t/local-recall#41').
 
-github_snapshot(prolog_rlm, 'lost-rob0t/prolog-rlm', fresh, '2026-09-05T10:53:39+00:00').
+github_snapshot(prolog_rlm, 'lost-rob0t/prolog-rlm', fresh, '2026-09-05T13:59:15+00:00').
 github_work(prolog_rlm, issue_3).
 github_work_kind(prolog_rlm, issue_3, issue).
 github_work_state(prolog_rlm, issue_3, open).
@@ -3138,7 +3138,7 @@ github_work_severity(prolog_rlm, issue_376, normal).
 github_work_readiness(prolog_rlm, issue_376, ready).
 github_work_ci(prolog_rlm, issue_376, not_applicable).
 github_work_review(prolog_rlm, issue_376, not_applicable).
-github_work_updated_at(prolog_rlm, issue_376, '2026-09-05T07:36:24+00:00').
+github_work_updated_at(prolog_rlm, issue_376, '2026-09-05T12:53:24+00:00').
 github_work_source(prolog_rlm, issue_376, 'github-issue:lost-rob0t/prolog-rlm#376').
 
 github_work(prolog_rlm, issue_377).
@@ -3308,7 +3308,7 @@ github_work_severity(prolog_rlm, issue_393, normal).
 github_work_readiness(prolog_rlm, issue_393, ready).
 github_work_ci(prolog_rlm, issue_393, not_applicable).
 github_work_review(prolog_rlm, issue_393, not_applicable).
-github_work_updated_at(prolog_rlm, issue_393, '2026-09-05T10:51:20+00:00').
+github_work_updated_at(prolog_rlm, issue_393, '2026-09-05T12:52:30+00:00').
 github_work_source(prolog_rlm, issue_393, 'github-issue:lost-rob0t/prolog-rlm#393').
 
 github_work(prolog_rlm, issue_394).
@@ -3318,7 +3318,7 @@ github_work_severity(prolog_rlm, issue_394, normal).
 github_work_readiness(prolog_rlm, issue_394, ready).
 github_work_ci(prolog_rlm, issue_394, not_applicable).
 github_work_review(prolog_rlm, issue_394, not_applicable).
-github_work_updated_at(prolog_rlm, issue_394, '2026-09-05T09:18:38+00:00').
+github_work_updated_at(prolog_rlm, issue_394, '2026-09-05T13:52:31+00:00').
 github_work_source(prolog_rlm, issue_394, 'github-issue:lost-rob0t/prolog-rlm#394').
 
 github_work(prolog_rlm, issue_395).
@@ -3328,7 +3328,7 @@ github_work_severity(prolog_rlm, issue_395, normal).
 github_work_readiness(prolog_rlm, issue_395, ready).
 github_work_ci(prolog_rlm, issue_395, not_applicable).
 github_work_review(prolog_rlm, issue_395, not_applicable).
-github_work_updated_at(prolog_rlm, issue_395, '2026-09-05T10:51:46+00:00').
+github_work_updated_at(prolog_rlm, issue_395, '2026-09-05T12:52:42+00:00').
 github_work_source(prolog_rlm, issue_395, 'github-issue:lost-rob0t/prolog-rlm#395').
 
 github_work(prolog_rlm, issue_396).
@@ -3338,7 +3338,7 @@ github_work_severity(prolog_rlm, issue_396, normal).
 github_work_readiness(prolog_rlm, issue_396, ready).
 github_work_ci(prolog_rlm, issue_396, not_applicable).
 github_work_review(prolog_rlm, issue_396, not_applicable).
-github_work_updated_at(prolog_rlm, issue_396, '2026-09-05T09:18:47+00:00').
+github_work_updated_at(prolog_rlm, issue_396, '2026-09-05T12:52:54+00:00').
 github_work_source(prolog_rlm, issue_396, 'github-issue:lost-rob0t/prolog-rlm#396').
 
 github_work(prolog_rlm, issue_397).
@@ -3348,18 +3348,8 @@ github_work_severity(prolog_rlm, issue_397, normal).
 github_work_readiness(prolog_rlm, issue_397, ready).
 github_work_ci(prolog_rlm, issue_397, not_applicable).
 github_work_review(prolog_rlm, issue_397, not_applicable).
-github_work_updated_at(prolog_rlm, issue_397, '2026-09-05T10:52:33+00:00').
+github_work_updated_at(prolog_rlm, issue_397, '2026-09-05T13:53:59+00:00').
 github_work_source(prolog_rlm, issue_397, 'github-issue:lost-rob0t/prolog-rlm#397').
-
-github_work(prolog_rlm, issue_399).
-github_work_kind(prolog_rlm, issue_399, issue).
-github_work_state(prolog_rlm, issue_399, open).
-github_work_severity(prolog_rlm, issue_399, normal).
-github_work_readiness(prolog_rlm, issue_399, ready).
-github_work_ci(prolog_rlm, issue_399, not_applicable).
-github_work_review(prolog_rlm, issue_399, not_applicable).
-github_work_updated_at(prolog_rlm, issue_399, '2026-09-05T10:52:14+00:00').
-github_work_source(prolog_rlm, issue_399, 'github-issue:lost-rob0t/prolog-rlm#399').
 
 github_work(prolog_rlm, issue_400).
 github_work_kind(prolog_rlm, issue_400, issue).
@@ -3368,7 +3358,7 @@ github_work_severity(prolog_rlm, issue_400, normal).
 github_work_readiness(prolog_rlm, issue_400, ready).
 github_work_ci(prolog_rlm, issue_400, not_applicable).
 github_work_review(prolog_rlm, issue_400, not_applicable).
-github_work_updated_at(prolog_rlm, issue_400, '2026-09-05T08:12:13+00:00').
+github_work_updated_at(prolog_rlm, issue_400, '2026-09-05T13:53:39+00:00').
 github_work_source(prolog_rlm, issue_400, 'github-issue:lost-rob0t/prolog-rlm#400').
 
 github_work(prolog_rlm, issue_401).
@@ -3474,9 +3464,9 @@ github_work_head_sha(prolog_rlm, pr_364, 'ca7b44399bf34aef18364fff57f1b3f88ee777
 github_work_updated_at(prolog_rlm, pr_364, '2026-09-04T20:54:04+00:00').
 github_work_source(prolog_rlm, pr_364, 'github-pr:lost-rob0t/prolog-rlm#364').
 
-github_snapshot(starintel_discord_reports, 'lost-rob0t/starintel-discord-reporting', unavailable, '2026-09-05T10:53:39+00:00').
-github_snapshot(starintel_infra, 'starintel-labs/starintel-infra', unavailable, '2026-09-05T10:53:39+00:00').
-github_snapshot(starintel_server, 'lost-rob0t/starintel-server', fresh, '2026-09-05T10:53:39+00:00').
+github_snapshot(starintel_discord_reports, 'lost-rob0t/starintel-discord-reporting', unavailable, '2026-09-05T13:59:15+00:00').
+github_snapshot(starintel_infra, 'starintel-labs/starintel-infra', unavailable, '2026-09-05T13:59:15+00:00').
+github_snapshot(starintel_server, 'lost-rob0t/starintel-server', fresh, '2026-09-05T13:59:15+00:00').
 github_work(starintel_server, issue_1).
 github_work_kind(starintel_server, issue_1, issue).
 github_work_state(starintel_server, issue_1, open).
@@ -4033,7 +4023,7 @@ github_work_head_sha(starintel_server, pr_134, '204fa0d0376772bd3586e56a6912bb9a
 github_work_updated_at(starintel_server, pr_134, '2026-08-29T22:23:26+00:00').
 github_work_source(starintel_server, pr_134, 'github-pr:lost-rob0t/starintel-server#134').
 
-github_snapshot(zara, 'lost-rob0t/zara', fresh, '2026-09-05T10:53:39+00:00').
+github_snapshot(zara, 'lost-rob0t/zara', fresh, '2026-09-05T13:59:15+00:00').
 github_work(zara, issue_1).
 github_work_kind(zara, issue_1, issue).
 github_work_state(zara, issue_1, open).
@@ -4324,16 +4314,6 @@ github_work_review(zara, issue_169, not_applicable).
 github_work_updated_at(zara, issue_169, '2026-08-22T21:54:53+00:00').
 github_work_source(zara, issue_169, 'github-issue:lost-rob0t/zara#169').
 
-github_work(zara, issue_173).
-github_work_kind(zara, issue_173, issue).
-github_work_state(zara, issue_173, open).
-github_work_severity(zara, issue_173, normal).
-github_work_readiness(zara, issue_173, ready).
-github_work_ci(zara, issue_173, not_applicable).
-github_work_review(zara, issue_173, not_applicable).
-github_work_updated_at(zara, issue_173, '2026-09-05T09:01:32+00:00').
-github_work_source(zara, issue_173, 'github-issue:lost-rob0t/zara#173').
-
 github_work(zara, issue_174).
 github_work_kind(zara, issue_174, issue).
 github_work_state(zara, issue_174, open).
@@ -4443,16 +4423,6 @@ github_work_ci(zara, issue_194, not_applicable).
 github_work_review(zara, issue_194, not_applicable).
 github_work_updated_at(zara, issue_194, '2026-08-24T06:25:43+00:00').
 github_work_source(zara, issue_194, 'github-issue:lost-rob0t/zara#194').
-
-github_work(zara, issue_196).
-github_work_kind(zara, issue_196, issue).
-github_work_state(zara, issue_196, open).
-github_work_severity(zara, issue_196, normal).
-github_work_readiness(zara, issue_196, ready).
-github_work_ci(zara, issue_196, not_applicable).
-github_work_review(zara, issue_196, not_applicable).
-github_work_updated_at(zara, issue_196, '2026-08-24T06:24:50+00:00').
-github_work_source(zara, issue_196, 'github-issue:lost-rob0t/zara#196').
 
 github_work(zara, issue_197).
 github_work_kind(zara, issue_197, issue).
@@ -4684,66 +4654,56 @@ github_work_review(zara, issue_326, not_applicable).
 github_work_updated_at(zara, issue_326, '2026-09-05T06:02:55+00:00').
 github_work_source(zara, issue_326, 'github-issue:lost-rob0t/zara#326').
 
-github_work(zara, issue_327).
-github_work_kind(zara, issue_327, issue).
-github_work_state(zara, issue_327, open).
-github_work_severity(zara, issue_327, normal).
-github_work_readiness(zara, issue_327, ready).
-github_work_ci(zara, issue_327, not_applicable).
-github_work_review(zara, issue_327, not_applicable).
-github_work_updated_at(zara, issue_327, '2026-09-05T06:03:07+00:00').
-github_work_source(zara, issue_327, 'github-issue:lost-rob0t/zara#327').
+github_work(zara, issue_388).
+github_work_kind(zara, issue_388, issue).
+github_work_state(zara, issue_388, open).
+github_work_severity(zara, issue_388, normal).
+github_work_readiness(zara, issue_388, ready).
+github_work_ci(zara, issue_388, not_applicable).
+github_work_review(zara, issue_388, not_applicable).
+github_work_updated_at(zara, issue_388, '2026-09-05T13:52:44+00:00').
+github_work_source(zara, issue_388, 'github-issue:lost-rob0t/zara#388').
 
-github_work(zara, issue_348).
-github_work_kind(zara, issue_348, issue).
-github_work_state(zara, issue_348, open).
-github_work_severity(zara, issue_348, normal).
-github_work_readiness(zara, issue_348, ready).
-github_work_ci(zara, issue_348, not_applicable).
-github_work_review(zara, issue_348, not_applicable).
-github_work_updated_at(zara, issue_348, '2026-09-05T10:06:20+00:00').
-github_work_source(zara, issue_348, 'github-issue:lost-rob0t/zara#348').
+github_work(zara, pr_375).
+github_work_kind(zara, pr_375, pr).
+github_work_state(zara, pr_375, open).
+github_work_severity(zara, pr_375, normal).
+github_work_readiness(zara, pr_375, ready).
+github_work_ci(zara, pr_375, failure).
+github_work_review(zara, pr_375, unknown).
+github_work_head_sha(zara, pr_375, 'f9b462d35d3fc8aafc7fff7b8dcbf50e380c4774').
+github_work_updated_at(zara, pr_375, '2026-09-05T13:36:03+00:00').
+github_work_source(zara, pr_375, 'github-pr:lost-rob0t/zara#375').
 
-github_work(zara, pr_343).
-github_work_kind(zara, pr_343, pr).
-github_work_state(zara, pr_343, open).
-github_work_severity(zara, pr_343, normal).
-github_work_readiness(zara, pr_343, ready).
-github_work_ci(zara, pr_343, pending).
-github_work_review(zara, pr_343, unknown).
-github_work_head_sha(zara, pr_343, '85612bdac953559869b63b9515b2a63b3a97ca5d').
-github_work_updated_at(zara, pr_343, '2026-09-05T10:04:27+00:00').
-github_work_source(zara, pr_343, 'github-pr:lost-rob0t/zara#343').
+github_work(zara, pr_381).
+github_work_kind(zara, pr_381, pr).
+github_work_state(zara, pr_381, open).
+github_work_severity(zara, pr_381, normal).
+github_work_readiness(zara, pr_381, ready).
+github_work_ci(zara, pr_381, pending).
+github_work_review(zara, pr_381, unknown).
+github_work_head_sha(zara, pr_381, 'e5401970f8cded29db39b6e742c17454ec48a36e').
+github_work_updated_at(zara, pr_381, '2026-09-05T13:36:19+00:00').
+github_work_source(zara, pr_381, 'github-pr:lost-rob0t/zara#381').
 
-github_work(zara, pr_347).
-github_work_kind(zara, pr_347, pr).
-github_work_state(zara, pr_347, open).
-github_work_severity(zara, pr_347, normal).
-github_work_readiness(zara, pr_347, ready).
-github_work_ci(zara, pr_347, pending).
-github_work_review(zara, pr_347, unknown).
-github_work_head_sha(zara, pr_347, '613fb9cce40c4520fcdb83fce25fa826abc655b0').
-github_work_updated_at(zara, pr_347, '2026-09-05T10:50:04+00:00').
-github_work_source(zara, pr_347, 'github-pr:lost-rob0t/zara#347').
+github_work(zara, pr_383).
+github_work_kind(zara, pr_383, pr).
+github_work_state(zara, pr_383, open).
+github_work_severity(zara, pr_383, normal).
+github_work_readiness(zara, pr_383, ready).
+github_work_ci(zara, pr_383, pending).
+github_work_review(zara, pr_383, unknown).
+github_work_head_sha(zara, pr_383, '46753ddc60d661e3e8887c0801f0ba9e62e98e45').
+github_work_updated_at(zara, pr_383, '2026-09-05T13:34:19+00:00').
+github_work_source(zara, pr_383, 'github-pr:lost-rob0t/zara#383').
 
-github_work(zara, pr_349).
-github_work_kind(zara, pr_349, pr).
-github_work_state(zara, pr_349, open).
-github_work_severity(zara, pr_349, normal).
-github_work_readiness(zara, pr_349, ready).
-github_work_ci(zara, pr_349, pending).
-github_work_review(zara, pr_349, unknown).
-github_work_head_sha(zara, pr_349, '9f05b3301a4f44d6bbf3b5ec25efe60fb3ecf127').
-github_work_updated_at(zara, pr_349, '2026-09-05T10:11:32+00:00').
-github_work_source(zara, pr_349, 'github-pr:lost-rob0t/zara#349').
-
-github_work(zara, pr_355).
-github_work_kind(zara, pr_355, pr).
-github_work_state(zara, pr_355, open).
-github_work_severity(zara, pr_355, normal).
-github_work_readiness(zara, pr_355, ready).
-github_work_ci(zara, pr_355, pending).
-github_work_review(zara, pr_355, unknown).
-github_work_head_sha(zara, pr_355, '4099e811b03a394fb35025359750187ce88f77cf').
-github_work_updated_at(zara, pr_355, '2026-09-05T10:51:05+00:00').
-github_work_source(zara, pr_355, 'github-pr:lost-rob0t/zara#355').
+github_work(zara, pr_384).
+github_work_kind(zara, pr_384, pr).
+github_work_state(zara, pr_384, open).
+github_work_severity(zara, pr_384, normal).
+github_work_readiness(zara, pr_384, ready).
+github_work_ci(zara, pr_384, failure).
+github_work_review(zara, pr_384, unknown).
+github_work_head_sha(zara, pr_384, '3237cc975be2bac08c0a337b0ad2a6f78f12cb49').
+github_work_updated_at(zara, pr_384, '2026-09-05T13:36:35+00:00').
+github_work_source(zara, pr_384, 'github-pr:lost-rob0t/zara#384').
