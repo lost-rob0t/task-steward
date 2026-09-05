@@ -100,10 +100,26 @@ projects:
       base: 60
 
   - id: task-stward-rage
-    repo: lost-rob0t/task-stward-rage
+    repo: mara/task-steward
     status: active
     mode: deployed-scheduling-self-rage-fallback
     automation_id: 6a54903dc26081918683fbdbc2c6c7cd
     self_coding_allowed: true
     priority:
       base: 10
+
+  - id: hackmode
+    repo: nsaspy/hackmode
+    status: active
+    mode: rage
+    priority:
+      base: 95
+    workers:
+      - hackmode-reviewer
+      - hackmode-rage
+    worktree_policy: one-git-worktree-per-issue-or-pr
+    note: >
+      hackmode is an interactive lisp-centric exploit framework plus recon
+      pipeline (hackmode-scripts + emacs-hackmode + starintel-server).
+      Reviewer worker runs twice daily; RAGE worker implements issues/PRs,
+      auto-merges its own work, and must not leave open issues unresolved.
