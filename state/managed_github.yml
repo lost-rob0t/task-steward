@@ -1,21 +1,21 @@
 version: 1
 observed_by: task-steward-github
-observed_at: '2026-09-05T06:16:35+00:00'
+observed_at: '2026-09-05T10:53:39+00:00'
 projects:
 - project: chatgpt-books-book1
   repo: lost-rob0t/chatgpt-books
   snapshot: unavailable
-  observed_at: '2026-09-05T06:16:35+00:00'
+  observed_at: '2026-09-05T10:53:39+00:00'
   work: []
 - project: hackmode
   repo: nsaspy/hackmode
   snapshot: unavailable
-  observed_at: '2026-09-05T06:16:35+00:00'
+  observed_at: '2026-09-05T10:53:39+00:00'
   work: []
 - project: hourly-auto-dig
   repo: lost-rob0t/starintel-gpt-auto-dig
   snapshot: partial
-  observed_at: '2026-09-05T06:16:35+00:00'
+  observed_at: '2026-09-05T10:53:39+00:00'
   work:
   - ref: issue-1864
     kind: issue
@@ -2601,7 +2601,7 @@ projects:
 - project: local-recall
   repo: lost-rob0t/local-recall
   snapshot: fresh
-  observed_at: '2026-09-05T06:16:35+00:00'
+  observed_at: '2026-09-05T10:53:39+00:00'
   work:
   - ref: issue-35
     kind: issue
@@ -2636,7 +2636,7 @@ projects:
 - project: prolog-rlm
   repo: lost-rob0t/prolog-rlm
   snapshot: fresh
-  observed_at: '2026-09-05T06:16:35+00:00'
+  observed_at: '2026-09-05T10:53:39+00:00'
   work:
   - ref: issue-3
     kind: issue
@@ -2648,36 +2648,6 @@ projects:
     review: not_applicable
     updated_at: '2026-08-21T03:51:41Z'
     source: github-issue:lost-rob0t/prolog-rlm#3
-  - ref: issue-49
-    kind: issue
-    number: 49
-    state: open
-    severity: normal
-    readiness: ready
-    ci: not_applicable
-    review: not_applicable
-    updated_at: '2026-08-27T07:07:04Z'
-    source: github-issue:lost-rob0t/prolog-rlm#49
-  - ref: issue-50
-    kind: issue
-    number: 50
-    state: open
-    severity: normal
-    readiness: ready
-    ci: not_applicable
-    review: not_applicable
-    updated_at: '2026-08-27T07:07:08Z'
-    source: github-issue:lost-rob0t/prolog-rlm#50
-  - ref: issue-51
-    kind: issue
-    number: 51
-    state: open
-    severity: normal
-    readiness: ready
-    ci: not_applicable
-    review: not_applicable
-    updated_at: '2026-08-16T04:01:24Z'
-    source: github-issue:lost-rob0t/prolog-rlm#51
   - ref: issue-54
     kind: issue
     number: 54
@@ -2978,36 +2948,6 @@ projects:
     review: not_applicable
     updated_at: '2026-08-27T13:35:24Z'
     source: github-issue:lost-rob0t/prolog-rlm#223
-  - ref: issue-277
-    kind: issue
-    number: 277
-    state: open
-    severity: normal
-    readiness: ready
-    ci: not_applicable
-    review: not_applicable
-    updated_at: '2026-08-27T17:09:16Z'
-    source: github-issue:lost-rob0t/prolog-rlm#277
-  - ref: issue-279
-    kind: issue
-    number: 279
-    state: open
-    severity: normal
-    readiness: ready
-    ci: not_applicable
-    review: not_applicable
-    updated_at: '2026-08-27T19:08:59Z'
-    source: github-issue:lost-rob0t/prolog-rlm#279
-  - ref: issue-285
-    kind: issue
-    number: 285
-    state: open
-    severity: normal
-    readiness: ready
-    ci: not_applicable
-    review: not_applicable
-    updated_at: '2026-08-29T12:34:30Z'
-    source: github-issue:lost-rob0t/prolog-rlm#285
   - ref: issue-288
     kind: issue
     number: 288
@@ -3038,16 +2978,6 @@ projects:
     review: not_applicable
     updated_at: '2026-08-29T12:37:22Z'
     source: github-issue:lost-rob0t/prolog-rlm#297
-  - ref: issue-327
-    kind: issue
-    number: 327
-    state: open
-    severity: normal
-    readiness: ready
-    ci: not_applicable
-    review: not_applicable
-    updated_at: '2026-08-31T20:20:42Z'
-    source: github-issue:lost-rob0t/prolog-rlm#327
   - ref: issue-329
     kind: issue
     number: 329
@@ -3066,7 +2996,7 @@ projects:
     readiness: ready
     ci: not_applicable
     review: not_applicable
-    updated_at: '2026-09-01T05:31:53Z'
+    updated_at: '2026-09-05T06:39:56Z'
     source: github-issue:lost-rob0t/prolog-rlm#334
   - ref: issue-335
     kind: issue
@@ -3078,36 +3008,6 @@ projects:
     review: not_applicable
     updated_at: '2026-09-01T05:32:10Z'
     source: github-issue:lost-rob0t/prolog-rlm#335
-  - ref: issue-337
-    kind: issue
-    number: 337
-    state: open
-    severity: normal
-    readiness: ready
-    ci: not_applicable
-    review: not_applicable
-    updated_at: '2026-09-01T15:42:01Z'
-    source: github-issue:lost-rob0t/prolog-rlm#337
-  - ref: issue-338
-    kind: issue
-    number: 338
-    state: open
-    severity: normal
-    readiness: ready
-    ci: not_applicable
-    review: not_applicable
-    updated_at: '2026-09-01T15:21:29Z'
-    source: github-issue:lost-rob0t/prolog-rlm#338
-  - ref: issue-339
-    kind: issue
-    number: 339
-    state: open
-    severity: normal
-    readiness: ready
-    ci: not_applicable
-    review: not_applicable
-    updated_at: '2026-09-01T17:08:23Z'
-    source: github-issue:lost-rob0t/prolog-rlm#339
   - ref: issue-341
     kind: issue
     number: 341
@@ -3118,76 +3018,6 @@ projects:
     review: not_applicable
     updated_at: '2026-09-01T17:17:33Z'
     source: github-issue:lost-rob0t/prolog-rlm#341
-  - ref: issue-344
-    kind: issue
-    number: 344
-    state: open
-    severity: normal
-    readiness: ready
-    ci: not_applicable
-    review: not_applicable
-    updated_at: '2026-09-02T17:25:48Z'
-    source: github-issue:lost-rob0t/prolog-rlm#344
-  - ref: issue-345
-    kind: issue
-    number: 345
-    state: open
-    severity: normal
-    readiness: ready
-    ci: not_applicable
-    review: not_applicable
-    updated_at: '2026-09-02T17:25:48Z'
-    source: github-issue:lost-rob0t/prolog-rlm#345
-  - ref: issue-346
-    kind: issue
-    number: 346
-    state: open
-    severity: normal
-    readiness: ready
-    ci: not_applicable
-    review: not_applicable
-    updated_at: '2026-09-02T17:25:49Z'
-    source: github-issue:lost-rob0t/prolog-rlm#346
-  - ref: issue-347
-    kind: issue
-    number: 347
-    state: open
-    severity: normal
-    readiness: ready
-    ci: not_applicable
-    review: not_applicable
-    updated_at: '2026-09-02T17:25:50Z'
-    source: github-issue:lost-rob0t/prolog-rlm#347
-  - ref: issue-348
-    kind: issue
-    number: 348
-    state: open
-    severity: normal
-    readiness: ready
-    ci: not_applicable
-    review: not_applicable
-    updated_at: '2026-09-02T17:25:51Z'
-    source: github-issue:lost-rob0t/prolog-rlm#348
-  - ref: issue-349
-    kind: issue
-    number: 349
-    state: open
-    severity: normal
-    readiness: ready
-    ci: not_applicable
-    review: not_applicable
-    updated_at: '2026-09-02T17:26:51Z'
-    source: github-issue:lost-rob0t/prolog-rlm#349
-  - ref: issue-350
-    kind: issue
-    number: 350
-    state: open
-    severity: normal
-    readiness: ready
-    ci: not_applicable
-    review: not_applicable
-    updated_at: '2026-09-02T17:26:57Z'
-    source: github-issue:lost-rob0t/prolog-rlm#350
   - ref: issue-352
     kind: issue
     number: 352
@@ -3198,16 +3028,6 @@ projects:
     review: not_applicable
     updated_at: '2026-09-02T18:06:54Z'
     source: github-issue:lost-rob0t/prolog-rlm#352
-  - ref: issue-353
-    kind: issue
-    number: 353
-    state: open
-    severity: normal
-    readiness: ready
-    ci: not_applicable
-    review: not_applicable
-    updated_at: '2026-09-02T23:25:13Z'
-    source: github-issue:lost-rob0t/prolog-rlm#353
   - ref: issue-354
     kind: issue
     number: 354
@@ -3298,16 +3118,6 @@ projects:
     review: not_applicable
     updated_at: '2026-09-04T14:28:59Z'
     source: github-issue:lost-rob0t/prolog-rlm#365
-  - ref: issue-369
-    kind: issue
-    number: 369
-    state: open
-    severity: normal
-    readiness: ready
-    ci: not_applicable
-    review: not_applicable
-    updated_at: '2026-09-04T16:13:14Z'
-    source: github-issue:lost-rob0t/prolog-rlm#369
   - ref: issue-370
     kind: issue
     number: 370
@@ -3316,28 +3126,8 @@ projects:
     readiness: ready
     ci: not_applicable
     review: not_applicable
-    updated_at: '2026-09-04T20:54:19Z'
+    updated_at: '2026-09-05T09:25:37Z'
     source: github-issue:lost-rob0t/prolog-rlm#370
-  - ref: issue-371
-    kind: issue
-    number: 371
-    state: open
-    severity: normal
-    readiness: ready
-    ci: not_applicable
-    review: not_applicable
-    updated_at: '2026-09-04T16:13:17Z'
-    source: github-issue:lost-rob0t/prolog-rlm#371
-  - ref: issue-372
-    kind: issue
-    number: 372
-    state: open
-    severity: normal
-    readiness: ready
-    ci: not_applicable
-    review: not_applicable
-    updated_at: '2026-09-04T16:13:52Z'
-    source: github-issue:lost-rob0t/prolog-rlm#372
   - ref: issue-373
     kind: issue
     number: 373
@@ -3346,7 +3136,7 @@ projects:
     readiness: ready
     ci: not_applicable
     review: not_applicable
-    updated_at: '2026-09-04T20:55:30Z'
+    updated_at: '2026-09-05T09:26:43Z'
     source: github-issue:lost-rob0t/prolog-rlm#373
   - ref: issue-374
     kind: issue
@@ -3358,27 +3148,316 @@ projects:
     review: not_applicable
     updated_at: '2026-09-04T16:13:31Z'
     source: github-issue:lost-rob0t/prolog-rlm#374
-  - ref: issue-375
+  - ref: issue-376
     kind: issue
-    number: 375
+    number: 376
     state: open
     severity: normal
     readiness: ready
     ci: not_applicable
     review: not_applicable
-    updated_at: '2026-09-05T06:11:54Z'
-    source: github-issue:lost-rob0t/prolog-rlm#375
-  - ref: pr-340
-    kind: pr
-    number: 340
+    updated_at: '2026-09-05T07:36:24Z'
+    source: github-issue:lost-rob0t/prolog-rlm#376
+  - ref: issue-377
+    kind: issue
+    number: 377
     state: open
     severity: normal
     readiness: ready
-    ci: pending
-    review: unknown
-    head_sha: b12561cf888f62c5bfe692cc6669eae50eb1b634
-    updated_at: '2026-09-04T20:54:04Z'
-    source: github-pr:lost-rob0t/prolog-rlm#340
+    ci: not_applicable
+    review: not_applicable
+    updated_at: '2026-09-05T06:35:03Z'
+    source: github-issue:lost-rob0t/prolog-rlm#377
+  - ref: issue-378
+    kind: issue
+    number: 378
+    state: open
+    severity: normal
+    readiness: ready
+    ci: not_applicable
+    review: not_applicable
+    updated_at: '2026-09-05T06:35:22Z'
+    source: github-issue:lost-rob0t/prolog-rlm#378
+  - ref: issue-379
+    kind: issue
+    number: 379
+    state: open
+    severity: normal
+    readiness: ready
+    ci: not_applicable
+    review: not_applicable
+    updated_at: '2026-09-05T06:35:37Z'
+    source: github-issue:lost-rob0t/prolog-rlm#379
+  - ref: issue-380
+    kind: issue
+    number: 380
+    state: open
+    severity: normal
+    readiness: ready
+    ci: not_applicable
+    review: not_applicable
+    updated_at: '2026-09-05T07:36:28Z'
+    source: github-issue:lost-rob0t/prolog-rlm#380
+  - ref: issue-381
+    kind: issue
+    number: 381
+    state: open
+    severity: normal
+    readiness: ready
+    ci: not_applicable
+    review: not_applicable
+    updated_at: '2026-09-05T06:36:12Z'
+    source: github-issue:lost-rob0t/prolog-rlm#381
+  - ref: issue-382
+    kind: issue
+    number: 382
+    state: open
+    severity: normal
+    readiness: ready
+    ci: not_applicable
+    review: not_applicable
+    updated_at: '2026-09-05T06:36:30Z'
+    source: github-issue:lost-rob0t/prolog-rlm#382
+  - ref: issue-383
+    kind: issue
+    number: 383
+    state: open
+    severity: normal
+    readiness: ready
+    ci: not_applicable
+    review: not_applicable
+    updated_at: '2026-09-05T06:36:47Z'
+    source: github-issue:lost-rob0t/prolog-rlm#383
+  - ref: issue-384
+    kind: issue
+    number: 384
+    state: open
+    severity: normal
+    readiness: ready
+    ci: not_applicable
+    review: not_applicable
+    updated_at: '2026-09-05T06:37:09Z'
+    source: github-issue:lost-rob0t/prolog-rlm#384
+  - ref: issue-385
+    kind: issue
+    number: 385
+    state: open
+    severity: normal
+    readiness: ready
+    ci: not_applicable
+    review: not_applicable
+    updated_at: '2026-09-05T06:37:26Z'
+    source: github-issue:lost-rob0t/prolog-rlm#385
+  - ref: issue-386
+    kind: issue
+    number: 386
+    state: open
+    severity: normal
+    readiness: ready
+    ci: not_applicable
+    review: not_applicable
+    updated_at: '2026-09-05T06:37:42Z'
+    source: github-issue:lost-rob0t/prolog-rlm#386
+  - ref: issue-387
+    kind: issue
+    number: 387
+    state: open
+    severity: normal
+    readiness: ready
+    ci: not_applicable
+    review: not_applicable
+    updated_at: '2026-09-05T06:38:42Z'
+    source: github-issue:lost-rob0t/prolog-rlm#387
+  - ref: issue-388
+    kind: issue
+    number: 388
+    state: open
+    severity: normal
+    readiness: ready
+    ci: not_applicable
+    review: not_applicable
+    updated_at: '2026-09-05T07:55:36Z'
+    source: github-issue:lost-rob0t/prolog-rlm#388
+  - ref: issue-389
+    kind: issue
+    number: 389
+    state: open
+    severity: normal
+    readiness: ready
+    ci: not_applicable
+    review: not_applicable
+    updated_at: '2026-09-05T07:53:02Z'
+    source: github-issue:lost-rob0t/prolog-rlm#389
+  - ref: issue-390
+    kind: issue
+    number: 390
+    state: open
+    severity: normal
+    readiness: ready
+    ci: not_applicable
+    review: not_applicable
+    updated_at: '2026-09-05T07:54:55Z'
+    source: github-issue:lost-rob0t/prolog-rlm#390
+  - ref: issue-391
+    kind: issue
+    number: 391
+    state: open
+    severity: normal
+    readiness: ready
+    ci: not_applicable
+    review: not_applicable
+    updated_at: '2026-09-05T07:54:42Z'
+    source: github-issue:lost-rob0t/prolog-rlm#391
+  - ref: issue-392
+    kind: issue
+    number: 392
+    state: open
+    severity: normal
+    readiness: ready
+    ci: not_applicable
+    review: not_applicable
+    updated_at: '2026-09-05T09:18:24Z'
+    source: github-issue:lost-rob0t/prolog-rlm#392
+  - ref: issue-393
+    kind: issue
+    number: 393
+    state: open
+    severity: normal
+    readiness: ready
+    ci: not_applicable
+    review: not_applicable
+    updated_at: '2026-09-05T10:51:20Z'
+    source: github-issue:lost-rob0t/prolog-rlm#393
+  - ref: issue-394
+    kind: issue
+    number: 394
+    state: open
+    severity: normal
+    readiness: ready
+    ci: not_applicable
+    review: not_applicable
+    updated_at: '2026-09-05T09:18:38Z'
+    source: github-issue:lost-rob0t/prolog-rlm#394
+  - ref: issue-395
+    kind: issue
+    number: 395
+    state: open
+    severity: normal
+    readiness: ready
+    ci: not_applicable
+    review: not_applicable
+    updated_at: '2026-09-05T10:51:46Z'
+    source: github-issue:lost-rob0t/prolog-rlm#395
+  - ref: issue-396
+    kind: issue
+    number: 396
+    state: open
+    severity: normal
+    readiness: ready
+    ci: not_applicable
+    review: not_applicable
+    updated_at: '2026-09-05T09:18:47Z'
+    source: github-issue:lost-rob0t/prolog-rlm#396
+  - ref: issue-397
+    kind: issue
+    number: 397
+    state: open
+    severity: normal
+    readiness: ready
+    ci: not_applicable
+    review: not_applicable
+    updated_at: '2026-09-05T10:52:33Z'
+    source: github-issue:lost-rob0t/prolog-rlm#397
+  - ref: issue-399
+    kind: issue
+    number: 399
+    state: open
+    severity: normal
+    readiness: ready
+    ci: not_applicable
+    review: not_applicable
+    updated_at: '2026-09-05T10:52:14Z'
+    source: github-issue:lost-rob0t/prolog-rlm#399
+  - ref: issue-400
+    kind: issue
+    number: 400
+    state: open
+    severity: normal
+    readiness: ready
+    ci: not_applicable
+    review: not_applicable
+    updated_at: '2026-09-05T08:12:13Z'
+    source: github-issue:lost-rob0t/prolog-rlm#400
+  - ref: issue-401
+    kind: issue
+    number: 401
+    state: open
+    severity: normal
+    readiness: ready
+    ci: not_applicable
+    review: not_applicable
+    updated_at: '2026-09-05T08:12:20Z'
+    source: github-issue:lost-rob0t/prolog-rlm#401
+  - ref: issue-402
+    kind: issue
+    number: 402
+    state: open
+    severity: normal
+    readiness: ready
+    ci: not_applicable
+    review: not_applicable
+    updated_at: '2026-09-05T08:12:28Z'
+    source: github-issue:lost-rob0t/prolog-rlm#402
+  - ref: issue-403
+    kind: issue
+    number: 403
+    state: open
+    severity: normal
+    readiness: ready
+    ci: not_applicable
+    review: not_applicable
+    updated_at: '2026-09-05T08:12:35Z'
+    source: github-issue:lost-rob0t/prolog-rlm#403
+  - ref: issue-404
+    kind: issue
+    number: 404
+    state: open
+    severity: normal
+    readiness: ready
+    ci: not_applicable
+    review: not_applicable
+    updated_at: '2026-09-05T08:12:56Z'
+    source: github-issue:lost-rob0t/prolog-rlm#404
+  - ref: issue-405
+    kind: issue
+    number: 405
+    state: open
+    severity: normal
+    readiness: ready
+    ci: not_applicable
+    review: not_applicable
+    updated_at: '2026-09-05T08:13:08Z'
+    source: github-issue:lost-rob0t/prolog-rlm#405
+  - ref: issue-406
+    kind: issue
+    number: 406
+    state: open
+    severity: normal
+    readiness: ready
+    ci: not_applicable
+    review: not_applicable
+    updated_at: '2026-09-05T09:25:39Z'
+    source: github-issue:lost-rob0t/prolog-rlm#406
+  - ref: issue-407
+    kind: issue
+    number: 407
+    state: open
+    severity: normal
+    readiness: ready
+    ci: not_applicable
+    review: not_applicable
+    updated_at: '2026-09-05T09:26:47Z'
+    source: github-issue:lost-rob0t/prolog-rlm#407
   - ref: pr-356
     kind: pr
     number: 356
@@ -3415,17 +3494,17 @@ projects:
 - project: starintel-discord-reports
   repo: lost-rob0t/starintel-discord-reporting
   snapshot: unavailable
-  observed_at: '2026-09-05T06:16:35+00:00'
+  observed_at: '2026-09-05T10:53:39+00:00'
   work: []
 - project: starintel-infra
   repo: starintel-labs/starintel-infra
   snapshot: unavailable
-  observed_at: '2026-09-05T06:16:35+00:00'
+  observed_at: '2026-09-05T10:53:39+00:00'
   work: []
 - project: starintel-server
   repo: lost-rob0t/starintel-server
   snapshot: fresh
-  observed_at: '2026-09-05T06:16:35+00:00'
+  observed_at: '2026-09-05T10:53:39+00:00'
   work:
   - ref: issue-1
     kind: issue
@@ -3986,7 +4065,7 @@ projects:
 - project: zara
   repo: lost-rob0t/zara
   snapshot: fresh
-  observed_at: '2026-09-05T06:16:35+00:00'
+  observed_at: '2026-09-05T10:53:39+00:00'
   work:
   - ref: issue-1
     kind: issue
@@ -4158,16 +4237,6 @@ projects:
     review: not_applicable
     updated_at: '2026-08-24T04:57:40Z'
     source: github-issue:lost-rob0t/zara#127
-  - ref: issue-133
-    kind: issue
-    number: 133
-    state: open
-    severity: normal
-    readiness: ready
-    ci: not_applicable
-    review: not_applicable
-    updated_at: '2026-09-05T01:01:27Z'
-    source: github-issue:lost-rob0t/zara#133
   - ref: issue-134
     kind: issue
     number: 134
@@ -4228,16 +4297,6 @@ projects:
     review: not_applicable
     updated_at: '2026-08-22T22:00:05Z'
     source: github-issue:lost-rob0t/zara#153
-  - ref: issue-159
-    kind: issue
-    number: 159
-    state: open
-    severity: normal
-    readiness: ready
-    ci: not_applicable
-    review: not_applicable
-    updated_at: '2026-09-03T02:33:43Z'
-    source: github-issue:lost-rob0t/zara#159
   - ref: issue-160
     kind: issue
     number: 160
@@ -4306,7 +4365,7 @@ projects:
     readiness: ready
     ci: not_applicable
     review: not_applicable
-    updated_at: '2026-09-05T05:46:23Z'
+    updated_at: '2026-09-05T09:01:32Z'
     source: github-issue:lost-rob0t/zara#173
   - ref: issue-174
     kind: issue
@@ -4668,123 +4727,57 @@ projects:
     review: not_applicable
     updated_at: '2026-09-05T06:03:07Z'
     source: github-issue:lost-rob0t/zara#327
-  - ref: issue-329
+  - ref: issue-348
     kind: issue
-    number: 329
+    number: 348
     state: open
     severity: normal
     readiness: ready
     ci: not_applicable
     review: not_applicable
-    updated_at: '2026-09-05T06:03:17Z'
-    source: github-issue:lost-rob0t/zara#329
-  - ref: pr-256
+    updated_at: '2026-09-05T10:06:20Z'
+    source: github-issue:lost-rob0t/zara#348
+  - ref: pr-343
     kind: pr
-    number: 256
-    state: open
-    severity: normal
-    readiness: ready
-    ci: failure
-    review: unknown
-    head_sha: 05f5b2d83429ffcceb68695c3386949d06d7ef89
-    updated_at: '2026-09-04T23:09:35Z'
-    source: github-pr:lost-rob0t/zara#256
-  - ref: pr-262
-    kind: pr
-    number: 262
+    number: 343
     state: open
     severity: normal
     readiness: ready
     ci: pending
     review: unknown
-    head_sha: b9d3d5d308bbed1e73fc21bc99cba11dd7bb6a47
-    updated_at: '2026-09-04T23:09:43Z'
-    source: github-pr:lost-rob0t/zara#262
-  - ref: pr-300
+    head_sha: 85612bdac953559869b63b9515b2a63b3a97ca5d
+    updated_at: '2026-09-05T10:04:27Z'
+    source: github-pr:lost-rob0t/zara#343
+  - ref: pr-347
     kind: pr
-    number: 300
-    state: open
-    severity: normal
-    readiness: ready
-    ci: failure
-    review: unknown
-    head_sha: 41de113f77da5917d1b7addece05377f8237e781
-    updated_at: '2026-09-04T23:10:28Z'
-    source: github-pr:lost-rob0t/zara#300
-  - ref: pr-301
-    kind: pr
-    number: 301
-    state: open
-    severity: normal
-    readiness: ready
-    ci: failure
-    review: unknown
-    head_sha: 3db30b3acbfec17c6801fa6f4c1123f6ded794ac
-    updated_at: '2026-09-04T23:10:32Z'
-    source: github-pr:lost-rob0t/zara#301
-  - ref: pr-321
-    kind: pr
-    number: 321
-    state: open
-    severity: normal
-    readiness: ready
-    ci: failure
-    review: unknown
-    head_sha: f90bf1d47af2a7830c8f9e54c2852482cacbf5c4
-    updated_at: '2026-09-05T06:13:58Z'
-    source: github-pr:lost-rob0t/zara#321
-  - ref: pr-322
-    kind: pr
-    number: 322
+    number: 347
     state: open
     severity: normal
     readiness: ready
     ci: pending
     review: unknown
-    head_sha: 7ed53bdbc2b19c3de4d1f33e85f4a2810814da4a
-    updated_at: '2026-09-05T06:13:55Z'
-    source: github-pr:lost-rob0t/zara#322
-  - ref: pr-328
+    head_sha: 613fb9cce40c4520fcdb83fce25fa826abc655b0
+    updated_at: '2026-09-05T10:50:04Z'
+    source: github-pr:lost-rob0t/zara#347
+  - ref: pr-349
     kind: pr
-    number: 328
+    number: 349
     state: open
     severity: normal
     readiness: ready
     ci: pending
     review: unknown
-    head_sha: 6cdc8a392639946232bd220a1627ff52c9bcfcfa
-    updated_at: '2026-09-05T06:04:27Z'
-    source: github-pr:lost-rob0t/zara#328
-  - ref: pr-330
+    head_sha: 9f05b3301a4f44d6bbf3b5ec25efe60fb3ecf127
+    updated_at: '2026-09-05T10:11:32Z'
+    source: github-pr:lost-rob0t/zara#349
+  - ref: pr-355
     kind: pr
-    number: 330
-    state: open
-    severity: normal
-    readiness: ready
-    ci: failure
-    review: unknown
-    head_sha: 1727d7b258a846ccf8ebf8cafc5a85411d9e9ef7
-    updated_at: '2026-09-05T06:10:06Z'
-    source: github-pr:lost-rob0t/zara#330
-  - ref: pr-331
-    kind: pr
-    number: 331
-    state: open
-    severity: normal
-    readiness: ready
-    ci: failure
-    review: unknown
-    head_sha: 83e4f4828a3c2928ae95aede3943f5d4439bb44d
-    updated_at: '2026-09-05T06:12:08Z'
-    source: github-pr:lost-rob0t/zara#331
-  - ref: pr-332
-    kind: pr
-    number: 332
+    number: 355
     state: open
     severity: normal
     readiness: ready
     ci: pending
     review: unknown
-    head_sha: 7f2645accafa1a47b497cb539996c893b7206bae
-    updated_at: '2026-09-05T06:15:06Z'
-    source: github-pr:lost-rob0t/zara#332
+    head_sha: 4099e811b03a394fb35025359750187ce88f77cf
+    updated_at: '2026-09-05T10:51:05Z'
+    source: github-pr:lost-rob0t/zara#355
