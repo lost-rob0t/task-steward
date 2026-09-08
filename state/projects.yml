@@ -37,10 +37,15 @@ projects:
       protected: true
 
   - id: prolog-rlm
-    repo: lost-rob0t/prolog-rlm
-    status: hard-stopped-user
-    mode: paused
+    repo: nsaspy/prolog-rlm
+    status: active
+    mode: rage
     resume_requires: explicit-user-authorization
+    resumed_by: explicit-user-authorization-2026-09-05
+    workers:
+      - prologrlm-reviewer
+      - prologrlm-rage
+    worktree_policy: one-git-worktree-per-issue-or-pr
     priority:
       base: 95
       protected: true
@@ -123,3 +128,33 @@ projects:
       pipeline (hackmode-scripts + emacs-hackmode + starintel-server).
       Reviewer worker runs twice daily; RAGE worker implements issues/PRs,
       auto-merges its own work, and must not leave open issues unresolved.
+
+  - id: symbolics
+    repo: nsaspy/a0-symbolics
+    status: active
+    mode: rage
+    priority:
+      base: 95
+    workers:
+      - symbolics-reviewer
+      - symbolics-rage
+    worktree_policy: one-git-worktree-per-issue-or-pr
+    note: >
+      a0-symbolics is Agent Zero with a durable Prolog verification layer
+      (.prolog facts.kb + verify.pl, prolog-verify gates). Reviewer runs twice
+      daily; RAGE worker implements issues/PRs in dedicated worktrees with
+      prolog-verify + pytest gates before any merge.
+
+  - id: skills
+    repo: nsaspy/skills
+    status: active
+    mode: registry-sync
+    priority:
+      base: 50
+    workers:
+      - task-steward-gate
+    note: >
+      nsaspy/skills is the declarative skill registry. Installed into
+      /a0/usr/skills by the container home-manager flake input
+      (a0SkillSync activation, mirrors dotfiles skill-sync). No RAGE
+      implementation loop; reviewer/gate keeps it in sync.

@@ -24,3 +24,12 @@ handoffs:
             completion_gate(starintel_infra, automated_deployment_ready, satisfied),
             \+ blocking_failure(starintel_infra),
             project_status(starintel_server, waiting_handoff).
+
+
+# Gate-cycle note (task-steward, 2026-09-07):
+# nsaspy/* managed repos (prolog-rlm, a0-symbolics, hackmode, skills) live on Gitea
+# (git.starintel.actor), so scripts/reconcile_managed_github.py (GitHub API) records
+# snapshot: unavailable for them. Evidence is fail-closed: their workers are retained
+# (never yielded) and pending evidence completion via a Gitea adapter. prolog-rlm hard
+# stop was lifted by explicit user authorization on 2026-09-05 (resumed_by in projects.yml);
+# stale hard-stop entries were removed from policies.yml and scheduling tests updated.

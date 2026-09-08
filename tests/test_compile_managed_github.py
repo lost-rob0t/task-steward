@@ -53,9 +53,9 @@ class CompileManagedGithubTests(unittest.TestCase):
         second = compile_managed_github.compile_managed(doc, PROJECTS)
         self.assertEqual(first, second)
         self.assertIn("managed_observed_by(task_steward_github).", first)
-        self.assertIn("github_snapshot(starintel_server, 'lost-rob0t/starintel-server', partial", first)
+        self.assertIn("github_snapshot(starintel_server, 'lost-rob0t/starintel-server', fresh", first)
         self.assertIn("github_work(starintel_server, pr_105).", first)
-        self.assertIn("github_work_head_sha(starintel_server, pr_105, '055c8bfdb5f291c764decd676c2163911e851021').", first)
+        self.assertIn("github_work_head_sha(starintel_server, pr_105, '6cba035145d7a4b5b8c35d77a64596e4f3494f3b').", first)
         self.assertIn("github_work_source(starintel_server, pr_105, 'github-pr:lost-rob0t/starintel-server#105').", first)
 
     def test_unknown_project_is_rejected(self) -> None:

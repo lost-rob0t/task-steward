@@ -87,11 +87,6 @@ policy_value([skip_policy, skipped_tests_require_reason], true).
 policy_value([user_freeze, active], false).
 policy_value([user_freeze, autonomous_resume_allowed], false).
 policy_value([user_freeze, coding_implementation_loops_allowed], normal_except_explicit_hard_stops).
-policy_value([user_freeze, hard_stops, prolog_rlm, audit_allowed], false).
-policy_value([user_freeze, hard_stops, prolog_rlm, automation_allowed], false).
-policy_value([user_freeze, hard_stops, prolog_rlm, implementation_allowed], false).
-policy_value([user_freeze, hard_stops, prolog_rlm, research_allowed], false).
-policy_value([user_freeze, hard_stops, prolog_rlm, resume_requires], explicit_user_authorization).
 policy_value([user_freeze, infra_to_server_handoff_allowed], true).
 policy_value([user_freeze, lifted_at], '2026-08-22').
 policy_value([user_freeze, set_at], '2026-08-21').

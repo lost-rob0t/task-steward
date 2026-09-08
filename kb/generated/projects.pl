@@ -39,9 +39,9 @@ base_priority(local_recall, 95).
 protected_project(local_recall).
 
 project(prolog_rlm).
-project_repo(prolog_rlm, 'lost-rob0t/prolog-rlm').
-project_status(prolog_rlm, hard_stopped_user).
-project_mode(prolog_rlm, paused).
+project_repo(prolog_rlm, 'nsaspy/prolog-rlm').
+project_status(prolog_rlm, active).
+project_mode(prolog_rlm, rage).
 base_priority(prolog_rlm, 95).
 protected_project(prolog_rlm).
 completion_policy(prolog_rlm, production_ready).
@@ -68,7 +68,25 @@ project_mode(chatgpt_books_book1, research).
 base_priority(chatgpt_books_book1, 60).
 
 project(task_stward_rage).
-project_repo(task_stward_rage, 'lost-rob0t/task-stward-rage').
+project_repo(task_stward_rage, 'mara/task-steward').
 project_status(task_stward_rage, active).
 project_mode(task_stward_rage, deployed_scheduling_self_rage_fallback).
 base_priority(task_stward_rage, 10).
+
+project(hackmode).
+project_repo(hackmode, 'nsaspy/hackmode').
+project_status(hackmode, active).
+project_mode(hackmode, rage).
+base_priority(hackmode, 95).
+
+project(symbolics).
+project_repo(symbolics, 'nsaspy/a0-symbolics').
+project_status(symbolics, active).
+project_mode(symbolics, rage).
+base_priority(symbolics, 95).
+
+project(skills).
+project_repo(skills, 'nsaspy/skills').
+project_status(skills, active).
+project_mode(skills, registry_sync).
+base_priority(skills, 50).

@@ -81,12 +81,12 @@ test(blocked_action_explains_paused_project_policy,
 
 test(blocked_action_explains_hard_stop_policy,
      [setup(reset_explanation_facts), cleanup(reset_explanation_facts)]) :-
-    seed_open_task(explain_hard_stop, prolog_rlm),
+    seed_open_task(explain_hard_stop, local_recall),
     steward:steward_explain(
         blocked(explain_hard_stop),
         explanation(explain_hard_stop, blocked, Reasons)
     ),
-    assertion(member(project_policy(prolog_rlm, hard_stop), Reasons)).
+    assertion(member(project_policy(local_recall, project_status(hard_paused_user)), Reasons)).
 
 test(skip_job_explains_derived_policy_basis,
      [setup(reset_explanation_facts), cleanup(reset_explanation_facts)]) :-

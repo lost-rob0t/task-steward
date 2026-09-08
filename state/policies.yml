@@ -19,13 +19,7 @@ user_freeze:
   steward_self_coding_allowed: true
   autonomous_resume_allowed: false
   infra_to_server_handoff_allowed: true
-  hard_stops:
-    prolog-rlm:
-      research_allowed: false
-      audit_allowed: false
-      implementation_allowed: false
-      automation_allowed: false
-      resume_requires: explicit-user-authorization
+  hard_stops: {}
 
 backlog:
   complete_enumeration_required_before_no_work_claim: true

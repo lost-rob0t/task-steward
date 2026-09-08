@@ -16,16 +16,6 @@ seed_open(Task, Project) :-
     assertz(kb_tasks:task_project(Task, Project)),
     assertz(kb_tasks:task_state(Task, open)).
 
-test(hard_stopped_prolog_rlm_is_not_eligible,
-     [setup(reset_freeze_tasks), cleanup(reset_freeze_tasks), fail]) :-
-    seed_open(frozen_prolog_task, prolog_rlm),
-    expert_eligibility:eligible_task(frozen_prolog_task).
-
-test(hard_stopped_prolog_rlm_is_not_schedulable,
-     [setup(reset_freeze_tasks), cleanup(reset_freeze_tasks), fail]) :-
-    seed_open(frozen_prolog_task, prolog_rlm),
-    expert_scheduling:schedulable(frozen_prolog_task).
-
 test(paused_infra_is_not_eligible,
      [setup(reset_freeze_tasks), cleanup(reset_freeze_tasks), fail]) :-
     seed_open(paused_infra_task, starintel_infra),

@@ -43,8 +43,9 @@ class CompileStateTests(unittest.TestCase):
         self.assertNotIn("project_status(starintel_server, paused_waiting_handoff).", kb)
         self.assertIn("base_priority(starintel_server, 100).", kb)
         self.assertIn("protected_project(starintel_server).", kb)
-        self.assertIn("project_status(prolog_rlm, hard_stopped_user).", kb)
-        self.assertIn("project_mode(prolog_rlm, paused).", kb)
+        self.assertIn("project_status(prolog_rlm, active).", kb)
+        self.assertIn("project_mode(prolog_rlm, rage).", kb)
+        self.assertIn("project_repo(prolog_rlm, 'nsaspy/prolog-rlm').", kb)
         self.assertIn("completion_policy(starintel_infra, automated_deployment_ready).", kb)
         self.assertIn("production_ready(prolog_rlm) :-", rules)
         self.assertIn("custom_expert(prolog_rlm_readiness).", registry)
@@ -97,11 +98,7 @@ class CompileStateTests(unittest.TestCase):
             first,
         )
         self.assertIn(
-            "policy_value([user_freeze, hard_stops, prolog_rlm, automation_allowed], false).",
-            first,
-        )
-        self.assertIn(
-            "policy_value([user_freeze, hard_stops, prolog_rlm, resume_requires], explicit_user_authorization).",
+            "policy_value([user_freeze, active], false).",
             first,
         )
         self.assertNotIn("explicit_coding_exceptions", first)

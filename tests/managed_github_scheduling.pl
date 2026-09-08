@@ -7,8 +7,8 @@
 test(local_recall_hard_pause_wins_over_backlog_pressure) :-
     steward:steward_worker_decision(local_recall, pause, project_status(hard_paused_user)).
 
-test(prolog_rlm_hard_stop_wins_over_backlog_pressure) :-
-    steward:steward_worker_decision(prolog_rlm, pause, project_status(hard_stopped_user)).
+test(prolog_rlm_resumed_active_is_retained) :-
+    steward:steward_worker_decision(prolog_rlm, keep, protected_project).
 
 test(starintel_server_is_retained_by_authored_protection) :-
     steward:steward_worker_decision(starintel_server, keep, protected_project).
@@ -45,19 +45,19 @@ test(unfinished_pr_repair_beats_equal_issue) :-
     PullRequest > Issue.
 
 test(partial_positive_evidence_can_select_known_actionable_work) :-
-    steward:steward_next_external(starintel_server, pr_105).
+    steward:steward_next_external(hourly_auto_dig, pr_1958).
 
 test(selected_external_work_has_exact_provenance) :-
     steward:steward_explain(
-        external(starintel_server, pr_105),
-        explanation(external, starintel_server, pr_105, _Score, 'github-pr:lost-rob0t/starintel-server#105', partial)
+        external(hourly_auto_dig, pr_1958),
+        explanation(external, hourly_auto_dig, pr_1958, _Score, 'github-pr:lost-rob0t/starintel-gpt-auto-dig#1958', partial)
     ).
 
 test(known_pr_head_sha_survives_compilation) :-
     kb_generated_managed_github:github_work_head_sha(
-        starintel_server,
-        pr_105,
-        '055c8bfdb5f291c764decd676c2163911e851021'
+        hourly_auto_dig,
+        pr_1958,
+        '3108063c512f519d1960e50f9634a7c940b85f28'
     ).
 
 :- end_tests(managed_github_scheduling).
