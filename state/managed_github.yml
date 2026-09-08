@@ -1,42 +1,22 @@
 version: 1
 observed_by: task-steward-github
-observed_at: '2026-09-08T18:56:50+00:00'
+observed_at: '2026-09-08T21:59:55+00:00'
 projects:
 - project: chatgpt-books-book1
   repo: lost-rob0t/chatgpt-books
   snapshot: unavailable
-  observed_at: '2026-09-08T18:56:50+00:00'
+  observed_at: '2026-09-08T21:59:55+00:00'
   work: []
 - project: hackmode
   repo: nsaspy/hackmode
   snapshot: unavailable
-  observed_at: '2026-09-08T18:56:50+00:00'
+  observed_at: '2026-09-08T21:59:55+00:00'
   work: []
 - project: hourly-auto-dig
   repo: lost-rob0t/starintel-gpt-auto-dig
   snapshot: partial
-  observed_at: '2026-09-08T18:56:50+00:00'
+  observed_at: '2026-09-08T21:59:55+00:00'
   work:
-  - ref: issue-1903
-    kind: issue
-    number: 1903
-    state: open
-    severity: normal
-    readiness: ready
-    ci: not_applicable
-    review: not_applicable
-    updated_at: '2026-08-21T16:52:55Z'
-    source: github-issue:lost-rob0t/starintel-gpt-auto-dig#1903
-  - ref: issue-1904
-    kind: issue
-    number: 1904
-    state: open
-    severity: normal
-    readiness: ready
-    ci: not_applicable
-    review: not_applicable
-    updated_at: '2026-08-25T05:57:14Z'
-    source: github-issue:lost-rob0t/starintel-gpt-auto-dig#1904
   - ref: issue-1905
     kind: issue
     number: 1905
@@ -2255,8 +2235,18 @@ projects:
     readiness: ready
     ci: not_applicable
     review: not_applicable
-    updated_at: '2026-09-08T18:32:19Z'
+    updated_at: '2026-09-08T21:28:16Z'
     source: github-issue:lost-rob0t/starintel-gpt-auto-dig#2342
+  - ref: issue-2388
+    kind: issue
+    number: 2388
+    state: open
+    severity: normal
+    readiness: ready
+    ci: not_applicable
+    review: not_applicable
+    updated_at: '2026-09-08T21:59:03Z'
+    source: github-issue:lost-rob0t/starintel-gpt-auto-dig#2388
   - ref: pr-140
     kind: pr
     number: 140
@@ -2598,21 +2588,32 @@ projects:
     head_sha: a376ff7ced682ee0642ce5ad187d555c5d7f3ecf
     updated_at: '2026-09-08T18:32:07Z'
     source: github-pr:lost-rob0t/starintel-gpt-auto-dig#2371
-  - ref: pr-2373
+  - ref: pr-2375
     kind: pr
-    number: 2373
+    number: 2375
+    state: open
+    severity: normal
+    readiness: ready
+    ci: failure
+    review: unknown
+    head_sha: 5738762a87e191fd84a3204b2a228b1056a1c99d
+    updated_at: '2026-09-08T19:29:37Z'
+    source: github-pr:lost-rob0t/starintel-gpt-auto-dig#2375
+  - ref: pr-2390
+    kind: pr
+    number: 2390
     state: open
     severity: normal
     readiness: ready
     ci: pending
     review: unknown
-    head_sha: 1b3c64ecf32dcb71340e40568f0cb4b1894b3bc9
-    updated_at: '2026-09-08T18:52:29Z'
-    source: github-pr:lost-rob0t/starintel-gpt-auto-dig#2373
+    head_sha: 05162f87dea157359636d3e3198bcc19e15f5278
+    updated_at: '2026-09-08T21:44:25Z'
+    source: github-pr:lost-rob0t/starintel-gpt-auto-dig#2390
 - project: local-recall
   repo: lost-rob0t/local-recall
   snapshot: fresh
-  observed_at: '2026-09-08T18:56:50+00:00'
+  observed_at: '2026-09-08T21:59:55+00:00'
   work:
   - ref: issue-35
     kind: issue
@@ -2647,27 +2648,27 @@ projects:
 - project: prolog-rlm
   repo: nsaspy/prolog-rlm
   snapshot: unavailable
-  observed_at: '2026-09-08T18:56:50+00:00'
+  observed_at: '2026-09-08T21:59:55+00:00'
   work: []
 - project: skills
   repo: nsaspy/skills
   snapshot: unavailable
-  observed_at: '2026-09-08T18:56:50+00:00'
+  observed_at: '2026-09-08T21:59:55+00:00'
   work: []
 - project: starintel-discord-reports
   repo: lost-rob0t/starintel-discord-reporting
   snapshot: unavailable
-  observed_at: '2026-09-08T18:56:50+00:00'
+  observed_at: '2026-09-08T21:59:55+00:00'
   work: []
 - project: starintel-infra
   repo: starintel-labs/starintel-infra
   snapshot: unavailable
-  observed_at: '2026-09-08T18:56:50+00:00'
+  observed_at: '2026-09-08T21:59:55+00:00'
   work: []
 - project: starintel-server
   repo: lost-rob0t/starintel-server
   snapshot: fresh
-  observed_at: '2026-09-08T18:56:50+00:00'
+  observed_at: '2026-09-08T21:59:55+00:00'
   work:
   - ref: issue-1
     kind: issue
@@ -3267,12 +3268,12 @@ projects:
 - project: symbolics
   repo: nsaspy/a0-symbolics
   snapshot: unavailable
-  observed_at: '2026-09-08T18:56:50+00:00'
+  observed_at: '2026-09-08T21:59:55+00:00'
   work: []
 - project: zara
   repo: lost-rob0t/zara
   snapshot: fresh
-  observed_at: '2026-09-08T18:56:50+00:00'
+  observed_at: '2026-09-08T21:59:55+00:00'
   work:
   - ref: issue-1
     kind: issue
