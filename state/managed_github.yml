@@ -1,102 +1,22 @@
 version: 1
 observed_by: task-steward-github
-observed_at: '2026-09-09T21:55:03+00:00'
+observed_at: '2026-09-10T00:32:01+00:00'
 projects:
 - project: chatgpt-books-book1
   repo: lost-rob0t/chatgpt-books
   snapshot: unavailable
-  observed_at: '2026-09-09T21:55:03+00:00'
+  observed_at: '2026-09-10T00:32:01+00:00'
   work: []
 - project: hackmode
   repo: nsaspy/hackmode
   snapshot: unavailable
-  observed_at: '2026-09-09T21:55:03+00:00'
+  observed_at: '2026-09-10T00:32:01+00:00'
   work: []
 - project: hourly-auto-dig
   repo: lost-rob0t/starintel-gpt-auto-dig
   snapshot: partial
-  observed_at: '2026-09-09T21:55:03+00:00'
+  observed_at: '2026-09-10T00:32:01+00:00'
   work:
-  - ref: issue-2109
-    kind: issue
-    number: 2109
-    state: open
-    severity: normal
-    readiness: ready
-    ci: not_applicable
-    review: not_applicable
-    updated_at: '2026-08-23T08:55:56Z'
-    source: github-issue:lost-rob0t/starintel-gpt-auto-dig#2109
-  - ref: issue-2111
-    kind: issue
-    number: 2111
-    state: open
-    severity: normal
-    readiness: ready
-    ci: not_applicable
-    review: not_applicable
-    updated_at: '2026-08-22T22:55:19Z'
-    source: github-issue:lost-rob0t/starintel-gpt-auto-dig#2111
-  - ref: issue-2112
-    kind: issue
-    number: 2112
-    state: open
-    severity: normal
-    readiness: ready
-    ci: not_applicable
-    review: not_applicable
-    updated_at: '2026-08-25T05:57:21Z'
-    source: github-issue:lost-rob0t/starintel-gpt-auto-dig#2112
-  - ref: issue-2113
-    kind: issue
-    number: 2113
-    state: open
-    severity: normal
-    readiness: ready
-    ci: not_applicable
-    review: not_applicable
-    updated_at: '2026-08-21T21:39:44Z'
-    source: github-issue:lost-rob0t/starintel-gpt-auto-dig#2113
-  - ref: issue-2114
-    kind: issue
-    number: 2114
-    state: open
-    severity: normal
-    readiness: ready
-    ci: not_applicable
-    review: not_applicable
-    updated_at: '2026-08-21T21:39:45Z'
-    source: github-issue:lost-rob0t/starintel-gpt-auto-dig#2114
-  - ref: issue-2115
-    kind: issue
-    number: 2115
-    state: open
-    severity: normal
-    readiness: ready
-    ci: not_applicable
-    review: not_applicable
-    updated_at: '2026-08-21T21:39:46Z'
-    source: github-issue:lost-rob0t/starintel-gpt-auto-dig#2115
-  - ref: issue-2116
-    kind: issue
-    number: 2116
-    state: open
-    severity: normal
-    readiness: ready
-    ci: not_applicable
-    review: not_applicable
-    updated_at: '2026-08-21T21:39:46Z'
-    source: github-issue:lost-rob0t/starintel-gpt-auto-dig#2116
-  - ref: issue-2117
-    kind: issue
-    number: 2117
-    state: open
-    severity: normal
-    readiness: ready
-    ci: not_applicable
-    review: not_applicable
-    updated_at: '2026-08-21T21:39:47Z'
-    source: github-issue:lost-rob0t/starintel-gpt-auto-dig#2117
   - ref: issue-2118
     kind: issue
     number: 2118
@@ -1937,6 +1857,76 @@ projects:
     review: not_applicable
     updated_at: '2026-09-09T19:12:33Z'
     source: github-issue:lost-rob0t/starintel-gpt-auto-dig#2543
+  - ref: issue-2555
+    kind: issue
+    number: 2555
+    state: open
+    severity: normal
+    readiness: ready
+    ci: not_applicable
+    review: not_applicable
+    updated_at: '2026-09-10T00:22:12Z'
+    source: github-issue:lost-rob0t/starintel-gpt-auto-dig#2555
+  - ref: issue-2556
+    kind: issue
+    number: 2556
+    state: open
+    severity: normal
+    readiness: ready
+    ci: not_applicable
+    review: not_applicable
+    updated_at: '2026-09-10T00:22:22Z'
+    source: github-issue:lost-rob0t/starintel-gpt-auto-dig#2556
+  - ref: issue-2557
+    kind: issue
+    number: 2557
+    state: open
+    severity: normal
+    readiness: ready
+    ci: not_applicable
+    review: not_applicable
+    updated_at: '2026-09-10T00:22:31Z'
+    source: github-issue:lost-rob0t/starintel-gpt-auto-dig#2557
+  - ref: issue-2558
+    kind: issue
+    number: 2558
+    state: open
+    severity: normal
+    readiness: ready
+    ci: not_applicable
+    review: not_applicable
+    updated_at: '2026-09-10T00:22:43Z'
+    source: github-issue:lost-rob0t/starintel-gpt-auto-dig#2558
+  - ref: issue-2559
+    kind: issue
+    number: 2559
+    state: open
+    severity: normal
+    readiness: ready
+    ci: not_applicable
+    review: not_applicable
+    updated_at: '2026-09-10T00:22:52Z'
+    source: github-issue:lost-rob0t/starintel-gpt-auto-dig#2559
+  - ref: issue-2560
+    kind: issue
+    number: 2560
+    state: open
+    severity: normal
+    readiness: ready
+    ci: not_applicable
+    review: not_applicable
+    updated_at: '2026-09-10T00:23:03Z'
+    source: github-issue:lost-rob0t/starintel-gpt-auto-dig#2560
+  - ref: issue-2561
+    kind: issue
+    number: 2561
+    state: open
+    severity: normal
+    readiness: ready
+    ci: not_applicable
+    review: not_applicable
+    updated_at: '2026-09-10T00:23:15Z'
+    source: github-issue:lost-rob0t/starintel-gpt-auto-dig#2561
   - ref: pr-140
     kind: pr
     number: 140
@@ -2630,21 +2620,32 @@ projects:
     head_sha: fbf4e2d87a9eb3b0ea8eaf4b2f6668f17003adad
     updated_at: '2026-09-09T20:49:48Z'
     source: github-pr:lost-rob0t/starintel-gpt-auto-dig#2547
-  - ref: pr-2549
+  - ref: pr-2551
     kind: pr
-    number: 2549
+    number: 2551
     state: open
     severity: normal
     readiness: ready
     ci: pending
     review: unknown
-    head_sha: 4b1665ce51b507e4b4ff7db39c5558becdbd96c4
-    updated_at: '2026-09-09T21:50:34Z'
-    source: github-pr:lost-rob0t/starintel-gpt-auto-dig#2549
+    head_sha: 4e66ba20282d908a118f7cf794da9c28a58f33aa
+    updated_at: '2026-09-09T22:51:42Z'
+    source: github-pr:lost-rob0t/starintel-gpt-auto-dig#2551
+  - ref: pr-2553
+    kind: pr
+    number: 2553
+    state: open
+    severity: normal
+    readiness: ready
+    ci: pending
+    review: unknown
+    head_sha: b39504c56c473193246a3f663d2ce28148cc989d
+    updated_at: '2026-09-09T23:55:49Z'
+    source: github-pr:lost-rob0t/starintel-gpt-auto-dig#2553
 - project: local-recall
   repo: lost-rob0t/local-recall
   snapshot: fresh
-  observed_at: '2026-09-09T21:55:03+00:00'
+  observed_at: '2026-09-10T00:32:01+00:00'
   work:
   - ref: issue-35
     kind: issue
@@ -2679,27 +2680,27 @@ projects:
 - project: prolog-rlm
   repo: nsaspy/prolog-rlm
   snapshot: unavailable
-  observed_at: '2026-09-09T21:55:03+00:00'
+  observed_at: '2026-09-10T00:32:01+00:00'
   work: []
 - project: skills
   repo: nsaspy/skills
   snapshot: unavailable
-  observed_at: '2026-09-09T21:55:03+00:00'
+  observed_at: '2026-09-10T00:32:01+00:00'
   work: []
 - project: starintel-discord-reports
   repo: lost-rob0t/starintel-discord-reporting
   snapshot: unavailable
-  observed_at: '2026-09-09T21:55:03+00:00'
+  observed_at: '2026-09-10T00:32:01+00:00'
   work: []
 - project: starintel-infra
   repo: starintel-labs/starintel-infra
   snapshot: unavailable
-  observed_at: '2026-09-09T21:55:03+00:00'
+  observed_at: '2026-09-10T00:32:01+00:00'
   work: []
 - project: starintel-server
   repo: lost-rob0t/starintel-server
   snapshot: fresh
-  observed_at: '2026-09-09T21:55:03+00:00'
+  observed_at: '2026-09-10T00:32:01+00:00'
   work:
   - ref: issue-1
     kind: issue
@@ -3331,12 +3332,12 @@ projects:
 - project: symbolics
   repo: nsaspy/a0-symbolics
   snapshot: unavailable
-  observed_at: '2026-09-09T21:55:03+00:00'
+  observed_at: '2026-09-10T00:32:01+00:00'
   work: []
 - project: zara
   repo: lost-rob0t/zara
   snapshot: fresh
-  observed_at: '2026-09-09T21:55:03+00:00'
+  observed_at: '2026-09-10T00:32:01+00:00'
   work:
   - ref: issue-1
     kind: issue
