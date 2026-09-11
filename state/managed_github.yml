@@ -1,32 +1,22 @@
 version: 1
 observed_by: task-steward-github
-observed_at: '2026-09-10T23:21:56+00:00'
+observed_at: '2026-09-11T01:24:29+00:00'
 projects:
 - project: chatgpt-books-book1
   repo: lost-rob0t/chatgpt-books
   snapshot: unavailable
-  observed_at: '2026-09-10T23:21:56+00:00'
+  observed_at: '2026-09-11T01:24:29+00:00'
   work: []
 - project: hackmode
   repo: nsaspy/hackmode
   snapshot: unavailable
-  observed_at: '2026-09-10T23:21:56+00:00'
+  observed_at: '2026-09-11T01:24:29+00:00'
   work: []
 - project: hourly-auto-dig
   repo: lost-rob0t/starintel-gpt-auto-dig
   snapshot: partial
-  observed_at: '2026-09-10T23:21:56+00:00'
+  observed_at: '2026-09-11T01:24:29+00:00'
   work:
-  - ref: issue-2143
-    kind: issue
-    number: 2143
-    state: open
-    severity: normal
-    readiness: ready
-    ci: not_applicable
-    review: not_applicable
-    updated_at: '2026-08-21T21:40:06Z'
-    source: github-issue:lost-rob0t/starintel-gpt-auto-dig#2143
   - ref: issue-2144
     kind: issue
     number: 2144
@@ -1565,7 +1555,7 @@ projects:
     readiness: ready
     ci: not_applicable
     review: not_applicable
-    updated_at: '2026-09-10T22:39:49Z'
+    updated_at: '2026-09-11T00:43:09Z'
     source: github-issue:lost-rob0t/starintel-gpt-auto-dig#2342
   - ref: issue-2427
     kind: issue
@@ -2659,10 +2649,21 @@ projects:
     head_sha: 18d19fa7f5c1a2361ca4c33927f03f7deae209f1
     updated_at: '2026-09-10T22:49:13Z'
     source: github-pr:lost-rob0t/starintel-gpt-auto-dig#2601
+  - ref: pr-2603
+    kind: pr
+    number: 2603
+    state: open
+    severity: normal
+    readiness: ready
+    ci: pending
+    review: unknown
+    head_sha: 749e6d56b4d36f7100bd159a3acc848d898d1f97
+    updated_at: '2026-09-10T23:50:26Z'
+    source: github-pr:lost-rob0t/starintel-gpt-auto-dig#2603
 - project: local-recall
   repo: lost-rob0t/local-recall
   snapshot: fresh
-  observed_at: '2026-09-10T23:21:56+00:00'
+  observed_at: '2026-09-11T01:24:29+00:00'
   work:
   - ref: issue-35
     kind: issue
@@ -2697,27 +2698,27 @@ projects:
 - project: prolog-rlm
   repo: nsaspy/prolog-rlm
   snapshot: unavailable
-  observed_at: '2026-09-10T23:21:56+00:00'
+  observed_at: '2026-09-11T01:24:29+00:00'
   work: []
 - project: skills
   repo: nsaspy/skills
   snapshot: unavailable
-  observed_at: '2026-09-10T23:21:56+00:00'
+  observed_at: '2026-09-11T01:24:29+00:00'
   work: []
 - project: starintel-discord-reports
   repo: lost-rob0t/starintel-discord-reporting
   snapshot: unavailable
-  observed_at: '2026-09-10T23:21:56+00:00'
+  observed_at: '2026-09-11T01:24:29+00:00'
   work: []
 - project: starintel-infra
   repo: starintel-labs/starintel-infra
   snapshot: unavailable
-  observed_at: '2026-09-10T23:21:56+00:00'
+  observed_at: '2026-09-11T01:24:29+00:00'
   work: []
 - project: starintel-server
   repo: lost-rob0t/starintel-server
   snapshot: fresh
-  observed_at: '2026-09-10T23:21:56+00:00'
+  observed_at: '2026-09-11T01:24:29+00:00'
   work:
   - ref: issue-1
     kind: issue
@@ -3349,12 +3350,12 @@ projects:
 - project: symbolics
   repo: nsaspy/a0-symbolics
   snapshot: unavailable
-  observed_at: '2026-09-10T23:21:56+00:00'
+  observed_at: '2026-09-11T01:24:29+00:00'
   work: []
 - project: zara
   repo: lost-rob0t/zara
   snapshot: fresh
-  observed_at: '2026-09-10T23:21:56+00:00'
+  observed_at: '2026-09-11T01:24:29+00:00'
   work:
   - ref: issue-1
     kind: issue
@@ -4296,6 +4297,276 @@ projects:
     review: not_applicable
     updated_at: '2026-09-10T22:21:00Z'
     source: github-issue:lost-rob0t/zara#669
+  - ref: issue-761
+    kind: issue
+    number: 761
+    state: open
+    severity: normal
+    readiness: ready
+    ci: not_applicable
+    review: not_applicable
+    updated_at: '2026-09-11T00:41:30Z'
+    source: github-issue:lost-rob0t/zara#761
+  - ref: issue-770
+    kind: issue
+    number: 770
+    state: open
+    severity: normal
+    readiness: ready
+    ci: not_applicable
+    review: not_applicable
+    updated_at: '2026-09-11T00:41:51Z'
+    source: github-issue:lost-rob0t/zara#770
+  - ref: issue-778
+    kind: issue
+    number: 778
+    state: open
+    severity: normal
+    readiness: ready
+    ci: not_applicable
+    review: not_applicable
+    updated_at: '2026-09-11T00:42:09Z'
+    source: github-issue:lost-rob0t/zara#778
+  - ref: issue-784
+    kind: issue
+    number: 784
+    state: open
+    severity: normal
+    readiness: ready
+    ci: not_applicable
+    review: not_applicable
+    updated_at: '2026-09-11T00:42:24Z'
+    source: github-issue:lost-rob0t/zara#784
+  - ref: issue-785
+    kind: issue
+    number: 785
+    state: open
+    severity: normal
+    readiness: ready
+    ci: not_applicable
+    review: not_applicable
+    updated_at: '2026-09-11T00:42:25Z'
+    source: github-issue:lost-rob0t/zara#785
+  - ref: issue-801
+    kind: issue
+    number: 801
+    state: open
+    severity: normal
+    readiness: ready
+    ci: not_applicable
+    review: not_applicable
+    updated_at: '2026-09-11T00:43:05Z'
+    source: github-issue:lost-rob0t/zara#801
+  - ref: issue-807
+    kind: issue
+    number: 807
+    state: open
+    severity: normal
+    readiness: ready
+    ci: not_applicable
+    review: not_applicable
+    updated_at: '2026-09-11T00:43:18Z'
+    source: github-issue:lost-rob0t/zara#807
+  - ref: issue-836
+    kind: issue
+    number: 836
+    state: open
+    severity: normal
+    readiness: ready
+    ci: not_applicable
+    review: not_applicable
+    updated_at: '2026-09-11T00:44:36Z'
+    source: github-issue:lost-rob0t/zara#836
+  - ref: issue-837
+    kind: issue
+    number: 837
+    state: open
+    severity: normal
+    readiness: ready
+    ci: not_applicable
+    review: not_applicable
+    updated_at: '2026-09-11T00:44:38Z'
+    source: github-issue:lost-rob0t/zara#837
+  - ref: issue-838
+    kind: issue
+    number: 838
+    state: open
+    severity: normal
+    readiness: ready
+    ci: not_applicable
+    review: not_applicable
+    updated_at: '2026-09-11T00:44:39Z'
+    source: github-issue:lost-rob0t/zara#838
+  - ref: issue-839
+    kind: issue
+    number: 839
+    state: open
+    severity: normal
+    readiness: ready
+    ci: not_applicable
+    review: not_applicable
+    updated_at: '2026-09-11T00:44:41Z'
+    source: github-issue:lost-rob0t/zara#839
+  - ref: issue-840
+    kind: issue
+    number: 840
+    state: open
+    severity: normal
+    readiness: ready
+    ci: not_applicable
+    review: not_applicable
+    updated_at: '2026-09-11T00:44:42Z'
+    source: github-issue:lost-rob0t/zara#840
+  - ref: issue-841
+    kind: issue
+    number: 841
+    state: open
+    severity: normal
+    readiness: ready
+    ci: not_applicable
+    review: not_applicable
+    updated_at: '2026-09-11T00:44:44Z'
+    source: github-issue:lost-rob0t/zara#841
+  - ref: issue-842
+    kind: issue
+    number: 842
+    state: open
+    severity: normal
+    readiness: ready
+    ci: not_applicable
+    review: not_applicable
+    updated_at: '2026-09-11T00:44:45Z'
+    source: github-issue:lost-rob0t/zara#842
+  - ref: issue-843
+    kind: issue
+    number: 843
+    state: open
+    severity: normal
+    readiness: ready
+    ci: not_applicable
+    review: not_applicable
+    updated_at: '2026-09-11T00:44:47Z'
+    source: github-issue:lost-rob0t/zara#843
+  - ref: issue-844
+    kind: issue
+    number: 844
+    state: open
+    severity: normal
+    readiness: ready
+    ci: not_applicable
+    review: not_applicable
+    updated_at: '2026-09-11T00:44:49Z'
+    source: github-issue:lost-rob0t/zara#844
+  - ref: issue-845
+    kind: issue
+    number: 845
+    state: open
+    severity: normal
+    readiness: ready
+    ci: not_applicable
+    review: not_applicable
+    updated_at: '2026-09-11T00:44:50Z'
+    source: github-issue:lost-rob0t/zara#845
+  - ref: issue-846
+    kind: issue
+    number: 846
+    state: open
+    severity: normal
+    readiness: ready
+    ci: not_applicable
+    review: not_applicable
+    updated_at: '2026-09-11T00:44:52Z'
+    source: github-issue:lost-rob0t/zara#846
+  - ref: issue-850
+    kind: issue
+    number: 850
+    state: open
+    severity: normal
+    readiness: ready
+    ci: not_applicable
+    review: not_applicable
+    updated_at: '2026-09-11T00:45:01Z'
+    source: github-issue:lost-rob0t/zara#850
+  - ref: issue-851
+    kind: issue
+    number: 851
+    state: open
+    severity: normal
+    readiness: ready
+    ci: not_applicable
+    review: not_applicable
+    updated_at: '2026-09-11T00:45:03Z'
+    source: github-issue:lost-rob0t/zara#851
+  - ref: issue-852
+    kind: issue
+    number: 852
+    state: open
+    severity: normal
+    readiness: ready
+    ci: not_applicable
+    review: not_applicable
+    updated_at: '2026-09-11T00:45:04Z'
+    source: github-issue:lost-rob0t/zara#852
+  - ref: issue-853
+    kind: issue
+    number: 853
+    state: open
+    severity: normal
+    readiness: ready
+    ci: not_applicable
+    review: not_applicable
+    updated_at: '2026-09-11T00:45:06Z'
+    source: github-issue:lost-rob0t/zara#853
+  - ref: issue-854
+    kind: issue
+    number: 854
+    state: open
+    severity: normal
+    readiness: ready
+    ci: not_applicable
+    review: not_applicable
+    updated_at: '2026-09-11T00:45:07Z'
+    source: github-issue:lost-rob0t/zara#854
+  - ref: issue-855
+    kind: issue
+    number: 855
+    state: open
+    severity: normal
+    readiness: ready
+    ci: not_applicable
+    review: not_applicable
+    updated_at: '2026-09-11T00:45:09Z'
+    source: github-issue:lost-rob0t/zara#855
+  - ref: issue-856
+    kind: issue
+    number: 856
+    state: open
+    severity: normal
+    readiness: ready
+    ci: not_applicable
+    review: not_applicable
+    updated_at: '2026-09-11T00:45:10Z'
+    source: github-issue:lost-rob0t/zara#856
+  - ref: issue-857
+    kind: issue
+    number: 857
+    state: open
+    severity: normal
+    readiness: ready
+    ci: not_applicable
+    review: not_applicable
+    updated_at: '2026-09-11T00:45:12Z'
+    source: github-issue:lost-rob0t/zara#857
+  - ref: issue-858
+    kind: issue
+    number: 858
+    state: open
+    severity: normal
+    readiness: ready
+    ci: not_applicable
+    review: not_applicable
+    updated_at: '2026-09-11T00:45:13Z'
+    source: github-issue:lost-rob0t/zara#858
   - ref: pr-414
     kind: pr
     number: 414
