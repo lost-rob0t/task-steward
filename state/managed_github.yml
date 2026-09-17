@@ -1,21 +1,21 @@
 version: 1
 observed_by: task-steward-github
-observed_at: '2026-09-16T21:39:14+00:00'
+observed_at: '2026-09-17T00:51:21+00:00'
 projects:
 - project: chatgpt-books-book1
   repo: lost-rob0t/chatgpt-books
   snapshot: unavailable
-  observed_at: '2026-09-16T21:39:14+00:00'
+  observed_at: '2026-09-17T00:51:21+00:00'
   work: []
 - project: hackmode
   repo: nsaspy/hackmode
   snapshot: unavailable
-  observed_at: '2026-09-16T21:39:14+00:00'
+  observed_at: '2026-09-17T00:51:21+00:00'
   work: []
 - project: hourly-auto-dig
   repo: lost-rob0t/starintel-gpt-auto-dig
   snapshot: partial
-  observed_at: '2026-09-16T21:39:14+00:00'
+  observed_at: '2026-09-17T00:51:21+00:00'
   work:
   - ref: issue-1946
     kind: issue
@@ -2581,7 +2581,7 @@ projects:
 - project: local-recall
   repo: lost-rob0t/local-recall
   snapshot: fresh
-  observed_at: '2026-09-16T21:39:14+00:00'
+  observed_at: '2026-09-17T00:51:21+00:00'
   work:
   - ref: issue-35
     kind: issue
@@ -2616,27 +2616,27 @@ projects:
 - project: prolog-rlm
   repo: nsaspy/prolog-rlm
   snapshot: unavailable
-  observed_at: '2026-09-16T21:39:14+00:00'
+  observed_at: '2026-09-17T00:51:21+00:00'
   work: []
 - project: skills
   repo: nsaspy/skills
   snapshot: unavailable
-  observed_at: '2026-09-16T21:39:14+00:00'
+  observed_at: '2026-09-17T00:51:21+00:00'
   work: []
 - project: starintel-discord-reports
   repo: lost-rob0t/starintel-discord-reporting
   snapshot: unavailable
-  observed_at: '2026-09-16T21:39:14+00:00'
+  observed_at: '2026-09-17T00:51:21+00:00'
   work: []
 - project: starintel-infra
   repo: starintel-labs/starintel-infra
   snapshot: unavailable
-  observed_at: '2026-09-16T21:39:14+00:00'
+  observed_at: '2026-09-17T00:51:21+00:00'
   work: []
 - project: starintel-server
   repo: lost-rob0t/starintel-server
   snapshot: fresh
-  observed_at: '2026-09-16T21:39:14+00:00'
+  observed_at: '2026-09-17T00:51:21+00:00'
   work:
   - ref: issue-9
     kind: issue
@@ -2766,7 +2766,7 @@ projects:
     readiness: ready
     ci: not_applicable
     review: not_applicable
-    updated_at: '2026-09-15T02:45:41Z'
+    updated_at: '2026-09-17T00:07:21Z'
     source: github-issue:lost-rob0t/starintel-server#43
   - ref: issue-44
     kind: issue
@@ -3168,6 +3168,96 @@ projects:
     review: not_applicable
     updated_at: '2026-09-14T16:57:32Z'
     source: github-issue:lost-rob0t/starintel-server#179
+  - ref: issue-191
+    kind: issue
+    number: 191
+    state: open
+    severity: normal
+    readiness: ready
+    ci: not_applicable
+    review: not_applicable
+    updated_at: '2026-09-16T22:59:28Z'
+    source: github-issue:lost-rob0t/starintel-server#191
+  - ref: issue-192
+    kind: issue
+    number: 192
+    state: open
+    severity: normal
+    readiness: ready
+    ci: not_applicable
+    review: not_applicable
+    updated_at: '2026-09-16T23:32:26Z'
+    source: github-issue:lost-rob0t/starintel-server#192
+  - ref: issue-193
+    kind: issue
+    number: 193
+    state: open
+    severity: normal
+    readiness: ready
+    ci: not_applicable
+    review: not_applicable
+    updated_at: '2026-09-17T00:38:51Z'
+    source: github-issue:lost-rob0t/starintel-server#193
+  - ref: issue-194
+    kind: issue
+    number: 194
+    state: open
+    severity: normal
+    readiness: ready
+    ci: not_applicable
+    review: not_applicable
+    updated_at: '2026-09-16T23:31:31Z'
+    source: github-issue:lost-rob0t/starintel-server#194
+  - ref: issue-198
+    kind: issue
+    number: 198
+    state: open
+    severity: normal
+    readiness: ready
+    ci: not_applicable
+    review: not_applicable
+    updated_at: '2026-09-16T23:57:00Z'
+    source: github-issue:lost-rob0t/starintel-server#198
+  - ref: issue-199
+    kind: issue
+    number: 199
+    state: open
+    severity: normal
+    readiness: ready
+    ci: not_applicable
+    review: not_applicable
+    updated_at: '2026-09-17T00:07:14Z'
+    source: github-issue:lost-rob0t/starintel-server#199
+  - ref: issue-200
+    kind: issue
+    number: 200
+    state: open
+    severity: normal
+    readiness: ready
+    ci: not_applicable
+    review: not_applicable
+    updated_at: '2026-09-17T00:07:15Z'
+    source: github-issue:lost-rob0t/starintel-server#200
+  - ref: issue-202
+    kind: issue
+    number: 202
+    state: open
+    severity: normal
+    readiness: ready
+    ci: not_applicable
+    review: not_applicable
+    updated_at: '2026-09-17T00:15:12Z'
+    source: github-issue:lost-rob0t/starintel-server#202
+  - ref: issue-205
+    kind: issue
+    number: 205
+    state: open
+    severity: normal
+    readiness: ready
+    ci: not_applicable
+    review: not_applicable
+    updated_at: '2026-09-17T00:42:47Z'
+    source: github-issue:lost-rob0t/starintel-server#205
   - ref: pr-79
     kind: pr
     number: 79
@@ -3300,15 +3390,81 @@ projects:
     head_sha: 6bf75c55d63196898391e24404da313307421fba
     updated_at: '2026-09-12T12:59:22Z'
     source: github-pr:lost-rob0t/starintel-server#177
+  - ref: pr-195
+    kind: pr
+    number: 195
+    state: open
+    severity: normal
+    readiness: ready
+    ci: pending
+    review: unknown
+    head_sha: 7f00bfb495c57bc6e9180acc70fd0a971eb63588
+    updated_at: '2026-09-16T23:52:57Z'
+    source: github-pr:lost-rob0t/starintel-server#195
+  - ref: pr-196
+    kind: pr
+    number: 196
+    state: open
+    severity: normal
+    readiness: ready
+    ci: failure
+    review: unknown
+    head_sha: cfee0a4893d7764c218dd5d296c65b0e1a11d996
+    updated_at: '2026-09-16T23:46:11Z'
+    source: github-pr:lost-rob0t/starintel-server#196
+  - ref: pr-197
+    kind: pr
+    number: 197
+    state: open
+    severity: normal
+    readiness: ready
+    ci: failure
+    review: unknown
+    head_sha: cb02c7de1383ba3ba6bca124226d3b56bb74c2ea
+    updated_at: '2026-09-16T23:45:49Z'
+    source: github-pr:lost-rob0t/starintel-server#197
+  - ref: pr-201
+    kind: pr
+    number: 201
+    state: open
+    severity: normal
+    readiness: ready
+    ci: failure
+    review: unknown
+    head_sha: cd8ad310cdc102ddfbb40ea08fe34a5f6d7d32c2
+    updated_at: '2026-09-17T00:21:31Z'
+    source: github-pr:lost-rob0t/starintel-server#201
+  - ref: pr-203
+    kind: pr
+    number: 203
+    state: open
+    severity: normal
+    readiness: ready
+    ci: failure
+    review: unknown
+    head_sha: 1bc19b3c58433cb9ab8bbd2974ab668ffb7a7cf0
+    updated_at: '2026-09-17T00:27:55Z'
+    source: github-pr:lost-rob0t/starintel-server#203
+  - ref: pr-204
+    kind: pr
+    number: 204
+    state: open
+    severity: normal
+    readiness: ready
+    ci: pending
+    review: unknown
+    head_sha: 6afc1303532cf8c963981257c0b9c2f4979ab3bd
+    updated_at: '2026-09-17T00:29:49Z'
+    source: github-pr:lost-rob0t/starintel-server#204
 - project: symbolics
   repo: nsaspy/a0-symbolics
   snapshot: unavailable
-  observed_at: '2026-09-16T21:39:14+00:00'
+  observed_at: '2026-09-17T00:51:21+00:00'
   work: []
 - project: zara
   repo: lost-rob0t/zara
   snapshot: fresh
-  observed_at: '2026-09-16T21:39:14+00:00'
+  observed_at: '2026-09-17T00:51:21+00:00'
   work:
   - ref: issue-1
     kind: issue
@@ -4570,6 +4726,26 @@ projects:
     review: not_applicable
     updated_at: '2026-09-16T17:55:08Z'
     source: github-issue:lost-rob0t/zara#889
+  - ref: issue-892
+    kind: issue
+    number: 892
+    state: open
+    severity: normal
+    readiness: ready
+    ci: not_applicable
+    review: not_applicable
+    updated_at: '2026-09-17T00:17:15Z'
+    source: github-issue:lost-rob0t/zara#892
+  - ref: issue-893
+    kind: issue
+    number: 893
+    state: open
+    severity: normal
+    readiness: ready
+    ci: not_applicable
+    review: not_applicable
+    updated_at: '2026-09-17T00:25:52Z'
+    source: github-issue:lost-rob0t/zara#893
   - ref: pr-414
     kind: pr
     number: 414
