@@ -1,21 +1,21 @@
 version: 1
 observed_by: task-steward-github
-observed_at: '2026-09-17T12:02:35+00:00'
+observed_at: '2026-09-17T17:13:59+00:00'
 projects:
 - project: chatgpt-books-book1
   repo: lost-rob0t/chatgpt-books
   snapshot: unavailable
-  observed_at: '2026-09-17T12:02:35+00:00'
+  observed_at: '2026-09-17T17:13:59+00:00'
   work: []
 - project: hackmode
   repo: nsaspy/hackmode
   snapshot: unavailable
-  observed_at: '2026-09-17T12:02:35+00:00'
+  observed_at: '2026-09-17T17:13:59+00:00'
   work: []
 - project: hourly-auto-dig
   repo: lost-rob0t/starintel-gpt-auto-dig
   snapshot: partial
-  observed_at: '2026-09-17T12:02:35+00:00'
+  observed_at: '2026-09-17T17:13:59+00:00'
   work:
   - ref: issue-1950
     kind: issue
@@ -2582,7 +2582,7 @@ projects:
 - project: local-recall
   repo: lost-rob0t/local-recall
   snapshot: fresh
-  observed_at: '2026-09-17T12:02:35+00:00'
+  observed_at: '2026-09-17T17:13:59+00:00'
   work:
   - ref: issue-35
     kind: issue
@@ -2617,27 +2617,27 @@ projects:
 - project: prolog-rlm
   repo: nsaspy/prolog-rlm
   snapshot: unavailable
-  observed_at: '2026-09-17T12:02:35+00:00'
+  observed_at: '2026-09-17T17:13:59+00:00'
   work: []
 - project: skills
   repo: nsaspy/skills
   snapshot: unavailable
-  observed_at: '2026-09-17T12:02:35+00:00'
+  observed_at: '2026-09-17T17:13:59+00:00'
   work: []
 - project: starintel-discord-reports
   repo: lost-rob0t/starintel-discord-reporting
   snapshot: unavailable
-  observed_at: '2026-09-17T12:02:35+00:00'
+  observed_at: '2026-09-17T17:13:59+00:00'
   work: []
 - project: starintel-infra
   repo: starintel-labs/starintel-infra
   snapshot: unavailable
-  observed_at: '2026-09-17T12:02:35+00:00'
+  observed_at: '2026-09-17T17:13:59+00:00'
   work: []
 - project: starintel-server
   repo: lost-rob0t/starintel-server
   snapshot: fresh
-  observed_at: '2026-09-17T12:02:35+00:00'
+  observed_at: '2026-09-17T17:13:59+00:00'
   work:
   - ref: issue-9
     kind: issue
@@ -3734,12 +3734,12 @@ projects:
 - project: symbolics
   repo: nsaspy/a0-symbolics
   snapshot: unavailable
-  observed_at: '2026-09-17T12:02:35+00:00'
+  observed_at: '2026-09-17T17:13:59+00:00'
   work: []
 - project: zara
   repo: lost-rob0t/zara
   snapshot: fresh
-  observed_at: '2026-09-17T12:02:35+00:00'
+  observed_at: '2026-09-17T17:13:59+00:00'
   work:
   - ref: issue-1
     kind: issue
@@ -4329,7 +4329,7 @@ projects:
     readiness: ready
     ci: not_applicable
     review: not_applicable
-    updated_at: '2026-09-17T11:24:37Z'
+    updated_at: '2026-09-17T13:09:56Z'
     source: github-issue:lost-rob0t/zara#575
   - ref: issue-622
     kind: issue
@@ -4529,7 +4529,7 @@ projects:
     readiness: ready
     ci: not_applicable
     review: not_applicable
-    updated_at: '2026-09-17T11:50:16Z'
+    updated_at: '2026-09-17T17:00:55Z'
     source: github-issue:lost-rob0t/zara#646
   - ref: issue-647
     kind: issue
@@ -4609,7 +4609,7 @@ projects:
     readiness: ready
     ci: not_applicable
     review: not_applicable
-    updated_at: '2026-09-17T06:01:11Z'
+    updated_at: '2026-09-17T15:04:39Z'
     source: github-issue:lost-rob0t/zara#655
   - ref: issue-656
     kind: issue
@@ -4639,7 +4639,7 @@ projects:
     readiness: ready
     ci: not_applicable
     review: not_applicable
-    updated_at: '2026-09-07T08:42:45Z'
+    updated_at: '2026-09-17T15:21:49Z'
     source: github-issue:lost-rob0t/zara#658
   - ref: issue-662
     kind: issue
@@ -5009,7 +5009,7 @@ projects:
     readiness: ready
     ci: not_applicable
     review: not_applicable
-    updated_at: '2026-09-17T11:35:48Z'
+    updated_at: '2026-09-17T14:00:14Z'
     source: github-issue:lost-rob0t/zara#888
   - ref: issue-889
     kind: issue
@@ -5019,7 +5019,7 @@ projects:
     readiness: ready
     ci: not_applicable
     review: not_applicable
-    updated_at: '2026-09-17T10:37:35Z'
+    updated_at: '2026-09-17T14:35:32Z'
     source: github-issue:lost-rob0t/zara#889
   - ref: issue-892
     kind: issue
@@ -5089,7 +5089,7 @@ projects:
     readiness: ready
     ci: not_applicable
     review: not_applicable
-    updated_at: '2026-09-17T11:41:25Z'
+    updated_at: '2026-09-17T13:38:56Z'
     source: github-issue:lost-rob0t/zara#909
   - ref: issue-911
     kind: issue
@@ -5109,7 +5109,7 @@ projects:
     readiness: ready
     ci: not_applicable
     review: not_applicable
-    updated_at: '2026-09-17T11:52:56Z'
+    updated_at: '2026-09-17T17:02:06Z'
     source: github-issue:lost-rob0t/zara#917
   - ref: issue-919
     kind: issue
@@ -5119,7 +5119,7 @@ projects:
     readiness: ready
     ci: not_applicable
     review: not_applicable
-    updated_at: '2026-09-17T11:18:12Z'
+    updated_at: '2026-09-17T15:31:38Z'
     source: github-issue:lost-rob0t/zara#919
   - ref: issue-920
     kind: issue
@@ -5129,7 +5129,7 @@ projects:
     readiness: ready
     ci: not_applicable
     review: not_applicable
-    updated_at: '2026-09-17T09:05:52Z'
+    updated_at: '2026-09-17T17:06:41Z'
     source: github-issue:lost-rob0t/zara#920
   - ref: issue-921
     kind: issue
@@ -5139,7 +5139,7 @@ projects:
     readiness: ready
     ci: not_applicable
     review: not_applicable
-    updated_at: '2026-09-17T11:42:58Z'
+    updated_at: '2026-09-17T16:50:44Z'
     source: github-issue:lost-rob0t/zara#921
   - ref: issue-922
     kind: issue
@@ -5149,7 +5149,7 @@ projects:
     readiness: ready
     ci: not_applicable
     review: not_applicable
-    updated_at: '2026-09-17T11:52:44Z'
+    updated_at: '2026-09-17T17:04:24Z'
     source: github-issue:lost-rob0t/zara#922
   - ref: issue-923
     kind: issue
@@ -5169,7 +5169,7 @@ projects:
     readiness: ready
     ci: not_applicable
     review: not_applicable
-    updated_at: '2026-09-17T07:20:24Z'
+    updated_at: '2026-09-17T15:04:43Z'
     source: github-issue:lost-rob0t/zara#924
   - ref: issue-926
     kind: issue
@@ -5239,7 +5239,7 @@ projects:
     readiness: ready
     ci: not_applicable
     review: not_applicable
-    updated_at: '2026-09-17T08:33:36Z'
+    updated_at: '2026-09-17T15:04:51Z'
     source: github-issue:lost-rob0t/zara#968
   - ref: issue-969
     kind: issue
@@ -5249,7 +5249,7 @@ projects:
     readiness: ready
     ci: not_applicable
     review: not_applicable
-    updated_at: '2026-09-17T06:07:47Z'
+    updated_at: '2026-09-17T15:05:02Z'
     source: github-issue:lost-rob0t/zara#969
   - ref: issue-970
     kind: issue
@@ -5399,7 +5399,7 @@ projects:
     readiness: ready
     ci: not_applicable
     review: not_applicable
-    updated_at: '2026-09-17T07:08:57Z'
+    updated_at: '2026-09-17T14:32:27Z'
     source: github-issue:lost-rob0t/zara#998
   - ref: issue-999
     kind: issue
@@ -5409,7 +5409,7 @@ projects:
     readiness: ready
     ci: not_applicable
     review: not_applicable
-    updated_at: '2026-09-17T11:53:14Z'
+    updated_at: '2026-09-17T17:04:36Z'
     source: github-issue:lost-rob0t/zara#999
   - ref: issue-1000
     kind: issue
@@ -5671,38 +5671,16 @@ projects:
     review: not_applicable
     updated_at: '2026-09-17T09:14:14Z'
     source: github-issue:lost-rob0t/zara#1031
-  - ref: pr-414
-    kind: pr
-    number: 414
-    state: open
-    severity: normal
-    readiness: ready
-    ci: pending
-    review: unknown
-    head_sha: 3645ca6842d8753b1036c6d0ceda729b4ab9fa62
-    updated_at: '2026-09-12T08:21:19Z'
-    source: github-pr:lost-rob0t/zara#414
-  - ref: pr-592
-    kind: pr
-    number: 592
-    state: open
-    severity: normal
-    readiness: ready
-    ci: failure
-    review: unknown
-    head_sha: 3e0b0cabd1cd742469d97f967e5d329d20a275e7
-    updated_at: '2026-09-12T08:21:23Z'
-    source: github-pr:lost-rob0t/zara#592
   - ref: pr-615
     kind: pr
     number: 615
     state: open
     severity: normal
     readiness: ready
-    ci: failure
+    ci: pending
     review: unknown
-    head_sha: c58aa9fc7d95ce5b062746aea16a3fea410a37e6
-    updated_at: '2026-09-07T03:46:44Z'
+    head_sha: 85b09d2e8045e6301fc44ff515788dfe33304ccd
+    updated_at: '2026-09-17T16:54:31Z'
     source: github-pr:lost-rob0t/zara#615
   - ref: pr-620
     kind: pr
@@ -5710,10 +5688,10 @@ projects:
     state: open
     severity: normal
     readiness: ready
-    ci: failure
+    ci: pending
     review: unknown
-    head_sha: c7a881c47d2e3b8cd31b805feaf60c79e1df5c93
-    updated_at: '2026-09-07T03:32:45Z'
+    head_sha: 321cd953b9602e1bed07cf4dff5fb1b51231f816
+    updated_at: '2026-09-17T15:50:17Z'
     source: github-pr:lost-rob0t/zara#620
   - ref: pr-621
     kind: pr
@@ -5724,7 +5702,7 @@ projects:
     ci: failure
     review: unknown
     head_sha: 04e163db7d0b01e5d1e629666b203668e8ff3a7c
-    updated_at: '2026-09-07T03:58:18Z'
+    updated_at: '2026-09-17T14:12:19Z'
     source: github-pr:lost-rob0t/zara#621
   - ref: pr-659
     kind: pr
@@ -5734,8 +5712,8 @@ projects:
     readiness: ready
     ci: pending
     review: unknown
-    head_sha: 98140b73cda10e7d9a8d3492c4481fa31a81bda1
-    updated_at: '2026-09-17T09:12:46Z'
+    head_sha: eee8aa1a5b6f8bd8b402229fdabeecd52f9bc864
+    updated_at: '2026-09-17T15:47:09Z'
     source: github-pr:lost-rob0t/zara#659
   - ref: pr-863
     kind: pr
@@ -5746,7 +5724,7 @@ projects:
     ci: pending
     review: unknown
     head_sha: dcaf6be3dbe35c5de92be7c5e722b16c9dd39ac0
-    updated_at: '2026-09-16T03:04:50Z'
+    updated_at: '2026-09-17T15:50:32Z'
     source: github-pr:lost-rob0t/zara#863
   - ref: pr-872
     kind: pr
@@ -5756,8 +5734,8 @@ projects:
     readiness: ready
     ci: pending
     review: unknown
-    head_sha: 7f47563634b29e83db507f2247775e5c0a8438dd
-    updated_at: '2026-09-17T09:45:52Z'
+    head_sha: 6cab54cc8b4ff62e337753ea5e9476edbc1ed05a
+    updated_at: '2026-09-17T16:50:00Z'
     source: github-pr:lost-rob0t/zara#872
   - ref: pr-873
     kind: pr
@@ -5767,8 +5745,8 @@ projects:
     readiness: ready
     ci: pending
     review: unknown
-    head_sha: 6cb9c24dc182e10fea91be48a7118940ceecedc9
-    updated_at: '2026-09-17T11:41:43Z'
+    head_sha: 55329519f773f42a90b362c135b8e0767369915a
+    updated_at: '2026-09-17T16:48:32Z'
     source: github-pr:lost-rob0t/zara#873
   - ref: pr-875
     kind: pr
@@ -5779,19 +5757,8 @@ projects:
     ci: failure
     review: unknown
     head_sha: 9c3ebeefd4dd5cddcf7930eb96f457b6bb703af3
-    updated_at: '2026-09-12T08:41:41Z'
+    updated_at: '2026-09-17T15:49:24Z'
     source: github-pr:lost-rob0t/zara#875
-  - ref: pr-876
-    kind: pr
-    number: 876
-    state: open
-    severity: normal
-    readiness: ready
-    ci: pending
-    review: unknown
-    head_sha: 2a794670346dacb3ac6270589ff8dd0c4998a0c7
-    updated_at: '2026-09-16T21:06:13Z'
-    source: github-pr:lost-rob0t/zara#876
   - ref: pr-898
     kind: pr
     number: 898
@@ -5800,20 +5767,9 @@ projects:
     readiness: ready
     ci: pending
     review: unknown
-    head_sha: 8be82a2089d61733f6538e4b17b88d8c28f25d24
-    updated_at: '2026-09-17T02:34:50Z'
+    head_sha: 1bb2cb5c76dda797fca74b973f862a34e0ae56b7
+    updated_at: '2026-09-17T14:59:30Z'
     source: github-pr:lost-rob0t/zara#898
-  - ref: pr-899
-    kind: pr
-    number: 899
-    state: open
-    severity: normal
-    readiness: ready
-    ci: failure
-    review: unknown
-    head_sha: 60f29e67d92bf4ae20457858ff5757ecc216146f
-    updated_at: '2026-09-17T02:10:32Z'
-    source: github-pr:lost-rob0t/zara#899
   - ref: pr-900
     kind: pr
     number: 900
@@ -5834,7 +5790,7 @@ projects:
     ci: failure
     review: unknown
     head_sha: 60c908111074e30ba2844b4ec2b5f9da7744ff7f
-    updated_at: '2026-09-17T02:39:56Z'
+    updated_at: '2026-09-17T16:05:47Z'
     source: github-pr:lost-rob0t/zara#901
   - ref: pr-908
     kind: pr
@@ -5844,8 +5800,8 @@ projects:
     readiness: ready
     ci: pending
     review: unknown
-    head_sha: 33cba1a86916e81145ed1ebb98362b613e7b4cf4
-    updated_at: '2026-09-17T05:13:38Z'
+    head_sha: 1a85e5919b0bce18d432c0f3dd1b5007027a0338
+    updated_at: '2026-09-17T15:56:02Z'
     source: github-pr:lost-rob0t/zara#908
   - ref: pr-910
     kind: pr
@@ -5856,7 +5812,7 @@ projects:
     ci: failure
     review: unknown
     head_sha: 25bae124a2164b206bd9c7cbe2f8f2700bc89bf4
-    updated_at: '2026-09-17T04:19:54Z'
+    updated_at: '2026-09-17T15:05:39Z'
     source: github-pr:lost-rob0t/zara#910
   - ref: pr-912
     kind: pr
@@ -5867,41 +5823,8 @@ projects:
     ci: failure
     review: unknown
     head_sha: 11d82ef0ded8bd70eae7479b341982c18762f80d
-    updated_at: '2026-09-17T08:54:36Z'
+    updated_at: '2026-09-17T15:04:40Z'
     source: github-pr:lost-rob0t/zara#912
-  - ref: pr-913
-    kind: pr
-    number: 913
-    state: open
-    severity: normal
-    readiness: ready
-    ci: pending
-    review: unknown
-    head_sha: cd8c5d18841b28b1306dc61d9394ad2a68814009
-    updated_at: '2026-09-17T08:38:45Z'
-    source: github-pr:lost-rob0t/zara#913
-  - ref: pr-914
-    kind: pr
-    number: 914
-    state: open
-    severity: normal
-    readiness: ready
-    ci: pending
-    review: unknown
-    head_sha: 485779e8d9040c7ed31222215d12b9879f772488
-    updated_at: '2026-09-17T04:56:31Z'
-    source: github-pr:lost-rob0t/zara#914
-  - ref: pr-916
-    kind: pr
-    number: 916
-    state: open
-    severity: normal
-    readiness: ready
-    ci: pending
-    review: unknown
-    head_sha: aef39cfd44be4949d217b32ba6c8851bfdd0e680
-    updated_at: '2026-09-17T11:39:44Z'
-    source: github-pr:lost-rob0t/zara#916
   - ref: pr-918
     kind: pr
     number: 918
@@ -5910,20 +5833,9 @@ projects:
     readiness: ready
     ci: pending
     review: unknown
-    head_sha: 83e60f8196d02473b9d153790e13e21d3b8abd46
-    updated_at: '2026-09-17T07:12:40Z'
+    head_sha: be59aa4c6e15353ff18e21bede44287d5b61e4f8
+    updated_at: '2026-09-17T14:57:58Z'
     source: github-pr:lost-rob0t/zara#918
-  - ref: pr-925
-    kind: pr
-    number: 925
-    state: open
-    severity: normal
-    readiness: ready
-    ci: pending
-    review: unknown
-    head_sha: 3d4a9f969599016da18e11724d9ca1f6a79e7263
-    updated_at: '2026-09-17T04:46:54Z'
-    source: github-pr:lost-rob0t/zara#925
   - ref: pr-929
     kind: pr
     number: 929
@@ -5932,8 +5844,8 @@ projects:
     readiness: ready
     ci: pending
     review: unknown
-    head_sha: fadd071682811d3597635fcc7e890a84e3165bff
-    updated_at: '2026-09-17T06:10:01Z'
+    head_sha: 70c44bcd0ed9131e1e31fdc294cc77e6fb3b3b0d
+    updated_at: '2026-09-17T15:08:40Z'
     source: github-pr:lost-rob0t/zara#929
   - ref: pr-930
     kind: pr
@@ -5955,7 +5867,7 @@ projects:
     ci: pending
     review: unknown
     head_sha: 9140b11ca3b64cdae7cca59e25f56c39460d2355
-    updated_at: '2026-09-17T05:09:35Z'
+    updated_at: '2026-09-17T14:58:12Z'
     source: github-pr:lost-rob0t/zara#931
   - ref: pr-932
     kind: pr
@@ -5965,8 +5877,8 @@ projects:
     readiness: ready
     ci: failure
     review: unknown
-    head_sha: 48976518fdae9de96c3c6395324940ec5daf87c5
-    updated_at: '2026-09-17T05:12:03Z'
+    head_sha: ef6310567556e7a1fe807068883f064b14472623
+    updated_at: '2026-09-17T15:56:09Z'
     source: github-pr:lost-rob0t/zara#932
   - ref: pr-933
     kind: pr
@@ -5977,7 +5889,7 @@ projects:
     ci: failure
     review: unknown
     head_sha: 9a929d0bff9454c50bce44ee3804fb21340e2a9a
-    updated_at: '2026-09-17T05:12:06Z'
+    updated_at: '2026-09-17T15:56:15Z'
     source: github-pr:lost-rob0t/zara#933
   - ref: pr-935
     kind: pr
@@ -6031,8 +5943,8 @@ projects:
     readiness: ready
     ci: pending
     review: unknown
-    head_sha: 614c277dc5723a2bef92de09eff2d476dc3cd1ad
-    updated_at: '2026-09-17T10:37:40Z'
+    head_sha: 4e714c8894a2f4b9948decdfcd152ffd6d7a98aa
+    updated_at: '2026-09-17T16:42:35Z'
     source: github-pr:lost-rob0t/zara#939
   - ref: pr-940
     kind: pr
@@ -6054,7 +5966,7 @@ projects:
     ci: failure
     review: unknown
     head_sha: 2ce166f88cee3c7f57f74c11e562b94b78317016
-    updated_at: '2026-09-17T06:03:09Z'
+    updated_at: '2026-09-17T15:04:52Z'
     source: github-pr:lost-rob0t/zara#942
   - ref: pr-943
     kind: pr
@@ -6062,22 +5974,11 @@ projects:
     state: open
     severity: normal
     readiness: ready
-    ci: failure
-    review: unknown
-    head_sha: d415fbf33656ec974bd516cdec4490064e1dca1e
-    updated_at: '2026-09-17T06:26:57Z'
-    source: github-pr:lost-rob0t/zara#943
-  - ref: pr-944
-    kind: pr
-    number: 944
-    state: open
-    severity: normal
-    readiness: ready
     ci: pending
     review: unknown
-    head_sha: 0cfd6707f29f235fa2b8f14279aa38bf4895f2c6
-    updated_at: '2026-09-17T05:43:36Z'
-    source: github-pr:lost-rob0t/zara#944
+    head_sha: 6ac78f7e20b48ef7bc85a13eabea44c63bdd03c3
+    updated_at: '2026-09-17T17:04:05Z'
+    source: github-pr:lost-rob0t/zara#943
   - ref: pr-945
     kind: pr
     number: 945
@@ -6098,7 +5999,7 @@ projects:
     ci: failure
     review: unknown
     head_sha: f586f7a383e229d2416aa196b84838caf82a1abc
-    updated_at: '2026-09-17T05:47:30Z'
+    updated_at: '2026-09-17T15:05:08Z'
     source: github-pr:lost-rob0t/zara#946
   - ref: pr-948
     kind: pr
@@ -6119,20 +6020,9 @@ projects:
     readiness: ready
     ci: failure
     review: unknown
-    head_sha: f18251a0401ef78e685f2cbc3c4de4fb80e6bea6
-    updated_at: '2026-09-17T09:41:53Z'
+    head_sha: fde2535b6b9dcc81250d46a8d343831d7a3606a1
+    updated_at: '2026-09-17T15:23:37Z'
     source: github-pr:lost-rob0t/zara#961
-  - ref: pr-965
-    kind: pr
-    number: 965
-    state: open
-    severity: normal
-    readiness: ready
-    ci: failure
-    review: unknown
-    head_sha: 7d71e0da2698ded20928d33a0aca4edea184f9b5
-    updated_at: '2026-09-17T08:54:41Z'
-    source: github-pr:lost-rob0t/zara#965
   - ref: pr-966
     kind: pr
     number: 966
@@ -6141,8 +6031,8 @@ projects:
     readiness: ready
     ci: failure
     review: unknown
-    head_sha: 8e38204c49429c9ab80430f2e9dbc679792546d6
-    updated_at: '2026-09-17T11:35:28Z'
+    head_sha: 9c55e849abd034775e2e91991a93b8136980dd83
+    updated_at: '2026-09-17T15:51:51Z'
     source: github-pr:lost-rob0t/zara#966
   - ref: pr-967
     kind: pr
@@ -6197,7 +6087,7 @@ projects:
     ci: failure
     review: unknown
     head_sha: fff266fe31918ef8c7526262312c37c867dc7f7e
-    updated_at: '2026-09-17T06:51:56Z'
+    updated_at: '2026-09-17T15:05:21Z'
     source: github-pr:lost-rob0t/zara#983
   - ref: pr-990
     kind: pr
@@ -6218,8 +6108,8 @@ projects:
     readiness: ready
     ci: failure
     review: unknown
-    head_sha: ae5d481fc4366fb5c4b07ed6362461c5858e0b6f
-    updated_at: '2026-09-17T07:12:28Z'
+    head_sha: adbbc8561db13b18c9bbcf53a2cf2de703995a8c
+    updated_at: '2026-09-17T15:05:15Z'
     source: github-pr:lost-rob0t/zara#991
   - ref: pr-992
     kind: pr
@@ -6232,17 +6122,6 @@ projects:
     head_sha: d1e42d0cf51b9b194838a45c9f9be99f50a5d892
     updated_at: '2026-09-17T06:54:55Z'
     source: github-pr:lost-rob0t/zara#992
-  - ref: pr-993
-    kind: pr
-    number: 993
-    state: open
-    severity: normal
-    readiness: ready
-    ci: failure
-    review: unknown
-    head_sha: 01a97eaa71849cf361f8135592642cd6ffb3b3c3
-    updated_at: '2026-09-17T06:53:18Z'
-    source: github-pr:lost-rob0t/zara#993
   - ref: pr-994
     kind: pr
     number: 994
@@ -6260,10 +6139,10 @@ projects:
     state: open
     severity: normal
     readiness: ready
-    ci: failure
+    ci: pending
     review: unknown
-    head_sha: 057510a2521daf49c727ca7d5d3052c6487e5635
-    updated_at: '2026-09-17T10:37:33Z'
+    head_sha: b28257d1c3665efbee42801cf7aad9f34c1dca64
+    updated_at: '2026-09-17T17:03:59Z'
     source: github-pr:lost-rob0t/zara#997
   - ref: pr-1013
     kind: pr
@@ -6293,10 +6172,10 @@ projects:
     state: open
     severity: normal
     readiness: ready
-    ci: failure
+    ci: pending
     review: unknown
-    head_sha: df20dbbf31dc87c7764abf37c8a79ee512cdccad
-    updated_at: '2026-09-17T12:00:08Z'
+    head_sha: f5e543bd690e4210bb56ee1e420c5e5e294c0431
+    updated_at: '2026-09-17T14:54:05Z'
     source: github-pr:lost-rob0t/zara#1018
   - ref: pr-1027
     kind: pr
@@ -6320,25 +6199,25 @@ projects:
     head_sha: 9c4a08fb44801ee488913a42e55e31ec4bf231ba
     updated_at: '2026-09-17T08:56:03Z'
     source: github-pr:lost-rob0t/zara#1028
-  - ref: pr-1029
+  - ref: pr-1033
     kind: pr
-    number: 1029
+    number: 1033
     state: open
     severity: normal
     readiness: ready
     ci: pending
     review: unknown
-    head_sha: d34988ca0c0892e528c8f28c59811296e5f0a426
-    updated_at: '2026-09-17T11:59:59Z'
-    source: github-pr:lost-rob0t/zara#1029
-  - ref: pr-1032
+    head_sha: afabff09803c4f85644aceae969334f51b7ec04e
+    updated_at: '2026-09-17T15:08:14Z'
+    source: github-pr:lost-rob0t/zara#1033
+  - ref: pr-1035
     kind: pr
-    number: 1032
+    number: 1035
     state: open
     severity: normal
     readiness: ready
     ci: pending
     review: unknown
-    head_sha: 7e58d8a4d69a93bea87cea32c1332e1602a00e93
-    updated_at: '2026-09-17T12:00:38Z'
-    source: github-pr:lost-rob0t/zara#1032
+    head_sha: 5b058c90c882ae2098d0c11ef193a8ca1387a7b8
+    updated_at: '2026-09-17T16:52:46Z'
+    source: github-pr:lost-rob0t/zara#1035
