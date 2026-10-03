@@ -1,21 +1,21 @@
 version: 1
 observed_by: task-steward-github
-observed_at: '2026-10-03T17:33:58+00:00'
+observed_at: '2026-10-03T20:09:54+00:00'
 projects:
 - project: chatgpt-books-book1
   repo: lost-rob0t/chatgpt-books
   snapshot: unavailable
-  observed_at: '2026-10-03T17:33:58+00:00'
+  observed_at: '2026-10-03T20:09:54+00:00'
   work: []
 - project: hackmode
   repo: nsaspy/hackmode
   snapshot: unavailable
-  observed_at: '2026-10-03T17:33:58+00:00'
+  observed_at: '2026-10-03T20:09:54+00:00'
   work: []
 - project: hourly-auto-dig
   repo: lost-rob0t/starintel-gpt-auto-dig
   snapshot: partial
-  observed_at: '2026-10-03T17:33:58+00:00'
+  observed_at: '2026-10-03T20:09:54+00:00'
   work:
   - ref: issue-1954
     kind: issue
@@ -2586,7 +2586,7 @@ projects:
 - project: local-recall
   repo: lost-rob0t/local-recall
   snapshot: fresh
-  observed_at: '2026-10-03T17:33:58+00:00'
+  observed_at: '2026-10-03T20:09:54+00:00'
   work:
   - ref: issue-35
     kind: issue
@@ -2621,27 +2621,27 @@ projects:
 - project: prolog-rlm
   repo: nsaspy/prolog-rlm
   snapshot: unavailable
-  observed_at: '2026-10-03T17:33:58+00:00'
+  observed_at: '2026-10-03T20:09:54+00:00'
   work: []
 - project: skills
   repo: nsaspy/skills
   snapshot: unavailable
-  observed_at: '2026-10-03T17:33:58+00:00'
+  observed_at: '2026-10-03T20:09:54+00:00'
   work: []
 - project: starintel-discord-reports
   repo: lost-rob0t/starintel-discord-reporting
   snapshot: unavailable
-  observed_at: '2026-10-03T17:33:58+00:00'
+  observed_at: '2026-10-03T20:09:54+00:00'
   work: []
 - project: starintel-infra
   repo: starintel-labs/starintel-infra
   snapshot: unavailable
-  observed_at: '2026-10-03T17:33:58+00:00'
+  observed_at: '2026-10-03T20:09:54+00:00'
   work: []
 - project: starintel-server
   repo: lost-rob0t/starintel-server
   snapshot: fresh
-  observed_at: '2026-10-03T17:33:58+00:00'
+  observed_at: '2026-10-03T20:09:54+00:00'
   work:
   - ref: issue-9
     kind: issue
@@ -3751,7 +3751,7 @@ projects:
     readiness: ready
     ci: not_applicable
     review: not_applicable
-    updated_at: '2026-09-19T06:11:21Z'
+    updated_at: '2026-10-03T18:36:48Z'
     source: github-issue:lost-rob0t/starintel-server#263
   - ref: issue-264
     kind: issue
@@ -4163,6 +4163,26 @@ projects:
     review: not_applicable
     updated_at: '2026-09-21T18:23:51Z'
     source: github-issue:lost-rob0t/starintel-server#308
+  - ref: issue-310
+    kind: issue
+    number: 310
+    state: open
+    severity: normal
+    readiness: ready
+    ci: not_applicable
+    review: not_applicable
+    updated_at: '2026-10-03T18:33:44Z'
+    source: github-issue:lost-rob0t/starintel-server#310
+  - ref: issue-312
+    kind: issue
+    number: 312
+    state: open
+    severity: normal
+    readiness: ready
+    ci: not_applicable
+    review: not_applicable
+    updated_at: '2026-10-03T19:49:45Z'
+    source: github-issue:lost-rob0t/starintel-server#312
   - ref: pr-79
     kind: pr
     number: 79
@@ -4471,15 +4491,37 @@ projects:
     head_sha: aee24f1c8ec0bc35ae118d0854b15574bc9f9980
     updated_at: '2026-09-21T04:30:08Z'
     source: github-pr:lost-rob0t/starintel-server#295
+  - ref: pr-309
+    kind: pr
+    number: 309
+    state: open
+    severity: normal
+    readiness: ready
+    ci: failure
+    review: unknown
+    head_sha: 826c38a1e677903f79a300495861583f07fd8226
+    updated_at: '2026-10-03T18:38:05Z'
+    source: github-pr:lost-rob0t/starintel-server#309
+  - ref: pr-311
+    kind: pr
+    number: 311
+    state: open
+    severity: normal
+    readiness: ready
+    ci: failure
+    review: unknown
+    head_sha: 568b18a492c3e188e0e3bcc5ec4624022fa915ed
+    updated_at: '2026-10-03T19:36:09Z'
+    source: github-pr:lost-rob0t/starintel-server#311
 - project: symbolics
   repo: nsaspy/a0-symbolics
   snapshot: unavailable
-  observed_at: '2026-10-03T17:33:58+00:00'
+  observed_at: '2026-10-03T20:09:54+00:00'
   work: []
 - project: zara
   repo: lost-rob0t/zara
   snapshot: partial
-  observed_at: '2026-10-03T17:33:58+00:00'
+  observed_at: '2026-10-03T20:09:54+00:00'
   work:
   - ref: issue-1094
     kind: issue
