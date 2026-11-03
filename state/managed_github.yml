@@ -1,11 +1,11 @@
 version: 1
 observed_by: task-steward-github
-observed_at: '2026-11-03T03:40:38+00:00'
+observed_at: '2026-11-03T12:16:26+00:00'
 projects:
 - project: chatgpt-books-book1
   repo: lost-rob0t/chatgpt-books
   snapshot: fresh
-  observed_at: '2026-11-03T03:40:38+00:00'
+  observed_at: '2026-11-03T12:16:26+00:00'
   work:
   - ref: issue-5
     kind: issue
@@ -425,8 +425,8 @@ projects:
     readiness: ready
     ci: pending
     review: unknown
-    head_sha: d16ab6765b156c515d880ce078da553ac8fcf30b
-    updated_at: '2026-09-17T04:35:46Z'
+    head_sha: bc0c7197b35298a034983cb95bb1a00f64dfa4d2
+    updated_at: '2026-11-03T05:56:34Z'
     source: github-pr:lost-rob0t/chatgpt-books#126
   - ref: pr-128
     kind: pr
@@ -437,7 +437,7 @@ projects:
     ci: pending
     review: unknown
     head_sha: cea1d29df8ea0c40efe3f47aface0899fe7d00b4
-    updated_at: '2026-09-17T04:39:04Z'
+    updated_at: '2026-11-03T04:40:44Z'
     source: github-pr:lost-rob0t/chatgpt-books#128
   - ref: pr-132
     kind: pr
@@ -447,8 +447,8 @@ projects:
     readiness: ready
     ci: pending
     review: unknown
-    head_sha: 742a8ce384c2631ab01324ecfee7cd5c29cdfccd
-    updated_at: '2026-09-17T04:38:56Z'
+    head_sha: 13fa0fb4779f40c0f0311e53efacf21f2ae84bc5
+    updated_at: '2026-11-03T04:40:59Z'
     source: github-pr:lost-rob0t/chatgpt-books#132
   - ref: pr-134
     kind: pr
@@ -458,20 +458,9 @@ projects:
     readiness: ready
     ci: pending
     review: unknown
-    head_sha: f37d393e32121a87cdc0e745e999515be8059531
-    updated_at: '2026-09-17T04:33:15Z'
+    head_sha: 24bf413a0845d16cd614d8ad152aae3e06241472
+    updated_at: '2026-11-03T05:04:28Z'
     source: github-pr:lost-rob0t/chatgpt-books#134
-  - ref: pr-136
-    kind: pr
-    number: 136
-    state: open
-    severity: normal
-    readiness: ready
-    ci: pending
-    review: unknown
-    head_sha: ce7ee7a3cec1daa6e0b7fa592d06659fbdabb45d
-    updated_at: '2026-10-16T17:45:24Z'
-    source: github-pr:lost-rob0t/chatgpt-books#136
   - ref: pr-157
     kind: pr
     number: 157
@@ -481,7 +470,7 @@ projects:
     ci: failure
     review: unknown
     head_sha: f9fb2f394c2a5af993bafb8e1e3e147bd0d01a7b
-    updated_at: '2026-10-19T21:02:20Z'
+    updated_at: '2026-11-03T05:57:13Z'
     source: github-pr:lost-rob0t/chatgpt-books#157
   - ref: pr-158
     kind: pr
@@ -489,10 +478,10 @@ projects:
     state: open
     severity: normal
     readiness: ready
-    ci: failure
+    ci: pending
     review: unknown
-    head_sha: 99c9393cdaa6c2971494d35a54ab952ae5b4a3a6
-    updated_at: '2026-10-16T18:05:14Z'
+    head_sha: 7da8ace1e19e90495f1d01bf5fd35d563728414e
+    updated_at: '2026-11-03T05:19:25Z'
     source: github-pr:lost-rob0t/chatgpt-books#158
   - ref: pr-159
     kind: pr
@@ -503,17 +492,50 @@ projects:
     ci: failure
     review: unknown
     head_sha: 492faf76ddd9f16dc97bba9a50f0086e7572cf56
-    updated_at: '2026-10-16T18:05:16Z'
+    updated_at: '2026-11-03T04:41:53Z'
     source: github-pr:lost-rob0t/chatgpt-books#159
+  - ref: pr-160
+    kind: pr
+    number: 160
+    state: open
+    severity: normal
+    readiness: ready
+    ci: pending
+    review: unknown
+    head_sha: 9d18adc80d6e6563ad312b2fea26b878dcaa4081
+    updated_at: '2026-11-03T05:36:18Z'
+    source: github-pr:lost-rob0t/chatgpt-books#160
+  - ref: pr-161
+    kind: pr
+    number: 161
+    state: open
+    severity: normal
+    readiness: ready
+    ci: pending
+    review: unknown
+    head_sha: 6f0941598083a4c6ee20aa00cef7e7e81022d5f3
+    updated_at: '2026-11-03T05:36:29Z'
+    source: github-pr:lost-rob0t/chatgpt-books#161
+  - ref: pr-162
+    kind: pr
+    number: 162
+    state: open
+    severity: normal
+    readiness: ready
+    ci: failure
+    review: unknown
+    head_sha: 924a582b391f66bef96d712540605055967e4f6b
+    updated_at: '2026-11-03T05:36:31Z'
+    source: github-pr:lost-rob0t/chatgpt-books#162
 - project: hackmode
   repo: nsaspy/hackmode
   snapshot: unavailable
-  observed_at: '2026-11-03T03:40:38+00:00'
+  observed_at: '2026-11-03T12:16:26+00:00'
   work: []
 - project: hourly-auto-dig
   repo: lost-rob0t/starintel-gpt-auto-dig
   snapshot: partial
-  observed_at: '2026-11-03T03:40:38+00:00'
+  observed_at: '2026-11-03T12:16:26+00:00'
   work:
   - ref: issue-2109
     kind: issue
@@ -3090,7 +3112,7 @@ projects:
 - project: local-recall
   repo: lost-rob0t/local-recall
   snapshot: fresh
-  observed_at: '2026-11-03T03:40:38+00:00'
+  observed_at: '2026-11-03T12:16:26+00:00'
   work:
   - ref: issue-35
     kind: issue
@@ -3125,17 +3147,17 @@ projects:
 - project: prolog-rlm
   repo: nsaspy/prolog-rlm
   snapshot: unavailable
-  observed_at: '2026-11-03T03:40:38+00:00'
+  observed_at: '2026-11-03T12:16:26+00:00'
   work: []
 - project: skills
   repo: nsaspy/skills
   snapshot: unavailable
-  observed_at: '2026-11-03T03:40:38+00:00'
+  observed_at: '2026-11-03T12:16:26+00:00'
   work: []
 - project: starintel-discord-reports
   repo: lost-rob0t/starintel-discord-reporting
   snapshot: fresh
-  observed_at: '2026-11-03T03:40:38+00:00'
+  observed_at: '2026-11-03T12:16:26+00:00'
   work:
   - ref: issue-9
     kind: issue
@@ -3160,12 +3182,12 @@ projects:
 - project: starintel-infra
   repo: starintel-labs/starintel-infra
   snapshot: unavailable
-  observed_at: '2026-11-03T03:40:38+00:00'
+  observed_at: '2026-11-03T12:16:26+00:00'
   work: []
 - project: starintel-server
   repo: lost-rob0t/starintel-server
   snapshot: fresh
-  observed_at: '2026-11-03T03:40:38+00:00'
+  observed_at: '2026-11-03T12:16:26+00:00'
   work:
   - ref: issue-9
     kind: issue
@@ -5283,12 +5305,12 @@ projects:
 - project: symbolics
   repo: nsaspy/a0-symbolics
   snapshot: unavailable
-  observed_at: '2026-11-03T03:40:38+00:00'
+  observed_at: '2026-11-03T12:16:26+00:00'
   work: []
 - project: zara
   repo: lost-rob0t/zara
   snapshot: partial
-  observed_at: '2026-11-03T03:40:38+00:00'
+  observed_at: '2026-11-03T12:16:26+00:00'
   work:
   - ref: issue-1114
     kind: issue

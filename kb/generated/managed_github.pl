@@ -3,9 +3,9 @@
 :- module(kb_generated_managed_github, [managed_observed_by/1, managed_observed_at/1, github_snapshot/4, github_work/2, github_work_kind/3, github_work_state/3, github_work_severity/3, github_work_readiness/3, github_work_ci/3, github_work_review/3, github_work_head_sha/3, github_work_updated_at/3, github_work_source/3]).
 
 managed_observed_by(task_steward_github).
-managed_observed_at('2026-11-03T03:40:38+00:00').
+managed_observed_at('2026-11-03T12:16:26+00:00').
 
-github_snapshot(chatgpt_books_book1, 'lost-rob0t/chatgpt-books', fresh, '2026-11-03T03:40:38+00:00').
+github_snapshot(chatgpt_books_book1, 'lost-rob0t/chatgpt-books', fresh, '2026-11-03T12:16:26+00:00').
 github_work(chatgpt_books_book1, issue_5).
 github_work_kind(chatgpt_books_book1, issue_5, issue).
 github_work_state(chatgpt_books_book1, issue_5, open).
@@ -423,8 +423,8 @@ github_work_severity(chatgpt_books_book1, pr_126, normal).
 github_work_readiness(chatgpt_books_book1, pr_126, ready).
 github_work_ci(chatgpt_books_book1, pr_126, pending).
 github_work_review(chatgpt_books_book1, pr_126, unknown).
-github_work_head_sha(chatgpt_books_book1, pr_126, 'd16ab6765b156c515d880ce078da553ac8fcf30b').
-github_work_updated_at(chatgpt_books_book1, pr_126, '2026-09-17T04:35:46+00:00').
+github_work_head_sha(chatgpt_books_book1, pr_126, 'bc0c7197b35298a034983cb95bb1a00f64dfa4d2').
+github_work_updated_at(chatgpt_books_book1, pr_126, '2026-11-03T05:56:34+00:00').
 github_work_source(chatgpt_books_book1, pr_126, 'github-pr:lost-rob0t/chatgpt-books#126').
 
 github_work(chatgpt_books_book1, pr_128).
@@ -435,7 +435,7 @@ github_work_readiness(chatgpt_books_book1, pr_128, ready).
 github_work_ci(chatgpt_books_book1, pr_128, pending).
 github_work_review(chatgpt_books_book1, pr_128, unknown).
 github_work_head_sha(chatgpt_books_book1, pr_128, 'cea1d29df8ea0c40efe3f47aface0899fe7d00b4').
-github_work_updated_at(chatgpt_books_book1, pr_128, '2026-09-17T04:39:04+00:00').
+github_work_updated_at(chatgpt_books_book1, pr_128, '2026-11-03T04:40:44+00:00').
 github_work_source(chatgpt_books_book1, pr_128, 'github-pr:lost-rob0t/chatgpt-books#128').
 
 github_work(chatgpt_books_book1, pr_132).
@@ -445,8 +445,8 @@ github_work_severity(chatgpt_books_book1, pr_132, normal).
 github_work_readiness(chatgpt_books_book1, pr_132, ready).
 github_work_ci(chatgpt_books_book1, pr_132, pending).
 github_work_review(chatgpt_books_book1, pr_132, unknown).
-github_work_head_sha(chatgpt_books_book1, pr_132, '742a8ce384c2631ab01324ecfee7cd5c29cdfccd').
-github_work_updated_at(chatgpt_books_book1, pr_132, '2026-09-17T04:38:56+00:00').
+github_work_head_sha(chatgpt_books_book1, pr_132, '13fa0fb4779f40c0f0311e53efacf21f2ae84bc5').
+github_work_updated_at(chatgpt_books_book1, pr_132, '2026-11-03T04:40:59+00:00').
 github_work_source(chatgpt_books_book1, pr_132, 'github-pr:lost-rob0t/chatgpt-books#132').
 
 github_work(chatgpt_books_book1, pr_134).
@@ -456,20 +456,9 @@ github_work_severity(chatgpt_books_book1, pr_134, normal).
 github_work_readiness(chatgpt_books_book1, pr_134, ready).
 github_work_ci(chatgpt_books_book1, pr_134, pending).
 github_work_review(chatgpt_books_book1, pr_134, unknown).
-github_work_head_sha(chatgpt_books_book1, pr_134, 'f37d393e32121a87cdc0e745e999515be8059531').
-github_work_updated_at(chatgpt_books_book1, pr_134, '2026-09-17T04:33:15+00:00').
+github_work_head_sha(chatgpt_books_book1, pr_134, '24bf413a0845d16cd614d8ad152aae3e06241472').
+github_work_updated_at(chatgpt_books_book1, pr_134, '2026-11-03T05:04:28+00:00').
 github_work_source(chatgpt_books_book1, pr_134, 'github-pr:lost-rob0t/chatgpt-books#134').
-
-github_work(chatgpt_books_book1, pr_136).
-github_work_kind(chatgpt_books_book1, pr_136, pr).
-github_work_state(chatgpt_books_book1, pr_136, open).
-github_work_severity(chatgpt_books_book1, pr_136, normal).
-github_work_readiness(chatgpt_books_book1, pr_136, ready).
-github_work_ci(chatgpt_books_book1, pr_136, pending).
-github_work_review(chatgpt_books_book1, pr_136, unknown).
-github_work_head_sha(chatgpt_books_book1, pr_136, 'ce7ee7a3cec1daa6e0b7fa592d06659fbdabb45d').
-github_work_updated_at(chatgpt_books_book1, pr_136, '2026-10-16T17:45:24+00:00').
-github_work_source(chatgpt_books_book1, pr_136, 'github-pr:lost-rob0t/chatgpt-books#136').
 
 github_work(chatgpt_books_book1, pr_157).
 github_work_kind(chatgpt_books_book1, pr_157, pr).
@@ -479,7 +468,7 @@ github_work_readiness(chatgpt_books_book1, pr_157, ready).
 github_work_ci(chatgpt_books_book1, pr_157, failure).
 github_work_review(chatgpt_books_book1, pr_157, unknown).
 github_work_head_sha(chatgpt_books_book1, pr_157, 'f9fb2f394c2a5af993bafb8e1e3e147bd0d01a7b').
-github_work_updated_at(chatgpt_books_book1, pr_157, '2026-10-19T21:02:20+00:00').
+github_work_updated_at(chatgpt_books_book1, pr_157, '2026-11-03T05:57:13+00:00').
 github_work_source(chatgpt_books_book1, pr_157, 'github-pr:lost-rob0t/chatgpt-books#157').
 
 github_work(chatgpt_books_book1, pr_158).
@@ -487,10 +476,10 @@ github_work_kind(chatgpt_books_book1, pr_158, pr).
 github_work_state(chatgpt_books_book1, pr_158, open).
 github_work_severity(chatgpt_books_book1, pr_158, normal).
 github_work_readiness(chatgpt_books_book1, pr_158, ready).
-github_work_ci(chatgpt_books_book1, pr_158, failure).
+github_work_ci(chatgpt_books_book1, pr_158, pending).
 github_work_review(chatgpt_books_book1, pr_158, unknown).
-github_work_head_sha(chatgpt_books_book1, pr_158, '99c9393cdaa6c2971494d35a54ab952ae5b4a3a6').
-github_work_updated_at(chatgpt_books_book1, pr_158, '2026-10-16T18:05:14+00:00').
+github_work_head_sha(chatgpt_books_book1, pr_158, '7da8ace1e19e90495f1d01bf5fd35d563728414e').
+github_work_updated_at(chatgpt_books_book1, pr_158, '2026-11-03T05:19:25+00:00').
 github_work_source(chatgpt_books_book1, pr_158, 'github-pr:lost-rob0t/chatgpt-books#158').
 
 github_work(chatgpt_books_book1, pr_159).
@@ -501,11 +490,44 @@ github_work_readiness(chatgpt_books_book1, pr_159, ready).
 github_work_ci(chatgpt_books_book1, pr_159, failure).
 github_work_review(chatgpt_books_book1, pr_159, unknown).
 github_work_head_sha(chatgpt_books_book1, pr_159, '492faf76ddd9f16dc97bba9a50f0086e7572cf56').
-github_work_updated_at(chatgpt_books_book1, pr_159, '2026-10-16T18:05:16+00:00').
+github_work_updated_at(chatgpt_books_book1, pr_159, '2026-11-03T04:41:53+00:00').
 github_work_source(chatgpt_books_book1, pr_159, 'github-pr:lost-rob0t/chatgpt-books#159').
 
-github_snapshot(hackmode, 'nsaspy/hackmode', unavailable, '2026-11-03T03:40:38+00:00').
-github_snapshot(hourly_auto_dig, 'lost-rob0t/starintel-gpt-auto-dig', partial, '2026-11-03T03:40:38+00:00').
+github_work(chatgpt_books_book1, pr_160).
+github_work_kind(chatgpt_books_book1, pr_160, pr).
+github_work_state(chatgpt_books_book1, pr_160, open).
+github_work_severity(chatgpt_books_book1, pr_160, normal).
+github_work_readiness(chatgpt_books_book1, pr_160, ready).
+github_work_ci(chatgpt_books_book1, pr_160, pending).
+github_work_review(chatgpt_books_book1, pr_160, unknown).
+github_work_head_sha(chatgpt_books_book1, pr_160, '9d18adc80d6e6563ad312b2fea26b878dcaa4081').
+github_work_updated_at(chatgpt_books_book1, pr_160, '2026-11-03T05:36:18+00:00').
+github_work_source(chatgpt_books_book1, pr_160, 'github-pr:lost-rob0t/chatgpt-books#160').
+
+github_work(chatgpt_books_book1, pr_161).
+github_work_kind(chatgpt_books_book1, pr_161, pr).
+github_work_state(chatgpt_books_book1, pr_161, open).
+github_work_severity(chatgpt_books_book1, pr_161, normal).
+github_work_readiness(chatgpt_books_book1, pr_161, ready).
+github_work_ci(chatgpt_books_book1, pr_161, pending).
+github_work_review(chatgpt_books_book1, pr_161, unknown).
+github_work_head_sha(chatgpt_books_book1, pr_161, '6f0941598083a4c6ee20aa00cef7e7e81022d5f3').
+github_work_updated_at(chatgpt_books_book1, pr_161, '2026-11-03T05:36:29+00:00').
+github_work_source(chatgpt_books_book1, pr_161, 'github-pr:lost-rob0t/chatgpt-books#161').
+
+github_work(chatgpt_books_book1, pr_162).
+github_work_kind(chatgpt_books_book1, pr_162, pr).
+github_work_state(chatgpt_books_book1, pr_162, open).
+github_work_severity(chatgpt_books_book1, pr_162, normal).
+github_work_readiness(chatgpt_books_book1, pr_162, ready).
+github_work_ci(chatgpt_books_book1, pr_162, failure).
+github_work_review(chatgpt_books_book1, pr_162, unknown).
+github_work_head_sha(chatgpt_books_book1, pr_162, '924a582b391f66bef96d712540605055967e4f6b').
+github_work_updated_at(chatgpt_books_book1, pr_162, '2026-11-03T05:36:31+00:00').
+github_work_source(chatgpt_books_book1, pr_162, 'github-pr:lost-rob0t/chatgpt-books#162').
+
+github_snapshot(hackmode, 'nsaspy/hackmode', unavailable, '2026-11-03T12:16:26+00:00').
+github_snapshot(hourly_auto_dig, 'lost-rob0t/starintel-gpt-auto-dig', partial, '2026-11-03T12:16:26+00:00').
 github_work(hourly_auto_dig, issue_2109).
 github_work_kind(hourly_auto_dig, issue_2109, issue).
 github_work_state(hourly_auto_dig, issue_2109, open).
@@ -3078,7 +3100,7 @@ github_work_head_sha(hourly_auto_dig, pr_2754, 'b1aa2148b3cd61adb3a042532ad43b5c
 github_work_updated_at(hourly_auto_dig, pr_2754, '2026-10-25T21:13:17+00:00').
 github_work_source(hourly_auto_dig, pr_2754, 'github-pr:lost-rob0t/starintel-gpt-auto-dig#2754').
 
-github_snapshot(local_recall, 'lost-rob0t/local-recall', fresh, '2026-11-03T03:40:38+00:00').
+github_snapshot(local_recall, 'lost-rob0t/local-recall', fresh, '2026-11-03T12:16:26+00:00').
 github_work(local_recall, issue_35).
 github_work_kind(local_recall, issue_35, issue).
 github_work_state(local_recall, issue_35, open).
@@ -3109,9 +3131,9 @@ github_work_review(local_recall, issue_41, not_applicable).
 github_work_updated_at(local_recall, issue_41, '2026-07-18T00:06:50+00:00').
 github_work_source(local_recall, issue_41, 'github-issue:lost-rob0t/local-recall#41').
 
-github_snapshot(prolog_rlm, 'nsaspy/prolog-rlm', unavailable, '2026-11-03T03:40:38+00:00').
-github_snapshot(skills, 'nsaspy/skills', unavailable, '2026-11-03T03:40:38+00:00').
-github_snapshot(starintel_discord_reports, 'lost-rob0t/starintel-discord-reporting', fresh, '2026-11-03T03:40:38+00:00').
+github_snapshot(prolog_rlm, 'nsaspy/prolog-rlm', unavailable, '2026-11-03T12:16:26+00:00').
+github_snapshot(skills, 'nsaspy/skills', unavailable, '2026-11-03T12:16:26+00:00').
+github_snapshot(starintel_discord_reports, 'lost-rob0t/starintel-discord-reporting', fresh, '2026-11-03T12:16:26+00:00').
 github_work(starintel_discord_reports, issue_9).
 github_work_kind(starintel_discord_reports, issue_9, issue).
 github_work_state(starintel_discord_reports, issue_9, open).
@@ -3132,8 +3154,8 @@ github_work_review(starintel_discord_reports, issue_24, not_applicable).
 github_work_updated_at(starintel_discord_reports, issue_24, '2026-09-09T02:15:48+00:00').
 github_work_source(starintel_discord_reports, issue_24, 'github-issue:lost-rob0t/starintel-discord-reporting#24').
 
-github_snapshot(starintel_infra, 'starintel-labs/starintel-infra', unavailable, '2026-11-03T03:40:38+00:00').
-github_snapshot(starintel_server, 'lost-rob0t/starintel-server', fresh, '2026-11-03T03:40:38+00:00').
+github_snapshot(starintel_infra, 'starintel-labs/starintel-infra', unavailable, '2026-11-03T12:16:26+00:00').
+github_snapshot(starintel_server, 'lost-rob0t/starintel-server', fresh, '2026-11-03T12:16:26+00:00').
 github_work(starintel_server, issue_9).
 github_work_kind(starintel_server, issue_9, issue).
 github_work_state(starintel_server, issue_9, open).
@@ -5247,8 +5269,8 @@ github_work_head_sha(starintel_server, pr_356, 'c9f10b2ffb2d131eb35938bef4586bf8
 github_work_updated_at(starintel_server, pr_356, '2026-10-25T21:20:24+00:00').
 github_work_source(starintel_server, pr_356, 'github-pr:lost-rob0t/starintel-server#356').
 
-github_snapshot(symbolics, 'nsaspy/a0-symbolics', unavailable, '2026-11-03T03:40:38+00:00').
-github_snapshot(zara, 'lost-rob0t/zara', partial, '2026-11-03T03:40:38+00:00').
+github_snapshot(symbolics, 'nsaspy/a0-symbolics', unavailable, '2026-11-03T12:16:26+00:00').
+github_snapshot(zara, 'lost-rob0t/zara', partial, '2026-11-03T12:16:26+00:00').
 github_work(zara, issue_1114).
 github_work_kind(zara, issue_1114, issue).
 github_work_state(zara, issue_1114, open).
